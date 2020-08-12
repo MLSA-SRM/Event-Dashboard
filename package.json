@@ -1,0 +1,20 @@
+{
+  "name": "event-dashboard",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node ./bin/www",
+    "server": "nodemon ./bin/www",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently --kill-others \" npm run server \" \" npm run client \" "
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+}
