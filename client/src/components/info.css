@@ -1,0 +1,15 @@
+.body{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    width: 70%;
+    margin-top: 8vh;
+    padding: 3vh;
+}
+.title{
+    width: 100%;
+    font-weight: 500;
+    font-size: 4vh;
+}
