@@ -22,7 +22,7 @@ module.exports = function(passport) {
 			});
 		})
 	);
-
+	// Save the id
 	passport.serializeUser((user, done) => {
 		done(null, user.id);
 	});

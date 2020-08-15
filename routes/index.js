@@ -1,21 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var User = require('../models/user');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Express' });
+router.post('/login', function(req, res, next) {
+	passport.authenticate('local', (err, user) => {
+		if (err) throw err;
+		if (!user) {
+			res.send('No user found');
+		} else {
+			req.logIn(user, (err) => {
+				if (err) throw err;
+
+				res.send('You are successfully Logged In ' + user.username);
+			});
+		}
+	})(req, res, next);
 });
 
 router.post('/register', function(req, res) {
-	console.log(req.body);
 	User.findOne({ username: req.body.username }, async (err, doc) => {
 		if (err) throw err;
 		if (doc) {
-			res.send('User already Exist');
+			res.send(false);
 		}
 		if (!doc) {
 			const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -29,18 +37,9 @@ router.post('/register', function(req, res) {
 	});
 });
 
-router.post('/login', function(req, res) {
-	passport.authenticate('local', (err, user, info) => {
-		if (err) throw err;
-		if (!user) {
-			res.send('No user exist');
-		} else {
-			req.logIn(user, (err) => {
-				if (err) throw err;
-				res.send('Authenticated');
-			});
-		}
-	});
+/* GET home page. */
+router.get('/', (req, res, next) => {
+	res.send('Welcome');
 });
 
 module.exports = router;

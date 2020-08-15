@@ -2,7 +2,6 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
 var passport = require('passport');
-var localStrategy = require('passport-local');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
@@ -36,8 +35,8 @@ app.use(
 app.use(
 	session({
 		secret: 'secret',
-		resave: true,
-		saveUninitialized: true
+		resave: false,
+		saveUninitialized: false
 	})
 );
 
