@@ -1,0 +1,33 @@
+.body{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    width: 70%;
+    margin-top: 3vh;
+    text-align: center;
+    padding: 3vh;
+}
+.title{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 4vh;
+}
+.titletext{
+    font-weight: 600;
+    font-size: 3.75vh;
+}
+.box{
+    width: 100%;
+    font-size: 2vh;
+}
+.charttitle{
+    font-weight: 500;
+    font-size: 2.5vh;
+    color: rgb(70, 69, 69);
+    margin-bottom: 5vh;
+}
