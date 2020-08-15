@@ -1,11 +1,11 @@
-.box {
+.authForm {
 	width: 280px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-.box h1 {
+.authForm h1 {
 	font-size: 40px;
 	font-family: Arial, Helvetica, sans-serif;
 	border-bottom: 6px solid #9582e0;

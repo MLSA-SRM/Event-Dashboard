@@ -12,7 +12,7 @@ router.post('/login', function(req, res, next) {
 		} else {
 			req.logIn(user, (err) => {
 				if (err) throw err;
-
+				console.log(res);
 				res.send('You are successfully Logged In ' + user.username);
 			});
 		}

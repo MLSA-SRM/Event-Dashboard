@@ -3,17 +3,3 @@
 	margin: 0px;
 	box-sizing: border-box;
 }
-
-.buttons {
-	display: flex;
-	float: right;
-	margin: 50px 50px;
-	list-style-type: none;
-}
-
-.button {
-	color: #5031cc;
-	font-size: 20px;
-	margin: 10px 30px;
-	text-decoration: none;
-}

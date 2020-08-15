@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Auth.css';
 
 function Login() {
@@ -20,7 +21,7 @@ function Login() {
 	};
 
 	return (
-		<div className="box">
+		<div className="authForm">
 			<h1>Login</h1>
 			<form onSubmit={loginUser}>
 				<div className="textbox">
@@ -30,6 +31,9 @@ function Login() {
 					<input type="password" placeholder="Password" onChange={(e) => setLoginPassword(e.target.value)} />
 				</div>
 				<button className="btn">Login</button>
+				<p>
+					Create a new account ? <Link to="/signIn">Sign In</Link>
+				</p>
 			</form>
 		</div>
 	);

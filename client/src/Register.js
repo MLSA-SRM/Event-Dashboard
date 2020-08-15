@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Auth.css';
 
 function Register() {
@@ -35,7 +36,7 @@ function Register() {
 	};
 
 	return (
-		<div className="box">
+		<div className="authForm">
 			<h4 className="message">{flashMessage}</h4>
 			<h1>Sign In</h1>
 			<form onSubmit={registerUser}>
@@ -50,6 +51,9 @@ function Register() {
 					/>
 				</div>
 				<button className="btn">Register</button>
+				<p>
+					Already have an account ? <Link to="/logIn">Log In</Link>
+				</p>
 			</form>
 		</div>
 	);
