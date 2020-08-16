@@ -10,16 +10,9 @@ var User = require('./models/user');
 
 var app = express();
 
-mongoose.connect(
-	'mongodb+srv://kunalsinghal:Y9lu1JXvDM1tS0ou@cluster0-jlomh.mongodb.net/users?retryWrites=true&w=majority',
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	},
-	() => {
-		console.log('mongoose');
-	}
-);
+/////////////////////////////////////////////////////////////////////////////////
+// CONNECT TO DATABASE
+/////////////////////////////////////////////////////////////////////////////////
 
 app.use(logger('dev'));
 app.use(express.json());
