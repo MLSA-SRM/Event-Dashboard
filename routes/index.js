@@ -3,16 +3,28 @@ var router = express.Router();
 
 var events = require("../controller/db");
 
-router.get("/", async (req, res, next) => {
+router.get("/bardata", async (req, res, next) => {
   let username = "yoman";
   let data = await events(username);
   let name = [];
+
   //IF YOU WANT TO HAVE DATA FROM ARRAY JUST LOOP IT OVER
 
   data.events.forEach((item) => {
     name.push(item.name);
   });
-  console.log(name);
+  let date = new Date();
+  var days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  console.log(date);
+  // console.log(name);
   res.json(name);
 });
 
