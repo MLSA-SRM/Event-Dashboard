@@ -8,12 +8,12 @@ router.post('/login', function(req, res, next) {
 	passport.authenticate('local', (err, user) => {
 		if (err) throw err;
 		if (!user) {
-			res.send('No user found');
+			res.json(false);
 		} else {
 			req.logIn(user, (err) => {
 				if (err) throw err;
 				console.log(res);
-				res.send('You are successfully Logged In ' + user.username);
+				res.json(true);
 			});
 		}
 	})(req, res, next);
@@ -23,7 +23,7 @@ router.post('/register', function(req, res) {
 	User.findOne({ username: req.body.username }, async (err, doc) => {
 		if (err) throw err;
 		if (doc) {
-			res.send(false);
+			res.json(false);
 		}
 		if (!doc) {
 			const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -32,7 +32,7 @@ router.post('/register', function(req, res) {
 				password: hashedPassword
 			});
 			await newUser.save();
-			res.send('User created');
+			res.json(true);
 		}
 	});
 });

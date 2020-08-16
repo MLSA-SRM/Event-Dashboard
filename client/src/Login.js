@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Auth.css';
 
 function Login() {
+	let history = useHistory();
 	const [ loginUsername, setLoginUsername ] = useState('');
 	const [ loginPassword, setLoginPassword ] = useState('');
 
@@ -17,7 +18,17 @@ function Login() {
 			},
 			withCredentials: true,
 			url: 'http://localhost:5000/login'
-		}).then((res) => console.log(res.data));
+		})
+			.then((res) => {
+				if (res.data) {
+					history.push('/');
+				} else {
+					history.push('/logIn');
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	return (

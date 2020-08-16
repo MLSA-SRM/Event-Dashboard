@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 import './Auth.css';
 
 function Register() {
+	let history = useHistory();
 	const [ registerUsername, setRegisterUsername ] = useState('');
 	const [ registerPassword, setRegisterPassword ] = useState('');
-	const [ flashMessage, setFlashMessage ] = useState('');
 	const registerUser = (e) => {
 		e.preventDefault();
 		Axios({
@@ -20,13 +21,10 @@ function Register() {
 		})
 			.then((res) => {
 				if (res.data) {
-					setFlashMessage('Successfully Signed In');
-					setTimeout(function() {
-						setFlashMessage('');
-					}, 5000);
+					history.push('/logIn');
 					console.log('Success Sign Up');
 				} else {
-					setFlashMessage('Username already taken');
+					history.push('/signIn');
 					console.log('This username is already taken');
 				}
 			})
@@ -37,7 +35,6 @@ function Register() {
 
 	return (
 		<div className="authForm">
-			<h4 className="message">{flashMessage}</h4>
 			<h1>Sign In</h1>
 			<form onSubmit={registerUser}>
 				<div className="textbox">
