@@ -1,39 +1,39 @@
 var express = require("express");
 var cookieParser = require("cookie-parser");
+var cors = require("cors");
+var passport = require("passport");
 var logger = require("morgan");
-const nodemailer = require('nodemailer');
-
+var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
+var session = require("express-session");
+// var User = require("./models/user");
 
 var app = express();
+
+/////////////////////////////////////////////////////////////////////////////////
+// CONNECT TO DATABASE
+/////////////////////////////////////////////////////////////////////////////////
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
-let mailTransporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'youremail@gmail.com',
-        pass: '*********'
-    }
-});
+app.use(cors());
 
-let mailDetails = {
-    from: 'youremail@gmail.com',
-    to: 'reciever@gmail.com',
-    subject: 'Test mail',
-    text: 'Nodemailer testing mail, congratulations if you recieved this.'
-};
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
-mailTransporter.sendMail(mailDetails, function(err, data) {
-    if(err) {
-        console.log('Email failed');
-    } else {
-        console.log('Email sent successfully');
-    }
-});
+app.use(cookieParser("secret"));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require("./passportConfig")(passport);
 
 app.use("/", indexRouter);
 

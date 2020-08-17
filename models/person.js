@@ -14,10 +14,23 @@ const personSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    event: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "event",
-    },
+    events: [
+      {
+        title: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "event",
+        },
+        date: {
+          type: Date,
+        },
+      },
+    ],
+    // event: [
+    //   {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "event",
+    //   },
+    // ],
   },
   { strict: false }
 );
