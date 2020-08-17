@@ -21,7 +21,7 @@
 		"nodemailer": "^6.4.11",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
-		"session": "^0.1.0"
+		"session": "^0.1.0",
     "qrcode": "^1.4.4"
   },
   "devDependencies": {
