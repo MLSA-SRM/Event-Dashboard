@@ -23,8 +23,6 @@ const data1 = [
   { name: "CSE", value: 400 },
   { name: "ECE", value: 250 },
   { name: "Mechanical", value: 300 },
-  { name: "Aerospace", value: 100 },
-  { name: "Biotech", value: 50 },
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
