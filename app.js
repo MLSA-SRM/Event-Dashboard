@@ -2,8 +2,6 @@ var express = require("express");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const nodemailer = require('nodemailer');
-var QRCode = require('qrcode');
-var img;
 
 var indexRouter = require("./routes/index");
 
@@ -22,16 +20,11 @@ let mailTransporter = nodemailer.createTransport({
     }
 });
 
-QRCode.toString('https://www.google.co.in/', function (err, url) {
-  console.log(url);
-  img = url;
-});
-
 let mailDetails = {
     from: 'youremail@gmail.com',
     to: 'reciever@gmail.com',
     subject: 'Test mail',
-    html: "<span><h1 style='color:black'>Welcome</h1><h4>XYZ</h4></span><br><pre>"+ img +"</pre>"
+    text: 'Nodemailer testing mail, congratulations if you recieved this.'
 };
 
 mailTransporter.sendMail(mailDetails, function(err, data) {
