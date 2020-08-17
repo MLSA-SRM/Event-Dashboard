@@ -8,8 +8,14 @@ const eventSchema = new mongoose.Schema({
   },
   public: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "people",
+      name: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "person",
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
 });

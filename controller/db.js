@@ -4,15 +4,40 @@ var event = require("../models/event");
 var people = require("../models/person");
 
 const events = (username) => {
-  return user
-    .findOne({ username })
-    .populate("events")
+  return event
+    .findOne({ name: username })
+    .populate("public.name")
     .then((res) => {
+      // console.log(res);
       return res;
     })
     .catch((err) => {
       console.log(err);
     });
 };
+const savePeople = (reg, name, branch) => {
+  let newPeople = new people({
+    reg,
+    name,
+    branch,
+  });
+  newPeople.save().catch((err) => console.log(err));
+  var yoman = {
+    name: newPeople._id,
+  };
 
-module.exports = events;
+  event.findOneAndUpdate(
+    { name: "yoman" },
+    {
+      $push: {
+        public: yoman,
+      },
+    },
+    (err, res) => {
+      if (err) console.log(err);
+      // else console.log(res);
+    }
+  );
+};
+
+module.exports = { events, savePeople };

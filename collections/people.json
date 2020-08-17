@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "5f31648747705f4598f535cf"
+  },
+  "name": "deugn",
+  "branch": "CSE",
+  "events": [
+    {
+      "title": {
+        "$oid": "5f36828b73f16424f0962728"
+      },
+      "date": {
+        "$date": "2020-08-19T18:30:00Z"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f36837773f16424f0962729"
+  },
+  "name": "Binod",
+  "branch": "MECH",
+  "events": [
+    {
+      "title": {
+        "$oid": "5f3162bba2387e623c699053"
+      },
+      "date": {
+        "$date": "2020-05-17T18:30:00Z"
+      }
+    },
+    {
+      "title": {
+        "$oid": "5f36828b73f16424f0962728"
+      },
+      "date": {
+        "$date": "2020-08-17T18:30:00Z"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3a2a2a35f9b8b23c992269"
+  },
+  "events": [],
+  "name": "Aryan",
+  "branch": "CSE",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3a305c3af4ce7a345bf0a3"
+  },
+  "events": [],
+  "name": "Aryan",
+  "branch": "CSE",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3a88df009428ae6c55b1af"
+  },
+  "events": [],
+  "name": "Aryan",
+  "branch": "CSE",
+  "__v": 0
+}]

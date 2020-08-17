@@ -16,21 +16,10 @@ const personSchema = new mongoose.Schema(
     },
     events: [
       {
-        title: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "event",
-        },
-        date: {
-          type: Date,
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "event",
       },
     ],
-    // event: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "event",
-    //   },
-    // ],
   },
   { strict: false }
 );
