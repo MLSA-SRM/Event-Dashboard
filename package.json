@@ -12,9 +12,10 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
-    "nodemailer": "^6.4.11",
     "mongoose": "^5.9.28",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "nodemailer": "^6.4.11",
+    "qrcode": "^1.4.4"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
