@@ -3,9 +3,10 @@ var cookieParser = require("cookie-parser");
 var cors = require("cors");
 var passport = require("passport");
 var logger = require("morgan");
-var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var session = require("express-session");
+require("./config/passportConfig")(passport);
+// var mongoose = require("mongoose");
 // var User = require("./models/user");
 
 var app = express();
@@ -32,8 +33,6 @@ app.use(cookieParser("secret"));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-require("./passportConfig")(passport);
 
 app.use("/", indexRouter);
 
