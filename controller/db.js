@@ -15,6 +15,7 @@ const events = (username) => {
       console.log(err);
     });
 };
+
 const savePeople = (reg, name, branch) => {
   let newPeople = new people({
     reg,

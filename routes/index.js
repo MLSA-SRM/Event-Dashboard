@@ -67,13 +67,30 @@ router.get("/bardata", async (req, res, next) => {
   }
   res.json(bardata);
 });
+
+router.get("/piechart", async (req, res, next) => {
+  let username = "yoman";
+  let data = await events(username);
+  let branch = [];
+  let result = {};
+  data.public.forEach((item) => {
+    // console.log(item.name.branch);
+    branch.push(item.name.branch);
+  });
+  branch.forEach((item) => {
+    if (!result[item]) result[item] = 0;
+    ++result[item];
+  });
+  res.json(result);
+});
+
 router.get("/test/savepeople", (req, res, next) => {
   res.json("yo");
   // let [reg, name, branch] = req.body;
   // console.log(req.body);
   let reg = "RA1911028015115";
   let name = "Lalu";
-  let branch = "CSE";
+  let branch = "MECH";
 
   savePeople(reg, name, branch);
 });
