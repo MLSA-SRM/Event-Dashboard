@@ -72,14 +72,29 @@ router.get("/piechart", async (req, res, next) => {
   let username = "yoman";
   let data = await events(username);
   let branch = [];
-  let result = {};
+  let result = [];
   data.public.forEach((item) => {
     // console.log(item.name.branch);
     branch.push(item.name.branch);
   });
-  branch.forEach((item) => {
-    if (!result[item]) result[item] = 0;
-    ++result[item];
+  console.log(branch);
+  branch.forEach((lol) => {
+    let counter = 0;
+    let flag = 0;
+    branch.forEach((item) => {
+      if (lol == item) {
+        counter += 1;
+        flag = 1;
+      }
+    });
+
+    if (flag == 1) {
+      branch = branch.filter((item) => item !== lol);
+      result.push({
+        branch: lol,
+        no: counter,
+      });
+    }
   });
   res.json(result);
 });
