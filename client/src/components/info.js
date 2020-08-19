@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-//import axios from "axios";
+import axios from "axios";
 import {
   LineChart,
   Line,
@@ -14,24 +14,33 @@ import {
 import "./info.css";
 
 const data = [
-	{ name: 'Monday', uv: 400, pv: 2400, amt: 2400 },
-	{ name: 'Tuesday', uv: 200, pv: 1200, amt: 2400 },
-	{ name: 'Wednesday', uv: 700, pv: 1600, amt: 2400 },
-	{ name: 'Thursday', uv: 100, pv: 1000, amt: 2400 }
+  { name: "Monday", uv: 400, pv: 2400, amt: 2400 },
+  { name: "Tuesday", uv: 200, pv: 1200, amt: 2400 },
+  { name: "Wednesday", uv: 700, pv: 1600, amt: 2400 },
+  { name: "Thursday", uv: 100, pv: 1000, amt: 2400 },
 ];
 
-const data1 = [ { name: 'CSE', value: 400 }, { name: 'ECE', value: 250 }, { name: 'Mechanical', value: 300 } ];
+const data1 = [
+  { name: "CSE", value: 400 },
+  { name: "ECE", value: 250 },
+  { name: "Mechanical", value: 300 },
+];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Info = () => {
-  //const [barData, setBarData] = useState([]);
-  // useEffect(() => {
-  //   axios.get("/bardata").then((res) => {
-  //     console.log(res.data);
-  //     setBarData(res.data);
-  //   });
-  // }, []);
+  const [pieData, setPieData] = useState([]);
+  const [barData, setBarData] = useState([]);
+  useEffect(() => {
+    axios.get("/bardata").then((res) => {
+      console.log(res.data);
+      setBarData(res.data);
+    });
+    axios.get("/piechart").then((res) => {
+      console.log(res.data);
+      setPieData(res.data);
+    });
+  }, []);
 
   return (
     <div>
