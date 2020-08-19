@@ -67,13 +67,43 @@ router.get("/bardata", async (req, res, next) => {
   }
   res.json(bardata);
 });
+
+router.get("/piechart", async (req, res, next) => {
+  let username = "yoman";
+  let data = await events(username);
+  let branch = [];
+  data.public.forEach((item) => {
+    console.log(item.name.branch);
+    branch.push(item.name.branch);
+  });
+  console.log(branch.length);
+
+  // IDK HOW MANY DEPARTMENTS ARE THERE IN SRM JUST A ROUGH GUESS
+
+  // for (let i = 0; i < 10; i++) {
+  //   let counter = 0;
+  //   data.public.forEach((item) => {
+  //     if (item.date.getDay() == i) {
+  //       counter = counter + 1;
+  //     }
+  //   });
+  //   if (counter != 0) {
+  //     bardata.push({
+  //       name: days[i],
+  //       no: counter,
+  //     });
+  //   }
+  // }
+
+  res.json(data);
+});
 router.get("/test/savepeople", (req, res, next) => {
   res.json("yo");
   // let [reg, name, branch] = req.body;
   // console.log(req.body);
   let reg = "RA1911028015115";
   let name = "Lalu";
-  let branch = "CSE";
+  let branch = "MECH";
 
   savePeople(reg, name, branch);
 });
