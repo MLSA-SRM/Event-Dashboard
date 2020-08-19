@@ -72,31 +72,18 @@ router.get("/piechart", async (req, res, next) => {
   let username = "yoman";
   let data = await events(username);
   let branch = [];
+  let result = {};
   data.public.forEach((item) => {
-    console.log(item.name.branch);
+    // console.log(item.name.branch);
     branch.push(item.name.branch);
   });
-  console.log(branch.length);
-
-  // IDK HOW MANY DEPARTMENTS ARE THERE IN SRM JUST A ROUGH GUESS
-
-  // for (let i = 0; i < 10; i++) {
-  //   let counter = 0;
-  //   data.public.forEach((item) => {
-  //     if (item.date.getDay() == i) {
-  //       counter = counter + 1;
-  //     }
-  //   });
-  //   if (counter != 0) {
-  //     bardata.push({
-  //       name: days[i],
-  //       no: counter,
-  //     });
-  //   }
-  // }
-
-  res.json(data);
+  branch.forEach((item) => {
+    if (!result[item]) result[item] = 0;
+    ++result[item];
+  });
+  res.json(result);
 });
+
 router.get("/test/savepeople", (req, res, next) => {
   res.json("yo");
   // let [reg, name, branch] = req.body;
