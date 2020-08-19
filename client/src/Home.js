@@ -4,10 +4,16 @@ import Nav from './components/nav';
 import Body from './components/header';
 import Info from './components/info';
 import './App.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
+
+	const successLogin = () => toast.success('Login Successful!');
+
 	return (
-		<div>
+		<div onLoad={successLogin}>
+			<ToastContainer autoClose={5000} position={"top-center"}/>
 			<Nav />
 			<Body />
 			<Info />

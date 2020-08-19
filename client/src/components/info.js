@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import {
   LineChart,
   Line,
@@ -25,13 +25,13 @@ const data1 = [ { name: 'CSE', value: 400 }, { name: 'ECE', value: 250 }, { name
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Info = () => {
-  const [barData, setBarData] = useState([]);
-  useEffect(() => {
-    axios.get("/bardata").then((res) => {
-      // console.log(res.data);
-      setBarData(res.data);
-    });
-  }, []);
+  //const [barData, setBarData] = useState([]);
+  // useEffect(() => {
+  //   axios.get("/bardata").then((res) => {
+  //     console.log(res.data);
+  //     setBarData(res.data);
+  //   });
+  // }, []);
 
   return (
     <div>
