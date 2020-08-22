@@ -40,7 +40,6 @@ const Info = () => {
       setBarData(barData);
     });
 
-    //PieChart Data NOT WORKING!!
     axios.get("/piechart").then((res) => {
       console.log(res.data);
       const pieData = res.data;
