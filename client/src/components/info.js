@@ -13,34 +13,38 @@ import {
 } from "recharts";
 import "./info.css";
 
-const data = [
-  { name: "Monday", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Tuesday", uv: 200, pv: 1200, amt: 2400 },
-  { name: "Wednesday", uv: 700, pv: 1600, amt: 2400 },
-  { name: "Thursday", uv: 100, pv: 1000, amt: 2400 },
-];
+//BAR GRAPH DUMMY DATA
+// const data = [
+// 	{ name: 'Monday', uv: 400, pv: 2400, amt: 2400 },
+// 	{ name: 'Tuesday', uv: 200, pv: 1200, amt: 2400 },
+// 	{ name: 'Wednesday', uv: 700, pv: 1600, amt: 2400 },
+// 	{ name: 'Thursday', uv: 100, pv: 1000, amt: 2400 }
+// ];
 
-const data1 = [
-  { name: "CSE", value: 400 },
-  { name: "ECE", value: 250 },
-  { name: "Mechanical", value: 300 },
+//PIECHART DUMMY DATA
+const data1 = [{ name: 'CSE', value: 400 }, { name: 'ECE', value: 250 }, { name: 'Mechanical', value: 300 },
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Info = () => {
-  const [pieData, setPieData] = useState([]);
   const [barData, setBarData] = useState([]);
+  const [pieData, setPieData] = useState([]);
   useEffect(() => {
     axios.get("/bardata").then((res) => {
       console.log(res.data);
-      setBarData(res.data);
+      const barData = res.data;
+      setBarData(barData);
     });
-    axios.get("/piechart").then((res) => {
-      console.log(res.data);
-      setPieData(res.data);
-    });
-  }, []);
+    
+    //PieChart Data NOT WORKING!!
+   // axios.get("/piechart").then((res)=>{
+     // console.log(res.data);
+      //const pieData = res.data;
+      //setPieData(pieData);
+    //});
+
+ }, []);
 
   return (
     <div>
@@ -53,13 +57,13 @@ const Info = () => {
           <LineChart
             width={440}
             height={250}
-            data={data}
+            data={barData}
             margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
           >
             <Line
               type='monotone'
               strokeWidth='2'
-              dataKey='uv'
+              dataKey='no'
               stroke='#8884d8'
             />
             <CartesianGrid
@@ -94,7 +98,6 @@ const Info = () => {
                 value,
                 index,
               }) => {
-                console.log("handling label?");
                 const RADIAN = Math.PI / 180;
                 // eslint-disable-next-line
                 const radius = 25 + innerRadius + (outerRadius - innerRadius);
@@ -116,7 +119,7 @@ const Info = () => {
                 );
               }}
             >
-              {data.map((entry, index) => (
+              {data1.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}

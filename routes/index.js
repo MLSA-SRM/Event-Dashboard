@@ -68,13 +68,14 @@ router.get("/bardata", async (req, res, next) => {
   res.json(bardata);
 });
 
+//Piechart data config NOT WORKING
 router.get("/piechart", async (req, res, next) => {
   let username = "yoman";
   let data = await events(username);
   let branch = [];
   let result = [];
   data.public.forEach((item) => {
-    // console.log(item.name.branch);
+    console.log(item.name.branch);
     branch.push(item.name.branch);
   });
   console.log(branch);
