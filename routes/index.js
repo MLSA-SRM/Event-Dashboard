@@ -75,7 +75,7 @@ router.get("/piechart", async (req, res, next) => {
   let branch = [];
   let result = [];
   data.public.forEach((item) => {
-    console.log(item.name.branch);
+    // console.log(item.name.branch);
     branch.push(item.name.branch);
   });
   console.log(branch);
@@ -97,6 +97,7 @@ router.get("/piechart", async (req, res, next) => {
       });
     }
   });
+  console.log(result);
   res.json(result);
 });
 
