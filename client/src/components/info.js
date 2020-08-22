@@ -13,24 +13,16 @@ import {
 } from "recharts";
 import "./info.css";
 
-const data = [
-	// { name: 'Monday', uv: 400, pv: 2400, amt: 2400 },
-	// { name: 'Tuesday', uv: 200, pv: 1200, amt: 2400 },
-	// { name: 'Wednesday', uv: 700, pv: 1600, amt: 2400 },
-	// { name: 'Thursday', uv: 100, pv: 1000, amt: 2400 }
-];
+//BAR GRAPH DUMMY DATA
+// const data = [
+// 	{ name: 'Monday', uv: 400, pv: 2400, amt: 2400 },
+// 	{ name: 'Tuesday', uv: 200, pv: 1200, amt: 2400 },
+// 	{ name: 'Wednesday', uv: 700, pv: 1600, amt: 2400 },
+// 	{ name: 'Thursday', uv: 100, pv: 1000, amt: 2400 }
+// ];
 
-const data1 = [ //{ name: 'CSE', value: 400 }, { name: 'ECE', value: 250 }, { name: 'Mechanical', value: 300 } 
-  { name: "Monday", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Tuesday", uv: 200, pv: 1200, amt: 2400 },
-  { name: "Wednesday", uv: 700, pv: 1600, amt: 2400 },
-  { name: "Thursday", uv: 100, pv: 1000, amt: 2400 },
-];
-
-const data1 = [
-  { name: "CSE", value: 400 },
-  { name: "ECE", value: 250 },
-  { name: "Mechanical", value: 300 },
+//PIECHART DUMMY DATA
+const data1 = [{ name: 'CSE', value: 400 }, { name: 'ECE', value: 250 }, { name: 'Mechanical', value: 300 },
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
@@ -44,25 +36,15 @@ const Info = () => {
       const barData = res.data;
       setBarData(barData);
     });
+    
+    //PieChart Data NOT WORKING!!
+   // axios.get("/piechart").then((res)=>{
+     // console.log(res.data);
+      //const pieData = res.data;
+      //setPieData(pieData);
+    //});
 
-    axios.get("/piechart").then((res)=>{
-      console.log(res.data);
-      const pieData = res.data;
-      setPieData(pieData);
-    });
-
-  const [pieData, setPieData] = useState([]);
-  const [barData, setBarData] = useState([]);
-  useEffect(() => {
-    axios.get("/bardata").then((res) => {
-      console.log(res.data);
-      setBarData(res.data);
-    });
-    axios.get("/piechart").then((res) => {
-      console.log(res.data);
-      setPieData(res.data);
-    });
-  }, []);
+ }, []);
 
   return (
     <div>
@@ -98,7 +80,7 @@ const Info = () => {
           <h3 className='charttitle'>Registrations By Branch</h3>
           <PieChart width={500} height={250}>
             <Pie
-              data={pieData}
+              data={data1}
               dataKey='value'
               nameKey='name'
               cx='50%'
@@ -137,7 +119,7 @@ const Info = () => {
                 );
               }}
             >
-              {data.map((entry, index) => (
+              {data1.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
