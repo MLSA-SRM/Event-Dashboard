@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
-var { events, savePeople } = require("../controller/db");
+var { events, savePeople, homeData } = require("../controller/db");
 var User = require("../models/user");
 
 router.post("/login", function (req, res, next) {
@@ -39,6 +39,7 @@ router.post("/register", function (req, res) {
 });
 
 router.get("/bardata", async (req, res, next) => {
+  // TODO EVENT HARDCODED
   let username = "yoman";
   let data = await events(username);
   let days = [
@@ -68,8 +69,8 @@ router.get("/bardata", async (req, res, next) => {
   res.json(bardata);
 });
 
-//Piechart data config NOT WORKING
 router.get("/piechart", async (req, res, next) => {
+  // TODO EVENT HARDCODED
   let username = "yoman";
   let data = await events(username);
   let branch = [];
@@ -101,6 +102,21 @@ router.get("/piechart", async (req, res, next) => {
   res.json(result);
 });
 
+router.get("/home/bargraph", async (req, res, next) => {
+  let body = [];
+  //TODO ID HARDCODED
+  let id = "5f316249bf8263611807b23d";
+  let data = await homeData(id);
+  data.forEach((item) => {
+    body.push({
+      name: item.name,
+      no: item.public.length,
+    });
+  });
+  res.json(body);
+});
+
+//TEST ROUTE 👇
 router.get("/test/savepeople", (req, res, next) => {
   res.json("yo");
   // let [reg, name, branch] = req.body;
