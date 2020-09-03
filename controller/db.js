@@ -1,44 +1,44 @@
-require("../config/dbConfig");
-var user = require("../models/user");
-var event = require("../models/event");
-var people = require("../models/person");
+require('../config/dbConfig');
+var user = require('../models/user');
+var event = require('../models/event');
+var people = require('../models/person');
 
 const events = (username) => {
-  return event
-    .findOne({ name: username })
-    .populate("public.name")
-    .then((res) => {
-      // console.log(res);
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+	return event
+		.findOne({ name: username })
+		.populate('public.name')
+		.then((res) => {
+			// console.log(res);
+			return res;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 };
 
 const savePeople = (reg, name, branch) => {
-  let newPeople = new people({
-    reg,
-    name,
-    branch,
-  });
-  newPeople.save().catch((err) => console.log(err));
-  var yoman = {
-    name: newPeople._id,
-  };
+	let newPeople = new people({
+		reg,
+		name,
+		branch
+	});
+	newPeople.save().catch((err) => console.log(err));
+	var yoman = {
+		name: newPeople._id
+	};
 
-  event.findOneAndUpdate(
-    { name: "yoman" },
-    {
-      $push: {
-        public: yoman,
-      },
-    },
-    (err, res) => {
-      if (err) console.log(err);
-      // else console.log(res);
-    }
-  );
+	event.findOneAndUpdate(
+		{ name: 'yoman' },
+		{
+			$push: {
+				public: yoman
+			}
+		},
+		(err, res) => {
+			if (err) console.log(err);
+			// else console.log(res);
+		}
+	);
 };
 
 module.exports = { events, savePeople };
