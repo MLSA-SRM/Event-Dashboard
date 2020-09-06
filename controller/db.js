@@ -3,6 +3,15 @@ var user = require('../models/user');
 var event = require('../models/event');
 var people = require('../models/person');
 
+const homeData = (id) => {
+	return event
+		.find({ user: id })
+		.then((res) => {
+			return res;
+		})
+		.catch((err) => console.log(err));
+};
+
 const events = (username) => {
 	return event
 		.findOne({ name: username })
@@ -28,7 +37,7 @@ const savePeople = (reg, name, branch) => {
 	};
 
 	event.findOneAndUpdate(
-		{ name: 'yoman' },
+		{ name: 'Bhai' },
 		{
 			$push: {
 				public: yoman
@@ -41,4 +50,4 @@ const savePeople = (reg, name, branch) => {
 	);
 };
 
-module.exports = { events, savePeople };
+module.exports = { events, savePeople, homeData };

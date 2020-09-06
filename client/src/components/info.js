@@ -13,32 +13,22 @@ import {
 } from "recharts";
 import "./info.css";
 
-const data = [
-  { name: "Monday", uv: 400, pv: 2400, amt: 2400 },
-  { name: "Tuesday", uv: 200, pv: 1200, amt: 2400 },
-  { name: "Wednesday", uv: 700, pv: 1600, amt: 2400 },
-  { name: "Thursday", uv: 100, pv: 1000, amt: 2400 },
-];
-
-const data1 = [
-  { name: "CSE", value: 400 },
-  { name: "ECE", value: 250 },
-  { name: "Mechanical", value: 300 },
-];
-
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Info = () => {
-  const [pieData, setPieData] = useState([]);
   const [barData, setBarData] = useState([]);
+  const [pieData, setPieData] = useState([]);
   useEffect(() => {
     axios.get("/bardata").then((res) => {
       console.log(res.data);
-      setBarData(res.data);
+      const barData = res.data;
+      setBarData(barData);
     });
+
     axios.get("/piechart").then((res) => {
       console.log(res.data);
-      setPieData(res.data);
+      const pieData = res.data;
+      setPieData(pieData);
     });
   }, []);
 
@@ -53,13 +43,13 @@ const Info = () => {
           <LineChart
             width={440}
             height={250}
-            data={data}
+            data={barData}
             margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
           >
             <Line
               type='monotone'
               strokeWidth='2'
-              dataKey='uv'
+              dataKey='no'
               stroke='#8884d8'
             />
             <CartesianGrid
@@ -76,9 +66,9 @@ const Info = () => {
           <h3 className='charttitle'>Registrations By Branch</h3>
           <PieChart width={500} height={250}>
             <Pie
-              data={data1}
-              dataKey='value'
-              nameKey='name'
+              data={pieData}
+              dataKey='no'
+              nameKey='branch'
               cx='50%'
               cy='50%'
               innerRadius={60}
@@ -94,13 +84,9 @@ const Info = () => {
                 value,
                 index,
               }) => {
-                console.log("handling label?");
                 const RADIAN = Math.PI / 180;
-                // eslint-disable-next-line
                 const radius = 25 + innerRadius + (outerRadius - innerRadius);
-                // eslint-disable-next-line
                 const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                // eslint-disable-next-line
                 const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
                 return (
@@ -111,12 +97,12 @@ const Info = () => {
                     textAnchor={x > cx ? "start" : "end"}
                     dominantBaseline='central'
                   >
-                    {data1[index].name} ({value})
+                    {pieData[index].name} ({value})
                   </text>
                 );
               }}
             >
-              {data.map((entry, index) => (
+              {pieData.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
