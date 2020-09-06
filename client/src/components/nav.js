@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./nav.css";
 
 const Nav = () => {
+  const [navItems, setNavItems] = useState([
+    {
+      title: "Login",
+      link: "/logIn",
+    },
+    {
+      title: "Sign Up",
+      link: "/signIn",
+    },
+  ]);
+
   return (
     <div>
-      <div className="navbar">
-        <h3 className="navlogo">Event Dashboard</h3>
+      <div className='navbar'>
+        <h3 className='navlogo'>Event Dashboard</h3>
         <ul>
-          <li className="navitem">
-            <Link className="navLink">Dashboard</Link>
-          </li>
-          <Link className="navLink" to="/logIn">
-            <li className="navitem">Login</li>
-          </Link>
-
-          <Link className="navLink" to="/signIn">
-            <li className="navitem">Sign Up</li>
-          </Link>
+          {navItems.map(({ link, title }) => (
+            <Link className='navLink' to={link}>
+              <li className='navitem'>{title}</li>
+            </Link>
+          ))}
         </ul>
       </div>
     </div>
