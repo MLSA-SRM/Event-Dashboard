@@ -126,11 +126,12 @@ router.post("/newevent", async (req, res, next) => {
 //TEST ROUTE 👇
 router.post("/test/savepeople", (req, res, next) => {
   // console.log(req.body);
-  // let reg = "RA1911028015115";
-  // let name = "Lalu";
-  // let branch = "MECH";
-  let { reg, name, branch } = req.body;
-  savePeople(reg, name, branch);
+  let eventId = "5f3162bba2387e623c699053";
+  savePeople(req.body, eventId);
+  // let { reg, name, branch } = req.body;
+  // let { reg, name, branch, eventId } = req.body;
+  // savePeople(reg, name, branch, eventId);
   res.json("done");
 });
 module.exports = router;
+// 5f3162bba2387e623c699053

@@ -47,12 +47,9 @@ const saveEvent = (id, name, attendence) => {
     });
 };
 
-const savePeople = (reg, name, branch) => {
-  let newPeople = new people({
-    reg,
-    name,
-    branch,
-  });
+const savePeople = (body, eventId) => {
+  let newPeople = new people({ ...body, events: { eventId } });
+  console.log(newPeople);
   newPeople.save().catch((err) => console.log(err));
   var yoman = {
     name: newPeople._id,

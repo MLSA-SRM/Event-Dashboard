@@ -16,8 +16,7 @@ const personSchema = new mongoose.Schema(
     },
     events: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "event",
+        eventId: { type: mongoose.Schema.Types.ObjectId, ref: "event" },
       },
     ],
   },
