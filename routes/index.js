@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
-var { events, savePeople, homeData } = require("../controller/db");
+var { events, savePeople, homeData, saveEvent } = require("../controller/db");
 var User = require("../models/user");
 
 router.post("/login", function (req, res, next) {
@@ -115,16 +115,22 @@ router.get("/home/bargraph", async (req, res, next) => {
   });
   res.json(body);
 });
+// TODO ID HARDCODED
+router.post("/newevent", async (req, res, next) => {
+  let id = "5f316249bf8263611807b23d";
+  let { name, attendence } = req.body;
+  let status = await saveEvent(id, name, attendence);
+  res.json(status);
+});
 
 //TEST ROUTE 👇
-router.get("/test/savepeople", (req, res, next) => {
-  res.json("yo");
-  // let [reg, name, branch] = req.body;
+router.post("/test/savepeople", (req, res, next) => {
   // console.log(req.body);
-  let reg = "RA1911028015115";
-  let name = "Lalu";
-  let branch = "MECH";
-
+  // let reg = "RA1911028015115";
+  // let name = "Lalu";
+  // let branch = "MECH";
+  let { reg, name, branch } = req.body;
   savePeople(reg, name, branch);
+  res.json("done");
 });
 module.exports = router;

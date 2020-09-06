@@ -25,6 +25,28 @@ const events = (username) => {
 		});
 };
 
+const saveEvent = (id, name, attendence) => {
+  let newEvent = new event({
+    user: id,
+    name,
+    attendence,
+  });
+  newEvent.save().catch((err) => console.log(err));
+  return user
+    .findByIdAndUpdate(id, {
+      $push: {
+        events: newEvent._id,
+      },
+    })
+    .then((res) => {
+      return true;
+    })
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
+};
+
 const savePeople = (reg, name, branch) => {
 	let newPeople = new people({
 		reg,
@@ -50,4 +72,4 @@ const savePeople = (reg, name, branch) => {
 	);
 };
 
-module.exports = { events, savePeople, homeData };
+module.exports = { events, savePeople, homeData, saveEvent };
