@@ -13,6 +13,21 @@ import {
 } from "recharts";
 import "./info.css";
 
+//BAR GRAPH DUMMY DATA
+// const data = [
+// 	{ name: 'Monday', uv: 400, pv: 2400, amt: 2400 },
+// 	{ name: 'Tuesday', uv: 200, pv: 1200, amt: 2400 },
+// 	{ name: 'Wednesday', uv: 700, pv: 1600, amt: 2400 },
+// 	{ name: 'Thursday', uv: 100, pv: 1000, amt: 2400 }
+// ];
+
+//PIECHART DUMMY DATA
+// const data1 = [
+//   { name: "CSE", value: 400 },
+//   { name: "ECE", value: 250 },
+//   { name: "Mechanical", value: 300 },
+// ];
+
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Info = () => {
@@ -25,6 +40,7 @@ const Info = () => {
       setBarData(barData);
     });
 
+    //PieChart Data NOT WORKING!!
     axios.get("/piechart").then((res) => {
       console.log(res.data);
       const pieData = res.data;
