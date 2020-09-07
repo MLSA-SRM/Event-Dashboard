@@ -116,8 +116,7 @@ class Table extends Component {
 		// Just logging the email id of all the participants right now
 		const selectedParticipants = this.grid.getSelectedNodes();
 		const selectData = selectedParticipants.map((node) => node.data);
-		const selectedParticipantsEmail = selectData.map((node) => node.email).join(' || ');
-		console.log(selectedParticipantsEmail);
+		console.log(selectData);
 	};
 
 	render() {
