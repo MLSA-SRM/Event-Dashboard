@@ -72,8 +72,7 @@ function Table() {
 
 		const selectedParticipants = dataparams.getSelectedNodes();
 		const selectData = selectedParticipants.map((node) => node.data);
-		const selectedParticipantsEmail = selectData.map((node) => node.email).join(' || ');
-		console.log(selectedParticipantsEmail);
+		console.log(selectData);
 	};
 
 	return (
