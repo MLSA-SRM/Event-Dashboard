@@ -1,0 +1,31 @@
+.sendMailsButton {
+	margin-left: auto;
+	color: gray;
+	outline: none;
+	border: none;
+	padding: 1em 2em;
+	cursor: pointer;
+	transition: 0.5s all ease-in-out;
+}
+
+.sendMailsButton:hover {
+	background-color: black;
+	color: white;
+}
+
+.list-data {
+	overflow: hidden;
+	margin-left: 14em;
+}
+
+::-webkit-scrollbar {
+	width: 0.4em;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 0.1em grey;
+}
+
+::-webkit-scrollbar-thumb {
+	background: gray;
+}
