@@ -8,13 +8,9 @@ const Nav = () => {
 			title: 'Login',
 			link: '/logIn'
 		},
-		/*{
+		{
 			title: 'Sign Up',
 			link: '/signIn'
-		},*/
-		{
-			title: 'Add Event',
-			link: '/newevent'
 		}
 	]);
 
