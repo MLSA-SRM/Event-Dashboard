@@ -55,8 +55,6 @@ function Table() {
 	const [ rowDataValues, setRowDataValues ] = useState(rowData);
 
 	const sendMails = (e) => {
-		// Just logging the email id of all the participants right now
-
 		const selectedParticipants = dataparams.getSelectedNodes();
 		const selectData = selectedParticipants.map((node) => node.data);
 		console.log(selectData);
@@ -97,5 +95,4 @@ function Table() {
 		</div>
 	);
 }
-
 export default Table;

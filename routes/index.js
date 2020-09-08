@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
 var { events, savePeople, homeData, saveEvent } = require("../controller/db");
+var mailer = require("../controller/mailer");
 var User = require("../models/user");
 
 router.post("/login", function (req, res, next) {
@@ -123,14 +124,33 @@ router.post("/newevent", async (req, res, next) => {
   res.json(status);
 });
 
+router.post("/mailer", (req, res, next) => {
+  // TODO DATA HARDCODED
+  const json = [
+    {
+      name: "John",
+      reg: "RA001",
+      email: "xyz@gmail.com",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+    },
+  ];
+  mailer(json);
+  res.send("done");
+});
+
 //TEST ROUTE 👇
 router.post("/test/savepeople", (req, res, next) => {
   // console.log(req.body);
-  // let reg = "RA1911028015115";
-  // let name = "Lalu";
-  // let branch = "MECH";
-  let { reg, name, branch } = req.body;
-  savePeople(reg, name, branch);
+  let eventId = "5f3162bba2387e623c699053";
+  savePeople(req.body, eventId);
+  // let { reg, name, branch } = req.body;
+  // let { reg, name, branch, eventId } = req.body;
+  // savePeople(reg, name, branch, eventId);
   res.json("done");
 });
 module.exports = router;
+// 5f3162bba2387e623c699053
