@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
 var { events, savePeople, homeData, saveEvent } = require("../controller/db");
+var mailer = require("../controller/mailer");
 var User = require("../models/user");
 
 router.post("/login", function (req, res, next) {
@@ -123,14 +124,79 @@ router.post("/newevent", async (req, res, next) => {
   res.json(status);
 });
 
+router.get("/table", (req, res, next) => {
+  //TODO DATA hardcoded
+  const json = [
+    {
+      name: "John",
+      reg: "RA001",
+      email: "xyz@gmail.com",
+      IQ: "320",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+      IQ: "320",
+    },
+  ];
+  let keys = Object.keys(json[0]);
+  let temp;
+  let col = [];
+  keys.forEach((item) => {
+    temp = {};
+    if (item === "name") {
+      temp = {
+        field: item,
+        sortable: true,
+        checkboxSelection: true,
+        headerCheckboxSelection: true,
+      };
+    } else {
+      temp = {
+        field: item,
+        sortable: true,
+      };
+    }
+    col.push(temp);
+  });
+
+  res.json({
+    header: col,
+    data: json,
+  });
+});
+
+router.post("/mailer", (req, res, next) => {
+  // TODO DATA HARDCODED
+  console.log(res.body.data);
+  const json = [
+    {
+      name: "John",
+      reg: "RA001",
+      email: "xyz@gmail.com",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+    },
+  ];
+  // let keys = Object.keys(json[0]);
+  // res.json(keys);
+  // mailer(json);
+  // res.send();
+});
+
 //TEST ROUTE 👇
 router.post("/test/savepeople", (req, res, next) => {
   // console.log(req.body);
-  // let reg = "RA1911028015115";
-  // let name = "Lalu";
-  // let branch = "MECH";
-  let { reg, name, branch } = req.body;
-  savePeople(reg, name, branch);
+  let eventId = "5f3162bba2387e623c699053";
+  savePeople(req.body, eventId);
+  // let { reg, name, branch } = req.body;
+  // let { reg, name, branch, eventId } = req.body;
+  // savePeople(reg, name, branch, eventId);
   res.json("done");
 });
 module.exports = router;
+// 5f3162bba2387e623c699053
