@@ -124,8 +124,52 @@ router.post("/newevent", async (req, res, next) => {
   res.json(status);
 });
 
+router.get("/table", (req, res, next) => {
+  //TODO DATA hardcoded
+  const json = [
+    {
+      name: "John",
+      reg: "RA001",
+      email: "xyz@gmail.com",
+      IQ: "320",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+      IQ: "320",
+    },
+  ];
+  let keys = Object.keys(json[0]);
+  let temp;
+  let col = [];
+  keys.forEach((item) => {
+    temp = {};
+    if (item === "name") {
+      temp = {
+        field: item,
+        sortable: true,
+        checkboxSelection: true,
+        headerCheckboxSelection: true,
+      };
+    } else {
+      temp = {
+        field: item,
+        sortable: true,
+      };
+    }
+    col.push(temp);
+  });
+
+  res.json({
+    header: col,
+    data: json,
+  });
+});
+
 router.post("/mailer", (req, res, next) => {
   // TODO DATA HARDCODED
+  console.log(res.body.data);
   const json = [
     {
       name: "John",
@@ -138,8 +182,10 @@ router.post("/mailer", (req, res, next) => {
       email: "xyz@gmail.com",
     },
   ];
-  mailer(json);
-  res.send("done");
+  // let keys = Object.keys(json[0]);
+  // res.json(keys);
+  // mailer(json);
+  // res.send();
 });
 
 //TEST ROUTE 👇
