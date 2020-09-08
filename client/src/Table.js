@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Table.css";
-import { AgGridReact } from "ag-grid-react";
+import { AgGridReact, AgGridColumn } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 
@@ -68,13 +68,9 @@ function Table() {
   ];
 
   const sendMails = (e) => {
-    // Just logging the email id of all the participants right now
     const selectedParticipants = dataparams.getSelectedNodes();
     const selectData = selectedParticipants.map((node) => node.data);
-    const selectedParticipantsEmail = selectData
-      .map((node) => node.email)
-      .join(" || ");
-    console.log(selectedParticipantsEmail);
+    console.log(selectData);
   };
 
   return (
@@ -91,7 +87,7 @@ function Table() {
         </button>
         <AgGridReact
           animateRows
-          onGridReady={(params) => (dataparams = params.api)}
+          onGridReady={(params) => (dataparams = parazms.api)}
           rowSelection='multiple'
           columnDefs={columnDefs}
           rowData={rowData}

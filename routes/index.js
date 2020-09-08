@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
 var { events, savePeople, homeData, saveEvent } = require("../controller/db");
+var mailer = require("../controller/mailer");
 var User = require("../models/user");
 
 router.post("/login", function (req, res, next) {
@@ -121,6 +122,24 @@ router.post("/newevent", async (req, res, next) => {
   let { name, attendence } = req.body;
   let status = await saveEvent(id, name, attendence);
   res.json(status);
+});
+
+router.post("/mailer", (req, res, next) => {
+  // TODO DATA HARDCODED
+  const json = [
+    {
+      name: "John",
+      reg: "RA001",
+      email: "xyz@gmail.com",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+    },
+  ];
+  mailer(json);
+  res.send("done");
 });
 
 //TEST ROUTE 👇
