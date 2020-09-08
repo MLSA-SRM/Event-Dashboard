@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Table.css';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
 function Table() {
-	let [ dataparams ] = useState('');
+	let [ dataparams, setDataParams ] = useState('');
 	const columnDefs = [
 		{
 			headerName: 'Name',
@@ -24,48 +24,35 @@ function Table() {
 			field: 'email'
 		}
 	];
+
+	const [ column, setColumn ] = useState(columnDefs);
 	const rowData = [
-		{
-			name: 'Louis Brad',
-			regNo: 'RA1911003010734',
-			email: 'loui286@gmail.com'
-		},
-		{
-			name: 'Rakesh Rastogi',
-			regNo: 'RA1911003010732',
-			email: 'rakesh999936@gmail.com'
-		},
-		{
-			name: 'Louis Brad',
-			regNo: 'RA1911003010734',
-			email: 'louis329936@gmail.com'
-		},
-		{
-			name: 'Rakesh Rastogi',
-			regNo: 'RA1911003010732',
-			email: 'rakesh999936@gmail.com'
-		},
 		{
 			name: 'Jatin Sachdeva',
 			regNo: 'RA1911003010721',
-			email: 'jatin9373@gmail.com'
+			email: 'jatin9373@gmail.com',
+			batch: 'c2'
 		},
 		{
 			name: 'Louis Brad',
 			regNo: 'RA1911003010734',
-			email: 'loui286@gmail.com'
+			email: 'loui286@gmail.com',
+			batch: 'd2'
 		},
 		{
 			name: 'Rakesh Rastogi',
 			regNo: 'RA1911003010732',
-			email: 'rakesh999936@gmail.com'
+			email: 'rakesh999936@gmail.com',
+			batch: 'e1'
 		},
 		{
 			name: 'Louis Brad',
 			regNo: 'RA1911003010734',
-			email: 'louis329936@gmail.com'
+			email: 'louis329936@gmail.com',
+			batch: 'd1'
 		}
 	];
+	const [ rowDataValues, setRowDataValues ] = useState(rowData);
 
 	const sendMails = (e) => {
 		// Just logging the email id of all the participants right now
@@ -74,6 +61,18 @@ function Table() {
 		const selectData = selectedParticipants.map((node) => node.data);
 		console.log(selectData);
 	};
+
+	useEffect(() => {
+		// Likewise data Can be fetched from server to make columns dynamic
+		let newColumnField = [ ...column, { headerName: 'Batch', field: 'batch' } ];
+		setColumn(newColumnField);
+		// Fetch Rows data From server or database and update it with the rowData
+		// fetch(
+		// 	"""URL"""
+		// )
+		// 	.then((result) => result.json())
+		// 	.then((rowData) => setRowDataValues(rowData));
+	}, []);
 
 	return (
 		<div>
@@ -89,10 +88,10 @@ function Table() {
 				</button>
 				<AgGridReact
 					animateRows
-					onGridReady={(params) => (dataparams = params.api)}
+					onGridReady={(params) => setDataParams(params.api)}
 					rowSelection="multiple"
-					columnDefs={columnDefs}
-					rowData={rowData}
+					columnDefs={column}
+					rowData={rowDataValues}
 				/>
 			</div>
 		</div>
