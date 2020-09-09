@@ -3,6 +3,7 @@ import Register from './Register';
 import Login from './Login';
 import Home from './Home';
 import Table from './Table';
+import NewEvent from './NewEvent';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -18,6 +19,9 @@ function App() {
 				</Route>
 				<Route exact path="/logIn">
 					<Login />
+				</Route>
+				<Route exact path="/newevent">
+					<NewEvent />
 				</Route>
 				<Route exact path="/table">
 					<Table />
