@@ -26,37 +26,10 @@ function Table() {
 	//     },
 	//   ];
 
-	//   const rowData = [
-	//     {
-	//       name: "Jatin Sachdeva",
-	//       regNo: "RA1911003010721",
-	//       email: "jatin9373@gmail.com",
-	//       batch: "c2",
-	//     },
-	//     {
-	//       name: "Louis Brad",
-	//       regNo: "RA1911003010734",
-	//       email: "loui286@gmail.com",
-	//       batch: "d2",
-	//     },
-	//     {
-	//       name: "Rakesh Rastogi",
-	//       regNo: "RA1911003010732",
-	//       email: "rakesh999936@gmail.com",
-	//       batch: "e1",
-	//     },
-	//     {
-	//       name: "Louis Brad",
-	//       regNo: "RA1911003010734",
-	//       email: "louis329936@gmail.com",
-	//       batch: "d1",
-	//     },
-	//   ];
 	const [ rowDataValues, setRowDataValues ] = useState(null);
 	const [ column, setColumn ] = useState(null);
 	const [ dataparams, setDataParams ] = useState(null);
-	const [ mail, setMail ] = useState(null);
-
+	// const [mail, setMail] = useState(null);
 	useEffect(() => {
 		axios.get('/table').then((res) => {
 			let { header, data } = res.data;
@@ -66,26 +39,20 @@ function Table() {
 		});
 	}, []);
 
-	useEffect(
-		() => {
-			axios.post('/mailer', { data: mail }).then((res) => console.log(res.data)).catch((err) => console.log(err));
-		},
-		[ mail ]
-	);
 	const sendMails = (e) => {
-		let temp = [];
+		let data = [];
 		const selectedParticipants = dataparams.getSelectedNodes();
 		const selectData = selectedParticipants.map((node) => node.data);
-		console.log(selectData);
+		// console.log(selectData);
 		selectData.forEach((item) => {
-			temp.push({
+			data.push({
 				name: item.name,
 				regno: item.reg,
 				email: item.email
 			});
 		});
-		setMail(temp);
-		console.log(mail);
+		// console.log(data);
+		axios.post('/mailer', { data }).then((res) => console.log(res.data)).catch((err) => console.log(err));
 	};
 	return (
 		<div>
@@ -96,7 +63,7 @@ function Table() {
 					width: '1000px'
 				}}
 			>
-				<button className="sendMailsButton" onClick={sendMails}>
+				<button className="sendMailsButton" type="submit" onClick={sendMails}>
 					Send Email To Participants
 				</button>
 				<AgGridReact

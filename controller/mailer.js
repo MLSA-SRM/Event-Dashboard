@@ -4,7 +4,7 @@ var QRCode = require("qrcode");
 const mailer = (data) => {
   for (let a in data) {
     let test = "";
-    QRCode.toDataURL(data[a].reg, function (err, img) {
+    QRCode.toDataURL(data[a].regno, function (err, img) {
       // console.log(data[a].name);
       let mailDetails = {
         from: "yoman@helo.in",

@@ -119,8 +119,10 @@ router.get("/home/bargraph", async (req, res, next) => {
 // TODO ID HARDCODED
 router.post("/newevent", async (req, res, next) => {
   let id = "5f316249bf8263611807b23d";
-  let { name, attendence } = req.body;
-  let status = await saveEvent(id, name, attendence);
+  let { name, num } = req.body;
+  console.log(req.body);
+  // let status = true;
+  let status = await saveEvent(id, name, num);
   res.json(status);
 });
 
@@ -168,24 +170,11 @@ router.get("/table", (req, res, next) => {
 });
 
 router.post("/mailer", (req, res, next) => {
-  // TODO DATA HARDCODED
-  console.log(res.body.data);
-  const json = [
-    {
-      name: "John",
-      reg: "RA001",
-      email: "xyz@gmail.com",
-    },
-    {
-      name: "Doe",
-      reg: "RA002",
-      email: "xyz@gmail.com",
-    },
-  ];
-  // let keys = Object.keys(json[0]);
-  // res.json(keys);
-  // mailer(json);
-  // res.send();
+  console.log(req.body);
+  mailer(req.body.data);
+  res.json({
+    success: true,
+  });
 });
 
 //TEST ROUTE 👇
