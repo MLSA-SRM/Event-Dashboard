@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Auth from './Auth';
 import './Auth.css';
 
 function Register() {
@@ -12,6 +12,12 @@ function Register() {
 	const [ registerPassword, setRegisterPassword ] = useState('');
 
 	//Toastify Config
+	const notifySuccess = () =>
+		toast.success('Successfully Signed Up', {
+			position: 'top-center',
+			autoClose: 5000
+		});
+
 	const notifyFailure = () =>
 		toast.error('This username is already taken!', {
 			autoClose: 5000,
@@ -31,8 +37,11 @@ function Register() {
 		})
 			.then((res) => {
 				if (res.data) {
-					history.push('/logIn');
+					Auth.authenticate(() => {
+						history.push('/dashboard');
+					});
 					console.log('Success Sign Up');
+					notifySuccess();
 				} else {
 					history.push('/signIn');
 					console.log('This username is already taken');
@@ -54,6 +63,7 @@ function Register() {
 						<input
 							type="text"
 							placeholder="Username"
+							required
 							onChange={(e) => setRegisterUsername(e.target.value)}
 						/>
 					</div>
@@ -61,12 +71,13 @@ function Register() {
 						<input
 							type="password"
 							placeholder="password"
+							required
 							onChange={(e) => setRegisterPassword(e.target.value)}
 						/>
 					</div>
 					<button className="btn">Register</button>
 					<p>
-						Already have an account ? <Link to="/logIn">Log In</Link>
+						Already have an account ? <Link to="/">Log In</Link>
 					</p>
 				</form>
 			</div>

@@ -5,6 +5,7 @@ import Home from './Home';
 import Table from './Table';
 import NewEvent from './NewEvent';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 import './App.css';
 
 function App() {
@@ -12,14 +13,14 @@ function App() {
 		<Router>
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Login />
 				</Route>
 				<Route exact path="/signIn">
 					<Register />
 				</Route>
-				<Route exact path="/logIn">
-					<Login />
-				</Route>
+				<ProtectedRoute exact path="/dashboard" component={Home} />
+				{/* <Home />
+				</ProtectedRoute> */}
 				<Route exact path="/newevent">
 					<NewEvent />
 				</Route>
