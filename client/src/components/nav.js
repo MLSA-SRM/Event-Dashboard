@@ -4,8 +4,9 @@ import axios from 'axios';
 import Auth from '../Auth';
 import './nav.css';
 
-const Nav = () => {
+function Nav(props) {
 	let history = useHistory();
+
 	// const [ navItems ] = useState([
 	// 	{
 	// 		title: 'Logout',
@@ -41,6 +42,9 @@ const Nav = () => {
 					<Link className="navLink" to="newevent">
 						<li className="navitem">New Event</li>
 					</Link>
+					<Link className="navLink" to="#">
+						<li className="navitem">{props.username}</li>
+					</Link>
 					{/* {navItems.map(({ link, title }) => (
 						<Link className="navLink" to={link}>
 							<li className="navitem">{title}</li>
@@ -50,6 +54,6 @@ const Nav = () => {
 			</div>
 		</div>
 	);
-};
+}
 
 export default Nav;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Auth from './Auth';
 import './Auth.css';
 
-function Login() {
+function Login(props) {
 	let history = useHistory();
 	const [ loginUsername, setLoginUsername ] = useState('');
 	const [ loginPassword, setLoginPassword ] = useState('');
@@ -43,11 +43,13 @@ function Login() {
 			url: '/login'
 		})
 			.then((res) => {
-				if (res.data) {
+				if (res.data.status) {
+					// console.log(res.data.userInfo.username);
+					props.handleUsername(res.data.userInfo.username);
 					Auth.authenticate(() => {
 						history.push('/dashboard');
+						notifySuccess();
 					});
-					notifySuccess();
 				} else {
 					history.push('/');
 					notifyFailure();
