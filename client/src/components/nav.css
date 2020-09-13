@@ -5,8 +5,8 @@ body {
 	width: 100vw;
 	display: flex;
 	justify-content: space-around;
-	height: 15vh;
-	padding: 3vh;
+	height: 10vh;
+	padding: 4vh;
 }
 ul {
 	list-style: none;
@@ -14,6 +14,7 @@ ul {
 }
 .navitem {
 	display: inline;
+	margin:auto;
 	margin-left: 5vh;
 	font-weight: 500;
 	color: #3545ee;
