@@ -15,6 +15,10 @@ const Nav = () => {
 		{
 			title: 'New Event',
 			link: '/newevent'
+		},
+		{
+			title: 'User',
+			link: '/user'
 		}
 	]);
 

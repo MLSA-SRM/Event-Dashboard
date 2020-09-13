@@ -33,16 +33,18 @@ const NewEvent = () => {
           <h1 className='form-header'>Event Details</h1>
           <form onSubmit={submit}>
             <div className='input-field'>
-              <h1 className='form-field-header'>Event Name</h1>
               <input
+                placeholder="Event Name"
+                className="event-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type='text'
               ></input>
             </div>
             <div className='input-field'>
-              <h1 className='form-field-header'>Min. Attendence</h1>
               <input
+                placeholder="Minimum Attendance"
+                className="event-name"
                 value={num}
                 type='text'
                 onChange={(e) => setNum(e.target.value)}

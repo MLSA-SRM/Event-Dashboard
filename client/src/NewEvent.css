@@ -59,25 +59,50 @@
     font-weight: 400;
 }
 .form-button{
-    font-family: 'Poppins' sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     border:none;
-    background: white;
-    width: 50%;
+    background: #e4e7ff;
+    color: rgb(158, 157, 157);
+    width: 40%;
     margin-top: 7vh;
-    font-size: 3vh;
+    font-size: 2.75vh;
     padding: 2vh;
-    border: 1px solid slategray;
-    border-radius: 30px;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
 }
 .form-button:hover{
     border:none;
     outline: none;
-    background: #e4e7ff;
-    color: #3545ee;
+    color:white;
+    background: #3545ee;
 }
-input{
-    width: 60%;
+.event-name{
+    width: 50%;
     height: 20%;
     margin-top:1.5vh;
+    transition: 0.3s ease-in-out;
+}
+.event-name:hover{
+    width: 70%;
+    box-shadow: 0px 0px 15px rgb(216, 216, 216);
+}
+.event-name::placeholder{
+    color: rgb(175, 174, 174);
+}
+.event-name::placeholder:focus{
+    font-size: 1vh;
+}
+.event-name{
+    margin-top: 8vh;
+    font-size: 3.5vh;
+    background: #f8f8f8;
+    border: none;
+    border-radius: 10px;
+    padding: 2vh;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+table{
+    width: 90%;
 }
