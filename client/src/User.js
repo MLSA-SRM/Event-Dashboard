@@ -4,7 +4,7 @@ import Nav from "./components/nav";
 import "./User.css";
 
 const UserPage = () => {
-  const [dub] = useState(["lol", "kdk"]);
+  // const [dub] = useState(["lol", "kdk"]);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -12,12 +12,19 @@ const UserPage = () => {
       // console.log(res.data);
       let data = [];
       let date;
+      let value;
       setName(res.data.name);
       res.data.events.forEach((item) => {
         date = new Date(item.date);
+        if (date.getTime() < Date.now()) {
+          value = 1;
+        } else if (date.getTime() > Date.now()) {
+          value = 0;
+        }
         data.push({
           name: item.name,
           date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+          status: value,
         });
       });
       // console.log(data);
@@ -70,9 +77,17 @@ const UserPage = () => {
                   <tr>
                     <td>{item.name}</td>
                     <td>{item.date}</td>
-                    {/* <td>
-                      <p className='yellow'>Ongoing</p>
-                    </td> */}
+                    {item.status == 0 && (
+                      <td>
+                        <p className='yellow'>Ongoing</p>
+                      </td>
+                    )}
+
+                    {item.status == 1 && (
+                      <td>
+                        <p className='green'>Finished</p>
+                      </td>
+                    )}
                   </tr>
                 ))}
                 {/* <tr>

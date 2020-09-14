@@ -1,4 +1,5 @@
 var express = require("express");
+var app = express();
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
@@ -17,12 +18,15 @@ router.post("/login", function (req, res, next) {
   passport.authenticate("local", (err, user) => {
     if (err) throw err;
     if (!user) {
-      res.json(false);
+      res.json({ status: false });
     } else {
       req.logIn(user, (err) => {
         if (err) throw err;
         // console.log(res);
-        res.json(true);
+        res.json({
+          userInfo: user,
+          status: true,
+        });
       });
     }
   })(req, res, next);
@@ -47,7 +51,8 @@ router.post("/register", function (req, res) {
 });
 
 router.get("/user", async (req, res, next) => {
-  let id = "5f316249bf8263611807b23d";
+  let id = app.get("id");
+  // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
   let event = [];
   data.events.forEach((item) => {
@@ -63,7 +68,19 @@ router.get("/user", async (req, res, next) => {
   });
 });
 
+router.get("/logout", function (req, res, next) {
+  req.logout();
+  req.session.save((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.json(true);
+  });
+});
+
 router.get("/bardata", async (req, res, next) => {
+  console.log(Date.now());
+  app.set("id", req.session.passport.user);
   // TODO EVENT HARDCODED
   let username = "yoman";
   let data = await events(username);
@@ -130,7 +147,9 @@ router.get("/piechart", async (req, res, next) => {
 router.get("/home/bargraph", async (req, res, next) => {
   let body = [];
   //TODO ID HARDCODED
-  let id = "5f316249bf8263611807b23d";
+  let id = app.get("id");
+
+  // let id = "5f316249bf8263611807b23d";
   let data = await homeData(id);
   data.forEach((item) => {
     body.push({
@@ -142,7 +161,8 @@ router.get("/home/bargraph", async (req, res, next) => {
 });
 // TODO ID HARDCODED
 router.post("/newevent", async (req, res, next) => {
-  let id = "5f316249bf8263611807b23d";
+  let id = app.get("id");
+  // let id = "5f316249bf8263611807b23d";
   let { name, num } = req.body;
   console.log(req.body);
   // let status = true;
