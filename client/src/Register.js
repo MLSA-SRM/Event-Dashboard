@@ -12,11 +12,6 @@ function Register() {
 	const [ registerPassword, setRegisterPassword ] = useState('');
 
 	//Toastify Config
-	const notifySuccess = () =>
-		toast.success('Successfully Signed Up', {
-			position: 'top-center',
-			autoClose: 5000
-		});
 
 	const notifyFailure = () =>
 		toast.error('This username is already taken!', {
@@ -37,11 +32,8 @@ function Register() {
 		})
 			.then((res) => {
 				if (res.data) {
-					Auth.authenticate(() => {
-						history.push('/dashboard');
-					});
+					history.push('/');
 					console.log('Success Sign Up');
-					notifySuccess();
 				} else {
 					history.push('/signIn');
 					console.log('This username is already taken');
