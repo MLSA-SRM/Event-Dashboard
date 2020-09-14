@@ -3,7 +3,16 @@ import Nav from "./components/nav";
 import "./User.css";
 
 const UserPage = () => {
-  const eventName = ['Hackathon', 'GET some REST', 'Workshop 1', 'ui/ux workshop', 'MarchBytes', 'Codestruck 1.0', 'Webcast Live', 'Cyber Security']
+  const eventName = [
+    "Hackathon",
+    "GET some REST",
+    "Workshop 1",
+    "ui/ux workshop",
+    "MarchBytes",
+    "Codestruck 1.0",
+    "Webcast Live",
+    "Cyber Security",
+  ];
   return (
     <div>
       <Nav />
@@ -27,9 +36,9 @@ const UserPage = () => {
         <div className="event-info">
           <div className="events">
             <h1 className="head">Events Conducted</h1>
-            <hr/>
+            <hr />
             <div className="search-box">
-            <form>
+              <form>
                 <input
                   id="search"
                   type="text"
@@ -48,49 +57,65 @@ const UserPage = () => {
                 <tr>
                   <td>Hackathon</td>
                   <td>13/09/2020</td>
-                  <td><p className="yellow">Ongoing</p></td>
+                  <td>
+                    <p className="yellow">Ongoing</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>GET some REST</td>
                   <td>13/09/2020</td>
-                  <td><p className="yellow">Ongoing</p></td>
+                  <td>
+                    <p className="yellow">Ongoing</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
-                  <td><p className="green">Finished</p></td>
+                  <td>
+                    <p className="green">Finished</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>UI/UX workshop</td>
                   <td>13/09/2020</td>
-                  <td><p className="green">Finished</p></td>
+                  <td>
+                    <p className="green">Finished</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>MarchBytes</td>
                   <td>13/09/2020</td>
-                  <td><p className="green">Finished</p></td>
+                  <td>
+                    <p className="green">Finished</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>Codestruck 1.0</td>
                   <td>13/09/2020</td>
-                  <td><p className="red">Cancelled</p></td>
+                  <td>
+                    <p className="red">Cancelled</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>Webcast Live</td>
                   <td>13/09/2020</td>
-                  <td><p className="green">Finished</p></td>
+                  <td>
+                    <p className="green">Finished</p>
+                  </td>
                 </tr>
                 <tr>
                   <td>Cyber Security</td>
                   <td>13/09/2020</td>
-                  <td><p className="red">Cancelled</p></td>
+                  <td>
+                    <p className="red">Cancelled</p>
+                  </td>
                 </tr>
               </table>
             </div>
           </div>
           <div className="events">
             <h2 className="head">Other data</h2>
-            <hr/>
+            <hr />
           </div>
         </div>
       </div>
