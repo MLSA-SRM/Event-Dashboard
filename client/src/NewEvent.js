@@ -34,8 +34,8 @@ const NewEvent = () => {
           <form onSubmit={submit}>
             <div className='input-field'>
               <input
-                placeholder="Event Name"
-                className="event-name"
+                placeholder='Event Name'
+                className='event-name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type='text'
@@ -43,11 +43,29 @@ const NewEvent = () => {
             </div>
             <div className='input-field'>
               <input
-                placeholder="Minimum Attendance"
-                className="event-name"
+                placeholder='Minimum Attendance'
+                className='event-name'
                 value={num}
                 type='text'
                 onChange={(e) => setNum(e.target.value)}
+              ></input>
+            </div>
+            <div className='input-field'>
+              <input
+                placeholder='Start Event Date'
+                className='event-name'
+                type='text'
+                onMouseEnter={(e) => (e.target.type = "date")}
+                onMouseLeave={(e) => (e.target.type = "text")}
+              ></input>
+            </div>
+            <div className='input-field'>
+              <input
+                placeholder='End Event Date'
+                className='event-name'
+                type='text'
+                onMouseEnter={(e) => (e.target.type = "date")}
+                onMouseLeave={(e) => (e.target.type = "text")}
               ></input>
             </div>
             {/* <div className='input-field'>

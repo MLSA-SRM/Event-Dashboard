@@ -2,9 +2,16 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
-var { events, savePeople, homeData, saveEvent } = require("../controller/db");
+var {
+  events,
+  savePeople,
+  homeData,
+  saveEvent,
+  userData,
+} = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
+// const { eventNames } = require("../config/mailConfig");
 
 router.post("/login", function (req, res, next) {
   passport.authenticate("local", (err, user) => {
@@ -36,6 +43,23 @@ router.post("/register", function (req, res) {
       await newUser.save();
       res.json(true);
     }
+  });
+});
+
+router.get("/user", async (req, res, next) => {
+  let id = "5f316249bf8263611807b23d";
+  let data = await userData(id);
+  let event = [];
+  data.events.forEach((item) => {
+    event.push({
+      name: item.name,
+      date: item.date,
+    });
+  });
+  // console.log(event);
+  res.json({
+    name: data.username,
+    events: event,
   });
 });
 

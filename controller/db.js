@@ -69,4 +69,13 @@ const savePeople = (body, eventId) => {
   );
 };
 
-module.exports = { events, savePeople, homeData, saveEvent };
+const userData = (id) => {
+  return user
+    .findById(id)
+    .populate("events")
+    .then((res) => {
+      return res;
+    });
+};
+
+module.exports = { events, savePeople, homeData, saveEvent, userData };
