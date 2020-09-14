@@ -4,7 +4,6 @@ import "./Table.css";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
-import { log } from "debug";
 // import { log } from "debug";
 function Table() {
   //   const columnDefs = [
@@ -60,19 +59,19 @@ function Table() {
   return (
     <div>
       <div
-        className='ag-theme-material list-data'
+        className="ag-theme-material list-data"
         style={{
           height: "700px",
           width: "1000px",
         }}
       >
-        <button className='sendMailsButton' type='submit' onClick={sendMails}>
+        <button className="sendMailsButton" type="submit" onClick={sendMails}>
           Send Email To Participants
         </button>
         <AgGridReact
           animateRows
           onGridReady={(params) => setDataParams(params.api)}
-          rowSelection='multiple'
+          rowSelection="multiple"
           columnDefs={column}
           rowData={rowDataValues}
         />

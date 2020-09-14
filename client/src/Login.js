@@ -3,9 +3,10 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Auth from "./Auth";
 import "./Auth.css";
 
-function Login() {
+function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -42,11 +43,15 @@ function Login() {
       url: "/login",
     })
       .then((res) => {
-        if (res.data) {
-          history.push("/");
-          notifySuccess();
+        if (res.data.status) {
+          // console.log(res.data.userInfo.username);
+          props.handleUsername(res.data.userInfo.username);
+          Auth.authenticate(() => {
+            history.push("/dashboard");
+            notifySuccess();
+          });
         } else {
-          history.push("/logIn");
+          history.push("/");
           notifyFailure();
         }
       })
@@ -72,6 +77,8 @@ function Login() {
         <form onSubmit={loginUser}>
           <div className="textbox">
             <input
+              id="loginUsername"
+              required
               type="text"
               placeholder="Username"
               onChange={(e) => setLoginUsername(e.target.value)}
@@ -79,6 +86,8 @@ function Login() {
           </div>
           <div className="textbox">
             <input
+              id="loginPassword"
+              required
               type="password"
               placeholder="Password"
               onChange={(e) => setLoginPassword(e.target.value)}
