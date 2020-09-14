@@ -10,12 +10,15 @@ router.post("/login", function (req, res, next) {
   passport.authenticate("local", (err, user) => {
     if (err) throw err;
     if (!user) {
-      res.json(false);
+      res.json({ status: false });
     } else {
       req.logIn(user, (err) => {
         if (err) throw err;
         // console.log(res);
-        res.json(true);
+        res.json({
+          userInfo: user,
+          status: true,
+        });
       });
     }
   })(req, res, next);
@@ -36,6 +39,16 @@ router.post("/register", function (req, res) {
       await newUser.save();
       res.json(true);
     }
+  });
+});
+
+router.get("/logout", function (req, res, next) {
+  req.logout();
+  req.session.save((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.json(true);
   });
 });
 
