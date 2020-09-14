@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import Auth from "../Auth";
@@ -35,17 +35,17 @@ function Nav(props) {
 
   return (
     <div>
-      <div className="navbar">
-        <h3 className="navlogo">Event Dashboard</h3>
+      <div className='navbar'>
+        <h3 className='navlogo'>Event Dashboard</h3>
         <ul>
-          <Link className="navLink" to="/logOut" onClick={onLogout}>
-            <li className="navitem">Logout</li>
+          <Link className='navLink' to='/logOut' onClick={onLogout}>
+            <li className='navitem'>Logout</li>
           </Link>
-          <Link className="navLink" to="newevent">
-            <li className="navitem">New Event</li>
+          <Link className='navLink' to='/newevent'>
+            <li className='navitem'>New Event</li>
           </Link>
-          <Link className="navLink" to="#">
-            <li className="navitem">{props.username}</li>
+          <Link className='navLink' to='/user'>
+            <li className='navitem'>lol</li>
           </Link>
           {/* {navItems.map(({ link, title }) => (
 						<Link className="navLink" to={link}>
