@@ -27,12 +27,18 @@ function App() {
           path="/dashboard"
           component={Home}
         />
-        <Route exact path="/newevent">
-          <NewEvent />
-        </Route>
-        <Route exact path="/user">
-          <UserPage />
-        </Route>
+        <ProtectedRoute
+          exact
+          username={getusername}
+          path="/newevent"
+          component={NewEvent}
+        ></ProtectedRoute>
+        <ProtectedRoute
+          exact
+          path="/user"
+          username={getusername}
+          component={UserPage}
+        ></ProtectedRoute>
         <Route exact path="/table">
           <Table />
         </Route>
