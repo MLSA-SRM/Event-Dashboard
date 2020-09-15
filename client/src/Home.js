@@ -9,11 +9,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Home(props) {
   const successLogin = () => toast.success("Login Successful!");
-
+  const { username } = props;
   return (
     <div onLoad={successLogin}>
       <ToastContainer autoClose={5000} position={"top-center"} />
-      <Nav username={props.username} />
+      <Nav username={username} />
       <Body />
       <Info />
     </div>
