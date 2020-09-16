@@ -119,7 +119,7 @@ tr {
   border-radius: 15px;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 60%;
+  //height: 60%;
   background: #f5f5ff;
 }
 .green {
