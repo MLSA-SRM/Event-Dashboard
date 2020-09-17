@@ -58,23 +58,34 @@ function Table() {
   };
   return (
     <div>
-      <div
-        className="ag-theme-material list-data"
-        style={{
-          height: "700px",
-          width: "1000px",
-        }}
-      >
-        <button className="sendMailsButton" type="submit" onClick={sendMails}>
-          Send Email To Participants
-        </button>
-        <AgGridReact
-          animateRows
-          onGridReady={(params) => setDataParams(params.api)}
-          rowSelection="multiple"
-          columnDefs={column}
-          rowData={rowDataValues}
-        />
+        <div className="title">
+            <h1 className="titletext">Participant List</h1>
+          </div>
+          <div className="list-body">
+        <div
+          className="ag-theme-material list-data"
+          style={{
+            height: "50vh",
+            width: "200vh",
+          }}
+        >
+          <div className="sendMailButtonDiv">
+            <button
+              className="sendMailsButton"
+              type="submit"
+              onClick={sendMails}
+            >
+              Send Email To Participants
+            </button>
+          </div>
+          <AgGridReact
+            animateRows
+            onGridReady={(params) => setDataParams(params.api)}
+            rowSelection="multiple"
+            columnDefs={column}
+            rowData={rowDataValues}
+          />
+        </div>
       </div>
     </div>
   );
