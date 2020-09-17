@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./components/nav";
 import "./User.css";
+import { Link } from "react-router-dom";
 
 const UserPage = (props) => {
   // const [dub] = useState(["lol", "kdk"]);
@@ -10,27 +11,40 @@ const UserPage = (props) => {
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
-      let data = [];
-      let date;
-      let value;
-      setName(res.data.name);
-      res.data.events.forEach((item) => {
-        date = new Date(item.date);
-        if (date.getTime() < Date.now()) {
-          value = 1;
-        } else if (date.getTime() > Date.now()) {
-          value = 0;
-        }
-        data.push({
-          name: item.name,
-          date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
-          status: value,
-        });
-      });
+      let data = [
+        {
+          name: "hackathon",
+          date: "12/03/2001",
+          status: "ongoing",
+        },
+        {
+          name: "getSomeRest",
+          date: "12/03/2001",
+          status: "ongoing",
+        },
+      ];
+      // let date;
+      // let value;
+      // setName(res.data.name);
+      // res.data.events.forEach((item) => {
+      //   date = new Date(item.date);
+      //   if (date.getTime() < Date.now()) {
+      //     value = 1;
+      //   } else if (date.getTime() > Date.now()) {
+      //     value = 0;
+      //   }
+      //   data.push({
+      //     name: item.name,
+      //     date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+      //     status: value,
+      //   });
+      // });
       // console.log(data);
-      setData(data);
+      // setData(data);
+      props.handleEventChange(data);
     });
   }, []);
+
   // const eventName = ['Hackathon', 'GET some REST', 'Workshop 1', 'ui/ux workshop', 'MarchBytes', 'Codestruck 1.0', 'Webcast Live', 'Cyber Security']
   return (
     <div>
@@ -73,7 +87,7 @@ const UserPage = (props) => {
                   <th>Date</th>
                   <th>Status</th>
                 </tr>
-                {data.map((item) => (
+                {/* {data.map((item) => (
                   <tr>
                     <td>{item.name}</td>
                     <td>{item.date}</td>
@@ -89,63 +103,67 @@ const UserPage = (props) => {
                       </td>
                     )}
                   </tr>
-                ))}
-                {/* <tr>
-                  <td>Hackathon</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className='yellow'>Ongoing</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>GET some REST</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className='yellow'>Ongoing</p>
-                  </td>
-                </tr>
+                ))} */}
+                <Link to={`/user/hackathon`}>
+                  <tr>
+                    <td>Hackathon</td>
+                    <td>13/09/2020</td>
+                    <td>
+                      <p className="yellow">Ongoing</p>
+                    </td>
+                  </tr>
+                </Link>
+                <Link to={`/user/getSomeRest`}>
+                  <tr>
+                    <td>GET some REST</td>
+                    <td>13/09/2020</td>
+                    <td>
+                      <p className="yellow">Ongoing</p>
+                    </td>
+                  </tr>
+                </Link>
                 <tr>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>UI/UX workshop</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>MarchBytes</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>Codestruck 1.0</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='red'>Cancelled</p>
+                    <p className="red">Cancelled</p>
                   </td>
                 </tr>
                 <tr>
                   <td>Webcast Live</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>Cyber Security</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='red'>Cancelled</p>
+                    <p className="red">Cancelled</p>
                   </td>
-                </tr> */}
+                </tr>
               </table>
             </div>
           </div>

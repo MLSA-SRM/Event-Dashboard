@@ -5,12 +5,24 @@ import Home from "./Home";
 import Table from "./Table";
 import NewEvent from "./NewEvent";
 import UserPage from "./User";
+import UserDashboard from "./UserDashboard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import "./App.css";
 
-function App() {
+function App(props) {
   const [getusername, setUsername] = useState("");
+  const [events, setEvents] = useState([]);
+
+  // const handleChange = (getEvent) => {
+  //   setEvents(getEvent);
+  // };
+
+  const findEvent = (id) => {
+    return events.find((event) => {
+      return id === event.name;
+    });
+  };
 
   return (
     <Router>
@@ -37,8 +49,20 @@ function App() {
           exact
           path="/user"
           username={getusername}
+          handleEventChange={setEvents}
           component={UserPage}
         ></ProtectedRoute>
+        <Route
+          exact
+          path="/user/:id"
+          render={(props) => {
+            return findEvent(props.match.params.id) ? (
+              <UserDashboard event={findEvent(props.match.params.id)} />
+            ) : (
+              <UserPage />
+            );
+          }}
+        />
         <Route exact path="/table">
           <Table />
         </Route>
