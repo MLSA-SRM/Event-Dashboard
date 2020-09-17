@@ -15,11 +15,12 @@
   align-items: center;
   justify-content: space-around;
   margin: auto;
-  margin-top: 4vh;
+  margin-top: 3vh;
 }
 .titletext {
   font-weight: 600;
   font-size: 3.75vh;
+  margin:none;
 }
 .box {
   width: 100%;

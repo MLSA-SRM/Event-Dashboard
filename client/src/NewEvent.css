@@ -44,7 +44,7 @@
 .form-div {
   height: 70vh;
   width: 60%;
-  padding: 2vh;
+  padding: none;
 }
 .form-header {
   width: 40%;
@@ -62,13 +62,14 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
   border: none;
+  outline: none;
   background: #e4e7ff;
-  color: rgb(158, 157, 157);
+  color: white;
   width: 40%;
   margin-top: 7vh;
   font-size: 2.75vh;
   padding: 2vh;
-  border-radius: 10px;
+  border-radius: 15px;
   transition: 0.3s ease-in-out;
 }
 .form-button:hover {
@@ -94,8 +95,8 @@
   font-size: 1vh;
 }
 .event-name {
-  margin-top: 8vh;
-  font-size: 3.5vh;
+  margin-top: 5.5vh;
+  font-size: 2.5vh;
   background: #f8f8f8;
   border: none;
   border-radius: 10px;
@@ -105,4 +106,17 @@
 }
 table {
   width: 90%;
+}
+
+.event-date{
+  margin-top: 5.5vh;
+  font-size: 2.5vh;
+  background: #f8f8f8;
+  border: none;
+  border-radius: 10px;
+  padding: 2vh;
+  outline: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: 0.3s ease-in-out;
+  width: 50%;
 }

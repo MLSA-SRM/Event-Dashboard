@@ -1,21 +1,51 @@
 .sendMailsButton {
-  margin-left: auto;
+  margin: auto;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2vh;
+  font-weight: 500;
   color: gray;
   outline: none;
+  border-radius: 20px;
   border: none;
-  padding: 1em 2em;
+  padding: 1.5vh;
   cursor: pointer;
-  transition: 0.5s all ease-in-out;
+  transition: 0.3s all ease-in-out;
 }
 
 .sendMailsButton:hover {
-  background-color: black;
+  background-color: #3545ee;
   color: white;
 }
-
+.sendMailsButtonDiv{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  width: 100%;
+}
 .list-data {
   overflow: hidden;
-  margin-left: 14em;
+  width: 60%;
+  padding: 3vh;
+  margin: auto;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 3vh;
+  box-shadow: 0px 0px 30px rgb(209, 208, 208);
+  margin-top: 3vh;
+}
+
+.titletext{
+  font-family: 'Poppins', sans-serif;
+}
+.list-body{
+  width: 100vh;
+  margin: auto;
+  padding: 4vh;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {

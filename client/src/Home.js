@@ -3,6 +3,7 @@ import React from "react";
 import Nav from "./components/nav";
 import Body from "./components/header";
 import Info from "./components/info";
+import Table from './Table';
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +17,7 @@ function Home(props) {
       <Nav username={username} />
       <Body />
       <Info />
+      <Table />
     </div>
   );
 }

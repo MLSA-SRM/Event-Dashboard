@@ -54,7 +54,7 @@ const NewEvent = (props) => {
             <div className="input-field">
               <input
                 placeholder="Start Event Date"
-                className="event-name"
+                className="event-date"
                 type="text"
                 onMouseEnter={(e) => (e.target.type = "date")}
                 onMouseLeave={(e) => (e.target.type = "text")}
@@ -63,7 +63,7 @@ const NewEvent = (props) => {
             <div className="input-field">
               <input
                 placeholder="End Event Date"
-                className="event-name"
+                className="event-date"
                 type="text"
                 onMouseEnter={(e) => (e.target.type = "date")}
                 onMouseLeave={(e) => (e.target.type = "text")}
