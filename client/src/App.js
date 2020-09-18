@@ -5,7 +5,11 @@ import Home from "./Home";
 import Table from "./Table";
 import NewEvent from "./NewEvent";
 import UserPage from "./User";
+
+import UserDashboard from "./UserDashboard";
+
 import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+
 import ProtectedRoute from "./ProtectedRoute";
 import "./App.css";
 import landing from "./landing";
@@ -13,8 +17,15 @@ import login from "./Login";
 import signin from "./Register";
 
 
-function App() {
+function App(props) {
   const [getusername, setUsername] = useState("");
+  const [events, setEvents] = useState([]);
+
+  const findEvent = (id) => {
+    return events.find((event) => {
+      return id === event.id;
+    });
+  };
 
   return (
     <Router>
@@ -48,8 +59,25 @@ function App() {
           exact
           path="/user"
           username={getusername}
+          handleEventChange={setEvents}
           component={UserPage}
         ></ProtectedRoute>
+        <Route
+          exact
+          path="/user/:id"
+          render={(props) => {
+            // return findEvent(props.match.params.id) !== null ? (
+            return (
+              <UserDashboard
+                username={getusername}
+                event={findEvent(props.match.params.id)}
+              />
+            );
+            // ) : (
+            // <UserPage />
+            // );
+          }}
+        />
         <Route exact path="/table">
           <Table />
         </Route>

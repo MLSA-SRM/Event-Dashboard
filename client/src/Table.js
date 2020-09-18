@@ -58,10 +58,10 @@ function Table() {
   };
   return (
     <div>
-        <div className="title">
-            <h1 className="titletext">Participant List</h1>
-          </div>
-          <div className="list-body">
+      <div className="title">
+        <h1 className="titletext">Participant List</h1>
+      </div>
+      <div className="list-body">
         <div
           className="ag-theme-material list-data"
           style={{
