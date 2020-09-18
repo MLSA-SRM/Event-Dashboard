@@ -14,10 +14,6 @@ function App(props) {
   const [getusername, setUsername] = useState("");
   const [events, setEvents] = useState([]);
 
-  // const handleChange = (getEvent) => {
-  //   setEvents(getEvent);
-  // };
-
   const findEvent = (id) => {
     return events.find((event) => {
       return id === event.name;
@@ -56,11 +52,11 @@ function App(props) {
           exact
           path="/user/:id"
           render={(props) => {
-            return findEvent(props.match.params.id) ? (
-              <UserDashboard event={findEvent(props.match.params.id)} />
-            ) : (
-              <UserPage />
-            );
+            // return findEvent(props.match.params.id) !== null ? (
+            return <UserDashboard event={findEvent(props.match.params.id)} />;
+            // ) : (
+            // <UserPage />
+            // );
           }}
         />
         <Route exact path="/table">

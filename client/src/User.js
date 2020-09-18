@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./components/nav";
 import "./User.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 const UserPage = (props) => {
+  let history = useHistory();
   // const [dub] = useState(["lol", "kdk"]);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
@@ -14,13 +15,18 @@ const UserPage = (props) => {
       let data = [
         {
           name: "hackathon",
-          date: "12/03/2001",
+          date: "18/03/2001",
           status: "ongoing",
         },
         {
           name: "getSomeRest",
           date: "12/03/2001",
           status: "ongoing",
+        },
+        {
+          name: "workshop1",
+          date: "20/05/2020",
+          status: "finished",
         },
       ];
       // let date;
@@ -37,6 +43,7 @@ const UserPage = (props) => {
       //     name: item.name,
       //     date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
       //     status: value,
+      //     id: `${item.name.split(" ").join("")}`,
       //   });
       // });
       // console.log(data);
@@ -44,6 +51,10 @@ const UserPage = (props) => {
       props.handleEventChange(data);
     });
   }, []);
+
+  const onClickRedirect = (data) => {
+    history.push("/user/" + data);
+  };
 
   // const eventName = ['Hackathon', 'GET some REST', 'Workshop 1', 'ui/ux workshop', 'MarchBytes', 'Codestruck 1.0', 'Webcast Live', 'Cyber Security']
   return (
@@ -104,25 +115,25 @@ const UserPage = (props) => {
                     )}
                   </tr>
                 ))} */}
-                <Link to={`/user/hackathon`}>
-                  <tr>
-                    <td>Hackathon</td>
-                    <td>13/09/2020</td>
-                    <td>
-                      <p className="yellow">Ongoing</p>
-                    </td>
-                  </tr>
-                </Link>
-                <Link to={`/user/getSomeRest`}>
-                  <tr>
-                    <td>GET some REST</td>
-                    <td>13/09/2020</td>
-                    <td>
-                      <p className="yellow">Ongoing</p>
-                    </td>
-                  </tr>
-                </Link>
-                <tr>
+                {/* <Link to={`/user/hackathon`}> */}
+                <tr onClick={() => onClickRedirect("hackathon")}>
+                  <td>Hackathon</td>
+                  <td>13/09/2020</td>
+                  <td>
+                    <p className="yellow">Ongoing</p>
+                  </td>
+                </tr>
+                {/* </Link> */}
+                {/* <Link to={`/user/getSomeRest`}> */}
+                <tr onClick={() => onClickRedirect("getSomeRest")}>
+                  <td>GET some REST</td>
+                  <td>13/09/2020</td>
+                  <td>
+                    <p className="yellow">Ongoing</p>
+                  </td>
+                </tr>
+                {/* </Link> */}
+                <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
