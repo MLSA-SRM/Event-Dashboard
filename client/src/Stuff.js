@@ -13,17 +13,24 @@ class Stuff extends Component {
         </div>
         <div className="row">
           <h1 className="title">We help you reach people</h1>
+          <br/>
           <span className="thumbnail col-md-4">
-          <img src={logo1} height="100vh" width="300vh" alt="logo1"/>
-          <h4>et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</h4>
+          <img src={logo1} height="100vh" width="300vh" alt="logo1" className="image"/>
+          <div className="overlay">
+          <div className="text">et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</div>
+          </div>
           </span>
           <span className="thumbnail col-md-4">
           <img src={logo2} height="100vh" width="300vh" alt="logo2"/>
-          <h4>et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</h4>
+          <div className="overlay-middle">
+          <div className="text">et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</div>
+          </div>
           </span>
           <span className="thumbnail col-md-4">
           <img src={logo3} height="100vh" width="300vh" alt="logo3"/>
-          <h4>et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</h4>
+          <div className="overlay-right">
+          <div className="text">et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</div>
+          </div>
           </span>
         </div>
         
