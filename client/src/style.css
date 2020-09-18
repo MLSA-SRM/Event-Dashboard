@@ -25,7 +25,7 @@ body {
     width: 100%;
     background-color: #fff;
   }
-  ul.headera div.right
+  ul.headera div.righty
   {
       float: right;
   }
@@ -77,26 +77,11 @@ body {
     margin-top: 6vh;
     font-family: 'Segoe UI Light',sans-serif;
   }
-  /* .stuff{
-    background-color: #FFF;
-    padding: 5vh;
-    float: right;
-    margin-top: 10vh;
-    margin-right: 10vh;
-    border-radius: 4vh;
-    -webkit-box-shadow: -1px 6px 42px -8px rgba(0,0,0,0.38);
-    -moz-box-shadow: -1px 6px 42px -8px rgba(0,0,0,0.38);
-    box-shadow: -1px 6px 42px -8px rgba(0,0,0,0.38);
-    height: 100%; 
-    max-width: 40vw;
-  } */
   .image-logo img{
     background-color: #FFF;
-    padding: 5vh;
     float: right;
-    height: 100%; 
+    height: 60vh; 
     width: 50vw;
-    margin-right: 10vh;
     margin-top: 5vh;
     border-radius: 0%;
     -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.38);
@@ -139,7 +124,7 @@ body {
   }
   .thumbnail img{
     height: 35vh;
-    border-radius: 0%;
+    border-radius: 10%;
     -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.38);
     -moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.38);
     box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.38);
@@ -148,9 +133,11 @@ body {
     font-weight: bold;
   }
   .thumbnail:hover{
+    background-color: #fff;
     -webkit-box-shadow: -1px 6px 42px -8px rgba(0,0,0,0.38);
     -moz-box-shadow: -1px 6px 42px -8px rgba(0,0,0,0.38);
     box-shadow: -1px 6px 42px -8px rgba(0,0,0,0.38);
+    font-size: 18px;
   }
   .row::after {
     content: "";
@@ -171,4 +158,53 @@ body {
   .net-left{
     float: left;
     background-color: #ebecf1;
+  }
+  .black-colour{
+    background-color: black;
+    color: #fff;
+    padding: 5vh;
+    margin-left: -4vh;
+    margin-right: -4vh;
+    margin-bottom: -7vh;
+  }
+  .black-colour h4{
+    font-weight: bolder;
+    padding-bottom: 1vh;
+    padding-left: 10vh;
+  }
+  .black-colour ul{
+    margin-top: 5vh;
+  }
+  .row{
+    margin-top: 20vh;
+    background-color: #ecf4f3;
+    padding: 5vh;
+    border-radius: 2vh;
+    margin-bottom: 10vh;
+  }
+  .left{
+    float: left;
+    width: 33%;
+    padding-left: 10vh;
+  }
+  .right{
+    float: right;
+    width: 33%;
+    padding-left: 10vh;
+  }
+  .middle{
+    float: right;
+    width: 33%;
+    padding-left: 10vh;
+  }
+  .close{
+    height: 3vh;
+    width: 5vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ec3f3f;
+    color: #fff ;
+    border-radius: 20%;
+    padding: 2px;
   }
