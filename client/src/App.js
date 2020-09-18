@@ -5,10 +5,17 @@ import Home from "./Home";
 import Table from "./Table";
 import NewEvent from "./NewEvent";
 import UserPage from "./User";
+
 import UserDashboard from "./UserDashboard";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+
 import ProtectedRoute from "./ProtectedRoute";
 import "./App.css";
+import landing from "./landing";
+import login from "./Login";
+import signin from "./Register";
+
 
 function App(props) {
   const [getusername, setUsername] = useState("");
@@ -22,8 +29,15 @@ function App(props) {
 
   return (
     <Router>
+      <div> 
+            <div className="content">
+            <Route exact path="/" component={landing}/>
+            <Route path="/login" component={login}/>
+            <Route path="/signin" component={signin}/>
+            </div>
+          </div>
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/login">
           <Login handleUsername={setUsername} />
         </Route>
         <Route exact path="/signIn">
