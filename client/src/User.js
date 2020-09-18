@@ -12,42 +12,43 @@ const UserPage = (props) => {
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
-      let data = [
-        {
-          name: "hackathon",
-          date: "18/03/2001",
-          status: "ongoing",
-        },
-        {
-          name: "getSomeRest",
-          date: "12/03/2001",
-          status: "ongoing",
-        },
-        {
-          name: "workshop1",
-          date: "20/05/2020",
-          status: "finished",
-        },
-      ];
-      // let date;
-      // let value;
-      // setName(res.data.name);
-      // res.data.events.forEach((item) => {
-      //   date = new Date(item.date);
-      //   if (date.getTime() < Date.now()) {
-      //     value = 1;
-      //   } else if (date.getTime() > Date.now()) {
-      //     value = 0;
-      //   }
-      //   data.push({
-      //     name: item.name,
-      //     date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
-      //     status: value,
-      //     id: `${item.name.split(" ").join("")}`,
-      //   });
-      // });
+      // let data = [
+      //   {
+      //     name: "hackathon",
+      //     date: "18/03/2001",
+      //     status: "ongoing",
+      //   },
+      //   {
+      //     name: "getSomeRest",
+      //     date: "12/03/2001",
+      //     status: "ongoing",
+      //   },
+      //   {
+      //     name: "workshop1",
+      //     date: "20/05/2020",
+      //     status: "finished",
+      //   },
+      // ];
+      let data = [];
+      let date;
+      let value;
+      setName(res.data.name);
+      res.data.events.forEach((item) => {
+        date = new Date(item.date);
+        if (date.getTime() < Date.now()) {
+          value = 1;
+        } else if (date.getTime() > Date.now()) {
+          value = 0;
+        }
+        data.push({
+          name: item.name,
+          date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+          status: value,
+          id: `${item.name.split(" ").join("")}`,
+        });
+      });
       // console.log(data);
-      // setData(data);
+      setData(data);
       props.handleEventChange(data);
     });
   }, []);
@@ -98,42 +99,41 @@ const UserPage = (props) => {
                   <th>Date</th>
                   <th>Status</th>
                 </tr>
-                {/* {data.map((item) => (
-                  <tr>
+                {data.map((item) => (
+                  <tr onClick={() => onClickRedirect(item.id)}>
                     <td>{item.name}</td>
                     <td>{item.date}</td>
-                    {item.status == 0 && (
+                    {item.status === 0 && (
                       <td>
                         <p className="yellow">Ongoing</p>
                       </td>
                     )}
 
-                    {item.status == 1 && (
+                    {item.status === 1 && (
                       <td>
                         <p className="green">Finished</p>
                       </td>
                     )}
                   </tr>
-                ))} */}
-                {/* <Link to={`/user/hackathon`}> */}
-                <tr onClick={() => onClickRedirect("hackathon")}>
+                ))}
+
+                {/* <tr onClick={() => onClickRedirect("hackathon")}>
                   <td>Hackathon</td>
                   <td>13/09/2020</td>
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
-                </tr>
-                {/* </Link> */}
-                {/* <Link to={`/user/getSomeRest`}> */}
-                <tr onClick={() => onClickRedirect("getSomeRest")}>
+                </tr> */}
+
+                {/* <tr onClick={() => onClickRedirect("getSomeRest")}>
                   <td>GET some REST</td>
                   <td>13/09/2020</td>
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
-                </tr>
-                {/* </Link> */}
-                <tr onClick={() => onClickRedirect("workshop1")}>
+                </tr> */}
+
+                {/* <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
@@ -174,7 +174,7 @@ const UserPage = (props) => {
                   <td>
                     <p className="red">Cancelled</p>
                   </td>
-                </tr>
+                </tr> */}
               </table>
             </div>
           </div>

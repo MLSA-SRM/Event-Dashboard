@@ -3,7 +3,6 @@ import Axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Auth from "./Auth";
 import "./Auth.css";
 
 function Register() {

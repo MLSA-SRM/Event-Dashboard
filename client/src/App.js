@@ -16,7 +16,7 @@ function App(props) {
 
   const findEvent = (id) => {
     return events.find((event) => {
-      return id === event.name;
+      return id === event.id;
     });
   };
 
@@ -53,7 +53,12 @@ function App(props) {
           path="/user/:id"
           render={(props) => {
             // return findEvent(props.match.params.id) !== null ? (
-            return <UserDashboard event={findEvent(props.match.params.id)} />;
+            return (
+              <UserDashboard
+                username={getusername}
+                event={findEvent(props.match.params.id)}
+              />
+            );
             // ) : (
             // <UserPage />
             // );
