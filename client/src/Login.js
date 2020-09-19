@@ -47,7 +47,7 @@ function Login(props) {
           // console.log(res.data.userInfo.username);
           props.handleUsername(res.data.userInfo.username);
           Auth.authenticate(() => {
-            history.push("/dashboard");
+            history.push("/user");
             notifySuccess();
           });
         } else {
@@ -63,7 +63,7 @@ function Login(props) {
   return (
     <div>
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={5000}
         newestOnTop={false}
         closeOnClick
@@ -72,30 +72,33 @@ function Login(props) {
         draggable
         pauseOnHover
       />
-      <div className="authForm">
+      <div className='authForm'>
         <h1>Login</h1>
         <form onSubmit={loginUser}>
-          <div className="textbox">
+          <div className='textbox'>
             <input
-              id="loginUsername"
+              id='loginUsername'
               required
-              type="text"
-              placeholder="Username"
+              type='text'
+              placeholder='Username'
               onChange={(e) => setLoginUsername(e.target.value)}
             />
           </div>
-          <div className="textbox">
+          <div className='textbox'>
             <input
-              id="loginPassword"
+              id='loginPassword'
               required
-              type="password"
-              placeholder="Password"
+              type='password'
+              placeholder='Password'
               onChange={(e) => setLoginPassword(e.target.value)}
             />
           </div>
-          <button className="btn">Login</button>
+          <button className='btn'>Login</button>
           <p>
-            Create a new account ? <Link to="/signIn">Sign In</Link>
+            Create a new account ? <Link to='/signin'>Sign In</Link>
+          </p>
+          <p>
+            Want to go back ? <Link to='/'>Home</Link>
           </p>
         </form>
       </div>

@@ -21,15 +21,15 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
+app.use(cookieParser());
+
 app.use(
   session({
     secret: "secret",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
-
-app.use(cookieParser("secret"));
 
 app.use(passport.initialize());
 app.use(passport.session());

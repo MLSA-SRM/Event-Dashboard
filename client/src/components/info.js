@@ -34,12 +34,12 @@ const Info = () => {
 
   return (
     <div>
-      <div className="title">
-        <h1 className="titletext">Event Overview</h1>
+      <div className='title'>
+        <h1 className='titletext'>Event Overview</h1>
       </div>
-      <div className="body">
-        <div className="box">
-          <h3 className="charttitle">Registrations This Week</h3>
+      <div className='body'>
+        <div className='box'>
+          <h3 className='charttitle'>Registrations This Week</h3>
           <LineChart
             width={440}
             height={250}
@@ -47,34 +47,34 @@ const Info = () => {
             margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
           >
             <Line
-              type="monotone"
-              strokeWidth="2"
-              dataKey="no"
-              stroke="#8884d8"
+              type='monotone'
+              strokeWidth='2'
+              dataKey='no'
+              stroke='#8884d8'
             />
             <CartesianGrid
-              stroke="#ccc"
-              strokeWidth="1"
-              strokeDasharray="0 0"
+              stroke='#ccc'
+              strokeWidth='1'
+              strokeDasharray='0 0'
             />
-            <XAxis dataKey="name" />
+            <XAxis dataKey='name' />
             <YAxis />
             <Tooltip />
           </LineChart>
         </div>
-        <div className="box">
-          <h3 className="charttitle">Registrations By Branch</h3>
+        <div className='box'>
+          <h3 className='charttitle'>Registrations By Branch</h3>
           <PieChart width={500} height={250}>
             <Pie
               data={pieData}
-              dataKey="no"
-              nameKey="branch"
-              cx="50%"
-              cy="50%"
+              dataKey='no'
+              nameKey='branch'
+              cx='50%'
+              cy='50%'
               innerRadius={60}
               outerRadius={80}
               paddingAngle={5}
-              fill="#82ca9d"
+              fill='#82ca9d'
               label={({
                 cx,
                 cy,
@@ -93,9 +93,9 @@ const Info = () => {
                   <text
                     x={x}
                     y={y}
-                    fill="#8884d8"
+                    fill='#8884d8'
                     textAnchor={x > cx ? "start" : "end"}
-                    dominantBaseline="central"
+                    dominantBaseline='central'
                   >
                     {pieData[index].name} ({value})
                   </text>
