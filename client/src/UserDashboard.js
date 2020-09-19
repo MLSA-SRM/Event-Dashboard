@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "./components/nav.js";
+import Info from "./components/info.js";
 
 function UserDashboard(props) {
   const { event } = props;
@@ -16,6 +17,7 @@ function UserDashboard(props) {
           <p className="bodysubtext">Event</p>
         </div>
       </div>
+      <Info />
     </div>
   );
 }

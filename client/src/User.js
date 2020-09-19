@@ -123,17 +123,17 @@ const UserPage = (props) => {
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
-                </tr> */}
+                </tr>
 
-                {/* <tr onClick={() => onClickRedirect("getSomeRest")}>
+                <tr onClick={() => onClickRedirect("getSomeRest")}>
                   <td>GET some REST</td>
                   <td>13/09/2020</td>
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
-                </tr> */}
+                </tr>
 
-                {/* <tr onClick={() => onClickRedirect("workshop1")}>
+                <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
