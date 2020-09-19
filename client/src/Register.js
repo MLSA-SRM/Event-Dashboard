@@ -3,7 +3,6 @@ import Axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Auth from "./Auth";
 import "./Auth.css";
 
 function Register() {
@@ -69,7 +68,10 @@ function Register() {
           </div>
           <button className="btn">Register</button>
           <p>
-            Already have an account ? <Link to="/">Log In</Link>
+            Already have an account ? <Link to="/login">Log In</Link>
+          </p>
+          <p>
+            Want to go back ? <Link to="/">Home</Link>
           </p>
         </form>
       </div>

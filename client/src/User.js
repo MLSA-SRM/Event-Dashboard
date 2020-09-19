@@ -2,14 +2,33 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./components/nav";
 import "./User.css";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 const UserPage = (props) => {
+  let history = useHistory();
   // const [dub] = useState(["lol", "kdk"]);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
+      // let data = [
+      //   {
+      //     name: "hackathon",
+      //     date: "18/03/2001",
+      //     status: "ongoing",
+      //   },
+      //   {
+      //     name: "getSomeRest",
+      //     date: "12/03/2001",
+      //     status: "ongoing",
+      //   },
+      //   {
+      //     name: "workshop1",
+      //     date: "20/05/2020",
+      //     status: "finished",
+      //   },
+      // ];
       let data = [];
       let date;
       let value;
@@ -25,12 +44,19 @@ const UserPage = (props) => {
           name: item.name,
           date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
           status: value,
+          id: `${item.name.split(" ").join("")}`,
         });
       });
       // console.log(data);
       setData(data);
+      props.handleEventChange(data);
     });
   }, []);
+
+  const onClickRedirect = (data) => {
+    history.push("/user/" + data);
+  };
+
   // const eventName = ['Hackathon', 'GET some REST', 'Workshop 1', 'ui/ux workshop', 'MarchBytes', 'Codestruck 1.0', 'Webcast Live', 'Cyber Security']
   return (
     <div>
@@ -74,76 +100,79 @@ const UserPage = (props) => {
                   <th>Status</th>
                 </tr>
                 {data.map((item) => (
-                  <tr>
+                  <tr onClick={() => onClickRedirect(item.id)}>
                     <td>{item.name}</td>
                     <td>{item.date}</td>
-                    {item.status == 0 && (
+                    {item.status === 0 && (
                       <td>
                         <p className="yellow">Ongoing</p>
                       </td>
                     )}
 
-                    {item.status == 1 && (
+                    {item.status === 1 && (
                       <td>
                         <p className="green">Finished</p>
                       </td>
                     )}
                   </tr>
                 ))}
-                {/* <tr>
+
+                {/* <tr onClick={() => onClickRedirect("hackathon")}>
                   <td>Hackathon</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='yellow'>Ongoing</p>
+                    <p className="yellow">Ongoing</p>
                   </td>
-                </tr>
-                <tr>
+                </tr> */}
+
+                {/* <tr onClick={() => onClickRedirect("getSomeRest")}>
                   <td>GET some REST</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='yellow'>Ongoing</p>
+                    <p className="yellow">Ongoing</p>
                   </td>
-                </tr>
-                <tr>
+                </tr> */}
+
+                {/* <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>UI/UX workshop</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>MarchBytes</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>Codestruck 1.0</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='red'>Cancelled</p>
+                    <p className="red">Cancelled</p>
                   </td>
                 </tr>
                 <tr>
                   <td>Webcast Live</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='green'>Finished</p>
+                    <p className="green">Finished</p>
                   </td>
                 </tr>
                 <tr>
                   <td>Cyber Security</td>
                   <td>13/09/2020</td>
                   <td>
-                    <p className='red'>Cancelled</p>
+                    <p className="red">Cancelled</p>
                   </td>
                 </tr> */}
               </table>
