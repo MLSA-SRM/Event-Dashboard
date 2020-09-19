@@ -11,6 +11,7 @@ class Home extends Component {
           <ul className="headera">
             <li><h1>Microsoft</h1></li>
             <div className="righty">
+            {/* <div className="pulse"/> */}
             <li><NavLink to="/login">Log In</NavLink></li>
             
             </div>
