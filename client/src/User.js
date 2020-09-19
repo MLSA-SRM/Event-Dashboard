@@ -57,42 +57,41 @@ const UserPage = (props) => {
     history.push("/user/" + data);
   };
 
-  // const eventName = ['Hackathon', 'GET some REST', 'Workshop 1', 'ui/ux workshop', 'MarchBytes', 'Codestruck 1.0', 'Webcast Live', 'Cyber Security']
   return (
     <div>
       <Nav username={props.username} />
-      <div className="user-body">
-        <div className="user-info">
-          <div className="user-box">
-            <h1 className="head">My Profile</h1>
+      <div className='user-body'>
+        <div className='user-info'>
+          <div className='user-box'>
+            <h1 className='head'>My Profile</h1>
             <hr />
             <br />
-            <div className="profile-pic">
-              <img src="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5f4ebe0c87612dab4f12a597%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D292%26cropX2%3D3684%26cropY1%3D592%26cropY2%3D3987"></img>
+            <div className='profile-pic'>
+              <img src='https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5f4ebe0c87612dab4f12a597%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D292%26cropX2%3D3684%26cropY1%3D592%26cropY2%3D3987'></img>
             </div>
             <br />
-            <h1 className="head">{name}</h1>
-            <p className="user-text">Software Developer</p>
-            <p className="user-text">billgates@microsoft.com</p>
-            <p className="user-text">+91 9435357748</p>
-            <button className="edit">Edit</button>
+            <h1 className='head'>{name}</h1>
+            <p className='user-text'>Software Developer</p>
+            <p className='user-text'>billgates@microsoft.com</p>
+            <p className='user-text'>+91 9435357748</p>
+            <button className='edit'>Edit</button>
           </div>
         </div>
-        <div className="event-info">
-          <div className="events">
-            <h1 className="head">Events Conducted</h1>
+        <div className='event-info'>
+          <div className='events'>
+            <h1 className='head'>Events Conducted</h1>
             <hr />
-            <div className="search-box">
+            <div className='search-box'>
               <form>
                 <input
-                  id="search"
-                  type="text"
-                  placeholder="Search Event"
+                  id='search'
+                  type='text'
+                  placeholder='Search Event'
                 ></input>
-                <button className="search-button">Search</button>
+                <button className='search-button'>Search</button>
               </form>
             </div>
-            <div className="event-list">
+            <div className='event-list'>
               <table>
                 <tr>
                   <th>Event Name</th>
@@ -105,13 +104,13 @@ const UserPage = (props) => {
                     <td>{item.date}</td>
                     {item.status === 0 && (
                       <td>
-                        <p className="yellow">Ongoing</p>
+                        <p className='yellow'>Ongoing</p>
                       </td>
                     )}
 
                     {item.status === 1 && (
                       <td>
-                        <p className="green">Finished</p>
+                        <p className='green'>Finished</p>
                       </td>
                     )}
                   </tr>
@@ -123,17 +122,17 @@ const UserPage = (props) => {
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
-                </tr> */}
+                </tr>
 
-                {/* <tr onClick={() => onClickRedirect("getSomeRest")}>
+                <tr onClick={() => onClickRedirect("getSomeRest")}>
                   <td>GET some REST</td>
                   <td>13/09/2020</td>
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
-                </tr> */}
+                </tr>
 
-                {/* <tr onClick={() => onClickRedirect("workshop1")}>
+                <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
@@ -178,10 +177,10 @@ const UserPage = (props) => {
               </table>
             </div>
           </div>
-          <div className="events">
-            <h2 className="head">Other data</h2>
+          {/* <div className='events'>
+            <h2 className='head'>Other data</h2>
             <hr />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

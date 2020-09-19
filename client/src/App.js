@@ -5,17 +5,11 @@ import Home from "./Home";
 import Table from "./Table";
 import NewEvent from "./NewEvent";
 import UserPage from "./User";
-
+import Landing from "./landing";
 import UserDashboard from "./UserDashboard";
-
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
-
 import ProtectedRoute from "./ProtectedRoute";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import landing from "./landing";
-import login from "./Login";
-import signin from "./Register";
-
 
 function App(props) {
   const [getusername, setUsername] = useState("");
@@ -29,43 +23,47 @@ function App(props) {
 
   return (
     <Router>
-      <div> 
-            <div className="content">
-            <Route exact path="/" component={landing}/>
-            <Route path="/login" component={login}/>
-            <Route path="/signin" component={signin}/>
-            </div>
-          </div>
+      {/* <div>
+        <div className="content">
+          
+          {/* <Route path="/login" component={login} /> */}
+      {/* <Route path="/signin" component={signin} /> */}
+      {/* </div> */}
+      {/* </div> */}
+      <Route exact path='/'>
+        <Landing />
+      </Route>
       <Switch>
-        <Route exact path="/login">
+        <Route exact path='/login'>
           <Login handleUsername={setUsername} />
         </Route>
-        <Route exact path="/signIn">
+        <Route exact path='/signIn'>
           <Register />
         </Route>
         <ProtectedRoute
           username={getusername}
           exact
-          path="/dashboard"
+          path='/dashboard'
           component={Home}
         />
         <ProtectedRoute
           exact
           username={getusername}
-          path="/newevent"
+          path='/newevent'
           component={NewEvent}
         ></ProtectedRoute>
         <ProtectedRoute
           exact
-          path="/user"
+          path='/user'
           username={getusername}
           handleEventChange={setEvents}
           component={UserPage}
         ></ProtectedRoute>
         <Route
           exact
-          path="/user/:id"
+          path='/user/:id'
           render={(props) => {
+            console.log(props);
             // return findEvent(props.match.params.id) !== null ? (
             return (
               <UserDashboard
@@ -78,7 +76,7 @@ function App(props) {
             // );
           }}
         />
-        <Route exact path="/table">
+        <Route exact path='/table'>
           <Table />
         </Route>
       </Switch>

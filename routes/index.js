@@ -51,7 +51,7 @@ router.post("/register", function (req, res) {
 });
 
 router.get("/user", async (req, res, next) => {
-  let id = app.get("id");
+  let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
   let event = [];
@@ -78,11 +78,12 @@ router.get("/logout", function (req, res, next) {
   });
 });
 
-router.get("/bardata", async (req, res, next) => {
-  console.log(Date.now());
+router.post("/bardata", async (req, res, next) => {
+  // console.log(Date.now());
   app.set("id", req.session.passport.user);
   // TODO EVENT HARDCODED
-  let username = "yoman";
+  let username = req.body.name;
+  // let username = "yoman";
   let data = await events(username);
   let days = [
     "Sunday",
@@ -111,9 +112,11 @@ router.get("/bardata", async (req, res, next) => {
   res.json(bardata);
 });
 
-router.get("/piechart", async (req, res, next) => {
+router.post("/piechart", async (req, res, next) => {
   // TODO EVENT HARDCODED
-  let username = "yoman";
+  // let username = "yoman";
+  let username = req.body.name;
+
   let data = await events(username);
   let branch = [];
   let result = [];
@@ -147,8 +150,7 @@ router.get("/piechart", async (req, res, next) => {
 router.get("/home/bargraph", async (req, res, next) => {
   let body = [];
   //TODO ID HARDCODED
-  let id = app.get("id");
-
+  let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await homeData(id);
   data.forEach((item) => {
@@ -161,7 +163,7 @@ router.get("/home/bargraph", async (req, res, next) => {
 });
 // TODO ID HARDCODED
 router.post("/newevent", async (req, res, next) => {
-  let id = app.get("id");
+  let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let { name, num } = req.body;
   console.log(req.body);
@@ -178,12 +180,42 @@ router.get("/table", (req, res, next) => {
       reg: "RA001",
       email: "xyz@gmail.com",
       IQ: "320",
+      lang: "cpp",
     },
     {
       name: "Doe",
       reg: "RA002",
       email: "xyz@gmail.com",
       IQ: "320",
+      lang: "cpp",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+      IQ: "320",
+      lang: "cpp",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+      IQ: "320",
+      lang: "cpp",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+      IQ: "320",
+      lang: "cpp",
+    },
+    {
+      name: "Doe",
+      reg: "RA002",
+      email: "xyz@gmail.com",
+      IQ: "320",
+      lang: "cpp",
     },
   ];
   let keys = Object.keys(json[0]);
