@@ -78,11 +78,12 @@ router.get("/logout", function (req, res, next) {
   });
 });
 
-router.get("/bardata", async (req, res, next) => {
+router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
   app.set("id", req.session.passport.user);
   // TODO EVENT HARDCODED
-  let username = "yoman";
+  let username = req.body.name;
+  // let username = "yoman";
   let data = await events(username);
   let days = [
     "Sunday",
@@ -111,9 +112,11 @@ router.get("/bardata", async (req, res, next) => {
   res.json(bardata);
 });
 
-router.get("/piechart", async (req, res, next) => {
+router.post("/piechart", async (req, res, next) => {
   // TODO EVENT HARDCODED
-  let username = "yoman";
+  // let username = "yoman";
+  let username = req.body.name;
+
   let data = await events(username);
   let branch = [];
   let result = [];

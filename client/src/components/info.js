@@ -12,24 +12,34 @@ import {
   Cell,
 } from "recharts";
 import "./info.css";
+import { log } from "debug";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const Info = () => {
+const Info = ({ name }) => {
+  // console.log(name);
   const [barData, setBarData] = useState([]);
   const [pieData, setPieData] = useState([]);
   useEffect(() => {
-    axios.get("/bardata").then((res) => {
-      console.log(res.data);
-      const barData = res.data;
-      setBarData(barData);
-    });
+    axios
+      .post("/bardata", {
+        name,
+      })
+      .then((res) => {
+        console.log(res.data);
+        const barData = res.data;
+        setBarData(barData);
+      });
 
-    axios.get("/piechart").then((res) => {
-      console.log(res.data);
-      const pieData = res.data;
-      setPieData(pieData);
-    });
+    axios
+      .post("/piechart", {
+        name,
+      })
+      .then((res) => {
+        console.log(res.data);
+        const pieData = res.data;
+        setPieData(pieData);
+      });
   }, []);
 
   return (
