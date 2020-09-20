@@ -25,11 +25,13 @@ const events = (username) => {
     });
 };
 
-const saveEvent = (id, name, attendence) => {
+const saveEvent = (id, name, attendence, startDate, endDate) => {
   let newEvent = new event({
     user: id,
     name,
     attendence,
+    startDate,
+    endDate,
   });
   newEvent.save().catch((err) => console.log(err));
   return user

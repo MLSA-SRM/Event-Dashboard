@@ -1,60 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Nav from "./components/nav";
 import "./User.css";
 import { Link, Redirect, useHistory } from "react-router-dom";
-
+import { State } from "./Context";
 const UserPage = (props) => {
   let history = useHistory();
-  // const [dub] = useState(["lol", "kdk"]);
+  let { handleChange } = useContext(State);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
-      // let data = [
-      //   {
-      //     name: "hackathon",
-      //     date: "18/03/2001",
-      //     status: "ongoing",
-      //   },
-      //   {
-      //     name: "getSomeRest",
-      //     date: "12/03/2001",
-      //     status: "ongoing",
-      //   },
-      //   {
-      //     name: "workshop1",
-      //     date: "20/05/2020",
-      //     status: "finished",
-      //   },
-      // ];
       let data = [];
-      let date;
-      let value;
+      let startDate;
+      let endDate;
+      let value = 2;
       setName(res.data.name);
       res.data.events.forEach((item) => {
-        date = new Date(item.date);
-        if (date.getTime() < Date.now()) {
-          value = 1;
-        } else if (date.getTime() > Date.now()) {
-          value = 0;
+        startDate = new Date(item.startDate);
+        endDate = new Date(item.endDate);
+        // console.log(startDate, endDate);
+        // console.log(
+        //   item.name,
+        //   startDate.getTime(),
+        //   endDate.getTime(),
+        //   Date.now()
+        // );
+        if (
+          startDate.getTime() < Date.now() &&
+          endDate.getTime() > Date.now()
+        ) {
+          value = 0; //ongoing
+        } else if (
+          endDate.getTime() < Date.now()
+          // startDate.getTime() < Date.now()
+        ) {
+          value = 1; //finished
         }
         data.push({
           name: item.name,
-          date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+          date: `${startDate.getDate()}/${
+            startDate.getMonth() + 1
+          }/${startDate.getFullYear()}`,
           status: value,
-          id: `${item.name.split(" ").join("")}`,
         });
       });
       // console.log(data);
       setData(data);
-      props.handleEventChange(data);
     });
   }, []);
 
-  const onClickRedirect = (data) => {
+  const onClickRedirect = (data, date) => {
     history.push("/user/" + data);
+    handleChange(data, date);
   };
 
   return (
@@ -99,7 +98,7 @@ const UserPage = (props) => {
                   <th>Status</th>
                 </tr>
                 {data.map((item) => (
-                  <tr onClick={() => onClickRedirect(item.id)}>
+                  <tr onClick={() => onClickRedirect(item.name, item.date)}>
                     <td>{item.name}</td>
                     <td>{item.date}</td>
                     {item.status === 0 && (
@@ -124,54 +123,12 @@ const UserPage = (props) => {
                   </td>
                 </tr>
 
-                <tr onClick={() => onClickRedirect("getSomeRest")}>
-                  <td>GET some REST</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className="yellow">Ongoing</p>
-                  </td>
-                </tr>
 
                 <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>
                   <td>13/09/2020</td>
                   <td>
                     <p className="green">Finished</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>UI/UX workshop</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className="green">Finished</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>MarchBytes</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className="green">Finished</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Codestruck 1.0</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className="red">Cancelled</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Webcast Live</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className="green">Finished</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Cyber Security</td>
-                  <td>13/09/2020</td>
-                  <td>
-                    <p className="red">Cancelled</p>
                   </td>
                 </tr> */}
               </table>
