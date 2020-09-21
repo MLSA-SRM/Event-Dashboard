@@ -58,7 +58,8 @@ router.get("/user", async (req, res, next) => {
   data.events.forEach((item) => {
     event.push({
       name: item.name,
-      date: item.date,
+      startDate: item.startDate,
+      endDate: item.endDate,
     });
   });
   // console.log(event);
@@ -81,7 +82,6 @@ router.get("/logout", function (req, res, next) {
 router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
   app.set("id", req.session.passport.user);
-  // TODO EVENT HARDCODED
   let username = req.body.name;
   // let username = "yoman";
   let data = await events(username);
@@ -113,7 +113,6 @@ router.post("/bardata", async (req, res, next) => {
 });
 
 router.post("/piechart", async (req, res, next) => {
-  // TODO EVENT HARDCODED
   // let username = "yoman";
   let username = req.body.name;
 
@@ -149,7 +148,6 @@ router.post("/piechart", async (req, res, next) => {
 
 router.get("/home/bargraph", async (req, res, next) => {
   let body = [];
-  //TODO ID HARDCODED
   let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await homeData(id);
@@ -161,14 +159,13 @@ router.get("/home/bargraph", async (req, res, next) => {
   });
   res.json(body);
 });
-// TODO ID HARDCODED
 router.post("/newevent", async (req, res, next) => {
   let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
-  let { name, num } = req.body;
+  let { name, num, startDate, endDate } = req.body;
   console.log(req.body);
   // let status = true;
-  let status = await saveEvent(id, name, num);
+  let status = await saveEvent(id, name, num, startDate, endDate);
   res.json(status);
 });
 

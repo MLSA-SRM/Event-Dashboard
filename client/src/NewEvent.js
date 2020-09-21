@@ -5,11 +5,15 @@ import Axios from "axios";
 const NewEvent = (props) => {
   const [name, setName] = useState("");
   const [num, setNum] = useState("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const submit = (e) => {
     e.preventDefault();
     Axios.post("/newevent", {
       name,
       num,
+      startDate,
+      endDate
     })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -20,65 +24,58 @@ const NewEvent = (props) => {
   return (
     <div>
       <Nav username={username} />
-      <div className="body">
-        <div className="title-div">
-          <div className="title-svg">
-            <div className="add-image">
-              <p className="add-image-text">Add Image +</p>
+      <div className='body'>
+        <div className='title-div'>
+          <div className='title-svg'>
+            <div className='add-image'>
+              <p className='add-image-text'>Add Image +</p>
             </div>
           </div>
-          <h1 className="title-header">Let's get your event set up</h1>
-          <p className="title-subtext">Fill in the details to get started!</p>
+          <h1 className='title-header'>Let's get your event set up</h1>
+          <p className='title-subtext'>Fill in the details to get started!</p>
         </div>
-        <div className="form-div">
-          <h1 className="form-header">Event Details</h1>
+        <div className='form-div'>
+          <h1 className='form-header'>Event Details</h1>
           <form onSubmit={submit}>
-            <div className="input-field">
+            <div className='input-field'>
               <input
-                placeholder="Event Name"
-                className="event-name"
+                placeholder='Event Name'
+                className='event-name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                type="text"
+                type='text'
               ></input>
             </div>
-            <div className="input-field">
+            <div className='input-field'>
               <input
-                placeholder="Minimum Attendance"
-                className="event-name"
+                placeholder='Minimum Attendance'
+                className='event-name'
                 value={num}
-                type="text"
+                type='text'
                 onChange={(e) => setNum(e.target.value)}
               ></input>
             </div>
-            <div className="input-field">
+            <div className='input-field'>
               <input
-                placeholder="Start Event Date"
-                className="event-date"
-                type="text"
+                placeholder='Start Event Date'
+                className='event-date'
+                type='text'
                 onMouseEnter={(e) => (e.target.type = "date")}
                 onMouseLeave={(e) => (e.target.type = "text")}
+                onChange={(e) => setStartDate(e.target.value)}
               ></input>
-            </div>
-            <div className="input-field">
-              <input
-                placeholder="End Event Date"
-                className="event-date"
-                type="text"
-                onMouseEnter={(e) => (e.target.type = "date")}
-                onMouseLeave={(e) => (e.target.type = "text")}
-              ></input>
-            </div>
-            {/* <div className='input-field'>
-              <h1 className='form-field-header'>Event Date</h1>
-              <input type='date'></input>
             </div>
             <div className='input-field'>
-              <h1 className='form-field-header'>Event Time</h1>
-              <input type='time'></input>
-              <br />
-            </div> */}
-            <button className="form-button" type="submit">
+              <input
+                placeholder='End Event Date'
+                className='event-date'
+                type='text'
+                onMouseEnter={(e) => (e.target.type = "date")}
+                onMouseLeave={(e) => (e.target.type = "text")}
+                onChange={(e) => setEndDate(e.target.value)}
+              ></input>
+            </div>
+            <button className='form-button' type='submit'>
               Submit
             </button>
           </form>
