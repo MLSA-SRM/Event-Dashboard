@@ -128,6 +128,12 @@ tr {
   border-radius: 15px;
   padding: 0.5vh;
 }
+.blue {
+  background-color: #3498db;
+  color: white;
+  border-radius: 15px;
+  padding: 0.5vh;
+}
 .yellow {
   background-color: #ffc107;
   border-radius: 15px;

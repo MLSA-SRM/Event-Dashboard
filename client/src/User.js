@@ -15,7 +15,7 @@ const UserPage = (props) => {
       let data = [];
       let startDate;
       let endDate;
-      let value = 2;
+      let value;
       setName(res.data.name);
       res.data.events.forEach((item) => {
         startDate = new Date(item.startDate);
@@ -27,7 +27,9 @@ const UserPage = (props) => {
         //   endDate.getTime(),
         //   Date.now()
         // );
-        if (
+        if (startDate.getTime() > Date.now()) {
+          value = 2;
+        } else if (
           startDate.getTime() < Date.now() &&
           endDate.getTime() > Date.now()
         ) {
@@ -106,7 +108,11 @@ const UserPage = (props) => {
                         <p className='yellow'>Ongoing</p>
                       </td>
                     )}
-
+                    {item.status === 2 && (
+                      <td>
+                        <p className='blue'>Upcoming</p>
+                      </td>
+                    )}
                     {item.status === 1 && (
                       <td>
                         <p className='green'>Finished</p>
