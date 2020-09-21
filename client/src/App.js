@@ -8,6 +8,10 @@ import UserPage from "./User";
 import Landing from "./landing";
 import UserDashboard from "./UserDashboard";
 import ProtectedRoute from "./ProtectedRoute";
+import NewNav from './UI2.0/newnav';
+import NewDash from './UI2.0/newdashboard';
+import NewPeople from './UI2.0/newpeople';
+import NewCalendar from './UI2.0/newcalendar';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -39,6 +43,18 @@ function App(props) {
         </Route>
         <Route exact path='/signIn'>
           <Register />
+        </Route>
+        <Route exact path="/newui">
+          <NewNav />
+        </Route>
+        <Route exact path="/newdashboard">
+          <NewDash/>
+        </Route>
+        <Route exact path="/newpeople">
+          <NewPeople/>
+        </Route>
+        <Route exact path="/newcalendar">
+          <NewCalendar/>
         </Route>
         <ProtectedRoute
           username={getusername}
