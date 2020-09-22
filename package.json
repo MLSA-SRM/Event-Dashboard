@@ -8,6 +8,8 @@
     "dev": "concurrently --kill-others \" npm run server \" \" npm run client \" "
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^5.3.2",
+    "@fullcalendar/react": "^5.3.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
