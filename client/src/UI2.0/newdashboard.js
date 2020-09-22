@@ -22,7 +22,9 @@ const NewDash = () => {
   // let dummy = "yoman";
   const { dummy, date } = useContext(State);
   const [barData, setBarData] = useState([]);
+  const [total, setTotal] = useState(null);
   const [pieData, setPieData] = useState([]);
+  const [attendence, setAttedence] = useState([]);
   useEffect(() => {
     axios
       .post("/bardata", {
@@ -40,7 +42,15 @@ const NewDash = () => {
       })
       .then((res) => {
         console.log(res.data);
-        const pieData = res.data;
+        const pieData = res.data.data;
+        let total = res.data.total;
+        let remain = total - res.data.attendence;
+        const num = [
+          { name: "Registered", value: res.data.attendence },
+          { name: "Remaining", value: remain },
+        ];
+        setTotal(total);
+        setAttedence(num);
         setPieData(pieData);
       });
   }, []);
@@ -49,14 +59,6 @@ const NewDash = () => {
     { name: "Registered", value: 1295 },
     { name: "Remaining", value: 145 },
   ];
-
-  // const pieData = [
-  //   { name: "CSE", value: 275 },
-  //   { name: "Mech", value: 179 },
-  //   { name: "Aerospace", value: 311 },
-  //   { name: "Biotech", value: 115 },
-  //   { name: "ECE", value: 245 },
-  // ];
 
   const colors = ["#3454ee", "#ff4444"];
   const colors2 = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
@@ -129,7 +131,7 @@ const NewDash = () => {
             </h1>
             <PieChart width={240} height={250} margin='none'>
               <Pie
-                data={data01}
+                data={attendence}
                 dataKey='value'
                 cx={130}
                 cy={100}
@@ -139,7 +141,7 @@ const NewDash = () => {
                 fill='#8884d8'
                 label
               >
-                {data01.map((entry, index) => (
+                {attendence.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={colors[index % colors.length]}
@@ -156,7 +158,7 @@ const NewDash = () => {
             <p
               style={{ color: "#3454ee", marginTop: "5vh", textAlign: "left" }}
             >
-              Venue Capacity <b>1400</b>
+              Venue Capacity <b>{total}</b>
             </p>
           </div>
           <div className='dash-col2'>
