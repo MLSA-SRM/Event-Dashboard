@@ -1,4 +1,5 @@
-import React, { PureComponent } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import {
   LineChart,
   Line,
@@ -13,31 +14,49 @@ import {
   Cell,
 } from "recharts";
 import NewNav from "./newnav";
+import { State } from "../Context";
+
 import "./newdashboard.css";
 
 const NewDash = () => {
-  const data = [
-    { name: "Mon", Registrations: "150" },
-    { name: "Tue", Registrations: "100" },
-    { name: "Wed", Registrations: "200" },
-    { name: "Thu", Registrations: "110" },
-    { name: "Fri", Registrations: "115" },
-    { name: "Sat", Registrations: "150" },
-    { name: "Sun", Registrations: "250" },
-  ];
+  // let dummy = "yoman";
+  const { dummy, date } = useContext(State);
+  const [barData, setBarData] = useState([]);
+  const [pieData, setPieData] = useState([]);
+  useEffect(() => {
+    axios
+      .post("/bardata", {
+        name: dummy,
+      })
+      .then((res) => {
+        console.log(res.data);
+        const barData = res.data;
+        setBarData(barData);
+      });
+
+    axios
+      .post("/piechart", {
+        name: dummy,
+      })
+      .then((res) => {
+        console.log(res.data);
+        const pieData = res.data;
+        setPieData(pieData);
+      });
+  }, []);
 
   const data01 = [
     { name: "Registered", value: 1295 },
     { name: "Remaining", value: 145 },
   ];
 
-  const data02 = [
-    { name: "CSE", value: 275 },
-    { name: "Mech", value: 179 },
-    { name: "Aerospace", value: 311 },
-    { name: "Biotech", value: 115 },
-    { name: "ECE", value: 245 },
-  ];
+  // const pieData = [
+  //   { name: "CSE", value: 275 },
+  //   { name: "Mech", value: 179 },
+  //   { name: "Aerospace", value: 311 },
+  //   { name: "Biotech", value: 115 },
+  //   { name: "ECE", value: 245 },
+  // ];
 
   const colors = ["#3454ee", "#ff4444"];
   const colors2 = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
@@ -45,21 +64,24 @@ const NewDash = () => {
   return (
     <div>
       <NewNav />
-      <div className="new-dash-body">
-        <div className="dash-row">
-          <div className="dash-col1" style={{
+      <div className='new-dash-body'>
+        <div className='dash-row'>
+          <div
+            className='dash-col1'
+            style={{
               display: "flex",
               flexFlow: "column",
               justifyContent: "left",
-            }}>
-            <h1 className="dash-header" style={{ textAlign: "left" }}>
+            }}
+          >
+            <h1 className='dash-header' style={{ textAlign: "left" }}>
               EVENT INFO
             </h1>
-            <h1 className="event-main-name" style={{ textAlign: "left" }}>
+            <h1 className='event-main-name' style={{ textAlign: "left" }}>
               Hackathon
             </h1>
             <h1
-              className="event-main-name"
+              className='event-main-name'
               style={{
                 fontSize: "5vh",
                 textAlign: "left",
@@ -71,7 +93,7 @@ const NewDash = () => {
               7th October, 2020
             </h1>
             <h1
-              className="event-main-name"
+              className='event-main-name'
               style={{
                 fontSize: "5vh",
                 textAlign: "left",
@@ -96,25 +118,25 @@ const NewDash = () => {
             <br />
             <button
               style={{ margin: "0", marginBottom: "3vh", width: "30%" }}
-              className="edit"
+              className='edit'
             >
               Edit Details
             </button>
           </div>
-          <div className="dash-col2">
-            <h1 className="dash-header" style={{ textAlign: "left" }}>
+          <div className='dash-col2'>
+            <h1 className='dash-header' style={{ textAlign: "left" }}>
               NUMBER OF REGISTRATIONS
             </h1>
-            <PieChart width={240} height={250} margin="none">
+            <PieChart width={240} height={250} margin='none'>
               <Pie
                 data={data01}
-                dataKey="value"
+                dataKey='value'
                 cx={130}
                 cy={100}
                 outerRadius={70}
                 innerRadius={60}
                 paddingAngle={3}
-                fill="#8884d8"
+                fill='#8884d8'
                 label
               >
                 {data01.map((entry, index) => (
@@ -125,61 +147,61 @@ const NewDash = () => {
                 ))}
               </Pie>
               <Legend
-                layout="horizontal"
-                verticalAlign="bottom"
-                align="center"
+                layout='horizontal'
+                verticalAlign='bottom'
+                align='center'
               />
               <Tooltip />
             </PieChart>
-            <p style={{ color: "#3454ee", marginTop: "5vh", textAlign: "left" }}>
+            <p
+              style={{ color: "#3454ee", marginTop: "5vh", textAlign: "left" }}
+            >
               Venue Capacity <b>1400</b>
             </p>
           </div>
-          <div className="dash-col2">
-            <h1 className="dash-header" style={{ textAlign: "left" }}>
+          <div className='dash-col2'>
+            <h1 className='dash-header' style={{ textAlign: "left" }}>
               UPCOMING EVENTS
             </h1>
-            <div className="event-list-div">
-              <div className="event-box" style={{ flexShrink: "0" }}>
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+            <div className='event-list-div'>
+              <div className='event-box' style={{ flexShrink: "0" }}>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box">
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box'>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box">
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box'>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box">
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box'>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box">
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box'>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box">
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box'>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box">
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box'>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
-              <div className="event-box" style={{ flexShrink: "0" }}>
-                <p className="event-head">Event Name</p>
-                <p className="event-subtext">1st October</p>
+              <div className='event-box' style={{ flexShrink: "0" }}>
+                <p className='event-head'>Event Name</p>
+                <p className='event-subtext'>1st October</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="dash-row">
-          <div
-            className="dash-col1"
-          >
-            <h1 className="dash-header" style={{ textAlign: "left" }}>
+        <div className='dash-row'>
+          <div className='dash-col1'>
+            <h1 className='dash-header' style={{ textAlign: "left" }}>
               REGISTRATIONS BY WEEK
             </h1>
             <p style={{ color: "#3454ee", textAlign: "left" }}>
@@ -197,7 +219,7 @@ const NewDash = () => {
             <LineChart
               width={500}
               height={300}
-              data={data}
+              data={barData}
               margin={{
                 top: 20,
                 right: 30,
@@ -205,31 +227,32 @@ const NewDash = () => {
                 bottom: 20,
               }}
             >
-              <CartesianGrid strokeDasharray="2 2" />
-              <XAxis dataKey="name" />
-              <YAxis dataKey="Registrations" tickCount={10} />
+              <CartesianGrid strokeDasharray='2 2' />
+              <XAxis dataKey='name' />
+              <YAxis dataKey='no' tickCount={10} />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="Registrations" stroke="#3545ee" />
+              <Line type='monotone' dataKey='no' stroke='#3545ee' />
             </LineChart>
           </div>
-          <div className="dash-col2">
-            <h1 className="dash-header" style={{ textAlign: "left" }}>
+          <div className='dash-col2'>
+            <h1 className='dash-header' style={{ textAlign: "left" }}>
               REGISTRATIONS BY BRANCH
             </h1>
             <PieChart width={240} height={250} marginTop={30}>
               <Pie
-                data={data02}
-                dataKey="value"
+                data={pieData}
+                dataKey='no'
+                nameKey='branch'
                 cx={130}
                 cy={100}
                 outerRadius={70}
-                fill="#8884d8"
+                fill='#8884d8'
                 innerRadius={60}
                 paddingAngle={3}
                 label
               >
-                {data02.map((entry, index) => (
+                {pieData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={colors2[index % colors2.length]}
@@ -237,25 +260,28 @@ const NewDash = () => {
                 ))}
               </Pie>
               <Legend
-                layout="horizontal"
-                verticalAlign="bottom"
-                align="center"
+                layout='horizontal'
+                verticalAlign='bottom'
+                align='center'
               />
               <Tooltip />
             </PieChart>
           </div>
-          <div style={{ textAlign: "left" }} className="dash-col2">
-            <h1 className="dash-header" style={{ textAlign: "left", marginBottom: "5vh" }}>
+          <div style={{ textAlign: "left" }} className='dash-col2'>
+            <h1
+              className='dash-header'
+              style={{ textAlign: "left", marginBottom: "5vh" }}
+            >
               OTHER DETAILS
             </h1>
             <h3
-              className="dash-header"
+              className='dash-header'
               style={{
                 opacity: ".9",
                 fontWeight: "800",
                 color: "black",
                 fontSize: "3vh",
-                color: "#3454ee"
+                color: "#3454ee",
               }}
             >
               Year-wise breakdown
@@ -269,18 +295,18 @@ const NewDash = () => {
             <p>
               3rd Year <b style={{ color: "#3454ee" }}>175</b>
             </p>
-            <p style={{marginBottom: "5vh"}}>
+            <p style={{ marginBottom: "5vh" }}>
               4th Year <b style={{ color: "#3454ee" }}>95</b>
             </p>
             <h3
-              className="dash-header"
+              className='dash-header'
               style={{
                 opacity: ".9",
                 fontWeight: "800",
                 color: "black",
                 fontSize: "3vh",
                 marginTop: "3vh",
-                color: "#3454ee"
+                color: "#3454ee",
               }}
             >
               E-mail Invitations

@@ -83,6 +83,7 @@ router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
   app.set("id", req.session.passport.user);
   let username = req.body.name;
+  console.log(username);
   // let username = "yoman";
   let data = await events(username);
   let days = [
