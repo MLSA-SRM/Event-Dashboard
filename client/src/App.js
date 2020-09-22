@@ -7,7 +7,6 @@ import NewEvent from "./NewEvent";
 import UserPage from "./User";
 import Landing from "./landing";
 import ProtectedRoute from "./ProtectedRoute";
-import NewNav from "./UI2.0/newnav";
 import NewDash from "./UI2.0/newdashboard";
 import NewPeople from "./UI2.0/newpeople";
 import NewCalendar from "./UI2.0/newcalendar";
