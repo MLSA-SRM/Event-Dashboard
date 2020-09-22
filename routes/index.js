@@ -159,10 +159,12 @@ router.get("/home/bargraph", async (req, res, next) => {
   let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await homeData(id);
+  // res.json(data);
   data.forEach((item) => {
     body.push({
-      name: item.name,
-      no: item.public.length,
+      title: item.name,
+      date: item.startDate,
+      // no: item.public.length,
     });
   });
   res.json(body);
