@@ -60,10 +60,10 @@ function App(props) {
             username={getusername}
             component={UserPage}
           ></ProtectedRoute>
-          <Route exact path='/user/:id'>
+          <ProtectedRoute exact path='/user/:id'>
             {/* <Home /> */}
             <NewDash />
-          </Route>
+          </ProtectedRoute>
           <Route exact path='/table'>
             <Table />
           </Route>

@@ -118,13 +118,16 @@ router.post("/piechart", async (req, res, next) => {
   let username = req.body.name;
 
   let data = await events(username);
+  // console.log(data);
+  let total = 0;
   let branch = [];
   let result = [];
   data.public.forEach((item) => {
     // console.log(item.name.branch);
     branch.push(item.name.branch);
+    total += 1;
   });
-  console.log(branch);
+  // console.log(branch);
   branch.forEach((lol) => {
     let counter = 0;
     let flag = 0;
@@ -143,8 +146,12 @@ router.post("/piechart", async (req, res, next) => {
       });
     }
   });
-  console.log(result);
-  res.json(result);
+  // console.log(result);
+  res.json({
+    total: data.attendence,
+    attendence: total,
+    data: result,
+  });
 });
 
 router.get("/home/bargraph", async (req, res, next) => {
