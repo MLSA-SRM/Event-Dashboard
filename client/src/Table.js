@@ -58,21 +58,21 @@ function Table() {
   };
   return (
     <div>
-      <div className='title'>
-        <h1 className='titletext'>Participant List</h1>
+      <div className="title">
+        <h1 className="titletext">Participant List</h1>
       </div>
-      <div className='list-body'>
+      <div className="list-body">
         <div
-          className='ag-theme-material list-data'
+          className="ag-theme-material list-data"
           style={{
             height: "50vh",
             // width: "200vh",
           }}
         >
-          <div className='sendMailButtonDiv'>
+          <div className="sendMailButtonDiv">
             <button
-              className='sendMailsButton'
-              type='submit'
+              className="sendMailsButton"
+              type="submit"
               onClick={sendMails}
             >
               Send Email To Participants
@@ -82,7 +82,7 @@ function Table() {
             animateRows
             pagination={true}
             onGridReady={(params) => setDataParams(params.api)}
-            rowSelection='multiple'
+            rowSelection="multiple"
             columnDefs={column}
             rowData={rowDataValues}
           />
