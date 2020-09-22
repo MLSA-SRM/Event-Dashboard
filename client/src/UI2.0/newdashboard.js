@@ -55,10 +55,10 @@ const NewDash = () => {
       });
   }, []);
 
-  const data01 = [
-    { name: "Registered", value: 1295 },
-    { name: "Remaining", value: 145 },
-  ];
+  // const data01 = [
+  //   { name: "Registered", value: 1295 },
+  //   { name: "Remaining", value: 145 },
+  // ];
 
   const colors = ["#3454ee", "#ff4444"];
   const colors2 = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
