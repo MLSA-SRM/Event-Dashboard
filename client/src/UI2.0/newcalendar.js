@@ -15,7 +15,7 @@ export default class NewCalendar extends React.Component {
     return (
       <div>
         <NewNav />
-        <div style={{ width: "80%", margin: "auto", marginTop: "10vh" }}>
+        <div className="align1">
           <FullCalendar
             plugins={[dayGridPlugin]}
             eventClick={notify}

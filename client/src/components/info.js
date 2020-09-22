@@ -12,7 +12,6 @@ import {
   Cell,
 } from "recharts";
 import "./info.css";
-import { log } from "debug";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
