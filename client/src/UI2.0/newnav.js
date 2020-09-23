@@ -1,36 +1,52 @@
 import React from "react";
 import "./newnav.css";
 import { Link, NavLink } from "react-router-dom";
+import {
+  GoGraph,
+  GoOrganization,
+  GoCalendar,
+  GoPerson,
+  GoSignOut,
+  GoPlus,
+} from "react-icons/go";
 
 const NewNav = () => {
   return (
-    <div className='newBody'>
-      <div className='main-nav'>
-        <ul className='main-nav-list'>
-          <NavLink to='/newdashboard' activeClassName='current'>
-            <li className='main-nav-item'>Dashboard</li>
+    <div className="newBody">
+      <div className="main-nav">
+        <ul className="main-nav-list">
+          <NavLink to="/user" activeClassName="current">
+            <li className="main-nav-item">
+              <GoGraph className="icon" /> Dashboard
+            </li>
           </NavLink>
-          <NavLink to='/newpeople' activeClassName='current'>
-            <li className='main-nav-item'>People</li>
+          <NavLink to="/newpeople" activeClassName="current">
+            <li className="main-nav-item">
+              <GoOrganization className="icon" /> People
+            </li>
           </NavLink>
-          <NavLink to='/user' activeClassName='current'>
-            <li className='main-nav-item'>Events</li>
+          <NavLink to="/newcalendar" activeClassName="current">
+            <li className="main-nav-item">
+              <GoCalendar className="icon" /> Calendar
+            </li>
           </NavLink>
-          <NavLink to='/newcalendar' activeClassName='current'>
-            <li className='main-nav-item'>Calendar</li>
+          <NavLink to="/newevent" activeClassName="current">
+            <li className="main-nav-item">
+              <GoPlus className="icon" /> New Event
+            </li>
           </NavLink>
         </ul>
       </div>
-      <div className='user-tab'>
-        <div className='user-dp'>
-          <img
-            className='user-dp'
-            alt="user profile"
-            src='https://i.ytimg.com/vi/oHg5SJYRHA0/hqdefault.jpg'
-          ></img>
-        </div>
-        <Link to='/user' style={{ textDecoration: "none" }}>
-          <h1 className='username'>Jugal</h1>
+      <div className="user-tab">
+        <Link to="/user" style={{ textDecoration: "none" }}>
+          <h1 className="username">
+            <GoPerson className="icon" /> Jugal
+          </h1>
+        </Link>
+        <Link to="/logOut" style={{ textDecoration: "none" }}>
+          <h1 className="username">
+            <GoSignOut className="icon" /> Logout
+          </h1>
         </Link>
       </div>
     </div>

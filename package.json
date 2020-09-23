@@ -26,6 +26,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "qrcode": "^1.4.4",
+    "react-icons": "^3.11.0",
     "session": "^0.1.0"
   },
   "devDependencies": {

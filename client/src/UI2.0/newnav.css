@@ -1,56 +1,72 @@
-.newBody{
-    font-family: 'Manrope', sans-serif;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 2vh;
+.newBody {
+  font-family: "Manrope", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2vh;
 }
-.main-nav{
-    width: 57%;
-    box-shadow: 0px 0px 12px  rgb(209, 208, 208);
-    height: 8vh;
-    border-radius: 3vh;
-    padding: 2vh;
+.icon {
+  position: relative;
+  top: 2px;
+  font-size: 1.1em;
+  right: 2px;
 }
-.main-nav-list{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    list-style: none;
-    margin: auto;
+.main-nav {
+  width: 55%;
+  box-shadow: 0px 0px 12px rgb(221, 221, 221);
+  height: 8vh;
+  border-radius: 2vh;
+  padding: 2vh;
 }
-.main-nav-item{
-    float: left;
-    font-weight: 800;
-    font-size: 1.1em;
-    text-decoration: none;
-    color: black;
+.main-nav-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  list-style: none;
+  margin: auto;
 }
-.user-tab{
-    display: flex;
-    justify-content: space-around;
-    width: 12%;
-    box-shadow: 0px 0px 12px  rgb(209, 208, 208);
-    border-radius: 3vh;
-    height: 8vh;
-    padding: auto;
-    padding: 1vh;
+.main-nav-item {
+  float: left;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-decoration: none;
+  color: black;
+  opacity: 0.5;
 }
-.username{
-    text-decoration: none;
-    font-size: 1.1em;
-    font-weight: 800;
-    padding: 1vh;
-    color: black;
+.main-nav-item:hover {
+  opacity: 1;
 }
-.user-dp{
-    height:6vh;
-    background: rgb(133, 131, 131);
-    width: 6vh;
-    border-radius: 60px;
+.user-tab {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+  box-shadow: 0px 0px 12px rgb(221, 221, 221);
+  border-radius: 2vh;
+  height: 8vh;
+  padding: auto;
+  padding: 1vh;
 }
-.current li{
-    color: #3454ee;
-    border-bottom: 3px solid #3454ee;
+.username {
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 1vh;
+  color: black;
+  opacity: 0.5;
+}
+.username:hover {
+  opacity: 1;
+}
+.user-dp {
+  height: 6vh;
+  background: rgb(133, 131, 131);
+  width: 6vh;
+  border-radius: 60px;
+}
+.current li {
+  color: #3454ee;
+  font-weight: 800;
+  opacity: 1;
+  border-bottom: 3px solid #3454ee;
 }
