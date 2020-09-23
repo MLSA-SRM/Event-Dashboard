@@ -1,24 +1,42 @@
 const auth = {
   isAuthenticated: false,
   authenticate(cb) {
-    // fetch('/user', {
-    // 	credentials: 'include'
+    fetch("/isAuth", {
+      credentials: "include",
+    })
+      .then((res) => {
+        this.isAuthenticated = true;
+        res
+          .json()
+          .then((data) => ({
+            data: data,
+            status: data.status,
+          }))
+          .then((response) => {
+            // console.log(response);
+            if (typeof cb === "function") {
+              // cb(res.json().user);
+              cb(response.data);
+            }
+          });
+      })
+      .catch((err) => {
+        console.log("Error Fetching Authorised user " + err);
+      });
+    // cb();
+  },
+  logout(cb) {
+    // fetch("/logout", {
+    //   method: "POST",
+    //   credentials: "include",
     // })
-    // 	.then((res) => {
-    this.isAuthenticated = true;
-    // console.log(res.data.user);
-    // if (typeof cb === 'function') {
-    // 	cb(res.json().user);
-    // }
+    //   .then((res) => {
+    this.isAuthenticated = false;
     cb();
     // })
     // .catch((err) => {
-    // 	console.log('Error Fetching Authorised user');
+    //   console.log("ERROR LOGOUT");
     // });
-  },
-  logout(cb) {
-    this.isAuthenticated = false;
-    cb();
   },
   isUserAuthenticated() {
     return this.isAuthenticated;

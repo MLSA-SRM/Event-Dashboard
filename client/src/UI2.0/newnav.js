@@ -25,6 +25,7 @@ const NewNav = () => {
         <div className='user-dp'>
           <img
             className='user-dp'
+            alt="user profile"
             src='https://i.ytimg.com/vi/oHg5SJYRHA0/hqdefault.jpg'
           ></img>
         </div>

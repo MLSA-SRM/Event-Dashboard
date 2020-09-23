@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var router = express.Router();
-var passport = require("passport");
+// var passport = require("passport");
 var bcrypt = require("bcrypt");
 var {
   events,
@@ -12,42 +12,130 @@ var {
 } = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
+var jwt = require("jsonwebtoken");
+var auth = require("../Middleware/auth");
+const { use } = require("../config/mailConfig");
 // const { eventNames } = require("../config/mailConfig");
 
-router.post("/login", function (req, res, next) {
-  passport.authenticate("local", (err, user) => {
-    if (err) throw err;
+// router.get("/isAuth", function (req, res, next) {
+//   // console.log(req.user);
+//   console.log(req.session);
+//   if (req.isAuthenticated()) {
+//     return res.json({
+//       user: req.user,
+//       status: true,
+//     });
+//   } else {
+//     return res.json({
+//       error: "Not authenticated",
+//       status: false,
+//     });
+//   }
+// });
+
+router.post("/login", async function (req, res, next) {
+  // passport.authenticate("local", (err, user) => {
+  //   if (err) throw err;
+  //   if (!user) {
+  //     res.json({ status: false });
+  //   } else {
+  //     req.logIn(user, (err) => {
+  //       if (err) throw err;
+
+  //       // console.log(res);
+
+  //       res.json({
+  //         userInfo: user,
+  //         status: true,
+  //       });
+  //     });
+  //   }
+  // })(req, res, next);
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ msg: "Please enter all the fields" });
+  }
+
+  try {
+    const user = await User.findOne({ username });
     if (!user) {
-      res.json({ status: false });
-    } else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        // console.log(res);
-        res.json({
-          userInfo: user,
-          status: true,
-        });
-      });
+      console.log("User does not exist");
+      return res.status(400).json({ msg: "User does not exist" });
     }
-  })(req, res, next);
+
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (!isMatch) {
+        return res.status(400).json({ msg: "Wrong Credentials" });
+      }
+      jwt.sign(
+        { id: user.id },
+        "jwtToken",
+        { expiresIn: 3600 },
+        (err, token) => {
+          if (err) throw err;
+          return res
+            .status(200)
+            .json({ token, user: { username: user.username, id: user.id } });
+        }
+      );
+    });
+
+    // const isMatch = bcrypt.compare(password, user.password);
+    // if (!isMatch) {
+    //   console.log("Wrong Credentials");
+    //   return res.status(400).json({ msg: "Wrong Credentials" });
+    // }
+
+    // const token = jwt.sign({ id: user._id }, "jwtToken", { expiresIn: 3600 });
+    // if (!token) {
+    //   console.log("Could'nt sign the token");
+    // }
+
+    // res.status(200).json({
+    //   token,
+    //   user: { id: user._id, name: user.username },
+    //   status: true,
+    // });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
 });
 
-router.post("/register", function (req, res) {
+router.post("/register", async function (req, res) {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) {
       res.json(false);
     }
     if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.password, salt);
       let newUser = new User({
         username: req.body.username,
         password: hashedPassword,
       });
-      await newUser.save();
-      res.json(true);
+      newUser.save();
+
+      const token = jwt.sign({ id: newUser._id }, "jwtToken", {
+        expiresIn: 3600,
+      });
+      res.status(200).json({
+        token,
+        user: {
+          username: newUser.username,
+          id: newUser.id,
+        },
+      });
     }
   });
+});
+
+router.get("/authUser", auth, function (req, res) {
+  User.findById(req.user.id)
+    .select("-password")
+    .then((user) => {
+      res.json(user);
+    });
 });
 
 router.get("/user", async (req, res, next) => {
@@ -159,10 +247,12 @@ router.get("/home/bargraph", async (req, res, next) => {
   let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await homeData(id);
+  // res.json(data);
   data.forEach((item) => {
     body.push({
-      name: item.name,
-      no: item.public.length,
+      title: item.name,
+      date: item.startDate,
+      // no: item.public.length,
     });
   });
   res.json(body);
