@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import Tippy from "@tippyjs/react";
 import NewNav from "./newnav";
 import { ToastContainer, toast } from "react-toastify";
+
 
 const Newcalendar = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
+    message();
     axios
       .get("/home/bargraph")
       .then((res) => setEvents(res.data))
@@ -20,7 +21,8 @@ const Newcalendar = () => {
       <div style={{ width: "80%", margin: "auto", marginTop: "10vh" }}>
         <FullCalendar
           plugins={[dayGridPlugin]}
-          eventClick={notify}
+          eventMouseEnter={notify}
+          eventMouseLeave={dismiss}
           initialview='dayGridMonth'
           events={events}
           height={500}
@@ -33,5 +35,14 @@ const Newcalendar = () => {
 
 export default Newcalendar;
 
-const notify = (info) =>
-  toast.info("The event you are viewing is " + info.event.title);
+const notify = (info) => {
+  toast.info("The event you are viewing is " + info.event.title, {autoClose: false});
+}
+
+const dismiss = () => {
+  toast.dismiss();
+}
+
+const message = () => {
+  toast.info("Hover over any event to know more!", {autoClose: "5000", position: "top-center"});
+}
