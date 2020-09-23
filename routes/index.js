@@ -68,7 +68,7 @@ router.post("/login", async function (req, res, next) {
         return res.status(400).json({ msg: "Wrong Credentials" });
       }
       jwt.sign(
-        { id: user.id },
+        { id: user._id },
         "jwtToken",
         { expiresIn: 3600 },
         (err, token) => {
@@ -123,19 +123,36 @@ router.post("/register", async function (req, res) {
         token,
         user: {
           username: newUser.username,
-          id: newUser.id,
+          id: newUser._id,
         },
       });
     }
   });
 });
 
-router.get("/authUser", auth, function (req, res) {
-  User.findById(req.user.id)
-    .select("-password")
-    .then((user) => {
-      res.json(user);
-    });
+router.post("/validToken", async function (req, res) {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+
+    const verified = jwt.verify(token, "jwtToken");
+    if (!verified) return res.json(false);
+
+    const user = await User.findById(verified.id);
+    if (!user) return res.json(false);
+
+    return res.json(true);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.get("/authUser", auth, async function (req, res) {
+  const user = await User.findById(req.user.id);
+  res.json({
+    name: user.username,
+    id: user._id,
+  });
 });
 
 router.get("/user", async (req, res, next) => {
