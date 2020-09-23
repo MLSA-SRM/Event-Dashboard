@@ -5,7 +5,6 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import NewNav from "./newnav";
 import { ToastContainer, toast } from "react-toastify";
 
-
 const Newcalendar = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
@@ -18,12 +17,12 @@ const Newcalendar = () => {
   return (
     <div>
       <NewNav />
-      <div style={{ width: "80%", margin: "auto", marginTop: "10vh" }}>
+      <div style={{ width: "85%", margin: "auto", marginTop: "10vh" }}>
         <FullCalendar
           plugins={[dayGridPlugin]}
           eventMouseEnter={notify}
           eventMouseLeave={dismiss}
-          initialview='dayGridMonth'
+          initialview="dayGridMonth"
           events={events}
           height={500}
         />
@@ -36,13 +35,18 @@ const Newcalendar = () => {
 export default Newcalendar;
 
 const notify = (info) => {
-  toast.info("The event you are viewing is " + info.event.title, {autoClose: false});
-}
+  toast.info("The event you are viewing is " + info.event.title, {
+    autoClose: false,
+  });
+};
 
 const dismiss = () => {
   toast.dismiss();
-}
+};
 
 const message = () => {
-  toast.info("Hover over any event to know more!", {autoClose: "5000", position: "top-center"});
-}
+  toast.info("Hover over any event to know more!", {
+    autoClose: "5000",
+    position: "top-center",
+  });
+};
