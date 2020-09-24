@@ -10,6 +10,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import NewDash from "./UI2.0/newdashboard";
 import NewPeople from "./UI2.0/newpeople";
 import NewCalendar from "./UI2.0/newcalendar";
+import AddEvent from "./UI2.0/addevent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Context from "./Context";
@@ -40,6 +41,9 @@ function App(props) {
           </Route>
           <Route exact path='/newcalendar'>
             <NewCalendar />
+          </Route>
+          <Route exact path='/addevent'>
+            <AddEvent />
           </Route>
           <ProtectedRoute
             username={getusername}

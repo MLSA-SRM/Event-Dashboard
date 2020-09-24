@@ -30,7 +30,7 @@ const NewNav = () => {
               <GoCalendar className="icon" /> Calendar
             </li>
           </NavLink>
-          <NavLink to="/newevent" activeClassName="current">
+          <NavLink to="/addevent" activeClassName="current">
             <li className="main-nav-item">
               <GoPlus className="icon" /> New Event
             </li>
