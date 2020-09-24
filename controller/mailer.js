@@ -9,7 +9,7 @@ const mailer = (data) => {
       let mailDetails = {
         from: "yoman@helo.in",
         to: data[a].email,
-        subject: "Test mail",
+        subject: "Event Registration",
         attachDataUrls: true,
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -66,7 +66,7 @@ const mailer = (data) => {
         }
         .header h3{
         color: #28df99;
-        font-family: 'Cookie', cursive;
+        font-family: 'Cookie', 'Verdana', san-serif;
         font-size: 5vh;
         text-align: center;
         }
@@ -103,7 +103,7 @@ const mailer = (data) => {
         Start Date: <span class="extra">Date</span> <br>
         Start Time: <span class="extra">Time</span> <br>
         Venue: <span class="extra">Location</span> <br><br>
-        P.S. -> This is not a +1 ticket. So don't even think about it.
+        We hope to see you there.
         </p>
 
         <div class="qr-img">
