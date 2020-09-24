@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Auth from "./Auth";
 import "./Auth.css";
-
+import { State } from "./Context";
 function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
+  const { handleUserName } = useContext(State);
   //toastify config
   const notifySuccess = () =>
     toast.success("Login Successful!", {
@@ -45,7 +45,8 @@ function Login(props) {
       .then((res) => {
         if (res.data.status) {
           // console.log(res.data.userInfo.username);
-          props.handleUsername(res.data.userInfo.username);
+          // props.handleUsername(res.data.userInfo.username);
+          handleUserName(res.data.userInfo.username);
           Auth.authenticate(() => {
             history.push("/user");
             notifySuccess();

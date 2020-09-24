@@ -8,9 +8,6 @@
     "dev": "concurrently --kill-others \" npm run server \" \" npm run client \" "
   },
   "dependencies": {
-    "@fullcalendar/daygrid": "^5.3.2",
-    "@fullcalendar/react": "^5.3.1",
-    "@tippyjs/react": "^4.1.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
@@ -27,7 +24,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "qrcode": "^1.4.4",
-    "react-icons": "^3.11.0",
     "session": "^0.1.0"
   },
   "devDependencies": {

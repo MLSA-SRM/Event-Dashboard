@@ -4,29 +4,29 @@ import "tippy.js/animations/scale.css";
 import "tippy.js/themes/light.css";
 import React from "react";
 
-const EventInfo = () => {
+const EventInfo = ({ name }) => {
   return (
     <Tippy
-      theme="light"
-      animation="scale"
-      content="This tab shows the basic event details"
+      theme='light'
+      animation='scale'
+      content='This tab shows the basic event details'
     >
       <div
-        className="dash-col1"
+        className='dash-col1'
         style={{
           display: "flex",
           flexFlow: "column",
           justifyContent: "left",
         }}
       >
-        <h1 className="dash-header" style={{ textAlign: "left" }}>
+        <h1 className='dash-header' style={{ textAlign: "left" }}>
           EVENT INFO
         </h1>
-        <h1 className="event-main-name" style={{ textAlign: "left" }}>
-          Hackathon
+        <h1 className='event-main-name' style={{ textAlign: "left" }}>
+          {name}
         </h1>
         <h1
-          className="event-main-name"
+          className='event-main-name'
           style={{
             fontSize: "5vh",
             textAlign: "left",
@@ -38,7 +38,7 @@ const EventInfo = () => {
           7th October, 2020
         </h1>
         <h1
-          className="event-main-name"
+          className='event-main-name'
           style={{
             fontSize: "5vh",
             textAlign: "left",
@@ -63,7 +63,7 @@ const EventInfo = () => {
         <br />
         <button
           style={{ margin: "0", marginBottom: "3vh", width: "30%" }}
-          className="edit"
+          className='edit'
         >
           Edit Details
         </button>
