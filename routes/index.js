@@ -188,6 +188,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "ABC",
     },
     {
       name: "Doe",
@@ -195,6 +196,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "XYZ",
     },
     {
       name: "Doe",
@@ -202,6 +204,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "JKL",
     },
     {
       name: "Doe",
@@ -209,6 +212,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "ABC",
     },
     {
       name: "Doe",
@@ -216,6 +220,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "JKL",
     },
     {
       name: "Doe",
@@ -223,6 +228,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "XYZ",
     },
   ];
   let keys = Object.keys(json[0]);

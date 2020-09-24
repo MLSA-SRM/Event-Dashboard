@@ -3,7 +3,7 @@ import logo1 from './images/Business_PNG.png';
 import logo2 from './images/Coding_PNG.png';
 import logo3 from './images/Web_design_PNG.png';
 
-class Stuff extends Component {
+class Stuff extends Component { 
   render() {
     return (
       <React.Fragment>
