@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
@@ -14,14 +14,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
 import UserContext from "./UserContext";
-import Context from "./Context";
+
+// import Context from "./Context";
 
 function App(props) {
-  const [getusername, setUsername] = useState("");
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined,
   });
+
   useEffect(() => {
     const checkForUserLoggedIn = async () => {
       let token = localStorage.getItem("auth-token");
@@ -35,12 +36,12 @@ function App(props) {
         { headers: { "x-auth-token": token } }
       );
       if (tokenResponse.data) {
-        const userdata = await Axios.get("http://localhost:5000/authUser", {
+        const userdataRes = await Axios.get("http://localhost:5000/authUser", {
           headers: { "x-auth-token": token },
         });
         setUserData({
           token,
-          user: userdata.data,
+          user: userdataRes.data.user,
         });
       }
     };
@@ -49,60 +50,54 @@ function App(props) {
   }, []);
 
   return (
-    // <Context>
-    <Router>
-      <UserContext.Provider value={{ userData, setUserData }}>
-        <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/login">
-            <Login handleUsername={setUsername} />
-          </Route>
-          <Route exact path="/signIn">
-            <Register />
-          </Route>
-          {/* <Route exact path='/newui'>
+    <>
+      <Router>
+        <UserContext.Provider value={{ userData, setUserData }}>
+          <Switch>
+            <Route exact path="/">
+              <Landing />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            {/* <Route
+            exact
+            path="/login"
+            render={(routeProps) => <Login {...routeProps} />}
+          />  */}
+            <Route exact path="/signIn">
+              <Register />
+            </Route>
+            {/* <Route exact path='/newui'>
             <NewNav />
           </Route> */}
-          {/* <Route exact path='/newdashboard'>
+            {/* <Route exact path='/newdashboard'>
             <NewDash />
           </Route> */}
-          <Route exact path="/newpeople">
-            <NewPeople />
-          </Route>
-          <Route exact path="/newcalendar">
-            <NewCalendar />
-          </Route>
-          <ProtectedRoute
-            username={getusername}
-            exact
-            path="/dashboard"
-            component={Home}
-          />
-          <ProtectedRoute
-            exact
-            username={getusername}
-            path="/newevent"
-            component={NewEvent}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/user"
-            username={getusername}
-            component={UserPage}
-          ></ProtectedRoute>
-          <ProtectedRoute exact path="/user/:id">
-            {/* <Home /> */}
-            <NewDash />
-          </ProtectedRoute>
-          <Route exact path="/table">
-            <Table />
-          </Route>
-        </Switch>
-      </UserContext.Provider>
-    </Router>
-    // </Context>
+            <Route exact path="/newpeople">
+              <NewPeople />
+            </Route>
+            <Route exact path="/newcalendar">
+              <NewCalendar />
+            </Route>
+            <Route exact path="/dashboard" component={Home} />
+            <Route exact path="/newevent" component={NewEvent}></Route>
+            <ProtectedRoute
+              exact
+              path="/user"
+              component={UserPage}
+            ></ProtectedRoute>
+            <ProtectedRoute exact path="/user/:id">
+              {/* <Home /> */}
+              <NewDash />
+            </ProtectedRoute>
+            <Route exact path="/table">
+              <Table />
+            </Route>
+          </Switch>
+        </UserContext.Provider>
+      </Router>
+    </>
   );
 }
 

@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Auth from "./Auth";
 import "./Auth.css";
-
+import UserContext from "./UserContext";
+import Context from "./Context";
+import { withRouter } from "react-router-dom";
 function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
+  const { userData, setUserData } = useContext(UserContext);
   //toastify config
   const notifySuccess = () =>
     toast.success("Login Successful!", {
@@ -31,9 +33,9 @@ function Login(props) {
       progress: undefined,
     });
 
-  const loginUser = (e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
-    axios({
+    const loginRes = await axios({
       method: "POST",
       data: {
         username: loginUsername,
@@ -41,24 +43,43 @@ function Login(props) {
       },
       withCredentials: true,
       url: "/login",
-    })
-      .then((res) => {
-        if (res.data.status) {
-          // console.log(res.data.userInfo.username);
-          props.handleUsername(res.data.userInfo.username);
-          Auth.authenticate((res) => {
-            console.log(res);
-            history.push("/user");
-            notifySuccess();
-          });
-        } else {
-          history.push("/login");
-          notifyFailure();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    });
+    console.log(loginRes);
+    const token = loginRes.data.token;
+    if (loginRes.data.status) {
+      Auth.authenticate(() => {
+        setUserData({
+          token,
+          user: loginRes.data.user,
+        });
+        localStorage.setItem("auth-token", token);
+        history.push("/user");
       });
+      // notifySuccess();
+    } else {
+      history.push("/login");
+      notifyFailure();
+    }
+
+    // history.push("/");
+
+    // .then((res) => {
+    //   if (res.data.status) {
+    //     // console.log(res.data.userInfo.username);
+    //     props.handleUsername(res.data.userInfo.username);
+    //     Auth.authenticate((res) => {
+    //       console.log(res);
+    //       history.push("/user");
+    //       notifySuccess();
+    //     });
+    //   } else {
+    //     history.push("/login");
+    //     notifyFailure();
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   return (

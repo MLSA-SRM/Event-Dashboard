@@ -2,15 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Nav from "./components/nav";
 import "./User.css";
-import Cookies from "js-cookie";
 import { useHistory } from "react-router-dom";
 import { State } from "./Context";
 const UserPage = (props) => {
   let history = useHistory();
-  let { handleChange } = useContext(State);
+  // let { handleChange } = useContext(State);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
-  const cookie = Cookies.get("username");
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
@@ -57,13 +55,12 @@ const UserPage = (props) => {
 
   const onClickRedirect = (data, date) => {
     history.push("/user/" + data);
-    handleChange(data, date);
+    // handleChange(data, date);
   };
 
   return (
     <div>
-      <div>{cookie}</div>
-      <Nav username={props.username} />
+      <Nav />
       <div className="user-body">
         <div className="user-info">
           <div className="user-box">

@@ -60,12 +60,12 @@ router.post("/login", async function (req, res, next) {
     const user = await User.findOne({ username });
     if (!user) {
       console.log("User does not exist");
-      return res.status(400).json({ msg: "User does not exist" });
+      return res.json({ msg: "User does not exist", status: false });
     }
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (!isMatch) {
-        return res.status(400).json({ msg: "Wrong Credentials" });
+        return res.json({ msg: "Wrong Credentials", status: false });
       }
       jwt.sign(
         { id: user._id },
@@ -73,9 +73,11 @@ router.post("/login", async function (req, res, next) {
         { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
-          return res
-            .status(200)
-            .json({ token, user: { username: user.username, id: user.id } });
+          return res.status(200).json({
+            token,
+            user: { username: user.username, id: user.id },
+            status: true,
+          });
         }
       );
     });
@@ -150,7 +152,7 @@ router.post("/validToken", async function (req, res) {
 router.get("/authUser", auth, async function (req, res) {
   const user = await User.findById(req.user.id);
   res.json({
-    name: user.username,
+    username: user.username,
     id: user._id,
   });
 });
@@ -174,15 +176,15 @@ router.get("/user", async (req, res, next) => {
   });
 });
 
-router.get("/logout", function (req, res, next) {
-  req.logout();
-  req.session.save((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.json(true);
-  });
-});
+// router.get("/logout", function (req, res, next) {
+//   req.logout();
+//   req.session.save((err) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     res.json(true);
+//   });
+// });
 
 router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
