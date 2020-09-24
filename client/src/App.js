@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";

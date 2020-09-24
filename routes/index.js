@@ -158,6 +158,7 @@ router.get("/authUser", auth, async function (req, res) {
 });
 
 router.get("/user", async (req, res, next) => {
+  console.log(req.isAuthenticated());
   let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
@@ -295,6 +296,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "ABC",
     },
     {
       name: "Doe",
@@ -302,6 +304,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "XYZ",
     },
     {
       name: "Doe",
@@ -309,6 +312,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "JKL",
     },
     {
       name: "Doe",
@@ -316,6 +320,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "ABC",
     },
     {
       name: "Doe",
@@ -323,6 +328,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "JKL",
     },
     {
       name: "Doe",
@@ -330,6 +336,7 @@ router.get("/table", (req, res, next) => {
       email: "xyz@gmail.com",
       IQ: "320",
       lang: "cpp",
+      event: "XYZ",
     },
   ];
   let keys = Object.keys(json[0]);
