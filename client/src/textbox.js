@@ -39,6 +39,13 @@ class box extends Component{
             <input type="color" id="body" name="body"/>
             <span className="tab1"></span>
             <label for="body">Secondary Colour</label>
+            <div className="mt">
+            <h2 className="Q2">Want something like, Hey, NAME?</h2><br/>
+            <label class="switch">
+            <input type="checkbox"/>
+            <span class="slider round"></span>
+            </label>
+            </div>
             </center>
             <h1>{this.state.data}</h1>
         </div>
