@@ -4,13 +4,13 @@ import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Auth.css";
-import UserContext from "./UserContext";
+import { State } from "./Context";
 
 function Register() {
   let history = useHistory();
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const { setUserData } = useContext(UserContext);
+  const { setUserData } = useContext(State);
   //Toastify Config
 
   const notifyFailure = () =>

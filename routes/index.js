@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
 var router = express.Router();
-// var passport = require("passport");
 var bcrypt = require("bcrypt");
 var {
   events,
@@ -17,40 +16,7 @@ var auth = require("../Middleware/auth");
 const { use } = require("../config/mailConfig");
 // const { eventNames } = require("../config/mailConfig");
 
-// router.get("/isAuth", function (req, res, next) {
-//   // console.log(req.user);
-//   console.log(req.session);
-//   if (req.isAuthenticated()) {
-//     return res.json({
-//       user: req.user,
-//       status: true,
-//     });
-//   } else {
-//     return res.json({
-//       error: "Not authenticated",
-//       status: false,
-//     });
-//   }
-// });
-
 router.post("/login", async function (req, res, next) {
-  // passport.authenticate("local", (err, user) => {
-  //   if (err) throw err;
-  //   if (!user) {
-  //     res.json({ status: false });
-  //   } else {
-  //     req.logIn(user, (err) => {
-  //       if (err) throw err;
-
-  //       // console.log(res);
-
-  //       res.json({
-  //         userInfo: user,
-  //         status: true,
-  //       });
-  //     });
-  //   }
-  // })(req, res, next);
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ msg: "Please enter all the fields" });
@@ -81,23 +47,6 @@ router.post("/login", async function (req, res, next) {
         }
       );
     });
-
-    // const isMatch = bcrypt.compare(password, user.password);
-    // if (!isMatch) {
-    //   console.log("Wrong Credentials");
-    //   return res.status(400).json({ msg: "Wrong Credentials" });
-    // }
-
-    // const token = jwt.sign({ id: user._id }, "jwtToken", { expiresIn: 3600 });
-    // if (!token) {
-    //   console.log("Could'nt sign the token");
-    // }
-
-    // res.status(200).json({
-    //   token,
-    //   user: { id: user._id, name: user.username },
-    //   status: true,
-    // });
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -158,8 +107,10 @@ router.get("/authUser", auth, async function (req, res) {
 });
 
 router.get("/user", async (req, res, next) => {
-  console.log(req.isAuthenticated());
+  // console.log(req.isAuthenticated());
   let id = req.session.passport.user;
+  // let id = req.user.id;
+  // console.log(req.user);
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
   let event = [];
@@ -177,19 +128,11 @@ router.get("/user", async (req, res, next) => {
   });
 });
 
-// router.get("/logout", function (req, res, next) {
-//   req.logout();
-//   req.session.save((err) => {
-//     if (err) {
-//       return next(err);
-//     }
-//     res.json(true);
-//   });
-// });
-
 router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
   app.set("id", req.session.passport.user);
+  // console.log(req.user);
+  // app.set("id", req.user.id);
   let username = req.body.name;
   console.log(username);
   // let username = "yoman";

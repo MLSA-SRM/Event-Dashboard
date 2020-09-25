@@ -6,9 +6,10 @@ import { useHistory } from "react-router-dom";
 import { State } from "./Context";
 const UserPage = (props) => {
   let history = useHistory();
-  // let { handleChange } = useContext(State);
+  let { userData, handleChange } = useContext(State);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
+  const usernname = userData.user.username;
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
@@ -48,14 +49,14 @@ const UserPage = (props) => {
           status: value,
         });
       });
-      // console.log(data);
+      console.log(data);
       setData(data);
     });
   }, []);
 
   const onClickRedirect = (data, date) => {
     history.push("/user/" + data);
-    // handleChange(data, date);
+    handleChange(data, date);
   };
 
   return (
@@ -75,7 +76,7 @@ const UserPage = (props) => {
               ></img>
             </div>
             <br />
-            <h1 className="head">{name}</h1>
+            <h1 className="head">{usernname}</h1>
             <p className="user-text">Software Developer</p>
             <p className="user-text">billgates@microsoft.com</p>
             <p className="user-text">+91 9435357748</p>
@@ -124,15 +125,14 @@ const UserPage = (props) => {
                     )}
                   </tr>
                 ))}
-
-                {/* <tr onClick={() => onClickRedirect("hackathon")}>
+                {/* 
+                <tr onClick={() => onClickRedirect("hackathon")}>
                   <td>Hackathon</td>
                   <td>13/09/2020</td>
                   <td>
                     <p className="yellow">Ongoing</p>
                   </td>
                 </tr>
-
 
                 <tr onClick={() => onClickRedirect("workshop1")}>
                   <td>Workshop 1</td>

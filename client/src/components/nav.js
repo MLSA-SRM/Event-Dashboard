@@ -3,11 +3,11 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import Auth from "../Auth";
 import "./nav.css";
-import UserContext from "../UserContext";
+import { State } from "../Context";
 
 function Nav(props) {
-  const { userData, setUserData } = useContext(UserContext);
-
+  const { userData, setUserData } = useContext(State);
+  const name = userData.user.username;
   let history = useHistory();
 
   // const [ navItems ] = useState([
@@ -57,7 +57,7 @@ function Nav(props) {
             <li className="navitem">New Event</li>
           </Link>
           <Link className="navLink" to="/user">
-            <li className="navitem">Kunal</li>
+            <li className="navitem">{name}</li>
           </Link>
           {/* {navItems.map(({ link, title }) => (
 						<Link className="navLink" to={link}>

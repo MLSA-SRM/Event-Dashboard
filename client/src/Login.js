@@ -5,14 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Auth from "./Auth";
 import "./Auth.css";
-import UserContext from "./UserContext";
-import Context from "./Context";
-import { withRouter } from "react-router-dom";
+import { State } from "./Context";
 function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(State);
   //toastify config
   const notifySuccess = () =>
     toast.success("Login Successful!", {
