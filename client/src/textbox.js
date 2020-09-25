@@ -1,10 +1,36 @@
-import { ContentHook } from "@fullcalendar/react";
-import React, { Component } from "react";
+// import { ContentHook } from "@fullcalendar/react";
+import React, { useState } from "react";
+import axios from "axios";
+import marked from "marked";
+import parse from "html-react-parser";
 import "./style.css";
 
+const Box = () => {
+  const [data, setData] = useState("");
+  const [primary, setPrimary] = useState("#fff");
+  const [secondary, setSecondary] = useState("#000");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("/test/mailer", {
+        data: marked(data),
+        primary,
+        secondary,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+    setData("");
+  };
+  const mailer = {
+    background: primary,
+    marginLeft: "10%",
+    width: "80%",
+    height: "500px",
+    color: secondary,
+  };
 
-class box extends Component{ 
-    
+class box extends Component{
+
     constructor()
     {
         super();
@@ -18,11 +44,11 @@ class box extends Component{
             data: event.target.value,
         })
     }
- 
+
     render() {
     return (
       <React.Fragment>
-        
+
         <div className="textBox"><br/>
             <h1>Your Mail content goes here...</h1><br/>
             <form>
@@ -49,11 +75,12 @@ class box extends Component{
             </center>
             <h1>{this.state.data}</h1>
         </div>
-        
+
       </React.Fragment>
     );
   }
 }
- 
+
 export default box;
 
+export default Box;
