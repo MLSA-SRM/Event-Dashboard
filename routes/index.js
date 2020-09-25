@@ -3,6 +3,7 @@ var app = express();
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt");
+var ejs = require("ejs");
 var {
   events,
   savePeople,
@@ -12,6 +13,7 @@ var {
 } = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
+const Transporter = require("../config/mailConfig");
 // const { eventNames } = require("../config/mailConfig");
 
 router.post("/login", function (req, res, next) {
@@ -266,7 +268,35 @@ router.post("/mailer", (req, res, next) => {
     success: true,
   });
 });
-
+router.post("/test/mailer", (req, res, next) => {
+  // console.log(req.body, __dirname);
+  // let data = req.body.data;
+  // let { primary, secondary, data } = req.body;
+  ejs.renderFile(
+    __dirname + "/email.ejs",
+    { name: req.body.name, data: req.body.data },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // console.log(data);
+        let test = "jdjd@ddhd";
+        let mailDetails = {
+          from: "yoman@helo.in",
+          to: test,
+          subject: "Event Registration",
+          attachDataUrls: true,
+          html: data,
+        };
+        (async () => {
+          let info = await Transporter.sendMail(mailDetails);
+          console.log("Message sent: %s", info.messageId);
+        })();
+      }
+    }
+  );
+  res.json(true);
+});
 //TEST ROUTE 👇
 router.post("/test/savepeople", (req, res, next) => {
   // console.log(req.body);
