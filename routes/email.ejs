@@ -24,6 +24,9 @@
         -moz-animation: AnimationName 27s ease infinite;
         animation: AnimationName 27s ease infinite;
       }
+
+
+      /* Background colour will become primary colour */
       .header {
         background: #ecf4f3;
         -webkit-box-shadow: 0px 7px 24px 0px rgba(0, 0, 0, 0.46);
@@ -35,6 +38,8 @@
         padding: 3vh;
         margin: 0 auto;
       }
+
+
       .header h1 {
         color: #4e89ae;
         font-size: 6vh;
@@ -43,6 +48,9 @@
         text-align: center;
         padding: -5vh;
       }
+
+      /* This colour will also become secondary colour */
+
       .header h3 {
         color: #28df99;
         font-family: "Cookie", "Verdana", san-serif;
@@ -56,6 +64,9 @@
       hr {
         opacity: 30%;
       }
+
+      /* name,extra,event colour will also bbe secondary colour */
+
       #name {
         color: #3e978b;
       }
@@ -68,6 +79,13 @@
       #Welcome {
         word-spacing: 1vw;
       }
+
+    
+      /* This colour will become secondary colour */
+      .text{
+        color: #fff;
+      }
+
     </style>
   </head>
   <body>
@@ -77,7 +95,9 @@
       <hr />
       <br />
       <p>Hey <span id="name">hello</span>,</p>
+      <p class="text">
       <%- data %>
+      </p>
       <!-- <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

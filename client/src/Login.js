@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Auth from "./Auth";
 import "./Auth.css";
 import { State } from "./Context";
 function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const { handleUserName } = useContext(State);
+  const { userData, setUserData, setIsAuth } = useContext(State);
+
   //toastify config
   const notifySuccess = () =>
     toast.success("Login Successful!", {
@@ -31,9 +31,9 @@ function Login(props) {
       progress: undefined,
     });
 
-  const loginUser = (e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
-    axios({
+    const loginRes = await axios({
       method: "POST",
       data: {
         username: loginUsername,
@@ -41,30 +41,48 @@ function Login(props) {
       },
       withCredentials: true,
       url: "/login",
-    })
-      .then((res) => {
-        if (res.data.status) {
-          // console.log(res.data.userInfo.username);
-          // props.handleUsername(res.data.userInfo.username);
-          handleUserName(res.data.userInfo.username);
-          Auth.authenticate(() => {
-            history.push("/user");
-            notifySuccess();
-          });
-        } else {
-          history.push("/login");
-          notifyFailure();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    });
+    console.log(loginRes);
+    const token = loginRes.data.token;
+    if (loginRes.data.status) {
+      setUserData({
+        token,
+        user: loginRes.data.user,
       });
+      setIsAuth(true);
+      localStorage.setItem("auth-token", token);
+      history.push("/user");
+      // notifySuccess();
+    } else {
+      history.push("/login");
+      notifyFailure();
+    }
+
+    // history.push("/");
+
+    // .then((res) => {
+    //   if (res.data.status) {
+    //     // console.log(res.data.userInfo.username);
+    //     props.handleUsername(res.data.userInfo.username);
+    //     Auth.authenticate((res) => {
+    //       console.log(res);
+    //       history.push("/user");
+    //       notifySuccess();
+    //     });
+    //   } else {
+    //     history.push("/login");
+    //     notifyFailure();
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   return (
     <div>
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={5000}
         newestOnTop={false}
         closeOnClick
@@ -73,33 +91,33 @@ function Login(props) {
         draggable
         pauseOnHover
       />
-      <div className='authForm'>
+      <div className="authForm">
         <h1>Login</h1>
         <form onSubmit={loginUser}>
-          <div className='textbox'>
+          <div className="textbox">
             <input
-              id='loginUsername'
+              id="loginUsername"
               required
-              type='text'
-              placeholder='Username'
+              type="text"
+              placeholder="Username"
               onChange={(e) => setLoginUsername(e.target.value)}
             />
           </div>
-          <div className='textbox'>
+          <div className="textbox">
             <input
-              id='loginPassword'
+              id="loginPassword"
               required
-              type='password'
-              placeholder='Password'
+              type="password"
+              placeholder="Password"
               onChange={(e) => setLoginPassword(e.target.value)}
             />
           </div>
-          <button className='btn'>Login</button>
+          <button className="btn">Login</button>
           <p>
-            Create a new account ? <Link to='/signIn'>Sign In</Link>
+            Create a new account ? <Link to="/signIn">Sign In</Link>
           </p>
           <p>
-            Want to go back ? <Link to='/'>Home</Link>
+            Want to go back ? <Link to="/">Home</Link>
           </p>
         </form>
       </div>

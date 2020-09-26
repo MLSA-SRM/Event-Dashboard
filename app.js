@@ -1,13 +1,13 @@
 var express = require("express");
 var cookieParser = require("cookie-parser");
 var cors = require("cors");
-var passport = require("passport");
+// var passport = require("passport");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
-var session = require("express-session");
-var MongoStore = require("connect-mongo")(session);
-require("./config/passportConfig")(passport);
-var mongoose = require("mongoose");
+// var session = require("cookie-session");
+// var session = require("express-session");
+// require("./config/passportConfig")(passport);
+// var mongoose = require("mongoose");
 // var User = require("./models/user");
 
 var app = express();
@@ -20,24 +20,17 @@ app.use(cors());
 
 app.use(cookieParser());
 
-app.use(
-  session({
-    secret: "secret",
-    resave: true,
-    rolling: true,
-    saveUninitialized: true,
-    cookie: {
-      expires: 1 * 60 * 60 * 1000,
-      // maxAge: 1 * 60 * 60 * 1000,
-    },
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection,
-    }),
-  })
-);
+// app.use(
+//   session({
+//     maxAge: 36000000,
+//     secret: "secret",
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use("/", indexRouter);
 

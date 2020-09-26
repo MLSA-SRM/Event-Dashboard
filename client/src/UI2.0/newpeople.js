@@ -9,8 +9,10 @@ const NewPeople = () => {
             <NewNav/>
             <br/>
             <br/>
-            <Table style={{width: "100%"}}/>
+            <h1 className="heading">Send Mail</h1>
+            <br/>
             <Box/>
+            <Table style={{width: "100%"}}/>
         </div>
     );
 }
