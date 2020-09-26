@@ -85,8 +85,8 @@ function App(props) {
         <Route exact path="/dashboard" component={Home} />
         <ProtectedRoute
           exact
-          path="/newevent"
-          component={NewEvent}
+          path="/addevent"
+          component={AddEvent}
         ></ProtectedRoute>
         <ProtectedRoute
           exact
