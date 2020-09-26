@@ -11,3 +11,25 @@
     align-items: center;
     font-family: 'Manrope', sans-serif;
 }
+form{
+    width: 70%;
+    margin: auto;
+
+}
+.form-box{
+    text-align: center;
+}
+.input-area::placeholder{
+    color: black;
+    opacity: 0.3;
+}
+.input-area{
+    width: 45%;
+    padding: 1.5vh;
+    margin: 2vh;
+    border-radius: 1vh;
+    outline:none;
+    border: none;
+    background: #E4E7FF;
+    font-size: 3vh;
+}

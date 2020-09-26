@@ -51,6 +51,7 @@ router.post("/register", function (req, res) {
 });
 
 router.get("/user", async (req, res, next) => {
+  console.log(req.isAuthenticated());
   let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);

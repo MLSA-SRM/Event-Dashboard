@@ -52,7 +52,7 @@ const NewDash = () => {
       <NewNav />
       <div className='new-dash-body'>
         <div className='dash-row'>
-          <EventInfo />
+          <EventInfo name={dummy} />
           <RegPie attendence={attendence} total={total} />
           <UpcomingEvents />
         </div>

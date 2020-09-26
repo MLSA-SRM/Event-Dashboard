@@ -16,21 +16,16 @@ const AddEvent = () => {
                 <h1>Let's get your event setup</h1>
                 <p>Fill in the details to get started!</p>
                 <form method="POST" action="/displayevent">
-                    <label>Event Name</label><br/>
-                    <input type="text"></input><br/>
-                    <label>Event Description</label><br/>
-                    <input type="text"></input><br/>
-                    <label>Maximum attendees</label><br/>
-                    <input type="number"></input><br/>
-                    <label>Event start date</label><br/>
-                    <input type="date"></input><br/>
-                    <label>Event end date</label><br/>
-                    <input type="date"></input><br/>
-                    <label>Event start time</label><br/>
-                    <input type="time"></input><br/>
-                    <label>Event end time</label><br/>
-                    <input type="time"></input><br/>
+                   <div className="form-box">
+                    <input className="input-area" type="text" placeholder="Event Name"></input><br/>
+                    <input className="input-area" type="text" placeholder="Event Description"></input><br/>
+                    <input className="input-area" type="number" placeholder="Maximum Attendance"></input><br/>
+                    <input type="date" placeholder="Event Start Date" className="input-area"></input>
+                    <input type="date" className="input-area"></input><br/>
+                    <input type="time" className="input-area"></input>
+                    <input type="time" className="input-area"></input><br/>
                     <button>Submit</button>
+                   </div>
                 </form>
             </div>
         </div>
