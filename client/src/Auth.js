@@ -1,5 +1,5 @@
 const auth = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   authenticate(cb) {
     this.isAuthenticated = true;
     cb();
