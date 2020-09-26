@@ -7,8 +7,8 @@ import "./style.css";
 
 const Box = () => {
   const [data, setData] = useState("");
-  const [primary, setPrimary] = useState("#fff");
-  const [secondary, setSecondary] = useState("#000");
+  const [primary, setPrimary] = useState("#ffffff");
+  const [secondary, setSecondary] = useState("#000000");
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -20,6 +20,8 @@ const Box = () => {
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
     setData("");
+    setPrimary("#ffffff");
+    setSecondary("#000000");
   };
   const mailer = {
     background: primary,
@@ -74,8 +76,9 @@ const Box = () => {
       </form>
       {/* <h1>{marked(data)}</h1> */}
       <div style={mailer}>
-        <div className="headering">microsoft</div>
-        {parse(marked(data))}</div>
+        <div className='headering'>microsoft</div>
+        {parse(marked(data))}
+      </div>
     </div>
   );
 };

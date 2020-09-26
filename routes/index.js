@@ -269,18 +269,18 @@ router.post("/mailer", (req, res, next) => {
   });
 });
 router.post("/test/mailer", (req, res, next) => {
-  // console.log(req.body, __dirname);
+  console.log(req.body);
   // let data = req.body.data;
-  // let { primary, secondary, data } = req.body;
+  let { primary, secondary, data, name } = req.body;
   ejs.renderFile(
     __dirname + "/email.ejs",
-    { name: req.body.name, data: req.body.data },
+    { name, data, primary, secondary },
     (err, data) => {
       if (err) {
         console.log(err);
       } else {
         // console.log(data);
-        let test = "jdjd@ddhd";
+        let test = "panakalaryan@gmail.com";
         let mailDetails = {
           from: "yoman@helo.in",
           to: test,
