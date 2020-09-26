@@ -58,8 +58,8 @@ function Table() {
   };
   return (
     <div>
-      <div className="title">
-        <h1 className="titletext">Participant List</h1>
+      <div className='title'>
+        {/* <h1 className='titletext'>Participant List</h1> */}
       </div>
       <div className="list-body">
         <div
@@ -88,6 +88,15 @@ function Table() {
           />
         </div>
       </div>
+      {/* <div className='sendMailButtonDiv'>
+            <button
+              className='sendMailsButton'
+              type='submit'
+              onClick={sendMails}
+            >
+              Send Email To Participants
+            </button>
+          </div> */}
     </div>
   );
 }

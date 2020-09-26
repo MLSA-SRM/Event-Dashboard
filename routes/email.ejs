@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Heebo:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
+      rel="stylesheet"
+    />
+    <style media="screen">
+      body {
+        margin-top: 5vh;
+        background: linear-gradient(270deg, #e3e4f3, #d0d0fa);
+        background-size: 400% 400%;
+        -webkit-animation: AnimationName 27s ease infinite;
+        -moz-animation: AnimationName 27s ease infinite;
+        animation: AnimationName 27s ease infinite;
+      }
+
+
+      /* Background colour will become primary colour */
+      .header {
+        background: #ecf4f3;
+        -webkit-box-shadow: 0px 7px 24px 0px rgba(0, 0, 0, 0.46);
+        -moz-box-shadow: 0px 7px 24px 0px rgba(0, 0, 0, 0.46);
+        box-shadow: 0px 7px 24px 0px rgba(0, 0, 0, 0.46);
+        border: solid 1px #fff;
+        border-radius: 5vh;
+        max-width: 90vw;
+        padding: 3vh;
+        margin: 0 auto;
+      }
+
+
+      .header h1 {
+        color: #4e89ae;
+        font-size: 6vh;
+        font-family: "Heebo", sans-serif;
+        letter-spacing: -0.4vh;
+        text-align: center;
+        padding: -5vh;
+      }
+
+      /* This colour will also become secondary colour */
+
+      .header h3 {
+        color: #28df99;
+        font-family: "Cookie", "Verdana", san-serif;
+        font-size: 5vh;
+        text-align: center;
+      }
+      .header p {
+        font-family: "Nunito Sans", sans-serif;
+        font-size: 2vh;
+      }
+      hr {
+        opacity: 30%;
+      }
+
+      /* name,extra,event colour will also bbe secondary colour */
+
+      #name {
+        color: #3e978b;
+      }
+      .extra {
+        color: #3e978b;
+      }
+      #event {
+        color: #3e978b;
+      }
+      #Welcome {
+        word-spacing: 1vw;
+      }
+
+    
+      /* This colour will become secondary colour */
+      .text{
+        color: #fff;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>microsoft</h1>
+      <h3 id="Welcome">Welcome To <span id="event">yo</span></h3>
+      <hr />
+      <br />
+      <p>Hey <span id="name">hello</span>,</p>
+      <p class="text">
+      <%- data %>
+      </p>
+      <!-- <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum. <br />
+        Start Date: <span class="extra">Date</span> <br />
+        Start Time: <span class="extra">Time</span> <br />
+        Venue: <span class="extra">Location</span> <br /><br />
+        We hope to see you there.
+      </p>
+ -->
+      <div class="qr-img">
+        <span class="qr">
+          <!-- <pre><img src="${img}"></pre> -->
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
