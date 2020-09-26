@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
@@ -58,58 +58,49 @@ function App(props) {
   }, []);
 
   return (
-    <>
-      <Router>
-        {/* <UserContext.Provider value={{ userData, setUserData }}> */}
-        <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          {/* <Route
-            exact
-            path="/login"
-            render={(routeProps) => <Login {...routeProps} />}
-          />  */}
-          <Route exact path="/signIn">
-            <Register />
-          </Route>
-          {/* <Route exact path='/newui'>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/signIn">
+          <Register />
+        </Route>
+        {/* <Route exact path='/newui'>
             <NewNav />
           </Route> */}
-          {/* <Route exact path='/newdashboard'>
+        {/* <Route exact path='/newdashboard'>
             <NewDash />
           </Route> */}
-          <Route exact path="/newpeople">
-            <NewPeople />
-          </Route>
-          <Route exact path="/newcalendar">
-            <NewCalendar />
-          </Route>
-          <Route exact path="/dashboard" component={Home} />
-          <ProtectedRoute
-            exact
-            path="/newevent"
-            component={NewEvent}
-          ></ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/user"
-            component={UserPage}
-          ></ProtectedRoute>
-          <ProtectedRoute exact path="/user/:id">
-            {/* <Home /> */}
-            <NewDash />
-          </ProtectedRoute>
-          <Route exact path="/table">
-            <Table />
-          </Route>
-        </Switch>
-        {/* </UserContext.Provider> */}
-      </Router>
-    </>
+        <ProtectedRoute exact path="/newpeople">
+          <NewPeople />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/newcalendar">
+          <NewCalendar />
+        </ProtectedRoute>
+        <Route exact path="/dashboard" component={Home} />
+        <ProtectedRoute
+          exact
+          path="/newevent"
+          component={NewEvent}
+        ></ProtectedRoute>
+        <ProtectedRoute
+          exact
+          path="/user"
+          component={UserPage}
+        ></ProtectedRoute>
+        <ProtectedRoute exact path="/user/:id">
+          {/* <Home /> */}
+          <NewDash />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/table">
+          <Table />
+        </ProtectedRoute>
+      </Switch>
+    </Router>
   );
 }
 

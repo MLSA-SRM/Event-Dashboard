@@ -9,7 +9,7 @@ const UserPage = (props) => {
   let { userData, handleChange } = useContext(State);
   const [name, setName] = useState("");
   const [data, setData] = useState([]);
-  const usernname = userData.user.username;
+  // const usernname = userData.user.username;
   useEffect(() => {
     axios.get("/user").then((res) => {
       // console.log(res.data);
@@ -76,7 +76,7 @@ const UserPage = (props) => {
               ></img>
             </div>
             <br />
-            <h1 className="head">{usernname}</h1>
+            {/* <h1 className="head">{usernname}</h1> */}
             <p className="user-text">Software Developer</p>
             <p className="user-text">billgates@microsoft.com</p>
             <p className="user-text">+91 9435357748</p>

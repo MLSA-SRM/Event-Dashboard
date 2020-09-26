@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import Auth from "../Auth";
 import "./nav.css";
 import { State } from "../Context";
 
 function Nav(props) {
-  const { userData, setUserData } = useContext(State);
+  const { userData, setUserData, setIsAuth } = useContext(State);
   const name = userData.user.username;
   let history = useHistory();
 
@@ -25,26 +24,14 @@ function Nav(props) {
   // 	}
   // ]);
   const onLogout = () => {
-    // axios({ method: "GET", withCredentials: true, url: "/logout" }).then(
-    //   (res) => {
-    //     if (res.data) {
-    //       Auth.logout(() => {
-    //         history.push("/");
-    //       });
-    //     }
-    //   }
-    // );
-    Auth.logout(() => {
-      setUserData({
-        token: undefined,
-        user: undefined,
-      });
-      localStorage.setItem("auth-token", "");
+    setUserData({
+      token: undefined,
+      user: undefined,
     });
-    // history.push("/");
+    setIsAuth(false);
+    localStorage.setItem("auth-token", "");
   };
 
-  // const username = user.username;
   return (
     <div>
       <div className="navbar">

@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Auth from "./Auth";
 import "./Auth.css";
 import { State } from "./Context";
 function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const { userData, setUserData } = useContext(State);
+  const { userData, setUserData, setIsAuth } = useContext(State);
+
   //toastify config
   const notifySuccess = () =>
     toast.success("Login Successful!", {
@@ -45,14 +45,13 @@ function Login(props) {
     console.log(loginRes);
     const token = loginRes.data.token;
     if (loginRes.data.status) {
-      Auth.authenticate(() => {
-        setUserData({
-          token,
-          user: loginRes.data.user,
-        });
-        localStorage.setItem("auth-token", token);
-        history.push("/user");
+      setUserData({
+        token,
+        user: loginRes.data.user,
       });
+      setIsAuth(true);
+      localStorage.setItem("auth-token", token);
+      history.push("/user");
       // notifySuccess();
     } else {
       history.push("/login");

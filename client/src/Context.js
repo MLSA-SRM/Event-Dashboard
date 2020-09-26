@@ -9,13 +9,22 @@ const Context = (props) => {
     token: undefined,
     user: undefined,
   });
+  const [isAuth, setIsAuth] = useState(null);
   const handleChange = (data, date) => {
     setDummy(data);
     setDate(date);
   };
   return (
     <State.Provider
-      value={{ dummy, date, userData, handleChange, setUserData }}
+      value={{
+        dummy,
+        date,
+        userData,
+        handleChange,
+        setUserData,
+        isAuth,
+        setIsAuth,
+      }}
     >
       {props.children}
     </State.Provider>

@@ -10,18 +10,16 @@ import {
   GoPlus,
 } from "react-icons/go";
 import { State } from "../Context";
-import Auth from "../Auth";
 
 const NewNav = () => {
-  const { userName, setUserData } = useContext(State);
+  const { userName, setUserData, setIsAuth } = useContext(State);
   const onLogout = () => {
-    Auth.logout(() => {
-      setUserData({
-        token: undefined,
-        user: undefined,
-      });
-      localStorage.setItem("auth-token", "");
+    setUserData({
+      token: undefined,
+      user: undefined,
     });
+    setIsAuth(false);
+    localStorage.setItem("auth-token", "");
   };
   return (
     <div className="newBody">
