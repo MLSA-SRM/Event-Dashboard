@@ -4,8 +4,6 @@ import Stuff from "./Stuff";
 import Contact from "./Contact";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   NavLink,
 } from "react-router-dom";
 class Home extends Component {
