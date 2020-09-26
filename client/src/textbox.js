@@ -23,64 +23,61 @@ const Box = () => {
   };
   const mailer = {
     background: primary,
-    marginLeft: "10%",
+    margin: "10%",
     width: "80%",
     height: "500px",
     color: secondary,
+    padding: "5vh",
   };
 
-class box extends Component{
-
-    constructor()
-    {
-        super();
-        this.state={
-            data: '',
-        }
-    }
-
-    apple(event){
-        this.setState({
-            data: event.target.value,
-        })
-    }
-
-    render() {
-    return (
-      <React.Fragment>
-
-        <div className="textBox"><br/>
-            <h1>Your Mail content goes here...</h1><br/>
-            <form>
-                <center>
-                <textarea name="area" id="area" cols="80" rows="5" onChange={this.apple.bind(this)}></textarea>
-                </center>
-            </form><br/>
-            <h2>Choose Your mail colours : </h2><br/>
-            <center>
-            <input type="color" id="body" name="body"/>
-            <span className="tab1"></span>
-            <label for="body">Primary Colour</label>
-            <span className="tab"></span>
-            <input type="color" id="body" name="body"/>
-            <span className="tab1"></span>
-            <label for="body">Secondary Colour</label>
-            <div className="mt">
-            <h2 className="Q2">Want something like, Hey, NAME?</h2><br/>
-            <label class="switch">
-            <input type="checkbox"/>
-            <span class="slider round"></span>
-            </label>
-            </div>
-            </center>
-            <h1>{this.state.data}</h1>
-        </div>
-
-      </React.Fragment>
-    );
-  }
-}
-
-export default box;
+  return (
+    <div className='textBox'>
+      <br />
+      <h1>Your Mail content goes here...</h1>
+      <br />
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <center>
+          <textarea
+            name='area'
+            id='area'
+            cols='80'
+            rows='5'
+            value={data}
+            onChange={(e) => setData(e.target.value)}
+          ></textarea>
+        </center>
+        <br />
+        <h2>Choose Your mail colours : </h2>
+        <br />
+        <center>
+          <input
+            type='color'
+            onChange={(e) => setPrimary(e.target.value)}
+            value={primary}
+            id='body'
+            name='body'
+          />
+          <span className='tab1'></span>
+          <label for='body'>Primary Colour</label>
+          <span className='tab'></span>
+          <input
+            type='color'
+            value={secondary}
+            onChange={(e) => setSecondary(e.target.value)}
+            id='body'
+            name='body'
+          />
+          <span className='tab1'></span>
+          <label for='body'>Secondary Colour</label>
+        </center>
+        <button type='submit'>Mail Preview</button>
+      </form>
+      {/* <h1>{marked(data)}</h1> */}
+      <div style={mailer}>
+        <div className="headering">microsoft</div>
+        {parse(marked(data))}</div>
+    </div>
+  );
+};
 
 export default Box;
