@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Auth.css";
+import { State } from "./Context";
 
 function Register() {
   let history = useHistory();
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
+  const { setUserData } = useContext(State);
   //Toastify Config
 
   const notifyFailure = () =>
@@ -18,9 +19,9 @@ function Register() {
       position: "top-center",
     });
 
-  const registerUser = (e) => {
+  const registerUser = async (e) => {
     e.preventDefault();
-    Axios({
+    await Axios({
       method: "POST",
       data: {
         username: registerUsername,
@@ -28,20 +29,36 @@ function Register() {
       },
       withCredentials: true,
       url: "/register",
-    })
-      .then((res) => {
-        if (res.data) {
-          history.push("/");
-          console.log("Success Sign Up");
-        } else {
-          history.push("/signIn");
-          console.log("This username is already taken");
-          notifyFailure();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+    const userLoginRes = await Axios({
+      method: "POST",
+      data: {
+        username: registerUsername,
+        password: registerPassword,
+      },
+      withCredentials: true,
+      url: "/login",
+    });
+    const token = userLoginRes.data.token;
+    setUserData({
+      token,
+      user: userLoginRes.data.user,
+    });
+    localStorage.setItem("auth-token", token);
+    history.push("/");
+    // .then((res) => {
+    //   if (res.data) {
+    //     history.push("/");
+    //     console.log("Success Sign Up");
+    //   } else {
+    //     history.push("/signIn");
+    //     console.log("This username is already taken");
+    //     notifyFailure();
+    //   }
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   return (

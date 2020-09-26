@@ -1,7 +1,6 @@
 var express = require("express");
 var app = express();
 var router = express.Router();
-var passport = require("passport");
 var bcrypt = require("bcrypt");
 var ejs = require("ejs");
 var {
@@ -13,48 +12,107 @@ var {
 } = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
+var jwt = require("jsonwebtoken");
+var auth = require("../Middleware/auth");
+const { use } = require("../config/mailConfig");
 const Transporter = require("../config/mailConfig");
 // const { eventNames } = require("../config/mailConfig");
 
-router.post("/login", function (req, res, next) {
-  passport.authenticate("local", (err, user) => {
-    if (err) throw err;
+router.post("/login", async function (req, res, next) {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ msg: "Please enter all the fields" });
+  }
+
+  try {
+    const user = await User.findOne({ username });
     if (!user) {
-      res.json({ status: false });
-    } else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        // console.log(res);
-        res.json({
-          userInfo: user,
-          status: true,
-        });
-      });
+      console.log("User does not exist");
+      return res.json({ msg: "User does not exist", status: false });
     }
-  })(req, res, next);
+
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (!isMatch) {
+        return res.json({ msg: "Wrong Credentials", status: false });
+      }
+      jwt.sign(
+        { id: user._id },
+        "jwtToken",
+        { expiresIn: 3600 },
+        (err, token) => {
+          if (err) throw err;
+          return res.status(200).json({
+            token,
+            user: { username: user.username, id: user.id },
+            status: true,
+          });
+        }
+      );
+    });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
 });
 
-router.post("/register", function (req, res) {
+router.post("/register", async function (req, res) {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) {
       res.json(false);
     }
     if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.password, salt);
       let newUser = new User({
         username: req.body.username,
         password: hashedPassword,
       });
-      await newUser.save();
-      res.json(true);
+      newUser.save();
+
+      const token = jwt.sign({ id: newUser._id }, "jwtToken", {
+        expiresIn: 3600,
+      });
+      res.status(200).json({
+        token,
+        user: {
+          username: newUser.username,
+          id: newUser._id,
+        },
+      });
     }
   });
 });
 
+router.post("/validToken", async function (req, res) {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+
+    const verified = jwt.verify(token, "jwtToken");
+    if (!verified) return res.json(false);
+
+    const user = await User.findById(verified.id);
+    if (!user) return res.json(false);
+
+    return res.json(true);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.get("/authUser", auth, async function (req, res) {
+  const user = await User.findById(req.user.id);
+  res.json({
+    username: user.username,
+    id: user._id,
+  });
+});
+
 router.get("/user", async (req, res, next) => {
-  console.log(req.isAuthenticated());
+  // console.log(req.isAuthenticated());
   let id = req.session.passport.user;
+  // let id = req.user.id;
+  // console.log(req.user);
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
   let event = [];
@@ -72,19 +130,11 @@ router.get("/user", async (req, res, next) => {
   });
 });
 
-router.get("/logout", function (req, res, next) {
-  req.logout();
-  req.session.save((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.json(true);
-  });
-});
-
 router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
   app.set("id", req.session.passport.user);
+  // console.log(req.user);
+  // app.set("id", req.user.id);
   let username = req.body.name;
   console.log(username);
   // let username = "yoman";
