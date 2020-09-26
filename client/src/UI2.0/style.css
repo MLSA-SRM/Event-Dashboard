@@ -69,3 +69,12 @@ input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 10vh;
 }
+.headering{
+  margin-top: -3vh;
+  color: #4e89ae;
+  font-size: 6vh;
+  font-family: 'Heebo', sans-serif;
+  letter-spacing: -0.4vh;
+  text-align: center;
+  padding: -5vh;
+}

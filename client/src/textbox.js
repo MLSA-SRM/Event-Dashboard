@@ -23,10 +23,11 @@ const Box = () => {
   };
   const mailer = {
     background: primary,
-    marginLeft: "10%",
+    margin: "10%",
     width: "80%",
     height: "500px",
     color: secondary,
+    padding: "5vh",
   };
 
   return (
@@ -72,7 +73,9 @@ const Box = () => {
         <button type='submit'>Mail Preview</button>
       </form>
       {/* <h1>{marked(data)}</h1> */}
-      <div style={mailer}>{parse(marked(data))}</div>
+      <div style={mailer}>
+        <div className="headering">microsoft</div>
+        {parse(marked(data))}</div>
     </div>
   );
 };
