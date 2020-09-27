@@ -12,11 +12,12 @@ import "./style.css";
 import { State } from "../Context";
 const NewDash = () => {
   // let dummy = "yoman";
-  const { dummy, date } = useContext(State);
+  // const { dummy } = useContext(State);
   const [barData, setBarData] = useState([]);
   const [total, setTotal] = useState(null);
   const [pieData, setPieData] = useState([]);
   const [attendence, setAttedence] = useState([]);
+  let dummy = localStorage.getItem("eventName");
   useEffect(() => {
     axios
       .post("/bardata", {
@@ -50,13 +51,13 @@ const NewDash = () => {
   return (
     <div>
       <NewNav />
-      <div className="new-dash-body">
-        <div className="dash-row">
+      <div className='new-dash-body'>
+        <div className='dash-row'>
           <EventInfo name={dummy} />
           <RegPie attendence={attendence} total={total} />
           <UpcomingEvents />
         </div>
-        <div className="dash-row">
+        <div className='dash-row'>
           <LineGraph barData={barData} />
           <BranchPie pieData={pieData} />
           <OtherDetails />

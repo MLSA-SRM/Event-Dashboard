@@ -37,36 +37,35 @@ function App(props) {
         localStorage.setItem("auth-token", "");
         token = "";
       }
-      const tokenResponse = await Axios.post(
-        "http://localhost:5000/validToken",
-        null,
-        { headers: { "x-auth-token": token } }
-      );
+      const tokenResponse = await Axios.post("/validToken", null, {
+        headers: { "x-auth-token": token },
+      });
       if (tokenResponse.data) {
-        const userdataRes = await Axios.get("http://localhost:5000/authUser", {
+        const userdataRes = await Axios.get("/authUser", {
           headers: { "x-auth-token": token },
         });
+        // console.log(userdataRes.data);
         setUserData({
           token,
-          user: userdataRes.data.user,
+          user: userdataRes.data,
         });
+        localStorage.setItem("data", JSON.stringify(userdataRes.data));
         // history.push("/user");
       }
     };
-
     checkForUserLoggedIn();
   }, []);
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           <Landing />
         </Route>
-        <Route exact path="/login">
+        <Route exact path='/login'>
           <Login />
         </Route>
-        <Route exact path="/signIn">
+        <Route exact path='/signIn'>
           <Register />
         </Route>
         {/* <Route exact path='/newui'>
@@ -75,28 +74,28 @@ function App(props) {
         {/* <Route exact path='/newdashboard'>
             <NewDash />
           </Route> */}
-        <ProtectedRoute exact path="/newpeople">
+        <ProtectedRoute exact path='/newpeople'>
           <NewPeople />
         </ProtectedRoute>
-        <ProtectedRoute exact path="/newcalendar">
+        <ProtectedRoute exact path='/newcalendar'>
           <NewCalendar />
         </ProtectedRoute>
-        <Route exact path="/dashboard" component={Home} />
+        <Route exact path='/dashboard' component={Home} />
         <ProtectedRoute
           exact
-          path="/newevent"
+          path='/newevent'
           component={NewEvent}
         ></ProtectedRoute>
         <ProtectedRoute
           exact
-          path="/user"
+          path='/user'
           component={UserPage}
         ></ProtectedRoute>
-        <ProtectedRoute exact path="/user/:id">
+        <ProtectedRoute exact path='/user/:id'>
           {/* <Home /> */}
           <NewDash />
         </ProtectedRoute>
-        <ProtectedRoute exact path="/table">
+        <ProtectedRoute exact path='/table'>
           <Table />
         </ProtectedRoute>
       </Switch>
