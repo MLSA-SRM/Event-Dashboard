@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-
+import usePersist from "./components/Persist";
 export const State = createContext();
 
 const Context = (props) => {
@@ -14,12 +14,15 @@ const Context = (props) => {
     setDummy(data);
     setDate(date);
   };
+  const [data, setData] = usePersist(null, "data");
   return (
     <State.Provider
       value={{
         dummy,
         date,
         userData,
+        data,
+        setData,
         handleChange,
         setUserData,
         isAuth,

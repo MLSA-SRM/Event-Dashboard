@@ -11,6 +11,7 @@ import NewDash from "./UI2.0/newdashboard";
 import NewPeople from "./UI2.0/newpeople";
 import AddEvent from "./UI2.0/addevent";
 import NewCalendar from "./UI2.0/newcalendar";
+// import usePersist from "./components/Persist";
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,7 +30,7 @@ function App(props) {
   //   token: undefined,
   //   user: undefined,
   // });
-  const { setUserData } = useContext(State);
+  const { setUserData, setData } = useContext(State);
   let history = useHistory();
   useEffect(() => {
     const checkForUserLoggedIn = async () => {
@@ -50,7 +51,7 @@ function App(props) {
           token,
           user: userdataRes.data,
         });
-        localStorage.setItem("data", JSON.stringify(userdataRes.data));
+        setData(userdataRes.data);
         // history.push("/user");
       }
     };

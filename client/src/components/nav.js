@@ -29,7 +29,8 @@ function Nav(props) {
       user: undefined,
     });
     setIsAuth(false);
-    localStorage.setItem("auth-token", "");
+    // localStorage.setItem("auth-token", "");
+    localStorage.clear();
   };
 
   return (
