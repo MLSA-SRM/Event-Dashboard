@@ -33,6 +33,7 @@
   text-decoration: none;
   color: black;
   opacity: 0.5;
+  transition: 0.3s ease-in-out;
 }
 .main-nav-item:hover {
   opacity: 1;
@@ -54,6 +55,7 @@
   padding: 1vh;
   color: black;
   opacity: 0.5;
+  transition: 0.3s ease-in-out;
 }
 .username:hover {
   opacity: 1;

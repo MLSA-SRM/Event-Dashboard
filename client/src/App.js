@@ -9,6 +9,7 @@ import Landing from "./landing";
 import ProtectedRoute from "./ProtectedRoute";
 import NewDash from "./UI2.0/newdashboard";
 import NewPeople from "./UI2.0/newpeople";
+import AddEvent from "./UI2.0/addevent";
 import NewCalendar from "./UI2.0/newcalendar";
 import {
   BrowserRouter as Router,
@@ -83,8 +84,8 @@ function App(props) {
         <Route exact path='/dashboard' component={Home} />
         <ProtectedRoute
           exact
-          path='/newevent'
-          component={NewEvent}
+          path='/addevent'
+          component={AddEvent}
         ></ProtectedRoute>
         <ProtectedRoute
           exact
