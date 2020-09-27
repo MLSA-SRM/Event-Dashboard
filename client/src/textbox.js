@@ -33,17 +33,17 @@ const Box = () => {
   };
 
   return (
-    <div className='textBox'>
+    <div className="textBox">
       <br />
       <h1>Your Mail content goes here...</h1>
       <br />
       <form onSubmit={(e) => handleSubmit(e)}>
         <center>
           <textarea
-            name='area'
-            id='area'
-            cols='80'
-            rows='5'
+            name="area"
+            id="area"
+            cols="80"
+            rows="5"
             value={data}
             onChange={(e) => setData(e.target.value)}
           ></textarea>
@@ -53,30 +53,30 @@ const Box = () => {
         <br />
         <center>
           <input
-            type='color'
+            type="color"
             onChange={(e) => setPrimary(e.target.value)}
             value={primary}
-            id='body'
-            name='body'
+            id="body"
+            name="body"
           />
-          <span className='tab1'></span>
-          <label for='body'>Primary Colour</label>
-          <span className='tab'></span>
+          <span className="tab1"></span>
+          <label for="body">Primary Colour</label>
+          <span className="tab"></span>
           <input
-            type='color'
+            type="color"
             value={secondary}
             onChange={(e) => setSecondary(e.target.value)}
-            id='body'
-            name='body'
+            id="body"
+            name="body"
           />
-          <span className='tab1'></span>
-          <label for='body'>Secondary Colour</label>
+          <span className="tab1"></span>
+          <label for="body">Secondary Colour</label>
         </center>
-        <button type='submit'>Mail Preview</button>
+        <button type="submit">Mail Preview</button>
       </form>
       {/* <h1>{marked(data)}</h1> */}
       <div style={mailer}>
-        <div className='headering'>microsoft</div>
+        <div className="headering">microsoft</div>
         {parse(marked(data))}
       </div>
     </div>

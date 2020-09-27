@@ -17,7 +17,6 @@ import {
   Switch,
   Route,
   useHistory,
-  Redirect,
 } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
@@ -61,13 +60,13 @@ function App(props) {
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path='/login'>
+        <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path='/signIn'>
+        <Route exact path="/signIn">
           <Register />
         </Route>
         {/* <Route exact path='/newui'>
@@ -76,28 +75,28 @@ function App(props) {
         {/* <Route exact path='/newdashboard'>
             <NewDash />
           </Route> */}
-        <ProtectedRoute exact path='/newpeople'>
+        <ProtectedRoute exact path="/newpeople">
           <NewPeople />
         </ProtectedRoute>
-        <ProtectedRoute exact path='/newcalendar'>
+        <ProtectedRoute exact path="/newcalendar">
           <NewCalendar />
         </ProtectedRoute>
-        <Route exact path='/dashboard' component={Home} />
+        <Route exact path="/dashboard" component={Home} />
         <ProtectedRoute
           exact
-          path='/addevent'
+          path="/addevent"
           component={AddEvent}
         ></ProtectedRoute>
         <ProtectedRoute
           exact
-          path='/user'
+          path="/user"
           component={UserPage}
         ></ProtectedRoute>
-        <ProtectedRoute exact path='/user/:id'>
+        <ProtectedRoute exact path="/user/:id">
           {/* <Home /> */}
           <NewDash />
         </ProtectedRoute>
-        <ProtectedRoute exact path='/table'>
+        <ProtectedRoute exact path="/table">
           <Table />
         </ProtectedRoute>
       </Switch>

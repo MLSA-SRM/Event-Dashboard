@@ -51,6 +51,7 @@ function Login(props) {
       });
       setIsAuth(true);
       localStorage.setItem("auth-token", token);
+      localStorage.setItem("data", JSON.stringify(loginRes.data.user));
       history.push("/user");
       // notifySuccess();
     } else {
