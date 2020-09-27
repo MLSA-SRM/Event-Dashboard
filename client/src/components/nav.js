@@ -6,7 +6,9 @@ import { State } from "../Context";
 
 function Nav(props) {
   const { userData, setUserData, setIsAuth } = useContext(State);
-  const name = userData.user.username;
+  let userInfo = JSON.parse(localStorage.getItem("data"));
+  const username = userInfo.username;
+  // const name = userData.user.username;
   let history = useHistory();
 
   // const [ navItems ] = useState([
@@ -30,6 +32,7 @@ function Nav(props) {
     });
     setIsAuth(false);
     localStorage.setItem("auth-token", "");
+    localStorage.setItem("data", "");
   };
 
   return (
@@ -44,7 +47,7 @@ function Nav(props) {
             <li className="navitem">New Event</li>
           </Link>
           <Link className="navLink" to="/user">
-            <li className="navitem">{name}</li>
+            <li className="navitem">{username}</li>
           </Link>
           {/* {navItems.map(({ link, title }) => (
 						<Link className="navLink" to={link}>

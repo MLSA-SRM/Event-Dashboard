@@ -14,8 +14,9 @@ var mailer = require("../controller/mailer");
 var User = require("../models/user");
 var jwt = require("jsonwebtoken");
 var auth = require("../Middleware/auth");
-const { use } = require("../config/mailConfig");
+// const { use } = require("../config/mailConfig");
 const Transporter = require("../config/mailConfig");
+
 // const { eventNames } = require("../config/mailConfig");
 
 router.post("/login", async function (req, res, next) {
@@ -108,11 +109,10 @@ router.get("/authUser", auth, async function (req, res) {
   });
 });
 
-router.get("/user", async (req, res, next) => {
+router.post("/user", async (req, res, next) => {
   // console.log(req.isAuthenticated());
-  let id = req.session.passport.user;
-  // let id = req.user.id;
-  // console.log(req.user);
+  console.log(req.body);
+  let id = req.body.data.id;
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
   let event = [];
@@ -132,7 +132,7 @@ router.get("/user", async (req, res, next) => {
 
 router.post("/bardata", async (req, res, next) => {
   // console.log(Date.now());
-  app.set("id", req.session.passport.user);
+  // app.set("id", req.session.passport.user);
   // console.log(req.user);
   // app.set("id", req.user.id);
   let username = req.body.name;
@@ -319,18 +319,18 @@ router.post("/mailer", (req, res, next) => {
   });
 });
 router.post("/test/mailer", (req, res, next) => {
-  // console.log(req.body, __dirname);
+  console.log(req.body);
   // let data = req.body.data;
-  // let { primary, secondary, data } = req.body;
+  let { primary, secondary, data, name } = req.body;
   ejs.renderFile(
     __dirname + "/email.ejs",
-    { name: req.body.name, data: req.body.data },
+    { name, data, primary, secondary },
     (err, data) => {
       if (err) {
         console.log(err);
       } else {
         // console.log(data);
-        let test = "jdjd@ddhd";
+        let test = "panakalaryan@gmail.com";
         let mailDetails = {
           from: "yoman@helo.in",
           to: test,

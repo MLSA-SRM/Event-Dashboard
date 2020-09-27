@@ -9,13 +9,13 @@ import Landing from "./landing";
 import ProtectedRoute from "./ProtectedRoute";
 import NewDash from "./UI2.0/newdashboard";
 import NewPeople from "./UI2.0/newpeople";
+import AddEvent from "./UI2.0/addevent";
 import NewCalendar from "./UI2.0/newcalendar";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   useHistory,
-  Redirect,
 } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
@@ -37,23 +37,22 @@ function App(props) {
         localStorage.setItem("auth-token", "");
         token = "";
       }
-      const tokenResponse = await Axios.post(
-        "http://localhost:5000/validToken",
-        null,
-        { headers: { "x-auth-token": token } }
-      );
+      const tokenResponse = await Axios.post("/validToken", null, {
+        headers: { "x-auth-token": token },
+      });
       if (tokenResponse.data) {
-        const userdataRes = await Axios.get("http://localhost:5000/authUser", {
+        const userdataRes = await Axios.get("/authUser", {
           headers: { "x-auth-token": token },
         });
+        // console.log(userdataRes.data);
         setUserData({
           token,
-          user: userdataRes.data.user,
+          user: userdataRes.data,
         });
+        localStorage.setItem("data", JSON.stringify(userdataRes.data));
         // history.push("/user");
       }
     };
-
     checkForUserLoggedIn();
   }, []);
 
@@ -84,8 +83,8 @@ function App(props) {
         <Route exact path="/dashboard" component={Home} />
         <ProtectedRoute
           exact
-          path="/newevent"
-          component={NewEvent}
+          path="/addevent"
+          component={AddEvent}
         ></ProtectedRoute>
         <ProtectedRoute
           exact

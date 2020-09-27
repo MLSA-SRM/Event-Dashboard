@@ -25,7 +25,6 @@
         animation: AnimationName 27s ease infinite;
       }
 
-
       /* Background colour will become primary colour */
       .header {
         background: #ecf4f3;
@@ -39,7 +38,6 @@
         margin: 0 auto;
       }
 
-
       .header h1 {
         color: #4e89ae;
         font-size: 6vh;
@@ -52,12 +50,12 @@
       /* This colour will also become secondary colour */
 
       .header h3 {
-        color: #28df99;
+        /* color: #28df99; */
         font-family: "Cookie", "Verdana", san-serif;
         font-size: 5vh;
         text-align: center;
       }
-      .header p {
+      s .header p {
         font-family: "Nunito Sans", sans-serif;
         font-size: 2vh;
       }
@@ -67,7 +65,7 @@
 
       /* name,extra,event colour will also bbe secondary colour */
 
-      #name {
+      /* #name {
         color: #3e978b;
       }
       .extra {
@@ -75,43 +73,27 @@
       }
       #event {
         color: #3e978b;
-      }
+      } */
       #Welcome {
         word-spacing: 1vw;
       }
 
-    
       /* This colour will become secondary colour */
-      .text{
+      .text {
         color: #fff;
       }
-
     </style>
   </head>
   <body>
-    <div class="header">
+    <div class="header" style="background: <%= primary %>">
       <h1>microsoft</h1>
-      <h3 id="Welcome">Welcome To <span id="event">yo</span></h3>
+      <h3 id="Welcome">
+        Welcome To <span style="color: <%= secondary %>">yo</span>
+      </h3>
       <hr />
       <br />
-      <p>Hey <span id="name">hello</span>,</p>
-      <p class="text">
-      <%- data %>
-      </p>
-      <!-- <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum. <br />
-        Start Date: <span class="extra">Date</span> <br />
-        Start Time: <span class="extra">Time</span> <br />
-        Venue: <span class="extra">Location</span> <br /><br />
-        We hope to see you there.
-      </p>
- -->
+      <p>Hey <span style="color: <%= secondary %>">hello</span>,</p>
+      <p class="text"><%- data %></p>
       <div class="qr-img">
         <span class="qr">
           <!-- <pre><img src="${img}"></pre> -->

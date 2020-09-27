@@ -7,7 +7,7 @@ const Context = (props) => {
   const [date, setDate] = useState(null);
   const [userData, setUserData] = useState({
     token: undefined,
-    user: undefined,
+    data: undefined,
   });
   const [isAuth, setIsAuth] = useState(null);
   const handleChange = (data, date) => {
