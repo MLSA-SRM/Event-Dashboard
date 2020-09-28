@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./newnav.css";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -12,7 +12,8 @@ import {
 import { State } from "../Context";
 
 const NewNav = () => {
-  const { userName, setUserData, setIsAuth } = useContext(State);
+  const [userName, setUserName] = useState("");
+  const { setUserData, setIsAuth } = useContext(State);
   const onLogout = () => {
     setUserData({
       token: undefined,
@@ -20,7 +21,12 @@ const NewNav = () => {
     });
     setIsAuth(false);
     localStorage.setItem("auth-token", "");
+    localStorage.setItem("data", "");
   };
+  useEffect(() => {
+    let name = JSON.parse(localStorage.getItem("data"));
+    setUserName(name.username);
+  }, []);
   return (
     <div className="newBody">
       <div className="main-nav">
@@ -50,7 +56,8 @@ const NewNav = () => {
       <div className="user-tab">
         <Link to="/user" style={{ textDecoration: "none" }}>
           <h1 className="username">
-            <GoPerson className="icon" /> {userName}
+            <GoPerson className="icon" />
+            {userName}
           </h1>
         </Link>
         <Link to="/" onClick={onLogout} style={{ textDecoration: "none" }}>
