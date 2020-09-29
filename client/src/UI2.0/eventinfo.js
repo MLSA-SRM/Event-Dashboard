@@ -4,7 +4,23 @@ import "tippy.js/animations/scale.css";
 import "tippy.js/themes/light.css";
 import React from "react";
 
-const EventInfo = ({ name }) => {
+const EventInfo = ({ name, date }) => {
+  let data = new Date(date);
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[data.getMonth()];
   return (
     <Tippy
       theme='light'
@@ -35,7 +51,7 @@ const EventInfo = ({ name }) => {
             fontWeight: "600",
           }}
         >
-          7th October, 2020
+          {data.getDate() + "th " + month + ", " + data.getFullYear()}
         </h1>
         <h1
           className='event-main-name'
