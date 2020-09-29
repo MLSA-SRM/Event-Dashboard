@@ -1,0 +1,21 @@
+.error-page-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.error-page-container h1 {
+  font-size: 180px;
+  font-weight: 800;
+}
+
+.home-link {
+  text-decoration: none;
+  background-color: #e55039aa;
+  color: white;
+  display: inline-block;
+  padding: 10px 10px;
+  margin-top: 20px;
+}

@@ -5,31 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Auth.css";
 import { State } from "./Context";
+
 function Login(props) {
   let history = useHistory();
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const { userData, setUserData, setIsAuth } = useContext(State);
-
-  //toastify config
-  const notifySuccess = () =>
-    toast.success("Login Successful!", {
-      position: "top-center",
-      autoClose: 5000,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  const notifyFailure = () =>
-    toast.error("Incorrect credentials!", {
-      position: "top-center",
-      autoClose: 5000,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   const loginUser = async (e) => {
     e.preventDefault();
@@ -42,8 +23,28 @@ function Login(props) {
       withCredentials: true,
       url: "/login",
     });
-    console.log(loginRes);
+    // console.log(loginRes);
     const token = loginRes.data.token;
+    const toastMessage = loginRes.data.msg;
+    //toastify config
+    const notifySuccess = () =>
+      toast.success("Login Successful!", {
+        position: "top-center",
+        autoClose: 5000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    const notifyFailure = () =>
+      toast.error(`${toastMessage}`, {
+        position: "top-center",
+        autoClose: 5000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     if (loginRes.data.status) {
       setUserData({
         token,
@@ -53,7 +54,7 @@ function Login(props) {
       localStorage.setItem("auth-token", token);
       localStorage.setItem("data", JSON.stringify(loginRes.data.user));
       history.push("/user");
-      // notifySuccess();
+      notifySuccess();
     } else {
       history.push("/login");
       notifyFailure();
