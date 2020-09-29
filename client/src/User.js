@@ -58,6 +58,7 @@ const UserPage = (props) => {
             date: `${startDate.getDate()}/${
               startDate.getMonth() + 1
             }/${startDate.getFullYear()}`,
+            rawDate: startDate,
             status: value,
           });
         });
@@ -69,7 +70,9 @@ const UserPage = (props) => {
   const onClickRedirect = (data, date) => {
     history.push("/user/" + data);
     handleChange(data, date);
+    let value = { data, date };
     localStorage.setItem("eventName", data);
+    localStorage.setItem("test", JSON.stringify(value));
   };
 
   return (
@@ -118,7 +121,7 @@ const UserPage = (props) => {
                   <th>Status</th>
                 </tr>
                 {data.map((item) => (
-                  <tr onClick={() => onClickRedirect(item.name, item.date)}>
+                  <tr onClick={() => onClickRedirect(item.name, item.rawDate)}>
                     <td>{item.name}</td>
                     <td>{item.date}</td>
                     {item.status === 0 && (
