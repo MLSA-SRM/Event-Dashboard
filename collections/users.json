@@ -1,27 +1,33 @@
-[
-  {
-    "_id": {
-      "$oid": "5f316249bf8263611807b23d"
-    },
-    "events": [
-      {
-        "$oid": "5f36828b73f16424f0962728"
-      },
-      {
-        "$oid": "5f3162bba2387e623c699053"
-      }
-    ],
-    "username": "yoman",
-    "password": "hfrui",
-    "__v": 0
+[{
+  "_id": {
+    "$oid": "5f316249bf8263611807b23d"
   },
-  {
-    "_id": {
-      "$oid": "5f391a30f956377f3073285d"
+  "events": [
+    {
+      "$oid": "5f4e6e6e2d2fa72f4c56887b"
     },
-    "events": [],
-    "username": "user@g",
-    "password": "$2b$10$jzEcxe/prOr4F9lC6sLUDurgyM.xNbCRAlzHPLiAUmiyxVBJPAK/e",
-    "__v": 0
-  }
-]
+    {
+      "$oid": "5f3162bba2387e623c699053"
+    },
+    {
+      "$oid": "5f51098bda3f47768c2c1cf7"
+    },
+    {
+      "$oid": "5f6712758c44d00b6c28f5b9"
+    },
+    {
+      "$oid": "5f6c9e38975fdb129ce2e39e"
+    }
+  ],
+  "username": "yoman",
+  "password": "$2b$10$jzEcxe/prOr4F9lC6sLUDurgyM.xNbCRAlzHPLiAUmiyxVBJPAK/e",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f391a30f956377f3073285d"
+  },
+  "events": [],
+  "username": "user@g",
+  "password": "$2b$10$jzEcxe/prOr4F9lC6sLUDurgyM.xNbCRAlzHPLiAUmiyxVBJPAK/e",
+  "__v": 0
+}]

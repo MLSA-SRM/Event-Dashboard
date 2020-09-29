@@ -17,11 +17,11 @@ const NewDash = () => {
   const [total, setTotal] = useState(null);
   const [pieData, setPieData] = useState([]);
   const [attendence, setAttedence] = useState([]);
-  let dummy = localStorage.getItem("eventName");
+  let value = JSON.parse(localStorage.getItem("test"));
   useEffect(() => {
     axios
       .post("/bardata", {
-        name: dummy,
+        name: value.data,
       })
       .then((res) => {
         console.log(res.data);
@@ -31,7 +31,7 @@ const NewDash = () => {
 
     axios
       .post("/piechart", {
-        name: dummy,
+        name: value.data,
       })
       .then((res) => {
         console.log(res.data);
@@ -53,7 +53,7 @@ const NewDash = () => {
       <NewNav />
       <div className='new-dash-body'>
         <div className='dash-row'>
-          <EventInfo name={dummy} />
+          <EventInfo name={value.data} date={value.date} />
           <RegPie attendence={attendence} total={total} />
           <UpcomingEvents />
         </div>

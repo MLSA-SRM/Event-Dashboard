@@ -1,73 +1,137 @@
-[
-  {
-    "_id": {
-      "$oid": "5f31648747705f4598f535cf"
-    },
-    "name": "deugn",
-    "branch": "CSE",
-    "events": [
-      {
-        "title": {
-          "$oid": "5f36828b73f16424f0962728"
-        },
-        "date": {
-          "$date": "2020-08-19T18:30:00Z"
-        }
-      }
-    ],
-    "__v": 0
+[{
+  "_id": {
+    "$oid": "5f31648747705f4598f535cf"
   },
-  {
-    "_id": {
-      "$oid": "5f36837773f16424f0962729"
-    },
-    "name": "Binod",
-    "branch": "MECH",
-    "events": [
-      {
-        "title": {
-          "$oid": "5f3162bba2387e623c699053"
-        },
-        "date": {
-          "$date": "2020-05-17T18:30:00Z"
-        }
+  "name": "deugn",
+  "branch": "CSE",
+  "events": [
+    {
+      "title": {
+        "$oid": "5f36828b73f16424f0962728"
       },
-      {
-        "title": {
-          "$oid": "5f36828b73f16424f0962728"
-        },
-        "date": {
-          "$date": "2020-08-17T18:30:00Z"
-        }
+      "date": {
+        "$date": "2020-08-19T18:30:00Z"
       }
-    ],
-    "__v": 0
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f36837773f16424f0962729"
   },
-  {
-    "_id": {
-      "$oid": "5f3a2a2a35f9b8b23c992269"
+  "name": "Binod",
+  "branch": "MECH",
+  "events": [
+    {
+      "title": {
+        "$oid": "5f3162bba2387e623c699053"
+      },
+      "date": {
+        "$date": "2020-05-17T18:30:00Z"
+      }
     },
-    "events": [],
-    "name": "Aryan",
-    "branch": "CSE",
-    "__v": 0
+    {
+      "title": {
+        "$oid": "5f36828b73f16424f0962728"
+      },
+      "date": {
+        "$date": "2020-08-17T18:30:00Z"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3a2a2a35f9b8b23c992269"
   },
-  {
-    "_id": {
-      "$oid": "5f3a305c3af4ce7a345bf0a3"
-    },
-    "events": [],
-    "name": "Aryan",
-    "branch": "CSE",
-    "__v": 0
+  "events": [],
+  "name": "Aryan",
+  "branch": "CSE",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3a305c3af4ce7a345bf0a3"
   },
-  {
-    "_id": {
-      "$oid": "5f3a88df009428ae6c55b1af"
-    },
-    "events": [],
-    "name": "Aryan",
-    "branch": "CSE",
-    "__v": 0
-  }
-]
+  "events": [],
+  "name": "Aryan",
+  "branch": "CSE",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3a88df009428ae6c55b1af"
+  },
+  "events": [],
+  "name": "Aryan",
+  "branch": "CSE",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f3bf403bc93ae399c795bac"
+  },
+  "events": [],
+  "name": "Lalu",
+  "branch": "MECH",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f4e700bcfd76f62988688f4"
+  },
+  "events": [],
+  "name": "Lalu",
+  "branch": "MECH",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f4e702acc05bd64cc8bbbba"
+  },
+  "events": [],
+  "name": "Lalu",
+  "branch": "MECH",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f53a8768ccbcb51940333a1"
+  },
+  "name": "lol",
+  "branch": "aero",
+  "events": [
+    {
+      "_id": {
+        "$oid": "5f53a8768ccbcb51940333a2"
+      },
+      "eventId": {
+        "$oid": "5f3162bba2387e623c699053"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f53ae6df143729c58636083"
+  },
+  "name": "dhhdhd",
+  "branch": "aero",
+  "events": [
+    {
+      "_id": {
+        "$oid": "5f53ae6df143729c58636084"
+      },
+      "eventId": {
+        "$oid": "5f3162bba2387e623c699053"
+      }
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f576c83a70f6e249cce1812"
+  },
+  "name": "d",
+  "branch": "aero",
+  "events": {
+    "eventId": {
+      "$oid": "5f3162bba2387e623c699053"
+    }
+  },
+  "__v": 0
+}]

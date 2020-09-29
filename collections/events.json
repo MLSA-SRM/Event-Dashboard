@@ -1,54 +1,217 @@
-[
-  {
-    "_id": {
-      "$oid": "5f3162bba2387e623c699053"
-    },
-    "attendence": null,
-    "public": [
-      {
-        "_id": {
-          "$oid": "5f3a2a2a35f9b8b23c99226a"
-        },
-        "name": {
-          "$oid": "5f3a2a2a35f9b8b23c992269"
-        },
-        "date": {
-          "$date": "2020-08-17T06:56:42.552Z"
-        }
-      },
-      {
-        "_id": {
-          "$oid": "5f3a305c3af4ce7a345bf0a4"
-        },
-        "name": {
-          "$oid": "5f3a305c3af4ce7a345bf0a3"
-        },
-        "date": {
-          "$date": "2020-08-16T07:23:08.612Z"
-        }
-      },
-      {
-        "_id": {
-          "$oid": "5f3a88df009428ae6c55b1b0"
-        },
-        "name": {
-          "$oid": "5f3a88df009428ae6c55b1af"
-        },
-        "date": {
-          "$date": "2020-08-17T13:40:47.546Z"
-        }
-      }
-    ],
-    "name": "yoman",
-    "__v": 0
+[{
+  "_id": {
+    "$oid": "5f3162bba2387e623c699053"
   },
-  {
-    "_id": {
-      "$oid": "5f36828b73f16424f0962728"
+  "user": {
+    "$oid": "5f316249bf8263611807b23d"
+  },
+  "attendence": 32,
+  "public": [
+    {
+      "_id": {
+        "$oid": "5f3a2a2a35f9b8b23c99226a"
+      },
+      "name": {
+        "$oid": "5f3a2a2a35f9b8b23c992269"
+      },
+      "date": {
+        "$date": "2020-08-17T06:56:42.552Z"
+      }
     },
-    "attendence": null,
-    "public": [],
-    "name": "noman",
-    "__v": 0
-  }
-]
+    {
+      "_id": {
+        "$oid": "5f3a305c3af4ce7a345bf0a4"
+      },
+      "name": {
+        "$oid": "5f3a305c3af4ce7a345bf0a3"
+      },
+      "date": {
+        "$date": "2020-08-16T07:23:08.612Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f3a88df009428ae6c55b1b0"
+      },
+      "name": {
+        "$oid": "5f3a88df009428ae6c55b1af"
+      },
+      "date": {
+        "$date": "2020-08-17T13:40:47.546Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f3bf404bc93ae399c795bad"
+      },
+      "name": {
+        "$oid": "5f3bf403bc93ae399c795bac"
+      },
+      "date": {
+        "$date": "2020-08-18T15:30:12.002Z"
+      }
+    }
+  ],
+  "name": "yoman",
+  "startDate": {
+    "$date": "2020-09-11T18:30:00Z"
+  },
+  "endDate": {
+    "$date": "2020-09-30T18:30:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f4e6e6e2d2fa72f4c56887b"
+  },
+  "user": {
+    "$oid": "5f316249bf8263611807b23d"
+  },
+  "attendence": null,
+  "public": [
+    {
+      "_id": {
+        "$oid": "5f4e702acc05bd64cc8bbbbb"
+      },
+      "name": {
+        "$oid": "5f4e702acc05bd64cc8bbbba"
+      },
+      "date": {
+        "$date": "2020-09-01T16:00:42.652Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f51078e53b4a324781d22c2"
+      },
+      "name": {
+        "$oid": "5f51078e53b4a324781d22c1"
+      },
+      "date": {
+        "$date": "2020-09-03T15:11:10.717Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f53a7e547593d771c176ad7"
+      },
+      "name": {
+        "$oid": "5f53a7e547593d771c176ad6"
+      },
+      "date": {
+        "$date": "2020-09-05T14:59:49.567Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f53a8768ccbcb51940333a3"
+      },
+      "name": {
+        "$oid": "5f53a8768ccbcb51940333a1"
+      },
+      "date": {
+        "$date": "2020-09-05T15:02:14.074Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f53a9e0a92e512e3c90b4f6"
+      },
+      "date": {
+        "$date": "2020-09-05T15:08:16.029Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f53ae3d6e9308ac40294317"
+      },
+      "name": {
+        "$oid": "5f53ae3d6e9308ac40294316"
+      },
+      "date": {
+        "$date": "2020-09-05T15:26:53.704Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f53ae6df143729c58636085"
+      },
+      "name": {
+        "$oid": "5f53ae6df143729c58636083"
+      },
+      "date": {
+        "$date": "2020-09-05T15:27:41.338Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "5f576c83a70f6e249cce1813"
+      },
+      "name": {
+        "$oid": "5f576c83a70f6e249cce1812"
+      },
+      "date": {
+        "$date": "2020-09-08T11:35:31.127Z"
+      }
+    }
+  ],
+  "startDate": {
+    "$date": "2020-09-12T18:30:00Z"
+  },
+  "endDate": {
+    "$date": "2020-09-18T18:30:00Z"
+  },
+  "name": "Bhai",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f51098bda3f47768c2c1cf7"
+  },
+  "attendence": 32,
+  "user": {
+    "$oid": "5f316249bf8263611807b23d"
+  },
+  "name": "lol",
+  "public": [],
+  "startDate": {
+    "$date": "2020-10-12T00:00:00Z"
+  },
+  "endDate": {
+    "$date": "2020-10-29T18:30:00Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f6712758c44d00b6c28f5b9"
+  },
+  "attendence": 52,
+  "user": {
+    "$oid": "5f316249bf8263611807b23d"
+  },
+  "name": "tes",
+  "startDate": {
+    "$date": "2020-09-20T00:00:00Z"
+  },
+  "endDate": {
+    "$date": "2020-09-22T00:00:00Z"
+  },
+  "public": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f6c9e38975fdb129ce2e39e"
+  },
+  "attendence": 55,
+  "user": {
+    "$oid": "5f316249bf8263611807b23d"
+  },
+  "name": "ihdih",
+  "startDate": {
+    "$date": "2020-09-24T00:00:00Z"
+  },
+  "endDate": {
+    "$date": "2020-09-30T00:00:00Z"
+  },
+  "public": [],
+  "__v": 0
+}]
