@@ -49,7 +49,7 @@ const NewDash = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{padding: "4vh"}}>
       <NewNav />
       <div className='new-dash-body'>
         <div className='dash-row'>
