@@ -199,3 +199,6 @@ body{
 .profile-button:hover{
     background: #5b75f5;
 }
+a{
+    text-decoration: none;
+}
