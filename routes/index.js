@@ -207,10 +207,10 @@ router.post("/piechart", async (req, res, next) => {
   });
 });
 
-router.get("/home/bargraph", async (req, res, next) => {
+router.post("/home/bargraph", async (req, res, next) => {
   let body = [];
-  let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
+  let { id } = req.body;
   let data = await homeData(id);
   // res.json(data);
   data.forEach((item) => {
@@ -223,7 +223,7 @@ router.get("/home/bargraph", async (req, res, next) => {
   res.json(body);
 });
 router.post("/newevent", async (req, res, next) => {
-  let id = req.session.passport.user;
+  // let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let { name, num, startDate, endDate } = req.body;
   console.log(req.body);
