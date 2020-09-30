@@ -100,7 +100,8 @@ function App(props) {
         <ProtectedRoute exact path="/table">
           <Table />
         </ProtectedRoute>
-        {/* Invalid Route Page Not Found Don't add routes after this */}
+        {/* Invalid Route Page Not Found 
+        Don't add routes after this */}
         <Route path="*">
           <PageNotFound />
         </Route>

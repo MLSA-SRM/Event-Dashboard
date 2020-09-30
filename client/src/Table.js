@@ -58,7 +58,7 @@ function Table() {
   };
   return (
     <div>
-      <div className='title'>
+      <div className="title">
         {/* <h1 className='titletext'>Participant List</h1> */}
       </div>
       <div className="list-body">

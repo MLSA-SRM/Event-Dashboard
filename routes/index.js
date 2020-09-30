@@ -17,7 +17,11 @@ var auth = require("../Middleware/auth");
 // const { use } = require("../config/mailConfig");
 const Transporter = require("../config/mailConfig");
 
-// const { eventNames } = require("../config/mailConfig");
+const { eventNames } = require("../config/mailConfig");
+
+// cron.schedule("1 * * * * *", function () {
+//   console.log("hello");
+// });
 
 router.post("/login", async function (req, res, next) {
   const { username, password } = req.body;
@@ -312,7 +316,8 @@ router.get("/table", (req, res, next) => {
 });
 
 router.post("/mailer", (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
+
   mailer(req.body.data);
   res.json({
     success: true,
