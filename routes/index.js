@@ -330,7 +330,7 @@ router.post("/test/mailer", (req, res, next) => {
         console.log(err);
       } else {
         // console.log(data);
-        let test = "panakalaryan@gmail.com";
+        let test = "yo@gmail.com";
         let mailDetails = {
           from: "yoman@helo.in",
           to: test,
