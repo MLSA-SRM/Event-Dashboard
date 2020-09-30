@@ -211,10 +211,10 @@ router.post("/piechart", async (req, res, next) => {
   });
 });
 
-router.get("/home/bargraph", async (req, res, next) => {
+router.post("/home/bargraph", async (req, res, next) => {
   let body = [];
-  let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
+  let { id } = req.body;
   let data = await homeData(id);
   // res.json(data);
   data.forEach((item) => {
@@ -227,7 +227,7 @@ router.get("/home/bargraph", async (req, res, next) => {
   res.json(body);
 });
 router.post("/newevent", async (req, res, next) => {
-  let id = req.session.passport.user;
+  // let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let { name, num, startDate, endDate } = req.body;
   console.log(req.body);
@@ -316,12 +316,15 @@ router.get("/table", (req, res, next) => {
 });
 
 router.post("/mailer", (req, res, next) => {
-  // console.log(req.body);
-
-  mailer(req.body.data);
-  res.json({
-    success: true,
-  });
+  let { timeLeft } = req.body;
+  let time = timeLeft === undefined ? 0 : timeLeft;
+  setTimeout(() => {
+    console.log("All mails delivered");
+    mailer(req.body.data);
+    res.json({
+      success: true,
+    });
+  }, time);
 });
 router.post("/test/mailer", (req, res, next) => {
   console.log(req.body);
@@ -335,7 +338,7 @@ router.post("/test/mailer", (req, res, next) => {
         console.log(err);
       } else {
         // console.log(data);
-        let test = "panakalaryan@gmail.com";
+        let test = "yo@gmail.com";
         let mailDetails = {
           from: "yoman@helo.in",
           to: test,

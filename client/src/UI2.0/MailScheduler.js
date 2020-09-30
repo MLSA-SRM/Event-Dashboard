@@ -1,5 +1,5 @@
 import "date-fns";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -14,17 +14,17 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { ToastContainer, toast } from "react-toastify";
 import Axios from "axios";
+import { State } from "../Context";
 
 function MailScheduler(props) {
-  const eventDate = new Date("2020-01-01T00:00:00.000Z");
+  const eventDate = new Date("2022/09/30 23:00:00");
   const [open, setOpen] = useState();
   const [date, setDate] = useState(eventDate);
-  const currDate = new Date();
-
+  const { dataParams } = useContext(State);
   const toastMessage = () => {
-    toast.info(`Emails Scheduled for ${date}`, {
+    toast.success(`Emails Scheduled`, {
       autoClose: "5000",
-      position: "top-center",
+      position: "bottom-left",
     });
   };
 
@@ -36,8 +36,19 @@ function MailScheduler(props) {
     setOpen(false);
   };
 
+  let timeLeft = Math.abs(date - new Date());
   const handleSubmit = () => {
-    Axios.post("/mailer")
+    let data = [];
+    const selectedParticipants = dataParams.getSelectedNodes();
+    const selectData = selectedParticipants.map((node) => node.data);
+    selectData.forEach((item) => {
+      data.push({
+        name: item.name,
+        regno: item.reg,
+        email: item.email,
+      });
+    });
+    Axios.post("/mailer", { timeLeft, data })
       .then(() => console.log("sent"))
       .catch((err) => console.log(err));
 
@@ -58,7 +69,7 @@ function MailScheduler(props) {
           <DialogTitle id="form-dialog-title">Schedule Emails</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Set Date to Schedule Emails To Automatically Send
+              Set date and time for scheduling emails
             </DialogContentText>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDateTimePicker
@@ -68,7 +79,7 @@ function MailScheduler(props) {
                 onError={console.log}
                 autoOk={false}
                 maxDate={eventDate}
-                maxDateMessage={`Date should not be after event date`}
+                maxDateMessage={`Set Schedule Date Before Event date`}
                 format="yyyy/MM/dd HH:mm"
               />
             </MuiPickersUtilsProvider>

@@ -12,6 +12,7 @@ import NewPeople from "./UI2.0/newpeople";
 import AddEvent from "./UI2.0/addevent";
 import NewCalendar from "./UI2.0/newcalendar";
 import PageNotFound from "./PageNotFound";
+import Profile from "./UI2.0/newprofile";
 // import usePersist from "./components/Persist";
 import {
   BrowserRouter as Router,
@@ -78,6 +79,9 @@ function App(props) {
           </Route> */}
         <ProtectedRoute exact path="/newpeople">
           <NewPeople />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/abc">
+          <Profile />
         </ProtectedRoute>
         <ProtectedRoute exact path="/newcalendar">
           <NewCalendar />
