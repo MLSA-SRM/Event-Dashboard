@@ -86,6 +86,7 @@ body {
 }
 .lists-item li:hover {
   opacity: 1;
+  animation-delay: 0.2ms;
 }
 .lists-item span {
   margin-left: 2px;
@@ -129,10 +130,11 @@ body {
   padding-top: 4vh;
   display: flex;
   flex-flow: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .events-box {
+  margin-bottom: 4vh;
   width: 45%;
   padding: 2vh;
   background: #eceef6;
@@ -152,22 +154,22 @@ body {
 .user-data {
   padding: 2vh;
   border-radius: 2vh;
-  background: #eceef6;
+  background: white;
   margin-top: 3vh;
   height: 47%;
   line-height: 1.8;
-  box-shadow: 0px 0px 13px rgb(199, 199, 199);
+  box-shadow: 0px 0px 13px rgb(233, 232, 232);
 }
 .user-data h4 {
   font-family: "Manrope", sans-serif;
   font-size: 1em;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 .view-event {
   border: 2px solid rgb(122, 122, 122);
   border-radius: 1vh;
   width: 60%;
-  background: #eceef6;
+  background: white;
   font-size: 1em;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -180,7 +182,7 @@ body {
 .view-event:hover {
   opacity: 1;
   background: #4e6af3;
-  border: 2px solid #3454ee;
+  border: 2px solid #4e6af3;
   color: white;
 }
 .profile-button {

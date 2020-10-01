@@ -3,7 +3,7 @@ import React from "react";
 const UpcomingEvents = ({ events, name }) => {
   return (
     <div className='events-lists'>
-      <h4>{name}</h4>
+      <h4 style={{fontSize: "1.3em"}}>{name}</h4>
       <div className='events-row'>
         {events.map((item) => (
           <div className='events-box'>

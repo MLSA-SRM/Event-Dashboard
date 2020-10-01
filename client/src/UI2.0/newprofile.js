@@ -135,8 +135,7 @@ const Profile = () => {
         <h3>Hello User!</h3>
         <div className='user-data'>
           <h4>
-            <FaThumbtack style={{ position: "relative", top: "3px" }} /> PINNED
-            EVENT
+            <FaThumbtack style={{ position: "relative", top: "3px" }} /> Pinned Event
           </h4>
           <h3 style={{ marginLeft: "0" }}>Hackathon 2020</h3>
           <h4>6:00 PM</h4>
