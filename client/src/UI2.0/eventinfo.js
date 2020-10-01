@@ -2,25 +2,36 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import "tippy.js/themes/light.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const EventInfo = ({ name, date }) => {
-  let data = new Date(date);
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let month = months[data.getMonth()];
+  const [data, setData] = useState({});
+  useEffect(() => {
+    let data = new Date(date);
+    console.log(data);
+    let months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    let hours = data.getHours() > 12 ? data.getHours() - 12 : data.getHours();
+    let stamp = data.getHours() > 12 ? "pm" : "am";
+    setData({
+      date: data.getDate(),
+      month: months[data.getMonth()],
+      year: data.getFullYear(),
+      time: `${hours}:${data.getMinutes()} ${stamp}`,
+    });
+  }, []);
   return (
     <Tippy
       theme='light'
@@ -51,7 +62,8 @@ const EventInfo = ({ name, date }) => {
             fontWeight: "600",
           }}
         >
-          {data.getDate() + "th " + month + ", " + data.getFullYear()}
+          {data.date + "th " + data.month + ", " + data.year}
+          {/* {new data.getDate() + "th " + ", " + new data.getFullYear()} */}
         </h1>
         <h1
           className='event-main-name'
@@ -63,7 +75,7 @@ const EventInfo = ({ name, date }) => {
             fontWeight: "600",
           }}
         >
-          11:00 AM
+          {data.time}
         </h1>
         <br />
         <p

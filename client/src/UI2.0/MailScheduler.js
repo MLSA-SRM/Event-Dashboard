@@ -17,9 +17,10 @@ import Axios from "axios";
 import { State } from "../Context";
 
 function MailScheduler(props) {
-  const eventDate = new Date("2022/09/30 23:00:00");
+  const currDate = new Date();
+  const eventDate = JSON.parse(localStorage.getItem("test")).date;
   const [open, setOpen] = useState();
-  const [date, setDate] = useState(eventDate);
+  const [date, setDate] = useState(currDate);
   const { dataParams } = useContext(State);
   const toastMessage = () => {
     toast.success(`Emails Scheduled`, {
@@ -38,6 +39,8 @@ function MailScheduler(props) {
 
   let timeLeft = Math.abs(date - new Date());
   const handleSubmit = () => {
+    console.log(eventDate);
+    console.log(date);
     let data = [];
     const selectedParticipants = dataParams.getSelectedNodes();
     const selectData = selectedParticipants.map((node) => node.data);
@@ -79,7 +82,9 @@ function MailScheduler(props) {
                 onError={console.log}
                 autoOk={false}
                 maxDate={eventDate}
-                maxDateMessage={`Set Schedule Date Before Event date`}
+                maxDateMessage={`Set a date before an event`}
+                minDate={new Date()}
+                minDateMessage={`Set a date after the current date`}
                 format="yyyy/MM/dd HH:mm"
               />
             </MuiPickersUtilsProvider>
