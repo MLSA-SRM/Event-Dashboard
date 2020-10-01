@@ -10,6 +10,7 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
+        <div  className="margin">
         <ul className='headera'>
           <li>
             <h1>Microsoft</h1>
@@ -38,8 +39,9 @@ class Home extends Component {
           <Stuff />
         </div>
         <div>
-          <Contact />
         </div>
+        </div>
+          <Contact />
       </React.Fragment>
     );
   }

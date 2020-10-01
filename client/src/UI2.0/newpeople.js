@@ -5,7 +5,7 @@ import Box from "../textbox";
 import MailScheduler from "./MailScheduler";
 const NewPeople = () => {
   return (
-    <div>
+    <div className="margin">
       <NewNav />
       <br />
       <br />
