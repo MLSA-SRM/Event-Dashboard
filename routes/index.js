@@ -225,7 +225,7 @@ router.post("/home/bargraph", async (req, res, next) => {
 router.post("/newevent", async (req, res, next) => {
   // let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
-  let { name, num, startDate, endDate } = req.body;
+  let { name, num, startDate, endDate, id } = req.body;
   console.log(req.body);
   // let status = true;
   let status = await saveEvent(id, name, num, startDate, endDate);

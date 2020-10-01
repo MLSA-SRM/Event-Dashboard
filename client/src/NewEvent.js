@@ -13,7 +13,7 @@ const NewEvent = (props) => {
       name,
       num,
       startDate,
-      endDate
+      endDate,
     })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -50,8 +50,8 @@ const NewEvent = (props) => {
               <input
                 placeholder='Minimum Attendance'
                 className='event-name'
-                value={num}
                 type='text'
+                value={num}
                 onChange={(e) => setNum(e.target.value)}
               ></input>
             </div>
