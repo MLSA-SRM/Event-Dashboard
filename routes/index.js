@@ -329,10 +329,19 @@ router.post("/mailer", (req, res, next) => {
 router.post("/test/mailer", (req, res, next) => {
   console.log(req.body);
   // let data = req.body.data;
-  let { primary, secondary, data, name } = req.body;
+  let {
+    primary,
+    secondary,
+    data,
+    name,
+    tertiary,
+    title,
+    hey,
+    company,
+  } = req.body;
   ejs.renderFile(
     __dirname + "/email.ejs",
-    { name, data, primary, secondary },
+    { name, data, primary, secondary, tertiary, title, hey, company },
     (err, data) => {
       if (err) {
         console.log(err);
