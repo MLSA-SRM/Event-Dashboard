@@ -17,11 +17,7 @@ var auth = require("../Middleware/auth");
 // const { use } = require("../config/mailConfig");
 const Transporter = require("../config/mailConfig");
 
-const { eventNames } = require("../config/mailConfig");
-
-// cron.schedule("1 * * * * *", function () {
-//   console.log("hello");
-// });
+// const { eventNames } = require("../config/mailConfig");
 
 router.post("/login", async function (req, res, next) {
   const { username, password } = req.body;
@@ -33,12 +29,12 @@ router.post("/login", async function (req, res, next) {
     const user = await User.findOne({ username });
     if (!user) {
       console.log("User does not exist");
-      return res.json({ msg: "No user found", status: false });
+      return res.json({ msg: "User does not exist", status: false });
     }
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (!isMatch) {
-        return res.json({ msg: "Incorrect Credentials", status: false });
+        return res.json({ msg: "Wrong Credentials", status: false });
       }
       jwt.sign(
         { id: user._id },
@@ -316,15 +312,11 @@ router.get("/table", (req, res, next) => {
 });
 
 router.post("/mailer", (req, res, next) => {
-  let { timeLeft } = req.body;
-  let time = timeLeft === undefined ? 0 : timeLeft;
-  setTimeout(() => {
-    console.log("All mails delivered");
-    mailer(req.body.data);
-    res.json({
-      success: true,
-    });
-  }, time);
+  console.log(req.body);
+  mailer(req.body.data);
+  res.json({
+    success: true,
+  });
 });
 router.post("/test/mailer", (req, res, next) => {
   console.log(req.body);
