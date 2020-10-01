@@ -5,7 +5,7 @@ class Contact extends Component {
     return (
       <React.Fragment>
         <div className="black-colour">
-          <h4>CONTACT INFORMATION</h4>
+          {/* <h4>CONTACT INFORMATION</h4>
           <hr/>
           <ul>
             <div className="left">
@@ -17,7 +17,19 @@ class Contact extends Component {
             <div className="right">
             <li>Handels : Instagram</li>
             </div>
-          </ul>
+          </ul> */}
+          
+          <center>
+          <div class="share">
+<span className="a">
+<i class="fas fa-share-alt"></i> Share!
+</span>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+</div>
+</center>
           </div>
       </React.Fragment>
     );

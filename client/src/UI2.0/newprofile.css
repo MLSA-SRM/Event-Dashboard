@@ -134,6 +134,7 @@ body {
   justify-content: space-between;
 }
 .events-box {
+  cursor: pointer;
   margin-bottom: 4vh;
   width: 45%;
   padding: 2vh;
