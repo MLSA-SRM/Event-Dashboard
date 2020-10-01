@@ -11,7 +11,8 @@ import NewDash from "./UI2.0/newdashboard";
 import NewPeople from "./UI2.0/newpeople";
 import AddEvent from "./UI2.0/addevent";
 import NewCalendar from "./UI2.0/newcalendar";
-import Profile from './UI2.0/newprofile';
+import PageNotFound from "./PageNotFound";
+import Profile from "./UI2.0/newprofile";
 // import usePersist from "./components/Persist";
 import {
   BrowserRouter as Router,
@@ -103,6 +104,11 @@ function App(props) {
         <ProtectedRoute exact path="/table">
           <Table />
         </ProtectedRoute>
+        {/* Invalid Route Page Not Found 
+        Don't add routes after this */}
+        <Route path="*">
+          <PageNotFound />
+        </Route>
       </Switch>
     </Router>
   );
