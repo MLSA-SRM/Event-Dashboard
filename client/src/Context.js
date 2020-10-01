@@ -10,6 +10,7 @@ const Context = (props) => {
     data: undefined,
   });
   const [isAuth, setIsAuth] = useState(null);
+  const [dataParams, setDataParams] = useState(null);
   const handleChange = (data, date) => {
     setDummy(data);
     setDate(date);
@@ -27,6 +28,8 @@ const Context = (props) => {
         setUserData,
         isAuth,
         setIsAuth,
+        dataParams,
+        setDataParams,
       }}
     >
       {props.children}

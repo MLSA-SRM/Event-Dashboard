@@ -9,8 +9,11 @@ const Newcalendar = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     message();
+    let data = JSON.parse(localStorage.getItem("data"));
     axios
-      .get("/home/bargraph")
+      .post("/home/bargraph", {
+        id: data.id,
+      })
       .then((res) => setEvents(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -22,7 +25,7 @@ const Newcalendar = () => {
           plugins={[dayGridPlugin]}
           eventMouseEnter={notify}
           eventMouseLeave={dismiss}
-          initialview="dayGridMonth"
+          initialview='dayGridMonth'
           events={events}
           height={500}
         />

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./Table.css";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
+import { State } from "./Context";
 // import { log } from "debug";
 function Table() {
   //   const columnDefs = [
@@ -27,7 +28,8 @@ function Table() {
 
   const [rowDataValues, setRowDataValues] = useState(null);
   const [column, setColumn] = useState(null);
-  const [dataparams, setDataParams] = useState(null);
+  // const [dataparams, setDataParams] = useState(null);
+  const { dataParams, setDataParams } = useContext(State);
   // const [mail, setMail] = useState(null);
   useEffect(() => {
     axios.get("/table").then((res) => {
@@ -40,7 +42,7 @@ function Table() {
 
   const sendMails = (e) => {
     let data = [];
-    const selectedParticipants = dataparams.getSelectedNodes();
+    const selectedParticipants = dataParams.getSelectedNodes();
     const selectData = selectedParticipants.map((node) => node.data);
     // console.log(selectData);
     selectData.forEach((item) => {
@@ -58,7 +60,7 @@ function Table() {
   };
   return (
     <div>
-      <div className='title'>
+      <div className="title">
         {/* <h1 className='titletext'>Participant List</h1> */}
       </div>
       <div className="list-body">
