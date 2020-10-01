@@ -25,6 +25,10 @@ const Box = () => {
         hey: marked(hey),
         primary,
         secondary,
+        tertiary,
+        title,
+        hey,
+        company,
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -116,7 +120,7 @@ const Box = () => {
 
           {/* /* Starting of QR */}
           <div className="App">
-            <label className="switch">
+            <label class="switch">
               <input
                 type="checkbox"
                 onClick={(e) => {
@@ -124,7 +128,7 @@ const Box = () => {
                 }}
                 value={qr}
               />
-              <span className="slider round"></span>
+              <span class="slider round"></span>
             </label>
           </div>
 
@@ -139,7 +143,7 @@ const Box = () => {
             name="body"
           />
           <span className="tab1"></span>
-          <label htmlFor="body">Primary Colour</label>
+          <label for="body">Primary Colour</label>
           <span className="tab"></span>
           <input
             type="color"
@@ -149,7 +153,7 @@ const Box = () => {
             name="body"
           />
           <span className="tab1"></span>
-          <label htmlFor="body">Secondary Colour</label>
+          <label for="body">Secondary Colour</label>
           <span className="tab"></span>
           <input
             type="color"
@@ -159,7 +163,7 @@ const Box = () => {
             name="body"
           />
           <span className="tab1"></span>
-          <label htmlFor="body">Tertiary Colour</label>
+          <label for="body">Tertiary Colour</label>
           <br />
           <button type="submit">Mail Preview</button>
         </center>

@@ -9,22 +9,18 @@ import {
   FaClock,
   FaThumbtack,
 } from "react-icons/fa";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Route,
-  Switch,
-} from "react-router-dom";
 import "./newprofile.css";
-import OngoingEvents from "./Profile Components/ongoingevents";
 import UpcomingEvents from "./Profile Components/upcomingevents";
 
 const Profile = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [eventStatus, setEventStatus] = useState("All Events");
+  const [userName, setUserName] = useState("");
+
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("data"));
+    setUserName(data.username);
     axios
       .post("/user", {
         data,
@@ -132,10 +128,11 @@ const Profile = () => {
       <div className='profile-div'>
         <h1>My Profile</h1>
         <hr style={{ marginTop: "2.2vh", marginBottom: "2.2vh" }} />
-        <h3>Hello User!</h3>
+        <h3>Hello {userName}!</h3>
         <div className='user-data'>
           <h4>
-            <FaThumbtack style={{ position: "relative", top: "3px" }} /> Pinned Event
+            <FaThumbtack style={{ position: "relative", top: "3px" }} /> Pinned
+            Event
           </h4>
           <h3 style={{ marginLeft: "0" }}>Hackathon 2020</h3>
           <h4>6:00 PM</h4>
