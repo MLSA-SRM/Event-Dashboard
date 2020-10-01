@@ -181,3 +181,114 @@ input:checked + .slider:before {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+.contenty{
+  display: inline-block;
+}
+
+.share {
+  width: 280px;
+  height: 80px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: 1.8s ease;
+  border: 2px solid #fff;
+  font-size: 24px;
+  }
+  
+  .share:hover {
+  transform: scale(1.1);
+  }
+  
+  span.a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #111;
+  text-align: center;
+  line-height: 80px;
+  z-index: 999;
+  transition: .6s linear;
+  border-radius: 40px;
+  }
+  
+  .share:hover span {
+  transform: translateX(-100%);
+  transition-delay: .2s;
+  }
+  
+  .share a {
+  flex: 1;
+  font-size: 26px;
+  color: #fff;
+  text-align: center;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: 0.2s linear;
+  }
+  
+  .share:hover a {
+  opacity: 1;
+  transform: translateX(0);
+  }
+  
+  a:nth-of-type(1) {
+  transition-delay: 1s;
+  }
+  
+  a:nth-of-type(2) {
+  transition-delay: 0.8s;
+  }
+  
+  a:nth-of-type(3) {
+  transition-delay: 0.6s;
+  }
+  
+  a:nth-of-type(4) {
+  transition-delay: 0.4s;
+  }
+  
+  .fa-linkedin {
+  transition: 0.3s ease-in;
+  }
+  
+  .fa-linkedin:hover {
+  color: #0e76a8;
+  transform: scale(1.5);
+  }
+  
+  .fa-github {
+  transition: 0.3s ease-in;
+  }
+  
+  .fa-github:hover {
+  color: #757575;
+  transform: scale(1.5);
+  }
+  
+  .fa-instagram {
+  transition: 0.3s ease-in;
+  }
+  
+  .fa-instagram:hover {
+  color: #405DE6;
+  transform: scale(1.5);
+  }
+  
+  .fa-twitter {
+  transition: 0.3s ease-in;
+  }
+  
+  .fa-twitter:hover {
+  color: rgb(86, 88, 233);
+  transform: scale(1.5);
+  }
+
+  .margin{
+    margin: 4vh;
+  }
