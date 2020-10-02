@@ -53,7 +53,7 @@ const NewNav = () => {
               <GoPlus className='icon' /> New Event
             </li>
           </NavLink>
-          <NavLink to='/setings' activeClassName='current'>
+          <NavLink to='/settings' activeClassName='current'>
             <li className='main-nav-item'>
               <MdSettings className='icon'/> 
             </li>
