@@ -58,80 +58,61 @@ const Box = () => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <center>
           <div className='contenty'>
-            <h2>Your Company name...</h2>
             <br />
             <textarea
               name='area'
               id='area'
+              placeholder="Your Organisation Name..."
+              className="tbox"
               cols='50'
-              rows='2'
+              rows='1'
               value={company}
               onChange={(e) => setCompany(e.target.value)}
             ></textarea>
-          </div>
-          <br />
-          <div className='contenty'>
-            <h2>Your Title please...</h2>
-            <br />
+            <span className='tab2'></span>
             <textarea
               name='area'
               id='area'
+              className="tbox"
+              placeholder="Your Title please..."
               cols='50'
-              rows='2'
+              rows='1'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             ></textarea>
           </div>
           <br />
           <div className='contenty'>
-            <h2>Your Salutation...</h2>
             <br />
-            <div className='tooltip'>
-              <textarea
+              {/* <textarea
                 name='area'
                 id='area'
                 cols='20'
                 rows='1'
+                placeholder="Your Salutation..."
                 value={hey}
                 onChange={(e) => setHey(e.target.value)}
-              ></textarea>
-              <span className='tooltiptext'>Just the salutation, no name</span>
-            </div>
+              ></textarea> */}
+              <select name="salutation" value={hey}
+                onChange={(e) => setHey(e.target.value)}>
+              <option value=" ">None</option>
+              <option value="Hey,">Hey,</option>
+              <option value="Hello,">Hello,</option>
+              <option value="Hi,">Hi,</option>
+              <option value="Respected,">Respected,</option>
+              </select>
           </div>
           <br />
-          <h2>Your Mail content goes here...</h2>
           <br />
           <textarea
             name='area'
             id='area'
             cols='80'
             rows='6'
+            placeholder="Your Mail content goes here..."
             value={data}
             onChange={(e) => setData(e.target.value)}
           ></textarea>
-          <br />
-          <h2>Do you want to send a QR code ?</h2>
-          {/* <center>
-        <label class="switch">
-        <input type="checkbox"/>
-        <span class="slider round"></span>
-        </label>
-        </center> */}
-
-          {/* /* Starting of QR */}
-          <div className='App'>
-            <label class='switch'>
-              <input
-                type='checkbox'
-                onClick={(e) => {
-                  setQr(e.target.checked);
-                }}
-                value={qr}
-              />
-              <span class='slider round'></span>
-            </label>
-          </div>
-
           <br />
           <h2>Choose Your mail colours : </h2>
           <br />
@@ -165,6 +146,25 @@ const Box = () => {
           <span className='tab1'></span>
           <label for='body'>Tertiary Colour</label>
           <br />
+          <br />
+          <div className="qrs">
+          <h2>Do you want to send a QR code ?
+          <span className='App'>
+            <label class='switch'>
+              <input
+                type='checkbox'
+                onClick={(e) => {
+                  setQr(e.target.checked);
+                }}
+                value={qr}
+              />
+              <span class='slider round'></span>
+            </label>
+          </span>
+          </h2>
+          </div>
+          <br/>
+          <br/>
           <button type='submit'>Mail Preview</button>
         </center>
       </form>
