@@ -1,5 +1,5 @@
 .newBody {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: space-around;
   margin-top: 2vh;
@@ -28,7 +28,7 @@
 }
 .main-nav-item {
   float: left;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1em;
   text-decoration: none;
   color: black;
@@ -51,7 +51,7 @@
 .username {
   text-decoration: none;
   font-size: 1.1em;
-  font-weight: 600;
+  font-weight: 500;
   padding: 1vh;
   color: black;
   opacity: 0.5;
@@ -68,7 +68,7 @@
 }
 .current li {
   color: #3454ee;
-  font-weight: 700;
+  font-weight: 600;
   opacity: 1;
   border-bottom: 3px solid #3454ee;
 }
