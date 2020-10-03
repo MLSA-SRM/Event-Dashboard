@@ -51,6 +51,10 @@ textarea.tbox{
   resize: none; 
 }
 
+div.title{
+  word-spacing: 1vw;
+}
+
 textarea:focus,
 input:focus,
 select:focus {
