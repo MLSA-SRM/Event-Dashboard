@@ -92,12 +92,17 @@
       </h3>
       <hr />
       <br />
-      <p><%= hey %> <span style="color: <%= secondary %>">hello</span>,</p>
+      <p><%= hey %> <span id="name">Name</span></p>
       <p class="text"><%- data %></p>
       <div class="qr-img">
+        <% if(<%- qr %>) == true { %>
         <span class="qr">
-          <!-- <pre><img src="${img}"></pre> -->
+          <pre><img src="${img}"></pre>
         </span>
+        <% } else { %>
+          <span class="qr">
+          </span>
+          <% } %>
       </div>
     </div>
   </body>
