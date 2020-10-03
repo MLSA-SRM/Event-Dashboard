@@ -94,7 +94,6 @@ function Login(props) {
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        draggable
         pauseOnHover
       />
       <div className="authForm">
