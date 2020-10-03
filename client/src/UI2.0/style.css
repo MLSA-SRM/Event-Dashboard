@@ -18,7 +18,7 @@
 }
 
 .textBox {
-  background-color: #f6f6f6;
+  background: rgba(245,239,239,1);
   border-radius: 5vh;
   padding: 5vh;
 }
@@ -30,7 +30,8 @@ h2 {
   /* color: #4D69F0; */
 }
 
-.textBox textarea {
+textarea {
+  border: none;
   align-self: center;
   resize: none;
   font-size: 20px;
@@ -41,9 +42,37 @@ h2 {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+textarea.tbox{
+  min-height: 5vh;
+  max-height: 20vh;
+  height: auto;
+  display: inline-block; 
+  overflow: hidden; 
+  resize: none; 
+}
+
+div.title{
+  word-spacing: 1vw;
+}
+
 textarea:focus,
-input:focus {
+input:focus,
+select:focus {
   outline: 0;
+}
+
+select{
+  border: none;
+  border-radius: 10px;
+  padding: 1vh 3vh;
+  position: relative;
+  display: inline-block;
+  width: 20vh;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #60666d;
 }
 
 .tab1 {
@@ -56,13 +85,19 @@ input:focus {
   margin-left: 40px;
 }
 
+.tab2 {
+  display: inline-block;
+  margin-left: 60px;
+}
+
 input[type="color"] {
   -webkit-appearance: none;
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 30%;
+  height: 5vh;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
+  background: rgba(245,239,239,1);
   padding: 0;
 }
 input[type="color"]::-webkit-color-swatch {
@@ -167,7 +202,7 @@ input:checked + .slider:before {
   top: -5px;
   left: 110%;
 }
-
+f
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
@@ -291,4 +326,20 @@ a:nth-of-type(4) {
 
 .margin {
   margin: 4vh;
+}
+.qrs{
+  display: inline-block;
+  padding: 3vh;
+  width: 50%;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1));
+}
+.App{
+  display: inline-block;
+}
+
+.colour{
+  width: 50%;
+  padding: 3vh;
+  border-radius: 2vh;
 }

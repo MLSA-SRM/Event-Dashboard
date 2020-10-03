@@ -9,6 +9,7 @@ import {
   GoSignOut,
   GoPlus,
 } from "react-icons/go";
+import {MdSettings} from 'react-icons/md';
 import { State } from "../Context";
 
 const NewNav = () => {
@@ -50,6 +51,11 @@ const NewNav = () => {
           <NavLink to='/addevent' activeClassName='current'>
             <li className='main-nav-item'>
               <GoPlus className='icon' /> New Event
+            </li>
+          </NavLink>
+          <NavLink to='/settings' activeClassName='current'>
+            <li className='main-nav-item'>
+              <MdSettings className='icon'/> 
             </li>
           </NavLink>
         </ul>

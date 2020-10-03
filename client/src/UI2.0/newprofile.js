@@ -7,10 +7,11 @@ import {
   FaTimes,
   FaExclamationTriangle,
   FaClock,
-  FaThumbtack,
+  FaThumbtack, FaPlus
 } from "react-icons/fa";
 import "./newprofile.css";
 import UpcomingEvents from "./Profile Components/upcomingevents";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [data, setData] = useState([]);
@@ -141,7 +142,9 @@ const Profile = () => {
           <button className='view-event'>Go To Event</button>
         </div>
         <div style={{ textAlign: "center" }}>
-          <button className='profile-button'>Edit Details</button>
+          <Link to="/addevent">
+            <button className='profile-button'>New Event</button>
+          </Link>
           <button className='profile-button'>Logout</button>
         </div>
       </div>
