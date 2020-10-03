@@ -14,7 +14,7 @@ const Box = () => {
   const [tertiary, setTertiary] = useState("#3b85b3");
   const [title, setTitle] = useState("");
   const [hey, setHey] = useState("");
-  const [qr, setQr] = useState("");
+  const [qr, setQr] = useState(null);
   const [company, setCompany] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,9 +26,8 @@ const Box = () => {
         primary,
         secondary,
         tertiary,
-        title,
-        hey,
         company,
+        qr,
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
@@ -38,7 +37,8 @@ const Box = () => {
     setPrimary("#ffffff");
     setSecondary("#000000");
     setTertiary("#3b85b3");
-    setQr("visible: false");
+    setCompany("");
+    setQr(false);
   };
   const mailer = {
     background: primary,
@@ -107,15 +107,15 @@ const Box = () => {
           <textarea
             name='area'
             id='area'
-            cols='80'
-            rows='6'
+            className="content"
+            cols='120'
+            rows='8'
             placeholder="Your Mail content goes here..."
             value={data}
             onChange={(e) => setData(e.target.value)}
           ></textarea>
-          <br />
-          <h2>Choose Your mail colours : </h2>
-          <br />
+          <span className="tab"/>
+          <div className="colour">
           <input
             type='color'
             onChange={(e) => setPrimary(e.target.value)}
@@ -123,9 +123,8 @@ const Box = () => {
             id='body'
             name='body'
           />
-          <span className='tab1'></span>
-          <label for='body'>Primary Colour</label>
-          <span className='tab'></span>
+          <span className="tab1"/>
+          {/* <label for='body'>Primary Colour</label> */}
           <input
             type='color'
             value={secondary}
@@ -133,18 +132,18 @@ const Box = () => {
             id='body'
             name='body'
           />
-          <span className='tab1'></span>
-          <label for='body'>Secondary Colour</label>
-          <span className='tab'></span>
+          <span className="tab1"/>
+          {/* <label for='body'>Secondary Colour</label> */}
           <input
             type='color'
             onChange={(e) => setTertiary(e.target.value)}
             value={tertiary}
             id='body'
             name='body'
+            placeholder="abc"
           />
-          <span className='tab1'></span>
-          <label for='body'>Tertiary Colour</label>
+          {/* <label for='body'>Tertiary Colour</label> */}
+          </div>
           <br />
           <br />
           <div className="qrs">
