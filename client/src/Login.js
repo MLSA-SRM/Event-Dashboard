@@ -11,10 +11,29 @@ function Login(props) {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const { userData, setUserData, setIsAuth } = useContext(State);
+  let wrongMessageDisplay = "";
+  const notifySuccess = () =>
+    toast.success("Login Successful!", {
+      position: "top-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  const notifyFailure = () =>
+    toast.error(`${wrongMessageDisplay}`, {
+      position: "top-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const loginUser = async (e) => {
     e.preventDefault();
-    const loginRes = await axios({
+    await axios({
       method: "POST",
       data: {
         username: loginUsername,
@@ -22,43 +41,28 @@ function Login(props) {
       },
       withCredentials: true,
       url: "/login",
+    }).then((res) => {
+      if (res.data.status) {
+        const token = res.data.token;
+        setUserData({
+          token,
+          user: res.data.user,
+        });
+        setIsAuth(true);
+        localStorage.setItem("auth-token", token);
+        localStorage.setItem("data", JSON.stringify(res.data.user));
+        history.push("/user");
+        notifySuccess();
+      } else {
+        wrongMessageDisplay = res.data.msg;
+        history.push("/login");
+        notifyFailure();
+      }
     });
     // console.log(loginRes);
-    const token = loginRes.data.token;
-    const toastMessage = loginRes.data.msg;
+
+    // const toastMessage = loginRes.data.msg;
     //toastify config
-    const notifySuccess = () =>
-      toast.success("Login Successful!", {
-        position: "top-center",
-        autoClose: 5000,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    const notifyFailure = () =>
-      toast.error(`${toastMessage}`, {
-        position: "top-center",
-        autoClose: 5000,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    if (loginRes.data.status) {
-      setUserData({
-        token,
-        user: loginRes.data.user,
-      });
-      setIsAuth(true);
-      localStorage.setItem("auth-token", token);
-      localStorage.setItem("data", JSON.stringify(loginRes.data.user));
-      history.push("/user");
-      notifySuccess();
-    } else {
-      history.push("/login");
-      notifyFailure();
-    }
 
     // history.push("/");
 
@@ -90,7 +94,6 @@ function Login(props) {
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
-        draggable
         pauseOnHover
       />
       <div className="authForm">
