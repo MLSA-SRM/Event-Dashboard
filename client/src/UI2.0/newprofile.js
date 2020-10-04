@@ -7,7 +7,8 @@ import {
   FaTimes,
   FaExclamationTriangle,
   FaClock,
-  FaThumbtack, FaPlus
+  FaThumbtack,
+  FaPlus,
 } from "react-icons/fa";
 import "./newprofile.css";
 import UpcomingEvents from "./Profile Components/upcomingevents";
@@ -64,21 +65,21 @@ const Profile = () => {
   }, []);
   const handleOngoing = () => {
     let filtered = data.filter((item) => {
-      return item.status == 0;
+      return item.status === 0;
     });
     setFilterData(filtered);
     setEventStatus("Ongoing Events");
   };
   const handleUpcoming = () => {
     let filtered = data.filter((item) => {
-      return item.status == 2;
+      return item.status === 2;
     });
     setFilterData(filtered);
     setEventStatus("Upcoming Events");
   };
   const handleFinished = () => {
     let filtered = data.filter((item) => {
-      return item.status == 1;
+      return item.status === 1;
     });
     setFilterData(filtered);
     setEventStatus("Finished Events");
@@ -142,7 +143,7 @@ const Profile = () => {
           <button className='view-event'>Go To Event</button>
         </div>
         <div style={{ textAlign: "center" }}>
-          <Link to="/addevent">
+          <Link to='/addevent'>
             <button className='profile-button'>New Event</button>
           </Link>
           <button className='profile-button'>Logout</button>
