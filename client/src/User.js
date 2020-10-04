@@ -4,6 +4,8 @@ import Nav from "./components/nav";
 import "./User.css";
 import { useHistory } from "react-router-dom";
 import { State } from "./Context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserPage = (props) => {
   let history = useHistory();
@@ -12,10 +14,19 @@ const UserPage = (props) => {
   const [userName, setUserName] = useState("");
   const [data, setData] = useState([]);
 
+  const notifySuccess = () =>
+    toast.success("Login Successful!", {
+      position: "top-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   // const usernname = userData.user.username;
   useEffect(() => {
     // console.log(userData, isAuth);
-
     let data = JSON.parse(localStorage.getItem("data"));
     // let data = localStorage.getItem("data");
     setUserName(data.username);
@@ -79,7 +90,17 @@ const UserPage = (props) => {
   };
 
   return (
-    <div>
+    <div onLoad={notifySuccess}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Nav />
       <div className="user-body">
         <div className="user-info">

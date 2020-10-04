@@ -1,4 +1,4 @@
-import React, { Component } from "react"; 
+import React, { Component } from "react";
 
 class Contact extends Component {
   render() {
@@ -18,22 +18,30 @@ class Contact extends Component {
             <li>Handels : Instagram</li>
             </div>
           </ul> */}
-          
+
           <center>
-          <div class="share">
-<span className="a">
-<i class="fas fa-share-alt"></i> Share!
-</span>
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fab fa-github"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-twitter"></i></a>
-</div>
-</center>
-          </div>
+            <div className="share">
+              <span className="a">
+                <i className="fas fa-share-alt"></i> Share!
+              </span>
+              <a href="#">
+                <i className="fab fa-linkedin"></i>
+              </a>
+              <a href="#">
+                <i className="fab fa-github"></i>
+              </a>
+              <a href="#">
+                <i className="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i className="fab fa-twitter"></i>
+              </a>
+            </div>
+          </center>
+        </div>
       </React.Fragment>
     );
   }
 }
- 
-export default Contact; 
+
+export default Contact;
