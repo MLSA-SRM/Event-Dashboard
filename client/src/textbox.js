@@ -189,7 +189,7 @@ const Box = () => {
       {/* <h2>{marked(data)}</h2> */}
       <div style={mailer}>
       <div className="boxa">
-        <span placeholder="Subject">{parse(marked(subject))}</span>
+        <span>Subject: {parse(marked(subject))}</span>
         </div>
         <hr/>
         <div className="headering" style={style}>

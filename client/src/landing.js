@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./images/Calendar_SVG.svg";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
+import Modal from "./a";
 import {
   BrowserRouter as Router,
   NavLink,
@@ -18,7 +19,7 @@ class Home extends Component {
           <div className='righty'>
             {/* <div className="pulse"/> */}
             <li>
-              <NavLink to='/login'>Log In</NavLink>
+            <Modal/>
             </li>
           </div>
         </ul>

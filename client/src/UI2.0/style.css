@@ -106,7 +106,6 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 10vh;
 }
 .headering {
-  margin-top: -3vh;
   color: #4e89ae;
   font-size: 8vh;
   font-family: "Heebo", sans-serif;
@@ -346,4 +345,10 @@ a:nth-of-type(4) {
   width: 50%;
   padding: 3vh;
   border-radius: 2vh;
+}
+
+.boxa{
+  background-color: cornsilk;
+  border-radius: 10px;
+  padding: 15px;
 }
