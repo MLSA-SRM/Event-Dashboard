@@ -70,7 +70,61 @@ const savePeople = (body, eventId) => {
     }
   );
 };
+const formData = (data) => {
+  data.people.forEach((item) => {
+    let newPeople = new people(item);
+    newPeople.save().catch((err) => console.log(err));
+    var yoman = {
+      name: newPeople._id,
+    };
 
+    event.findOneAndUpdate(
+      { name: data.eventName },
+      {
+        $push: {
+          public: yoman,
+        },
+      },
+      (err, res) => {
+        if (err) console.log(err);
+        // else console.log(res);
+      }
+    );
+    // console.log(item);
+  });
+};
+const getEvent = (name) => {
+  return event
+    .findOne({
+      name,
+    })
+    .then((res) => {
+      let data = {
+        id: res._id,
+        name: res.name,
+        attendence: res.attendence,
+        startDate: res.startDate,
+        endDate: res.endDate,
+      };
+      console.log(data);
+      return data;
+    })
+    .catch((err) => console.log(err));
+};
+const editEvent = (data) => {
+  let { id, name, num, startDate, endDate } = data;
+  event
+    .findByIdAndUpdate(id, {
+      name,
+      attendence: num,
+      startDate,
+      endDate,
+    })
+    .then((res) => {
+      return true;
+    })
+    .catch((err) => console.log(err));
+};
 const userData = (id) => {
   return user
     .findById(id)
@@ -80,4 +134,13 @@ const userData = (id) => {
     });
 };
 
-module.exports = { events, savePeople, homeData, saveEvent, userData };
+module.exports = {
+  events,
+  savePeople,
+  homeData,
+  saveEvent,
+  userData,
+  formData,
+  getEvent,
+  editEvent,
+};
