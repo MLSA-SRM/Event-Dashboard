@@ -9,6 +9,9 @@ var {
   homeData,
   saveEvent,
   userData,
+  formData,
+  getEvent,
+  editEvent,
 } = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
@@ -314,7 +317,14 @@ router.get("/table", (req, res, next) => {
     data: json,
   });
 });
-
+router.post("/getevent", async (req, res, next) => {
+  let data = await getEvent(req.body.data);
+  res.json(data);
+});
+router.post("/editevent", async (req, res, next) => {
+  let data = await editEvent(req.body);
+  res.json(data);
+});
 router.post("/mailer", (req, res, next) => {
   let { timeLeft } = req.body;
   let time = timeLeft === undefined ? 0 : timeLeft;
@@ -325,6 +335,51 @@ router.post("/mailer", (req, res, next) => {
       success: true,
     });
   }, time);
+});
+router.get("/getpeople", (req, res, next) => {
+  let data = {
+    eventName: "yoman",
+    people: [
+      {
+        reg: "ra828822",
+        name: "yo",
+        branch: "CSE",
+        year: 2,
+        tellmeabout: "yoyoyoy",
+      },
+      {
+        reg: "ra828822",
+        name: "yo",
+        branch: "CSE",
+        year: 2,
+        tellmeabout: "yoyoyoy",
+      },
+      {
+        reg: "ra828822",
+        name: "yo",
+        branch: "CSE",
+        year: 2,
+        tellmeabout: "yoyoyoy",
+      },
+      {
+        reg: "ra828822",
+        name: "yo",
+        branch: "CSE",
+        year: 2,
+        tellmeabout: "yoyoyoy",
+      },
+      {
+        reg: "ra828822",
+        name: "yo",
+        branch: "CSE",
+        year: 2,
+        tellmeabout: "yoyoyoy",
+      },
+    ],
+  };
+  // res.json(formData(data));
+  formData(data);
+  res.json("done");
 });
 router.post("/test/mailer", (req, res, next) => {
   console.log(req.body);
