@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Heebo:wght@700&display=swap"
       rel="stylesheet"
     />
@@ -14,7 +14,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
       rel="stylesheet"
-    />
+    /> -->
     <style media="screen">
       body {
         margin-top: 5vw;
@@ -74,23 +74,12 @@
   </head>
   <body>
     <div class="header" style="background: <%= primary %>">
-      <h1 style="color: <%= tertiary %>"><%- company %></h1>
-      <h2 style="color: <%= secondary %>; font-size: 4vw"><%- title %></h2>
+      <h1 style="color: <%- tertiary %>"><%= company %></h1>
+      <h2 style="color: <%- secondary %>; font-size: 4vw"><%= title %></h2>
       <hr />
       <br />
-      <p><%- hey %> <span id="name"><%- name %></span></p>
-      <h3 class="text"><%- body %></h3>
-      <!-- <div class="qr-img">
-        <% if(<%- qr %>) == true { %>
-        <span class="qr">
-          <pre><img src="${img}"></pre>
-        
-        </span>
-        <% } else { %>
-          <span class="qr">
-          </span>
-          <% } %>
-      </div> -->
+      <p><%= hey %> <span id="name"><%= name %> </span></p>
+      <h3 class="text"><%= body %></h3>
     </div>
   </body>
 </html>
