@@ -105,7 +105,7 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 10vh;
 }
 .headering {
-  margin-top: -3vh;
+  margin-top: 8px;
   color: #4e89ae;
   font-size: 8vh;
   font-family: "Heebo", sans-serif;
@@ -332,7 +332,7 @@ a:nth-of-type(4) {
   padding: 3vh;
   width: 50%;
   border-radius: 20px;
-  background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1));
+  background: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(22, 19, 19, 0.1));
 }
 .App{
   display: inline-block;
@@ -342,4 +342,9 @@ a:nth-of-type(4) {
   width: 50%;
   padding: 3vh;
   border-radius: 2vh;
+}
+.boxa{
+  padding: 2vh;
+  border-radius: 2vh;
+  background-color: rgb(245, 234, 218,03);
 }
