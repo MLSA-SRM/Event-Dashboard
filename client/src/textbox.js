@@ -16,6 +16,7 @@ const Box = () => {
   const [hey, setHey] = useState("");
   const [qr, setQr] = useState(null);
   const [company, setCompany] = useState("");
+  const [subject, setSubject] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -23,6 +24,7 @@ const Box = () => {
         data: marked(data),
         title: marked(title),
         hey: marked(hey),
+        subject: marked(subject),
         primary,
         secondary,
         tertiary,
@@ -38,6 +40,7 @@ const Box = () => {
     setSecondary("#000000");
     setTertiary("#3b85b3");
     setCompany("");
+    setSubject("");
     setQr(false);
   };
   const mailer = {
@@ -57,6 +60,16 @@ const Box = () => {
     <div className="textBox">
       <form onSubmit={(e) => handleSubmit(e)}>
         <center>
+        <textarea
+            name="area"
+            id="area"
+            className="content"
+            cols="70"
+            rows="1"
+            placeholder="Subject..."
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+          ></textarea>
           <div className="contenty">
             <br />
             <textarea
@@ -105,6 +118,8 @@ const Box = () => {
               <option value="Respected,">Respected,</option>
             </select>
           </div>
+          <br/>
+          <br/>
           <br />
           <br />
           <textarea
@@ -173,6 +188,10 @@ const Box = () => {
       </form>
       {/* <h2>{marked(data)}</h2> */}
       <div style={mailer}>
+      <div className="boxa">
+        <span>Subject: {parse(marked(subject))}</span>
+        </div>
+        <hr/>
         <div className="headering" style={style}>
           {parse(marked(company))}
         </div>
