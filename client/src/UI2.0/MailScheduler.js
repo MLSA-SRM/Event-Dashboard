@@ -16,7 +16,16 @@ import { ToastContainer, toast } from "react-toastify";
 import Axios from "axios";
 import { State } from "../Context";
 
-function MailScheduler(props) {
+function MailScheduler({
+  primary,
+  secondary,
+  title,
+  body,
+  tertiary,
+  hey,
+  company,
+  subject,
+}) {
   const currDate = new Date();
   const eventDate = JSON.parse(localStorage.getItem("test")).date;
   const [open, setOpen] = useState();
@@ -51,7 +60,18 @@ function MailScheduler(props) {
         email: item.email,
       });
     });
-    Axios.post("/mailer", { timeLeft, data })
+    Axios.post("/mailer", {
+      timeLeft,
+      data,
+      primary,
+      title,
+      secondary,
+      body,
+      tertiary,
+      hey,
+      company,
+      subject,
+    })
       .then(() => console.log("sent"))
       .catch((err) => console.log(err));
 
@@ -60,23 +80,23 @@ function MailScheduler(props) {
   };
   return (
     <div>
-      <Grid container justify="space-around">
-        <Button variant="contained" color="primary" onClick={handleOpen}>
+      <Grid container justify='space-around'>
+        <Button variant='contained' color='primary' onClick={handleOpen}>
           Schedule Emails
         </Button>
         <Dialog
           open={open}
           onClose={handleClose}
-          aria-labelledby="form-dialog-title"
+          aria-labelledby='form-dialog-title'
         >
-          <DialogTitle id="form-dialog-title">Schedule Emails</DialogTitle>
+          <DialogTitle id='form-dialog-title'>Schedule Emails</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Set date and time for scheduling emails
             </DialogContentText>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <KeyboardDateTimePicker
-                variant="inline"
+                variant='inline'
                 value={date}
                 onChange={setDate}
                 onError={console.log}
@@ -85,16 +105,16 @@ function MailScheduler(props) {
                 maxDateMessage={`Set a date before an event`}
                 minDate={new Date()}
                 minDateMessage={`Set a date after the current date`}
-                format="yyyy/MM/dd HH:mm"
+                format='yyyy/MM/dd HH:mm'
               />
             </MuiPickersUtilsProvider>
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleClose} color='primary'>
               Cancel
             </Button>
-            <Button onClick={handleSubmit} color="primary">
-              SChedule
+            <Button onClick={handleSubmit} color='primary'>
+              Schedule
             </Button>
           </DialogActions>
         </Dialog>

@@ -3,8 +3,6 @@ import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
 import Table from "./Table";
-import NewEvent from "./NewEvent";
-import UserPage from "./User";
 import Landing from "./landing";
 import ProtectedRoute from "./ProtectedRoute";
 import NewDash from "./UI2.0/newdashboard";
@@ -13,7 +11,7 @@ import AddEvent from "./UI2.0/addevent";
 import NewCalendar from "./UI2.0/newcalendar";
 import PageNotFound from "./PageNotFound";
 import Profile from "./UI2.0/newprofile";
-import Settings from './UI2.0/settings';
+import Settings from "./UI2.0/settings";
 // import usePersist from "./components/Persist";
 import {
   BrowserRouter as Router,
@@ -63,13 +61,13 @@ function App(props) {
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <Landing />
         </Route>
-        <Route exact path='/login'>
+        {/* <Route exact path="/login">
           <Login />
-        </Route>
-        <Route exact path='/signIn'>
+        </Route> */}
+        <Route exact path="/signIn">
           <Register />
         </Route>
         {/* <Route exact path='/newui'>
@@ -78,39 +76,35 @@ function App(props) {
         {/* <Route exact path='/newdashboard'>
             <NewDash />
           </Route> */}
-        <ProtectedRoute exact path='/newpeople'>
+        <ProtectedRoute exact path="/newpeople">
           <NewPeople />
         </ProtectedRoute>
-        <ProtectedRoute exact path='/abc'>
+        {/* <ProtectedRoute exact path="/abc">
           <Profile />
-        </ProtectedRoute>
-        <ProtectedRoute exact path='/newcalendar'>
+        </ProtectedRoute> */}
+        <ProtectedRoute exact path="/newcalendar">
           <NewCalendar />
         </ProtectedRoute>
-        <Route exact path='/settings'>
+        <Route exact path="/settings">
           <Settings />
         </Route>
-        <Route exact path='/dashboard' component={Home} />
+        <Route exact path="/dashboard" component={Home} />
         <ProtectedRoute
           exact
-          path='/addevent'
+          path="/addevent"
           component={AddEvent}
         ></ProtectedRoute>
-        <ProtectedRoute
-          exact
-          path='/user'
-          component={UserPage}
-        ></ProtectedRoute>
-        <ProtectedRoute exact path='/user/:id'>
+        <ProtectedRoute exact path="/user" component={Profile}></ProtectedRoute>
+        <ProtectedRoute exact path="/user/:id">
           {/* <Home /> */}
           <NewDash />
         </ProtectedRoute>
-        <ProtectedRoute exact path='/table'>
+        <ProtectedRoute exact path="/table">
           <Table />
         </ProtectedRoute>
         {/* Invalid Route Page Not Found 
         Don't add routes after this */}
-        <Route path='*'>
+        <Route path="*">
           <PageNotFound />
         </Route>
       </Switch>

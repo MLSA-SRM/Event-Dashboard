@@ -173,15 +173,17 @@ body {
     padding-left: 10vh;
   }
   .close{
+    z-index: 1001;
     height: 3vh;
     width: 5vh;
+    background-color: #ec3f3f;
+    padding: 2px;
+    margin: 2px;
+    color: #fff ;
+    border-radius: 20%;
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #ec3f3f;
-    color: #fff ;
-    border-radius: 20%;
-    padding: 2px;
   }
 
   .thumbnail:hover{
@@ -276,6 +278,23 @@ body {
     transform: translate(-50%, -50%);
     white-space:  wrap;
     opacity: 200%;
+  }
+  .ms{
+    background-color: rgba(255,255,255);
+    padding: 28vh 20vh;
+    border-radius: 10px;
+    -webkit-box-shadow: -2px 2px 38px -10px rgba(0,0,0,0.95);
+    -moz-box-shadow: -2px 2px 38px -10px rgba(0,0,0,0.95);
+    box-shadow: -2px 2px 38px -10px rgba(0,0,0,0.95);
+  }
+  .mod{
+    color: #9582E0;
+    padding: 14.144px;
+    font: "Segoe UI Light", sans-serif;
+    margin: 0px 42.432px 0px 0px;
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
   }
 /* 
   .pulse{

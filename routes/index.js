@@ -327,15 +327,80 @@ router.post("/editevent", async (req, res, next) => {
 });
 router.post("/mailer", (req, res, next) => {
   let { timeLeft } = req.body;
+  let {
+    data,
+    subject,
+    title,
+    hey,
+    company,
+    body,
+    primary,
+    secondary,
+    tertiary,
+    // name,
+  } = req.body;
+  // console.log(req.body);
+
   let time = timeLeft === undefined ? 0 : timeLeft;
   setTimeout(() => {
     console.log("All mails delivered");
-    mailer(req.body.data);
+    mailer(
+      data,
+      primary,
+      secondary,
+      // data,
+      // name,
+      subject,
+      body,
+      tertiary,
+      title,
+      hey,
+      company
+    );
     res.json({
       success: true,
     });
   }, time);
 });
+router.post("/test/mailer", (req, res, next) => {
+  console.log(req.body);
+  // let data = req.body.data;
+  let {
+    primary,
+    secondary,
+    data,
+    // name,
+    tertiary,
+    title,
+    hey,
+    company,
+  } = req.body;
+  ejs.renderFile(
+    __dirname + "/email.ejs",
+    { name, data, primary, secondary, tertiary, title, hey, company },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // console.log(data);
+        let test = "yo@gmail.com";
+        let mailDetails = {
+          from: "yoman@helo.in",
+          to: test,
+          subject: "Event Registration",
+          attachDataUrls: true,
+          html: data,
+        };
+        (async () => {
+          let info = await Transporter.sendMail(mailDetails);
+          console.log("Message sent: %s", info.messageId);
+        })();
+      }
+    }
+  );
+  res.json(true);
+});
+
 router.get("/getpeople", (req, res, next) => {
   let data = {
     eventName: "yoman",
@@ -380,44 +445,6 @@ router.get("/getpeople", (req, res, next) => {
   // res.json(formData(data));
   formData(data);
   res.json("done");
-});
-router.post("/test/mailer", (req, res, next) => {
-  console.log(req.body);
-  // let data = req.body.data;
-  let {
-    primary,
-    secondary,
-    data,
-    name,
-    tertiary,
-    title,
-    hey,
-    company,
-  } = req.body;
-  ejs.renderFile(
-    __dirname + "/email.ejs",
-    { name, data, primary, secondary, tertiary, title, hey, company },
-    (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        // console.log(data);
-        let test = "yo@gmail.com";
-        let mailDetails = {
-          from: "yoman@helo.in",
-          to: test,
-          subject: "Event Registration",
-          attachDataUrls: true,
-          html: data,
-        };
-        (async () => {
-          let info = await Transporter.sendMail(mailDetails);
-          console.log("Message sent: %s", info.messageId);
-        })();
-      }
-    }
-  );
-  res.json(true);
 });
 //TEST ROUTE 👇
 router.post("/test/savepeople", (req, res, next) => {
