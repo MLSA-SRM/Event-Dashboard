@@ -340,6 +340,7 @@ router.post("/mailer", (req, res, next) => {
     // name,
   } = req.body;
   // console.log(req.body);
+
   let time = timeLeft === undefined ? 0 : timeLeft;
   setTimeout(() => {
     console.log("All mails delivered");

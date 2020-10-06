@@ -55,7 +55,7 @@ function Login(props) {
         notifySuccess();
       } else {
         wrongMessageDisplay = res.data.msg;
-        history.push("/login");
+        history.push("/");
         notifyFailure();
       }
     });

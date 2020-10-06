@@ -16,10 +16,9 @@ const EventBox = (item) => {
     localStorage.setItem("eventName", data);
     localStorage.setItem("test", JSON.stringify(value));
   };
-
   return (
     <div
-      className='events-box'
+      className="events-box"
       onClick={() => onClickRedirect(item.name, item.rawDate)}
     >
       <h4>{item.name}</h4>
