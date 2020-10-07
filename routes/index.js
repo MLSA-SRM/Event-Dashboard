@@ -239,59 +239,74 @@ router.post("/newevent", async (req, res, next) => {
   res.json(status);
 });
 
-router.get("/table", (req, res, next) => {
+router.get("/table", async (req, res, next) => {
   //TODO DATA hardcoded
-  const json = [
-    {
-      name: "John",
-      reg: "RA001",
-      email: "xyz@gmail.com",
-      IQ: "320",
-      lang: "cpp",
-      event: "ABC",
-    },
-    {
-      name: "Doe",
-      reg: "RA002",
-      email: "xyz@gmail.com",
-      IQ: "320",
-      lang: "cpp",
-      event: "XYZ",
-    },
-    {
-      name: "Doe",
-      reg: "RA002",
-      email: "xyz@gmail.com",
-      IQ: "320",
-      lang: "cpp",
-      event: "JKL",
-    },
-    {
-      name: "Doe",
-      reg: "RA002",
-      email: "xyz@gmail.com",
-      IQ: "320",
-      lang: "cpp",
-      event: "ABC",
-    },
-    {
-      name: "Doe",
-      reg: "RA002",
-      email: "xyz@gmail.com",
-      IQ: "320",
-      lang: "cpp",
-      event: "JKL",
-    },
-    {
-      name: "Doe",
-      reg: "RA002",
-      email: "xyz@gmail.com",
-      IQ: "320",
-      lang: "cpp",
-      event: "XYZ",
-    },
-  ];
-  let keys = Object.keys(json[0]);
+  let data = await events("yoman");
+  // console.log();
+  let json = [];
+  data.public.forEach((item) => {
+    json.push(item.name);
+  });
+  // json.forEach((item) => {
+  //   delete item.reg;
+  // });
+  // res.json(json);
+  // const json = [
+  //   {
+  //     name: "John",
+  //     reg: "RA001",
+  //     email: "xyz@gmail.com",
+  //     IQ: "320",
+  //     lang: "cpp",
+  //     event: "ABC",
+  //   },
+  //   {
+  //     name: "Doe",
+  //     reg: "RA002",
+  //     email: "xyz@gmail.com",
+  //     IQ: "320",
+  //     lang: "cpp",
+  //     event: "XYZ",
+  //   },
+  //   {
+  //     name: "Doe",
+  //     reg: "RA002",
+  //     email: "xyz@gmail.com",
+  //     IQ: "320",
+  //     lang: "cpp",
+  //     event: "JKL",
+  //   },
+  //   {
+  //     name: "Doe",
+  //     reg: "RA002",
+  //     email: "xyz@gmail.com",
+  //     IQ: "320",
+  //     lang: "cpp",
+  //     event: "ABC",
+  //   },
+  //   {
+  //     name: "Doe",
+  //     reg: "RA002",
+  //     email: "xyz@gmail.com",
+  //     IQ: "320",
+  //     lang: "cpp",
+  //     event: "JKL",
+  //   },
+  //   {
+  //     name: "Doe",
+  //     reg: "RA002",
+  //     email: "xyz@gmail.com",
+  //     IQ: "320",
+  //     lang: "cpp",
+  //     event: "XYZ",
+  //   },
+  // ];
+  let yo = Object.keys(json[0]._doc);
+  // console.log(keys);
+  let keys = yo.filter((item) => {
+    return item !== "_id" && item !== "__v";
+  });
+  // console.log(yo);
   let temp;
   let col = [];
   keys.forEach((item) => {
