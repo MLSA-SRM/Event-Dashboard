@@ -18,7 +18,7 @@ const Newcalendar = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
+    <div style={{padding: "4vh"}}>
       <NewNav />
       <div style={{ width: "85%", margin: "auto", marginTop: "10vh" }}>
         <FullCalendar

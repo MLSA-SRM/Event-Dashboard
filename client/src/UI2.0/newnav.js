@@ -49,14 +49,9 @@ const NewNav = () => {
               <GoCalendar className="icon" /> Calendar
             </li>
           </NavLink>
-          <NavLink to="/addevent" activeClassName="current">
-            <li className="main-nav-item">
-              <GoPlus className="icon" /> New Event
-            </li>
-          </NavLink>
           <NavLink to="/settings" activeClassName="current">
             <li className="main-nav-item">
-              <MdSettings className="icon" />
+              <MdSettings className="icon" />  Settings
             </li>
           </NavLink>
         </ul>

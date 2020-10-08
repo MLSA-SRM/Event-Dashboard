@@ -40,7 +40,7 @@ const Settings = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
+    <div style={{padding: "4vh"}}>
       <NewNav />
       <div className='form-body'>
         <h1 className='header-form'>Edit event details </h1>
