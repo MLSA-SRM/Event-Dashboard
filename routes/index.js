@@ -26,6 +26,12 @@ const { eventNames } = require("../config/mailConfig");
 //   console.log("hello");
 // });
 
+function arraymove(arr, fromIndex, toIndex) {
+  var element = arr[fromIndex];
+  arr.splice(fromIndex, 1);
+  arr.splice(toIndex, 0, element);
+}
+
 router.post("/login", async function (req, res, next) {
   const { username, password } = req.body;
   if (!username || !password) {
@@ -302,11 +308,12 @@ router.get("/table", async (req, res, next) => {
   //   },
   // ];
   let yo = Object.keys(json[0]._doc);
-  // console.log(keys);
+  // console.log(yo);
   let keys = yo.filter((item) => {
     return item !== "_id" && item !== "__v";
   });
-  // console.log(yo);
+  arraymove(keys, 0, 1);
+  // console.log(keys);
   let temp;
   let col = [];
   keys.forEach((item) => {

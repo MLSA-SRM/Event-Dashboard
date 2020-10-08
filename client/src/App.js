@@ -18,6 +18,7 @@ import {
   Switch,
   Route,
   useHistory,
+  Redirect,
 } from "react-router-dom";
 import "./App.css";
 import Axios from "axios";
@@ -30,8 +31,10 @@ function App(props) {
   //   token: undefined,
   //   user: undefined,
   // });
+
   const { setUserData, setData } = useContext(State);
   let history = useHistory();
+
   useEffect(() => {
     const checkForUserLoggedIn = async () => {
       let token = localStorage.getItem("auth-token");
@@ -64,9 +67,10 @@ function App(props) {
         <Route exact path="/">
           <Landing />
         </Route>
-        {/* <Route exact path="/login">
+
+        <Route exact path="/login">
           <Login />
-        </Route> */}
+        </Route>
         <Route exact path="/signIn">
           <Register />
         </Route>
