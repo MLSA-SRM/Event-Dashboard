@@ -9,8 +9,6 @@ const NewPeople = () => {
       <NewNav />
       <br />
       <br />
-      <h1 className='heading'>Send Mail</h1>
-      <br />
       <Box />
       {/* <MailScheduler /> */}
       <Table style={{ width: "100%" }} />

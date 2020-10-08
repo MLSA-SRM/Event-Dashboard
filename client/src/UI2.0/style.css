@@ -18,9 +18,16 @@
 }
 
 .textBox {
-  background: rgba(245, 239, 239, 1);
-  border-radius: 5vh;
+  justify-content: space-between;
+  background: rgba(243, 243, 243, 0.9);
+  -webkit-box-shadow: 4px 4px 31px -7px rgba(0,0,0,0.74);
+  -moz-box-shadow: 4px 4px 31px -7px rgba(0,0,0,0.74);
+  box-shadow: 4px 4px 31px -7px rgba(0,0,0,0.74);
+  border-radius: 2vh;
   padding: 5vh;
+  width: 90%;
+  margin: 0 auto;
+  font-family: 'Manrope', sans-serif;
 }
 
 .textBox h1,
@@ -62,8 +69,8 @@ select:focus {
 }
 
 select {
-  border: none;
-  border-radius: 10px;
+  border: solid 1px black;
+  border-radius: 5px;
   padding: 1vh 3vh;
   position: relative;
   display: inline-block;
@@ -184,37 +191,6 @@ input:checked + .slider:before {
 .hey {
   font-size: 3.5vh;
 }
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 300px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 110%;
-}
-f .tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent black transparent transparent;
-}
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
 .contenty {
   display: inline-block;
 }
@@ -319,7 +295,7 @@ a:nth-of-type(4) {
 }
 
 .fa-twitter:hover {
-  color: rgb(86, 88, 233);
+  color: #2BA8E0;
   transform: scale(1.5);
 }
 
@@ -351,4 +327,65 @@ a:nth-of-type(4) {
   background-color: cornsilk;
   border-radius: 10px;
   padding: 15px;
+}
+
+#mailing{
+  color: #3454EE;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 37.128px;
+}
+
+.inputn:focus {
+  border: 2px solid #3454ee;
+  box-shadow: 0px 0px 12px rgb(221, 221, 221);
+}
+.inputn::placeholder {
+  color: rgb(101, 102, 102);
+}
+.inputn {
+  border: 2px solid rgb(190, 190, 190);
+  outline: none;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  padding: 0.4rem;
+  transition: 0.3s ease-in-out;
+}
+
+.labeln {
+  text-align: left;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: rgb(101, 102, 102);
+  margin-left: -27vw;
+}
+
+.labelnn {
+  text-align: left;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: rgb(101, 102, 102);
+  margin-left: -25vw;
+}
+
+.labelnn {
+  text-align: left;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: rgb(101, 102, 102);
+  margin-right: 25vw;
+}
+
+.labelcontent{
+  text-align: left;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: rgb(101, 102, 102);
+  margin-right: 65vw;
 }

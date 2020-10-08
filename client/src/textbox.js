@@ -50,6 +50,8 @@ const Box = () => {
     height: "auto",
     color: secondary,
     padding: "5vh",
+    borderRadius: "10px",
+    border: "solid 1px black"
   };
 
   const style = {
@@ -58,25 +60,36 @@ const Box = () => {
 
   return (
     <div className='textBox'>
+      <center>
+      <h1 className='heading' id="mailing">Inviting Desk</h1>
+      <p className="form-subtext">Zeit für die Party, thats German for Time to get the party started</p>
+      </center>
+      <br/>
       <form onSubmit={(e) => handleSubmit(e)}>
         <center>
+        <div className='input-div'>
+          <label htmlFor="area" className="labeln">Subject</label>
+          <br/>
           <textarea
             name='area'
             id='area'
-            className='content'
+            className='input'
             cols='70'
             rows='1'
-            placeholder='Subject...'
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           ></textarea>
+          </div>
           <div className='contenty'>
             <br />
+            <div className='input-div'>
+            <label htmlFor="areaa" className="labelnn">Organisation Name</label>
+            <label htmlFor="areaab" className="labelnnn">Title</label>
+            <br/>
             <textarea
-              name='area'
-              id='area'
-              placeholder='Your Organisation Name...'
-              className='tbox'
+              name='areaa'
+              id='areaa'
+              className='tbox input'
               cols='50'
               rows='1'
               value={company}
@@ -84,15 +97,15 @@ const Box = () => {
             ></textarea>
             <span className='tab2'></span>
             <textarea
-              name='area'
-              id='area'
-              className='tbox'
-              placeholder='Your Title please...'
+              name='areaab'
+              id='areaab'
+              className='tbox input'
               cols='50'
               rows='1'
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             ></textarea>
+            </div>
           </div>
           <br />
           <div className='contenty'>
@@ -120,15 +133,15 @@ const Box = () => {
           </div>
           <br />
           <br />
-          <br />
-          <br />
+          <br/>
+          <label htmlFor="areacontent" className="labelcontent">Content</label>
+          <br/>
           <textarea
             name='area'
-            id='area'
-            className='content'
-            cols='120'
-            rows='8'
-            placeholder='Your Mail content goes here...'
+            id='areacontent'
+            className='content inputn'
+            cols='100'
+            rows='5'
             value={data}
             onChange={(e) => setData(e.target.value)}
           ></textarea>
@@ -158,7 +171,6 @@ const Box = () => {
               value={tertiary}
               id='body'
               name='body'
-              placeholder='abc'
             />
             {/* <label for='body'>Tertiary Colour</label> */}
           </div>
