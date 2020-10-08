@@ -67,7 +67,6 @@ function Table() {
         <div
           className="ag-theme-material list-data"
           style={{
-            height: "50vh",
             // width: "200vh",
           }}
         >

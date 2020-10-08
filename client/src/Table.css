@@ -27,8 +27,8 @@
   width: 100%;
 }
 .list-data {
-  overflow: hidden;
-  width: 60%;
+  height: 100%;
+  width: 100%;
   padding: 3vh;
   margin: auto;
   font-family: "Poppins", sans-serif;
@@ -43,10 +43,13 @@
 .list-body {
   /* width: 100vh; */
   margin: auto;
-  padding: 4vh;
+  height: 1000px;
+  padding: 3vh;
   /* overflow-x: scroll; */
   /* overflow-y: scroll; */
 }
-.ag-center-cols-viewport {
-  overflow-x: hidden;
+.ag-theme-material{
+  height: 90%;
+  border: none;
+  overflow: scroll;
 }
