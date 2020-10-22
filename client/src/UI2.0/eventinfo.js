@@ -34,26 +34,26 @@ const EventInfo = ({ name, date }) => {
   }, []);
   return (
     <Tippy
-      theme='light'
-      animation='scale'
-      content='This tab shows the basic event details'
+      theme="light"
+      animation="scale"
+      content="This tab shows the basic event details"
     >
       <div
-        className='dash-col1'
+        className="dash-col1"
         style={{
           display: "flex",
           flexFlow: "column",
           justifyContent: "left",
         }}
       >
-        <h1 className='dash-header' style={{ textAlign: "left" }}>
+        <h1 className="dash-header" style={{ textAlign: "left" }}>
           EVENT INFO
         </h1>
-        <h1 className='event-main-name' style={{ textAlign: "left" }}>
+        <h1 className="event-main-name" style={{ textAlign: "left" }}>
           {name}
         </h1>
         <h1
-          className='event-main-name'
+          className="event-main-name"
           style={{
             fontSize: "5vh",
             textAlign: "left",
@@ -66,7 +66,7 @@ const EventInfo = ({ name, date }) => {
           {/* {new data.getDate() + "th " + ", " + new data.getFullYear()} */}
         </h1>
         <h1
-          className='event-main-name'
+          className="event-main-name"
           style={{
             fontSize: "5vh",
             textAlign: "left",
@@ -90,8 +90,21 @@ const EventInfo = ({ name, date }) => {
         </p>
         <br />
         <button
-          style={{ margin: "0", marginBottom: "3vh", width: "30%" }}
-          className='edit'
+          style={{
+            margin: "0",
+            marginBottom: "3vh",
+            width: "30%",
+            background: "#3454ee",
+            border: "none",
+            fontSize: "2.25vh",
+            padding: ".75vh",
+            outline: "none",
+            color: "white",
+            fontFamily: "Poppins",
+            fontWeight: '500',
+            borderRadius: '35px'
+          }}
+          className="edit"
         >
           Edit Details
         </button>

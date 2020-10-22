@@ -3,41 +3,59 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import "tippy.js/themes/light.css";
+import { Tooltip, Legend, PieChart, Pie, Cell } from "recharts";
+
+const pieData = [
+  {
+    name: "1st Year",
+    value: 100,
+  },
+  {
+    name: "2nd Year",
+    value: 150,
+  },
+  { name: "3rd Year", value: 300 },
+  { name: "4th Year", value: 200 },
+];
+
+const colors2 = ["#9b5de5", "#f15bb5", "#fee440", "#00bbf9", "#00f5d4"];
 
 const OtherDetails = () => {
   return (
     <Tippy
       theme="light"
       animation="scale"
-      content="This tab shows other details (email info and year wise data)."
+      content="This tab shows registrations by branch."
     >
       <div style={{ textAlign: "left" }} className="dash-col2">
         <h1
           className="dash-header"
           style={{ textAlign: "left", marginBottom: "5vh" }}
         >
-          OTHER DETAILS
+          REGISTRATIONS BY YEAR
         </h1>
-        <h3 className="dash-header style1">Year-wise breakdown</h3>
-        <p>
-          1st Year <b className="color1">157</b>
-        </p>
-        <p>
-          2nd Year <b className="color1">234</b>
-        </p>
-        <p>
-          3rd Year <b className="color1">175</b>
-        </p>
-        <p style={{ marginBottom: "5vh" }}>
-          4th Year <b className="color1">95</b>
-        </p>
-        <h3 className="dash-header style1">E-mail Invitations</h3>
-        <p>
-          Sent <b className="color1">455</b>
-        </p>
-        <p>
-          Pending <b className="color1">455</b>
-        </p>
+        <PieChart width={240} height={250} marginTop={30}>
+          <Pie
+            data={pieData}
+            dataKey="value"
+            nameKey="name"
+            cx={130}
+            cy={100}
+            outerRadius={70}
+            fill="#8884d8"
+            innerRadius={60}
+            paddingAngle={3}
+            label
+          >
+            {pieData.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={colors2[index % colors2.length]}
+              />
+            ))}
+          </Pie>
+          <Legend layout="horizontal" verticalAlign="bottom" align="center" />
+        </PieChart>
       </div>
     </Tippy>
   );

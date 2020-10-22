@@ -36,8 +36,8 @@ const BranchPie = ({ pieData }) => {
           ))}
         </Pie>
         <Legend layout='horizontal' verticalAlign='bottom' align='center' />
-        <Tooltip />
       </PieChart>
+        <Tooltip />
     </div>
     </Tippy>
   );

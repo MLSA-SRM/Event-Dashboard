@@ -6,6 +6,9 @@
   margin: auto;
   margin-top: 6vh;
 }
+.edit:hover{
+  background: #6279eb;
+}
 .dash-row {
   display: flex;
   flex-wrap: nowrap;
