@@ -16,7 +16,7 @@ body {
       float: left;
       margin-left: 2vh;
       margin-top: -0.20vh;
-      font-family: 'Segoe UI Light',sans-serif;
+      font-family: 'Poppins', sans-serif;
   }
   ul.headera {
     padding: 0;
@@ -39,14 +39,14 @@ body {
   }
   ul.headera li a {
     font-weight: bold;
-    color: #9582E0;
+    color: #3454ee;
     text-decoration: none;
     padding: 2vh;
     display: inline-block;
     border-radius: 4vh;
     margin-right: 6vh;
     font-size: 20px;
-    font-family: 'Segoe UI Light',sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   .box {
     background-color: #FFF;
@@ -184,6 +184,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
+    border: none;
   }
 
   .thumbnail:hover{
@@ -215,7 +216,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #9582E0;
+    background-color: #3454ee;
     overflow: hidden;
     width: 0;
     height: 100%;
@@ -228,7 +229,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #9582E0;
+    background-color: #3454ee;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -241,7 +242,7 @@ body {
     bottom: 0;
     left: 100%;
     right: 0;
-    background-color: #9582E0;
+    background-color: #3454ee;
     overflow: hidden;
     width: 0;
     height: 100%;
@@ -288,7 +289,7 @@ body {
     box-shadow: -2px 2px 38px -10px rgba(0,0,0,0.95);
   }
   .mod{
-    color: #9582E0;
+    color: #3454ee;
     padding: 14.144px;
     font: "Segoe UI Light", sans-serif;
     margin: 0px 42.432px 0px 0px;
