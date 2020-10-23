@@ -37,6 +37,8 @@ class Contact extends Component {
                 <i className="fab fa-twitter"></i>
               </a>
             </div>
+            <br/>
+            <p>&copy; Microsoft Student Partner Club 2020</p>
           </center>
         </div>
       </React.Fragment>
