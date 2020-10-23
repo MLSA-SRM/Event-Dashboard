@@ -11,6 +11,22 @@
   color: #3454ee;
 }
 
+.authForm h1{
+  color: #3454ee;
+  border-bottom: solid 5px #3454ee;
+}
+
+.authForm .ax{
+  color: #3454ee;
+}
+
+.ax{
+  color: #3454ee;
+}
+
+.authForm .btn{
+  background-color: #3454ee;
+}
 .align1 {
   width: 80%;
   margin: auto;
@@ -244,8 +260,8 @@ span.a {
 
 .share:hover a {
   opacity: 1;
-  transform: translateX(0);
-}
+  transform: translateX(0); 
+} 
 
 a:nth-of-type(1) {
   transition-delay: 1s;

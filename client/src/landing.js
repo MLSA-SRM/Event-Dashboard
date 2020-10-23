@@ -14,7 +14,7 @@ class Home extends Component {
         <div  className="margin">
         <ul className='headera'>
           <li>
-            <h1>Microsoft</h1>
+            <h1 className="ax">Event Dashboard</h1>
           </li>
           <div className='righty'>
             {/* <div className="pulse"/> */}
@@ -25,11 +25,9 @@ class Home extends Component {
         </ul>
         <div className='white-box'>
           <div className='box'>
-            <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
+            <h1>Introducing the latest in fast and accurate ways to organize events.</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Imperdiet proin fermentum leo vel orci porta non.
+              Join thousands of people in easily organising and managing events for your organisation. We will take care of all the grunt work no one wants to do.
             </p>
           </div>
           <div className='image-logo'>
