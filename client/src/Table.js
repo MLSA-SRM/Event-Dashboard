@@ -75,9 +75,7 @@ function Table() {
 
   const removeParticipants = (e) => {
     const selected = dataParams.getSelectedRows();
-    console.log(selected);
     const removed = dataParams.applyTransaction({ remove: selected });
-    console.log(removed);
     handleClose();
   };
   return (
