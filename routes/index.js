@@ -359,6 +359,7 @@ router.post("/mailer", (req, res, next) => {
     primary,
     secondary,
     tertiary,
+    qr,
     // name,
   } = req.body;
   // console.log(req.body);
@@ -377,7 +378,8 @@ router.post("/mailer", (req, res, next) => {
       tertiary,
       title,
       hey,
-      company
+      company,
+      qr
     );
     res.json({
       success: true,

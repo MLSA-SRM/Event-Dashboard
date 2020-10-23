@@ -80,6 +80,9 @@
       <br />
       <p><%= hey %> <span id="name"><%= name %> </span></p>
       <h3 class="text"><%= body %></h3>
+      <% if (qr) { %>
+        <img src="<%- img %>" alt="qrcode">      
+      <% } %>
     </div>
   </body>
 </html>

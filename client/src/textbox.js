@@ -51,7 +51,7 @@ const Box = () => {
     color: secondary,
     padding: "5vh",
     borderRadius: "10px",
-    border: "solid 1px black"
+    border: "solid 1px black",
   };
 
   const style = {
@@ -61,50 +61,60 @@ const Box = () => {
   return (
     <div className='textBox'>
       <center>
-      <h1 className='heading' id="mailing">Inviting Desk</h1>
-      <p className="form-subtext">Zeit für die Party, thats German for Time to get the party started</p>
+        <h1 className='heading' id='mailing'>
+          Inviting Desk
+        </h1>
+        <p className='form-subtext'>
+          Zeit für die Party, thats German for Time to get the party started
+        </p>
       </center>
-      <br/>
+      <br />
       <form onSubmit={(e) => handleSubmit(e)}>
         <center>
-        <div className='input-div'>
-          <label htmlFor="area" className="labeln">Subject</label>
-          <br/>
-          <textarea
-            name='area'
-            id='area'
-            className='input'
-            cols='70'
-            rows='1'
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-          ></textarea>
+          <div className='input-div'>
+            <label htmlFor='area' className='labeln'>
+              Subject
+            </label>
+            <br />
+            <textarea
+              name='area'
+              id='area'
+              className='input'
+              cols='70'
+              rows='1'
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            ></textarea>
           </div>
           <div className='contenty'>
             <br />
             <div className='input-div'>
-            <label htmlFor="areaa" className="labelnn">Organisation Name</label>
-            <label htmlFor="areaab" className="labelnnn">Title</label>
-            <br/>
-            <textarea
-              name='areaa'
-              id='areaa'
-              className='tbox input'
-              cols='50'
-              rows='1'
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-            ></textarea>
-            <span className='tab2'></span>
-            <textarea
-              name='areaab'
-              id='areaab'
-              className='tbox input'
-              cols='50'
-              rows='1'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            ></textarea>
+              <label htmlFor='areaa' className='labelnn'>
+                Organisation Name
+              </label>
+              <label htmlFor='areaab' className='labelnnn'>
+                Title
+              </label>
+              <br />
+              <textarea
+                name='areaa'
+                id='areaa'
+                className='tbox input'
+                cols='50'
+                rows='1'
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              ></textarea>
+              <span className='tab2'></span>
+              <textarea
+                name='areaab'
+                id='areaab'
+                className='tbox input'
+                cols='50'
+                rows='1'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              ></textarea>
             </div>
           </div>
           <br />
@@ -133,9 +143,11 @@ const Box = () => {
           </div>
           <br />
           <br />
-          <br/>
-          <label htmlFor="areacontent" className="labelcontent">Content</label>
-          <br/>
+          <br />
+          <label htmlFor='areacontent' className='labelcontent'>
+            Content
+          </label>
+          <br />
           <textarea
             name='area'
             id='areacontent'
@@ -207,6 +219,7 @@ const Box = () => {
         hey={hey}
         company={company}
         subject={subject}
+        qr={qr}
       />
 
       {/* <h2>{marked(data)}</h2> */}

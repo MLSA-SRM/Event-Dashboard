@@ -12,23 +12,25 @@ const mailer = (
   tertiary,
   title,
   hey,
-  company
+  company,
+  qr
 ) => {
-  console.log(
-    data,
-    primary,
-    secondary,
-    subject,
-    body,
-    tertiary,
-    title,
-    hey,
-    company
-  );
+  // console.log(
+  //   data,
+  //   primary,
+  //   secondary,
+  //   subject,
+  //   body,
+  //   tertiary,
+  //   title,
+  //   hey,
+  //   company
+  // );
   for (let a in data) {
     console.log(data[a]);
     // let test = "";
     QRCode.toDataURL(data[a].regno, function (err, img) {
+      // console.log(img);
       ejs.renderFile(
         __dirname + "/email.ejs",
         {
@@ -40,6 +42,8 @@ const mailer = (
           title,
           hey,
           company,
+          img,
+          qr,
         },
         (err, file) => {
           if (err) {
