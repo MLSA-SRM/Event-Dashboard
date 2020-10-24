@@ -12,6 +12,7 @@ var {
   formData,
   getEvent,
   editEvent,
+  deleteParticipate,
 } = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
@@ -124,7 +125,7 @@ router.get("/authUser", auth, async function (req, res) {
 
 router.post("/user", async (req, res, next) => {
   // console.log(req.isAuthenticated());
-  console.log(req.body);
+  // console.log(req.body);
   let id = req.body.data.id;
   // let id = "5f316249bf8263611807b23d";
   let data = await userData(id);
@@ -149,7 +150,7 @@ router.post("/bardata", async (req, res, next) => {
   // console.log(req.user);
   // app.set("id", req.user.id);
   let username = req.body.name;
-  console.log(username);
+  // console.log(username);
   // let username = "yoman";
   let data = await events(username);
   let days = [
@@ -189,7 +190,7 @@ router.post("/piechart", async (req, res, next) => {
   let branch = [];
   let result = [];
   data.public.forEach((item) => {
-    // console.log(item.name.branch);
+    console.log(item);
     branch.push(item.name.branch);
     total += 1;
   });
@@ -230,7 +231,7 @@ router.post("/yearpiechart", async (req, res, next) => {
   data.public.forEach((item) => {
     json.push(item.name);
 
-    console.log(item.name);
+    // console.log(item.name);
     if (item.name.year === 1) {
       counter1 += 1;
     } else if (item.name.year === 2) {
@@ -280,7 +281,7 @@ router.post("/newevent", async (req, res, next) => {
   // let id = req.session.passport.user;
   // let id = "5f316249bf8263611807b23d";
   let { name, num, startDate, endDate, id } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   // let status = true;
   let status = await saveEvent(id, name, num, startDate, endDate);
   res.json(status);
@@ -333,6 +334,14 @@ router.post("/getevent", async (req, res, next) => {
 router.post("/editevent", async (req, res, next) => {
   let data = await editEvent(req.body);
   res.json(data);
+});
+router.post("/removeparticipant", async (req, res, next) => {
+  let { data, id } = req.body;
+  // console.log(req.body);
+  for (const x of data) {
+    await deleteParticipate(x._id, id);
+  }
+  res.json(true);
 });
 router.post("/mailer", (req, res, next) => {
   let { timeLeft } = req.body;
@@ -420,36 +429,36 @@ router.get("/getpeople", (req, res, next) => {
         reg: "ra828822",
         name: "yo",
         branch: "CSE",
+        email: "add@dsd.com",
         year: 2,
-        tellmeabout: "yoyoyoy",
       },
       {
         reg: "ra828822",
         name: "yo",
         branch: "CSE",
+        email: "add@dsd.com",
         year: 2,
-        tellmeabout: "yoyoyoy",
       },
       {
         reg: "ra828822",
         name: "yo",
         branch: "CSE",
+        email: "add@dsd.com",
         year: 2,
-        tellmeabout: "yoyoyoy",
       },
       {
         reg: "ra828822",
         name: "yo",
         branch: "CSE",
+        email: "add@dsd.com",
         year: 2,
-        tellmeabout: "yoyoyoy",
       },
       {
         reg: "ra828822",
         name: "yo",
         branch: "CSE",
+        email: "add@dsd.com",
         year: 2,
-        tellmeabout: "yoyoyoy",
       },
     ],
   };

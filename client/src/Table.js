@@ -58,6 +58,7 @@ function Table() {
     let data = [];
     const selectedParticipants = dataParams.getSelectedNodes();
     const selectData = selectedParticipants.map((node) => node.data);
+
     // console.log(selectData);
     selectData.forEach((item) => {
       data.push({
@@ -76,53 +77,59 @@ function Table() {
   const removeParticipants = (e) => {
     const selected = dataParams.getSelectedRows();
     const removed = dataParams.applyTransaction({ remove: selected });
+    // console.log(selected);
+    let eventId = JSON.parse(localStorage.getItem("test"));
+    axios
+      .post("/removeparticipant", { data: selected, id: eventId.data })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
     handleClose();
   };
   return (
     <div>
-      <div className="title">
+      <div className='title'>
         {/* <h1 className='titletext'>Participant List</h1> */}
       </div>
-      <div className="list-body">
+      <div className='list-body'>
         <div
-          className="ag-theme-material list-data"
+          className='ag-theme-material list-data'
           style={
             {
               // width: "200vh",
             }
           }
         >
-          <div className="sendMailButtonDiv">
+          <div className='sendMailButtonDiv'>
             <button
-              className="sendMailsButton"
-              type="submit"
+              className='sendMailsButton'
+              type='submit'
               onClick={sendMails}
             >
               Send Email To Participants
             </button>
-            <button className="sendMailsButton" onClick={handleOpen}>
+            <button className='sendMailsButton' onClick={handleOpen}>
               Delete Participants
             </button>
             <Dialog
               open={open}
               onClose={handleClose}
-              aria-labelledby="alert-remove-participant"
-              aria-describedby="alert-dialog-description"
+              aria-labelledby='alert-remove-participant'
+              aria-describedby='alert-dialog-description'
             >
-              <DialogTitle id="alert-remove-participant">
+              <DialogTitle id='alert-remove-participant'>
                 {"Are you sure you want to delete selected participants ?"}
               </DialogTitle>
               <DialogContent>
-                <DialogContentText id="alert-dialog-description">
+                <DialogContentText id='alert-dialog-description'>
                   This action will be permanently delete the selected
                   participants and cannot be recovered
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={handleClose} color='primary'>
                   Cancel
                 </Button>
-                <Button onClick={removeParticipants} color="primary" autoFocus>
+                <Button onClick={removeParticipants} color='primary' autoFocus>
                   Proceed
                 </Button>
               </DialogActions>
@@ -132,7 +139,7 @@ function Table() {
             animateRows
             pagination={true}
             onGridReady={(params) => setDataParams(params.api)}
-            rowSelection="multiple"
+            rowSelection='multiple'
             columnDefs={column}
             rowData={rowDataValues}
           />
