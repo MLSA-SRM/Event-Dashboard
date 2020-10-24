@@ -220,6 +220,47 @@ router.post("/piechart", async (req, res, next) => {
   });
 });
 
+router.post("/yearpiechart", async (req, res, next) => {
+  let username = req.body.name;
+  let data = await events(username);
+  let counter1, counter2, counter3, counter4;
+  counter1 = counter2 = counter3 = counter4 = 0;
+  // console.log(data.public);
+  let json = [];
+  data.public.forEach((item) => {
+    json.push(item.name);
+
+    console.log(item.name);
+    if (item.name.year === 1) {
+      counter1 += 1;
+    } else if (item.name.year === 2) {
+      counter2 += 1;
+    } else if (item.name.year === 3) {
+      counter3 += 1;
+    } else if (item.name.year === 4) {
+      counter4 += 1;
+    }
+  });
+  res.json([
+    {
+      year: "I year",
+      no: counter1,
+    },
+    {
+      year: "II year",
+      no: counter2,
+    },
+    {
+      year: "III year",
+      no: counter3,
+    },
+    {
+      year: "IV year",
+      no: counter4,
+    },
+  ]);
+});
+
 router.post("/home/bargraph", async (req, res, next) => {
   let body = [];
   // let id = "5f316249bf8263611807b23d";
@@ -253,60 +294,6 @@ router.get("/table", async (req, res, next) => {
   data.public.forEach((item) => {
     json.push(item.name);
   });
-  // json.forEach((item) => {
-  //   delete item.reg;
-  // });
-  // res.json(json);
-  // const json = [
-  //   {
-  //     name: "John",
-  //     reg: "RA001",
-  //     email: "xyz@gmail.com",
-  //     IQ: "320",
-  //     lang: "cpp",
-  //     event: "ABC",
-  //   },
-  //   {
-  //     name: "Doe",
-  //     reg: "RA002",
-  //     email: "xyz@gmail.com",
-  //     IQ: "320",
-  //     lang: "cpp",
-  //     event: "XYZ",
-  //   },
-  //   {
-  //     name: "Doe",
-  //     reg: "RA002",
-  //     email: "xyz@gmail.com",
-  //     IQ: "320",
-  //     lang: "cpp",
-  //     event: "JKL",
-  //   },
-  //   {
-  //     name: "Doe",
-  //     reg: "RA002",
-  //     email: "xyz@gmail.com",
-  //     IQ: "320",
-  //     lang: "cpp",
-  //     event: "ABC",
-  //   },
-  //   {
-  //     name: "Doe",
-  //     reg: "RA002",
-  //     email: "xyz@gmail.com",
-  //     IQ: "320",
-  //     lang: "cpp",
-  //     event: "JKL",
-  //   },
-  //   {
-  //     name: "Doe",
-  //     reg: "RA002",
-  //     email: "xyz@gmail.com",
-  //     IQ: "320",
-  //     lang: "cpp",
-  //     event: "XYZ",
-  //   },
-  // ];
   let yo = Object.keys(json[0]._doc);
   // console.log(yo);
   let keys = yo.filter((item) => {
