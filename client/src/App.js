@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
@@ -32,7 +32,7 @@ function App(props) {
   //   user: undefined,
   // });
 
-  const { setUserData, setData } = useContext(State);
+  const { setUserData, setData, isAuth } = useContext(State);
   let history = useHistory();
 
   useEffect(() => {
@@ -60,12 +60,11 @@ function App(props) {
     };
     checkForUserLoggedIn();
   }, []);
-
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <Landing />
+          {isAuth ? <Profile /> : <Landing />}
         </Route>
 
         <Route exact path="/login">

@@ -2,6 +2,7 @@ require("../config/dbConfig");
 var user = require("../models/user");
 var event = require("../models/event");
 var people = require("../models/person");
+const { findByIdAndRemove } = require("../models/user");
 
 const homeData = (id) => {
   return event
@@ -125,6 +126,28 @@ const editEvent = (data) => {
     })
     .catch((err) => console.log(err));
 };
+
+const deleteParticipate = (id, eventId) => {
+  console.log(eventId);
+  people
+    .findByIdAndRemove(id)
+    .then()
+    .catch((err) => console.log(err));
+  event
+    .updateOne(
+      { name: eventId },
+      {
+        $pull: {
+          public: {
+            name: id,
+          },
+        },
+      }
+    )
+    .exec()
+    .catch((err) => console.log(err));
+};
+
 const userData = (id) => {
   return user
     .findById(id)
@@ -143,4 +166,5 @@ module.exports = {
   formData,
   getEvent,
   editEvent,
+  deleteParticipate,
 };

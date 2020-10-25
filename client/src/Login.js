@@ -119,10 +119,10 @@ function Login(props) {
           </div>
           <button className="btn">Login</button>
           <p>
-            Create a new account ? <Link to="/signIn">Sign In</Link>
+            Create a new account ? <Link to="/signIn"><span className="ax">Sign In</span></Link>
           </p>
           <p>
-            Want to go back ? <Link to="/">Home</Link>
+            Want to go back ? <Link to="/"><span className="ax">Home</span></Link>
           </p>
         </form>
       </div>

@@ -17,19 +17,19 @@ class Stuff extends Component {
           <span className="thumbnail col-md-4">
           <img src={logo1} height="100vh" width="300vh" alt="logo1" className="image"/>
           <div className="overlay">
-          <div className="text">et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</div>
+          <div className="text">We show you real time stats, so you don't have to.</div>
           </div>
           </span>
           <span className="thumbnail col-md-4">
           <img src={logo2} height="100vh" width="300vh" alt="logo2"/>
           <div className="overlay-middle">
-          <div className="text">et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</div>
+          <div className="text">Our easy to use UI will surely keep you wanting more and thats a good thing. Trust us</div>
           </div>
           </span>
           <span className="thumbnail col-md-4">
           <img src={logo3} height="100vh" width="300vh" alt="logo3"/>
           <div className="overlay-right">
-          <div className="text">et molestie ac feugiat sed lectus vestibulum mattis ullamcorper</div>
+          <div className="text">Customizability to help you choose what you really want in your stellar event.</div>
           </div>
           </span>
         </div>

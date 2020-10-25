@@ -26,6 +26,7 @@ const NewNav = () => {
     // localStorage.setItem("data", "");
     localStorage.clear();
   };
+  const id = JSON.parse(localStorage.getItem("test")).data;
   useEffect(() => {
     let name = JSON.parse(localStorage.getItem("data"));
     setUserName(name.username);
@@ -34,7 +35,7 @@ const NewNav = () => {
     <div className="newBody">
       <div className="main-nav">
         <ul className="main-nav-list">
-          <NavLink to="/user" activeClassName="current">
+          <NavLink to={`/user/${id}`} activeClassName="current">
             <li className="main-nav-item">
               <GoGraph className="icon" /> Dashboard
             </li>
@@ -51,7 +52,7 @@ const NewNav = () => {
           </NavLink>
           <NavLink to="/settings" activeClassName="current">
             <li className="main-nav-item">
-              <MdSettings className="icon" />  Settings
+              <MdSettings className="icon" /> Settings
             </li>
           </NavLink>
         </ul>

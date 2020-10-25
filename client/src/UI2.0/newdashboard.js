@@ -17,6 +17,7 @@ const NewDash = () => {
   const [total, setTotal] = useState(null);
   const [pieData, setPieData] = useState([]);
   const [attendence, setAttedence] = useState([]);
+  const [yearData, setYearData] = useState([]);
   let value = JSON.parse(localStorage.getItem("test"));
   useEffect(() => {
     axios
@@ -46,10 +47,17 @@ const NewDash = () => {
         setAttedence(num);
         setPieData(pieData);
       });
+    axios
+      .post("/yearpiechart", {
+        name: value.data,
+      })
+      .then((res) => {
+        setYearData(res.data);
+      });
   }, []);
 
   return (
-    <div style={{padding: "4vh"}}>
+    <div style={{ padding: "4vh" }}>
       <NewNav />
       <div className='new-dash-body'>
         <div className='dash-row'>
@@ -60,7 +68,7 @@ const NewDash = () => {
         <div className='dash-row'>
           <LineGraph barData={barData} />
           <BranchPie pieData={pieData} />
-          <OtherDetails />
+          <OtherDetails yearData={yearData} />
         </div>
       </div>
     </div>
