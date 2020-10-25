@@ -1,9 +1,12 @@
 import React from "react";
 import EventBox from "../eventBox";
+import {
+  FaTrash
+} from "react-icons/fa";
 const UpcomingEvents = ({ events, name }) => {
   return (
     <div className="events-lists">
-      <h4 style={{ fontSize: "1.3em" }}>{name}</h4>
+      <h4 style={{ fontSize: "1.3em" }}>{name}</h4> 
       <div className="events-row">
         {events.map((item) => (
           <EventBox name={item.name} date={item.date} rawDate={item.rawDate} />
