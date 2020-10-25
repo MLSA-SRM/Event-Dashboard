@@ -8,7 +8,7 @@ import {
   FaExclamationTriangle,
   FaClock,
   FaThumbtack,
-  FaPlus,
+  FaPlus,FaAlignLeft
 } from "react-icons/fa";
 import "./newprofile.css";
 import UpcomingEvents from "./Profile Components/upcomingevents";
@@ -77,7 +77,7 @@ const Profile = () => {
 
   const handleAllEvents = () => {
     setFilterData(data);
-    setEventStatus("All Events");
+    setEventStatus("All Events (Click on any event to go to dashboard)");
   };
   const handleOngoing = () => {
     let filtered = data.filter((item) => {
@@ -106,8 +106,8 @@ const Profile = () => {
         <ul className="navs-list">
           <div className="lists-item" onClick={handleAllEvents}>
             <li>
-              <FaArrowLeft className="icon1" />
-              <span> Go To Dashboard</span>
+              <FaAlignLeft className="icon1" />
+              <span> All Events </span>
             </li>
           </div>
           <div className="lists-item" onClick={handleUpcoming}>
@@ -130,8 +130,8 @@ const Profile = () => {
           </div>
           <div className="lists-item">
             <li>
-              <FaTimes className="icon1" />
-              <span> Cancelled Events</span>
+              <FaTimes className="icon1" onClick={handleAllEvents}/>
+              <span> Delete Events</span>
             </li>
           </div>
         </ul>
