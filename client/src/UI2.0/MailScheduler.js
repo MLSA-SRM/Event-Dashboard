@@ -25,6 +25,7 @@ function MailScheduler({
   hey,
   company,
   subject,
+  qr,
 }) {
   const currDate = new Date();
   const eventDate = JSON.parse(localStorage.getItem("test")).date;
@@ -71,6 +72,7 @@ function MailScheduler({
       hey,
       company,
       subject,
+      qr,
     })
       .then(() => console.log("sent"))
       .catch((err) => console.log(err));
