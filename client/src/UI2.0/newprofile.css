@@ -211,6 +211,7 @@ body {
 }
 a {
   text-decoration: none;
+  z-index: 101;
 }
 .deleteIcon{
   color: black;

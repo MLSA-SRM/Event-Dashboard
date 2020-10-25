@@ -130,8 +130,8 @@ const Profile = () => {
           </div>
           <div className="lists-item">
             <li>
-              <FaTimes className="icon1" />
-              <span> Cancelled Events</span>
+              <FaTimes className="icon1" onClick={handleAllEvents}/>
+              <span> Delete Events</span>
             </li>
           </div>
         </ul>
