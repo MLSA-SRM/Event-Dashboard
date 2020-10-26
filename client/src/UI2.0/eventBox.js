@@ -7,6 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
+import Axios from "axios";
 const EventBox = (item) => {
   let history = useHistory();
   const [time, setTime] = useState("");
@@ -23,24 +24,39 @@ const EventBox = (item) => {
     localStorage.setItem("eventName", data);
     localStorage.setItem("test", JSON.stringify(value));
   };
+
+  const onClickDelete = () => {
+    let user = JSON.parse(localStorage.getItem("data"));
+    Axios.post("/removeevent", {
+      name: item.name,
+      user: user.id,
+    })
+      .then()
+      .catch((err) => console.log(err));
+  };
   return (
     <div
-      className="events-box"
+      className='events-box'
       onClick={() => onClickRedirect(item.name, item.rawDate)}
     >
       <h4>
         {item.name}
-        <a href="/delete">
-            <FaTrash
-              className="deleteIcon"
-              style={{
-                marginLeft: "5%",
-                top: "2px",
-                position: "relative",
-                zIndex: "102",
-              }}
-            />
-            </a>
+        <a
+          onClick={(e) => {
+            e.stopPropagation();
+            onClickDelete(item.name);
+          }}
+        >
+          <FaTrash
+            className='deleteIcon'
+            style={{
+              marginLeft: "5%",
+              top: "2px",
+              position: "relative",
+              zIndex: "102",
+            }}
+          />
+        </a>
       </h4>
       <h6>{time}</h6>
       <h6>{item.date}</h6>

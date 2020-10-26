@@ -13,6 +13,7 @@ var {
   getEvent,
   editEvent,
   deleteParticipate,
+  deleteEvent,
 } = require("../controller/db");
 var mailer = require("../controller/mailer");
 var User = require("../models/user");
@@ -190,7 +191,7 @@ router.post("/piechart", async (req, res, next) => {
   let branch = [];
   let result = [];
   data.public.forEach((item) => {
-    console.log(item);
+    // console.log(item);
     branch.push(item.name.branch);
     total += 1;
   });
@@ -287,9 +288,8 @@ router.post("/newevent", async (req, res, next) => {
   res.json(status);
 });
 
-router.get("/table", async (req, res, next) => {
-  //TODO DATA hardcoded
-  let data = await events("yoman");
+router.post("/table", async (req, res, next) => {
+  let data = await events(req.body.data);
   // console.log();
   let json = [];
   data.public.forEach((item) => {
@@ -327,14 +327,17 @@ router.get("/table", async (req, res, next) => {
     data: json,
   });
 });
+
 router.post("/getevent", async (req, res, next) => {
   let data = await getEvent(req.body.data);
   res.json(data);
 });
+
 router.post("/editevent", async (req, res, next) => {
   let data = await editEvent(req.body);
   res.json(data);
 });
+
 router.post("/removeparticipant", async (req, res, next) => {
   let { data, id } = req.body;
   // console.log(req.body);
@@ -343,6 +346,13 @@ router.post("/removeparticipant", async (req, res, next) => {
   }
   res.json(true);
 });
+router.post("/removeevent", async (req, res, next) => {
+  let { name, user } = req.body;
+  console.log(name);
+  let status = await deleteEvent(name, user);
+  res.json(true);
+});
+
 router.post("/mailer", (req, res, next) => {
   let { timeLeft } = req.body;
   let {
@@ -423,7 +433,7 @@ router.post("/test/mailer", (req, res, next) => {
 
 router.get("/getpeople", (req, res, next) => {
   let data = {
-    eventName: "yoman",
+    eventName: "yolo",
     people: [
       {
         reg: "ra828822",
@@ -455,7 +465,7 @@ router.get("/getpeople", (req, res, next) => {
       },
       {
         reg: "ra828822",
-        name: "yo",
+        name: "yoyoyy",
         branch: "CSE",
         email: "add@dsd.com",
         year: 2,
