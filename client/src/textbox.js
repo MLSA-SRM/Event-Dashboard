@@ -9,7 +9,7 @@ import Qri from "./qr-img";
 import MailScheduler from "./UI2.0/MailScheduler";
 const Box = () => {
   const [data, setData] = useState("");
-  const [primary, setPrimary] = useState("#ffffff");
+  const [primary, setPrimary] = useState("#f2f2f2");
   const [secondary, setSecondary] = useState("#000000");
   const [tertiary, setTertiary] = useState("#3b85b3");
   const [title, setTitle] = useState("");
@@ -36,7 +36,7 @@ const Box = () => {
     setData("");
     setTitle("");
     setHey("");
-    setPrimary("#ffffff");
+    setPrimary("#f2f2f2");
     setSecondary("#000000");
     setTertiary("#3b85b3");
     setCompany("");

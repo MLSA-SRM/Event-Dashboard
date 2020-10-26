@@ -60,13 +60,15 @@ body {
     font-weight: bold;
     font-size: 6vh;
     letter-spacing: 6px;
-    font-family: 'Segoe UI Light',sans-serif;
+    font-family: 'poppins', sans-serif;
+    font-weight: 500;
   }
   .box p{
     font-weight: bold;
     letter-spacing: 2px;
     margin-top: 6vh;
-    font-family: 'Segoe UI Light',sans-serif;
+    font-family: 'poppins', sans-serif;
+    font-weight: 500;
   }
   .image-logo img{
     background-color: #FFF;
