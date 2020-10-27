@@ -52,7 +52,7 @@ const saveEvent = (id, name, attendence, startDate, endDate) => {
 
 const savePeople = (body, eventId) => {
   let newPeople = new people({ ...body, events: { eventId } });
-  console.log(newPeople);
+  // console.log(newPeople);
   newPeople.save().catch((err) => console.log(err));
   var yoman = {
     name: newPeople._id,
@@ -107,7 +107,7 @@ const getEvent = (name) => {
         startDate: res.startDate,
         endDate: res.endDate,
       };
-      console.log(data);
+      // console.log(data);
       return data;
     })
     .catch((err) => console.log(err));
@@ -128,7 +128,7 @@ const editEvent = (data) => {
 };
 
 const deleteParticipate = (id, eventId) => {
-  console.log(eventId);
+  // console.log(eventId);
   people
     .findByIdAndRemove(id)
     .then()
@@ -145,6 +145,41 @@ const deleteParticipate = (id, eventId) => {
       }
     )
     .exec()
+    .catch((err) => console.log(err));
+};
+
+const deleteEvent = (name, userId) => {
+  event
+    .findOneAndDelete({ name })
+    .then((res) => {
+      console.log(res);
+      let ids = [];
+      res.public.forEach((item) => {
+        ids.push(item.name);
+      });
+      people.deleteMany(
+        {
+          _id: {
+            $in: ids,
+          },
+        },
+        (err, res) => {
+          if (err) console.log(err);
+          console.log(res);
+        }
+      );
+      user
+        .updateOne(
+          { _id: userId },
+          {
+            $pull: {
+              events: res._id,
+            },
+          }
+        )
+        .exec()
+        .catch((err) => console.log(err));
+    })
     .catch((err) => console.log(err));
 };
 
@@ -167,4 +202,5 @@ module.exports = {
   getEvent,
   editEvent,
   deleteParticipate,
+  deleteEvent,
 };

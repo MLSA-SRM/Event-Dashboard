@@ -35,13 +35,12 @@
 
 .textBox {
   justify-content: space-between;
-  background: rgba(243, 243, 243, 0.9);
-  -webkit-box-shadow: 4px 4px 31px -7px rgba(0,0,0,0.74);
-  -moz-box-shadow: 4px 4px 31px -7px rgba(0,0,0,0.74);
-  box-shadow: 4px 4px 31px -7px rgba(0,0,0,0.74);
-  border-radius: 2vh;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: 2px 2px 13px -3px rgba(0,0,0,0.5); 
+  box-shadow: 2px 2px 13px -3px rgba(0,0,0,0.5);
+  border-radius: 15px;
   padding: 5vh;
-  width: 90%;
+  width: 87%;
   margin: 0 auto;
   font-family: 'Manrope', sans-serif;
 }
@@ -49,7 +48,8 @@
 .textBox h1,
 h2 {
   /* text-align: center; */
-  font-weight: 300;
+  font-weight: 500;
+  font-family: poppins;
   /* color: #4D69F0; */
 }
 
@@ -121,7 +121,7 @@ input[type="color"] {
   height: 5vh;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
-  background: rgba(245, 239, 239, 1);
+  background: rgba(255, 255, 255, 1);
   padding: 0;
 }
 input[type="color"]::-webkit-color-swatch {
@@ -382,25 +382,25 @@ a:nth-of-type(4) {
 }
 
 .labelnn {
-  text-align: left;
   font-size: 0.9rem;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   color: rgb(101, 102, 102);
-  margin-left: -25vw;
+  position: relative;
+  margin-left: -50vh;
 }
 
-.labelnn {
-  text-align: left;
+.labelnnn {
   font-size: 0.9rem;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   color: rgb(101, 102, 102);
-  margin-right: 25vw;
+  position: relative;
+  margin-left: 44vh;
 }
 
 .labelcontent{
-  text-align: left;
+  margin-left: 20px;
   font-size: 0.9rem;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
