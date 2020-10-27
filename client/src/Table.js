@@ -38,12 +38,17 @@ function Table() {
   const { dataParams, setDataParams } = useContext(State);
   // const [mail, setMail] = useState(null);
   useEffect(() => {
-    axios.get("/table").then((res) => {
-      let { header, data } = res.data;
-      //   console.log(res.data);
-      setColumn(header);
-      setRowDataValues(data);
-    });
+    let event = JSON.parse(localStorage.getItem("test"));
+    axios
+      .post("/table", {
+        data: event.data,
+      })
+      .then((res) => {
+        let { header, data } = res.data;
+        //   console.log(res.data);
+        setColumn(header);
+        setRowDataValues(data);
+      });
   }, []);
 
   const handleOpen = () => {
