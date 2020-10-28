@@ -26,6 +26,7 @@ const EventBox = (item) => {
   };
 
   const onClickDelete = () => {
+    window.location.reload(false);
     let user = JSON.parse(localStorage.getItem("data"));
     Axios.post("/removeevent", {
       name: item.name,

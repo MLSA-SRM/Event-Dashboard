@@ -29,7 +29,7 @@ const AddEvent = () => {
 
   return (
     <div>
-      <NewNav />
+      {/* <NewNav /> */}
       <ScriptTag type='text/javascript' src='script.js' />
       <div className='form-body'>
         <h1 className='header-form'>Let's get your event setup</h1>
