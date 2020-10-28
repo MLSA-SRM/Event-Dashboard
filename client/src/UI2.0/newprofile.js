@@ -8,7 +8,8 @@ import {
   FaExclamationTriangle,
   FaClock,
   FaThumbtack,
-  FaPlus,FaAlignLeft
+  FaPlus,
+  FaAlignLeft,
 } from "react-icons/fa";
 import "./newprofile.css";
 import UpcomingEvents from "./Profile Components/upcomingevents";
@@ -79,6 +80,11 @@ const Profile = () => {
     setFilterData(data);
     setEventStatus("All Events (Click on any event to go to dashboard)");
   };
+  const handleDeleteEvents = () => {
+    setFilterData(data);
+    setEventStatus("Delete Event");
+  };
+
   const handleOngoing = () => {
     let filtered = data.filter((item) => {
       return item.status === 0;
@@ -101,53 +107,53 @@ const Profile = () => {
     setEventStatus("Finished Events");
   };
   return (
-    <div className="profile-body">
-      <div className="nav-div">
-        <ul className="navs-list">
-          <div className="lists-item" onClick={handleAllEvents}>
+    <div className='profile-body'>
+      <div className='nav-div'>
+        <ul className='navs-list'>
+          <div className='lists-item' onClick={handleAllEvents}>
             <li>
-              <FaAlignLeft className="icon1" />
+              <FaAlignLeft className='icon1' />
               <span> All Events </span>
             </li>
           </div>
-          <div className="lists-item" onClick={handleUpcoming}>
+          <div className='lists-item' onClick={handleUpcoming}>
             <li>
-              <FaCalendarAlt className="icon1" />
+              <FaCalendarAlt className='icon1' />
               <span> Upcoming Events</span>
             </li>
           </div>
-          <div className="lists-item" onClick={handleOngoing}>
+          <div className='lists-item' onClick={handleOngoing}>
             <li>
-              <FaExclamationTriangle className="icon1" />
+              <FaExclamationTriangle className='icon1' />
               <span> Ongoing Events</span>
             </li>
           </div>
-          <div className="lists-item" onClick={handleFinished}>
+          <div className='lists-item' onClick={handleFinished}>
             <li>
-              <FaCheck className="icon1" />
+              <FaCheck className='icon1' />
               <span> Finished Events</span>
             </li>
           </div>
-          <div className="lists-item">
+          <div className='lists-item' onClick={handleDeleteEvents}>
             <li>
-              <FaTimes className="icon1" onClick={handleAllEvents}/>
+              <FaTimes className='icon1' />
               <span> Delete Events</span>
             </li>
           </div>
         </ul>
       </div>
-      <div className="event-div">
-        <div className="events-header">
+      <div className='event-div'>
+        <div className='events-header'>
           <h1>My Events </h1>
         </div>
         <hr style={{ marginBottom: "2vh" }} />
         <UpcomingEvents events={filterData} name={eventStatus} />
       </div>
-      <div className="profile-div">
+      <div className='profile-div'>
         <h1>My Profile</h1>
         <hr style={{ marginTop: "2.2vh", marginBottom: "2.2vh" }} />
         <h3>Hello {userName}!</h3>
-        <div className="user-data">
+        <div className='user-data'>
           <h4>
             <FaThumbtack style={{ position: "relative", top: "3px" }} /> Pinned
             Event
@@ -156,13 +162,13 @@ const Profile = () => {
           <h4>6:00 PM</h4>
           <h4>Thursday, 27 October</h4>
           <h4>TP Auditorium </h4>
-          <button className="view-event">Go To Event</button>
+          <button className='view-event'>Go To Event</button>
         </div>
         <div style={{ textAlign: "center" }}>
-          <Link to="/addevent">
-            <button className="profile-button">New Event</button>
+          <Link to='/addevent'>
+            <button className='profile-button'>New Event</button>
           </Link>
-          <button onClick={onLogout} className="profile-button">
+          <button onClick={onLogout} className='profile-button'>
             Logout
           </button>
         </div>
