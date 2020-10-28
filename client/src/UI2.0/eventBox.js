@@ -17,6 +17,7 @@ const notify = () => {
 };
 
 const EventBox = (item) => {
+  console.log(item);
   let history = useHistory();
   const [time, setTime] = useState("");
   useEffect(() => {
@@ -25,10 +26,10 @@ const EventBox = (item) => {
     let stamp = data.getHours() > 12 ? "pm" : "am";
     setTime(`${hours}:${data.getMinutes()} ${stamp}`);
   }, []);
-  const onClickRedirect = (data, date) => {
+  const onClickRedirect = (data, date, id) => {
     history.push("/user/" + data);
     // handleChange(data, date);
-    let value = { data, date };
+    let value = { data, date, id };
     localStorage.setItem("eventName", data);
     localStorage.setItem("test", JSON.stringify(value));
   };
@@ -47,7 +48,7 @@ const EventBox = (item) => {
   return (
     <div
       className='events-box'
-      onClick={() => onClickRedirect(item.name, item.rawDate)}
+      onClick={() => onClickRedirect(item.name, item.rawDate, item.id)}
     >
       <h4>
         {item.name}

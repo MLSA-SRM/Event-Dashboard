@@ -133,6 +133,7 @@ router.post("/user", async (req, res, next) => {
   let event = [];
   data.events.forEach((item) => {
     event.push({
+      id: item._id,
       name: item.name,
       venue: item.venue,
       startDate: item.startDate,
@@ -280,12 +281,10 @@ router.post("/home/bargraph", async (req, res, next) => {
   res.json(body);
 });
 router.post("/newevent", async (req, res, next) => {
-  // let id = req.session.passport.user;
-  // let id = "5f316249bf8263611807b23d";
-  let { name, num, venue, startDate, endDate, id } = req.body;
+  let { name, num, venue, startDate, endDate, id, link } = req.body;
   // console.log(req.body);
   // let status = true;
-  let status = await saveEvent(id, name, num, venue, startDate, endDate);
+  let status = await saveEvent(id, name, num, venue, startDate, endDate, link);
   res.json(status);
 });
 
@@ -434,7 +433,7 @@ router.post("/test/mailer", (req, res, next) => {
 
 router.get("/getpeople", (req, res, next) => {
   let data = {
-    eventName: "yaya",
+    eventName: "pro",
     people: [
       {
         reg: "ra828822",

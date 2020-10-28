@@ -26,12 +26,30 @@ const events = (username) => {
     });
 };
 
-const saveEvent = (id, name, attendence, venue, startDate, endDate) => {
+const allEvent = () => {
+  return event
+    .find({})
+    .populate("public.name")
+    .then((res) => {
+      // console.log(res);
+      let link = [];
+      res.forEach((item) => {
+        link.push(item.link);
+      });
+      return link;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const saveEvent = (id, name, attendence, venue, startDate, endDate, link) => {
   let newEvent = new event({
     user: id,
     name,
     attendence,
     venue,
+    link,
     startDate,
     endDate,
   });
@@ -72,6 +90,27 @@ const savePeople = (body, eventId) => {
     }
   );
 };
+
+const singleFormData = (data) => {
+  let newPeople = new people(data.res);
+  newPeople.save().catch((err) => console.log(err));
+  var yoman = {
+    name: newPeople._id,
+  };
+  event.findOneAndUpdate(
+    { name: data.eventName },
+    {
+      $push: {
+        public: yoman,
+      },
+    },
+    (err, res) => {
+      if (err) console.log(err);
+      // else console.log(res);
+    }
+  );
+};
+
 const formData = (data) => {
   data.people.forEach((item) => {
     let newPeople = new people(item);
@@ -105,6 +144,7 @@ const getEvent = (name) => {
         id: res._id,
         name: res.name,
         venue: res.venue,
+        link: res.link,
         attendence: res.attendence,
         startDate: res.startDate,
         endDate: res.endDate,
@@ -115,12 +155,13 @@ const getEvent = (name) => {
     .catch((err) => console.log(err));
 };
 const editEvent = (data) => {
-  let { id, name, num, venue, startDate, endDate } = data;
+  let { id, name, num, venue, link, startDate, endDate } = data;
   event
     .findByIdAndUpdate(id, {
       name,
       attendence: num,
       venue,
+      link,
       startDate,
       endDate,
     })
@@ -196,12 +237,14 @@ const userData = (id) => {
 };
 
 module.exports = {
+  allEvent,
   events,
   savePeople,
   homeData,
   saveEvent,
   userData,
   formData,
+  singleFormData,
   getEvent,
   editEvent,
   deleteParticipate,
