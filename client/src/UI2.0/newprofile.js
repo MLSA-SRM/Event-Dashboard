@@ -134,12 +134,6 @@ const Profile = () => {
               <span> Finished Events</span>
             </li>
           </div>
-          <div className='lists-item' onClick={handleDeleteEvents}>
-            <li>
-              <FaTimes className='icon1' />
-              <span> Delete Events</span>
-            </li>
-          </div>
         </ul>
       </div>
       <div className='event-div'>
