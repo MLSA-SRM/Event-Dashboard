@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewNav from "./newnav";
+import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 const Settings = () => {
@@ -11,14 +12,25 @@ const Settings = () => {
   const [endDate, setEndDate] = useState(null);
   const [data, setData] = useState({});
 
+  let history = useHistory();
+
   // Formating the dates by removing seconds and milliseconds
-  let currentDate = new Date().toISOString();
+  let currentDate = new Date();
+  currentDate.setHours(currentDate.getHours() + 5);
+  currentDate.setMinutes(currentDate.getMinutes() + 30);
+  currentDate = currentDate.toISOString();
   let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
 
-  let newStartDate = new Date(startDate).toISOString();
+  let newStartDate = new Date(startDate);
+  newStartDate.setHours(newStartDate.getHours() + 5);
+  newStartDate.setMinutes(newStartDate.getMinutes() + 30);
+  newStartDate = newStartDate.toISOString();
   let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
 
-  let newEndDate = new Date(endDate).toISOString();
+  let newEndDate = new Date(endDate);
+  newEndDate.setHours(newEndDate.getHours() + 5);
+  newEndDate.setMinutes(newEndDate.getMinutes() + 30);
+  newEndDate = newEndDate.toISOString();
   let newEndDateFormat = newEndDate.replace(/:[^:]*$/, "");
 
   useEffect(() => {
@@ -46,6 +58,7 @@ const Settings = () => {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
+    history.push("/user");
     axios
       .post("/editevent", {
         id: data.id,
@@ -57,71 +70,71 @@ const Settings = () => {
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
-      notify();
+    notify();
   };
   return (
     <div style={{ padding: "4vh" }}>
       <NewNav />
-      <div className='form-body'>
-        <h1 className='header-form'>Edit event details </h1>
-        <p className='form-subtext'>
+      <div className="form-body">
+        <h1 className="header-form">Edit event details </h1>
+        <p className="form-subtext">
           Made a mistake? No worries, you can change your event settings here!
         </p>
-        <div className='form-container'>
+        <div className="form-container">
           <form onSubmit={handleSubmit}>
-            <div className='input-div'>
-              <h5 className='label'>Event Name</h5>
+            <div className="input-div">
+              <h5 className="label">Event Name</h5>
               <input
                 required
-                className='input'
+                className="input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                type='text'
+                type="text"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Maximum Attendance</h5>
+            <div className="input-div">
+              <h5 className="label">Maximum Attendance</h5>
               <input
                 required
-                className='input'
+                className="input"
                 value={num}
                 onChange={(e) => setNum(e.target.value)}
-                type='number'
+                type="number"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Venue</h5>
+            <div className="input-div">
+              <h5 className="label">Venue</h5>
               <input
                 required
-                className='input'
+                className="input"
                 value={venue}
                 onChange={(e) => setVenue(e.target.value)}
-                type='text'
+                type="text"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Event Start Date</h5>
+            <div className="input-div">
+              <h5 className="label">Event Start Date</h5>
               <input
                 required
                 min={currentDateFormat}
-                className='input'
+                className="input"
                 value={newStartDateFormat}
                 onChange={(e) => setStartDate(e.target.value)}
-                type='datetime-local'
+                type="datetime-local"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Event End Date</h5>
+            <div className="input-div">
+              <h5 className="label">Event End Date</h5>
               <input
-                className='input'
+                className="input"
                 required
                 min={newStartDateFormat}
                 value={newEndDateFormat}
                 onChange={(e) => setEndDate(e.target.value)}
-                type='datetime-local'
+                type="datetime-local"
               ></input>
             </div>
-            <button className='button'>Save</button>
+            <button className="button">Save</button>
           </form>
         </div>
         <ToastContainer position={"top-center"} />

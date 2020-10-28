@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./addevent.css";
 import ScriptTag from "react-script-tag";
+import { useHistory } from "react-router-dom";
 
 const AddEvent = () => {
   const [name, setName] = useState("");
@@ -10,15 +11,24 @@ const AddEvent = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  let currentDate = new Date().toUTCString();
+  let history = useHistory();
+
+  let currentDate = new Date();
+  currentDate.setHours(currentDate.getHours() + 5);
+  currentDate.setMinutes(currentDate.getMinutes() + 30);
+  currentDate = currentDate.toISOString();
   let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
 
-  let newStartDate = new Date(startDate).toUTCString();
+  let newStartDate = new Date(startDate);
+  newStartDate.setHours(newStartDate.getHours() + 5);
+  newStartDate.setMinutes(newStartDate.getMinutes() + 30);
+  newStartDate = newStartDate.toISOString();
   let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
 
   const submit = (e) => {
     let data = JSON.parse(localStorage.getItem("data"));
     e.preventDefault();
+    history.push("/user");
     axios
       .post("/newevent", {
         id: data.id,
@@ -37,60 +47,60 @@ const AddEvent = () => {
 
   return (
     <div>
-      <ScriptTag type='text/javascript' src='script.js' />
-      <div className='form-body'>
-        <h1 className='header-form'>Let's get your event setup</h1>
-        <p className='form-subtext'>Fill in the details to get started!</p>
-        <div className='form-container'>
+      <ScriptTag type="text/javascript" src="script.js" />
+      <div className="form-body">
+        <h1 className="header-form">Let's get your event setup</h1>
+        <p className="form-subtext">Fill in the details to get started!</p>
+        <div className="form-container">
           <form onSubmit={submit}>
-            <div className='input-div'>
-              <h5 className='label'>Event Name</h5>
+            <div className="input-div">
+              <h5 className="label">Event Name</h5>
               <input
                 required
-                className='input'
+                className="input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                type='text'
+                type="text"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Maximum Attendance</h5>
+            <div className="input-div">
+              <h5 className="label">Maximum Attendance</h5>
               <input
                 required
-                className='input'
+                className="input"
                 value={num}
                 onChange={(e) => setNum(e.target.value)}
-                type='number'
+                type="number"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Venue</h5>
+            <div className="input-div">
+              <h5 className="label">Venue</h5>
               <input
                 required
-                className='input'
+                className="input"
                 value={venue}
                 onChange={(e) => setVenue(e.target.value)}
-                type='text'
+                type="text"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Event Start Date</h5>
+            <div className="input-div">
+              <h5 className="label">Event Start Date</h5>
               <input
                 required
                 min={currentDateFormat}
-                className='input'
+                className="input"
                 onChange={(e) => setStartDate(e.target.value)}
-                type='datetime-local'
+                type="datetime-local"
               ></input>
             </div>
-            <div className='input-div'>
-              <h5 className='label'>Event End Date</h5>
+            <div className="input-div">
+              <h5 className="label">Event End Date</h5>
               <input
                 required
                 min={newStartDateFormat}
-                className='input'
+                className="input"
                 onChange={(e) => setEndDate(e.target.value)}
-                type='datetime-local'
+                type="datetime-local"
               ></input>
             </div>
             {/* <div className='input-div'>
@@ -101,7 +111,7 @@ const AddEvent = () => {
               <h5 className='label'>Event End Time</h5>
               <input className='input' type='time'></input>
             </div> */}
-            <input className='button' type='submit'></input>
+            <input className="button" type="submit"></input>
           </form>
         </div>
       </div>
