@@ -395,6 +395,11 @@ body {
 
   .container3:hover .details{
     opacity: 1;
+    border-radius: 15px;
+  }
+
+  .container3:hover {
+    border-radius: 15px;
   }
 /* 
   .pulse{
