@@ -3,6 +3,7 @@ import axios from "axios";
 import NewNav from "./newnav";
 import "./addevent.css";
 import ScriptTag from "react-script-tag";
+import { useHistory } from "react-router-dom";
 
 const AddEvent = () => {
   const [name, setName] = useState("");
@@ -10,15 +11,24 @@ const AddEvent = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  let currentDate = new Date().toISOString();
+  let history = useHistory();
+
+  let currentDate = new Date();
+  currentDate.setHours(currentDate.getHours() + 5);
+  currentDate.setMinutes(currentDate.getMinutes() + 30);
+  currentDate = currentDate.toISOString();
   let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
 
-  let newStartDate = new Date(startDate).toISOString();
+  let newStartDate = new Date(startDate);
+  newStartDate.setHours(newStartDate.getHours() + 5);
+  newStartDate.setMinutes(newStartDate.getMinutes() + 30);
+  newStartDate = newStartDate.toISOString();
   let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
 
   const submit = (e) => {
     let data = JSON.parse(localStorage.getItem("data"));
     e.preventDefault();
+    history.push("/user");
     axios
       .post("/newevent", {
         id: data.id,
