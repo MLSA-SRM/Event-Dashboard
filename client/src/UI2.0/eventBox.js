@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import Axios from "axios";
+
 const EventBox = (item) => {
   let history = useHistory();
   const [time, setTime] = useState("");
@@ -61,7 +62,7 @@ const EventBox = (item) => {
       </h4>
       <h6>{time}</h6>
       <h6>{item.date}</h6>
-      <h6>SRM University</h6>
+      <h6>{item.venue}</h6>
     </div>
   );
 };

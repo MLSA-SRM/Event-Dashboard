@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewNav from "./newnav";
+import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import {Link} from 'react-router-dom';
 
 const Settings = () => {
   const [name, setName] = useState("");
   const [num, setNum] = useState("");
+  const [venue, setVenue] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [data, setData] = useState({});
 
+  let history = useHistory();
+
   // Formating the dates by removing seconds and milliseconds
-  let currentDate = new Date().toISOString();
+  let currentDate = new Date();
+  currentDate.setHours(currentDate.getHours() + 5);
+  currentDate.setMinutes(currentDate.getMinutes() + 30);
+  currentDate = currentDate.toISOString();
   let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
 
-  let newStartDate = new Date(startDate).toISOString();
+  let newStartDate = new Date(startDate);
+  newStartDate.setHours(newStartDate.getHours() + 5);
+  newStartDate.setMinutes(newStartDate.getMinutes() + 30);
+  newStartDate = newStartDate.toISOString();
   let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
 
-  let newEndDate = new Date(endDate).toISOString();
+  let newEndDate = new Date(endDate);
+  newEndDate.setHours(newEndDate.getHours() + 5);
+  newEndDate.setMinutes(newEndDate.getMinutes() + 30);
+  newEndDate = newEndDate.toISOString();
   let newEndDateFormat = newEndDate.replace(/:[^:]*$/, "");
 
   useEffect(() => {
@@ -32,11 +45,13 @@ const Settings = () => {
           id: res.data.id,
           name: res.data.name,
           attendence: res.data.attendence,
+          venue: res.data.venue,
           startDate: new Date(res.data.startDate),
           endDate: new Date(res.data.endDate),
         });
         setName(res.data.name);
         setNum(res.data.attendence);
+        setVenue(res.data.venue);
         setStartDate(res.data.startDate);
         setEndDate(res.data.endDate);
       })
@@ -44,17 +59,19 @@ const Settings = () => {
   }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
+    history.push("/user");
     axios
       .post("/editevent", {
         id: data.id,
         name,
         num,
+        venue,
         startDate,
         endDate,
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
-      notify();
+    notify();
   };
   return (
     <div style={{ padding: "4vh" }}>
@@ -88,7 +105,13 @@ const Settings = () => {
             </div>
             <div className="input-div">
               <h5 className="label">Venue</h5>
-              <input required className="input" type="text"></input>
+              <input
+                required
+                className="input"
+                value={venue}
+                onChange={(e) => setVenue(e.target.value)}
+                type="text"
+              ></input>
             </div>
             <div className="input-div">
               <h5 className="label">Event Start Date</h5>
