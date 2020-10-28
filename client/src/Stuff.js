@@ -15,21 +15,39 @@ class Stuff extends Component {
           <h1 className="title">Some salient features of Event Dashboard</h1>
           <br/>
           <span className="thumbnail col-md-4">
-          <img src={logo1} height="100vh" width="300vh" alt="logo1" className="image"/>
+          {/* <img src={logo1} height="100vh" width="300vh" alt="logo1" className="image"/>
           <div className="overlay">
           <div className="text">We show you real time statistics to keep you up to date with real time numbers.</div>
+          </div> */}
+          <div className="container3">
+            <img src={logo1} alt="logo1"/>
+            <div className="details">
+              <h1>We show you real time statistics to keep you up to date with real time numbers.</h1>
+            </div>
           </div>
           </span>
           <span className="thumbnail col-md-4">
-          <img src={logo2} height="100vh" width="300vh" alt="logo2"/>
+          {/* <img src={logo2} height="100vh" width="300vh" alt="logo2"/>
           <div className="overlay-middle">
           <div className="text">Our easy to use UI helps managing events efficiently and accurately.</div>
+          </div> */}
+          <div className="container3">
+            <img src={logo2} alt="logo1"/>
+            <div className="details">
+              <h1>Our easy to use UI helps managing events efficiently and accurately.</h1>
+            </div>
           </div>
           </span>
           <span className="thumbnail col-md-4">
-          <img src={logo3} height="100vh" width="300vh" alt="logo3"/>
+          {/* <img src={logo3} height="100vh" width="300vh" alt="logo3"/>
           <div className="overlay-right">
           <div className="text">Customizability to help you choose what you really want in your stellar event.</div>
+          </div> */}
+          <div className="container3">
+            <img src={logo1} alt="logo3"/>
+            <div className="details">
+              <h1>Customizability to help you choose what you really want in your stellar event.</h1>
+            </div>
           </div>
           </span>
         </div>
