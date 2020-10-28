@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewNav from "./newnav";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Settings = () => {
   const [name, setName] = useState("");
   const [num, setNum] = useState("");
+  const [venue, setVenue] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [data, setData] = useState({});
@@ -42,11 +44,13 @@ const Settings = () => {
           id: res.data.id,
           name: res.data.name,
           attendence: res.data.attendence,
+          venue: res.data.venue,
           startDate: new Date(res.data.startDate),
           endDate: new Date(res.data.endDate),
         });
         setName(res.data.name);
         setNum(res.data.attendence);
+        setVenue(res.data.venue);
         setStartDate(res.data.startDate);
         setEndDate(res.data.endDate);
       })
@@ -60,11 +64,13 @@ const Settings = () => {
         id: data.id,
         name,
         num,
+        venue,
         startDate,
         endDate,
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
+    notify();
   };
   return (
     <div style={{ padding: "4vh" }}>
@@ -98,7 +104,13 @@ const Settings = () => {
             </div>
             <div className="input-div">
               <h5 className="label">Venue</h5>
-              <input required className="input" type="text"></input>
+              <input
+                required
+                className="input"
+                value={venue}
+                onChange={(e) => setVenue(e.target.value)}
+                type="text"
+              ></input>
             </div>
             <div className="input-div">
               <h5 className="label">Event Start Date</h5>
@@ -125,9 +137,16 @@ const Settings = () => {
             <button className="button">Save</button>
           </form>
         </div>
+        <ToastContainer position={"top-center"} />
       </div>
     </div>
   );
 };
 
 export default Settings;
+
+const notify = () => {
+  toast.info("The event details have been updated.", {
+    autoClose: false,
+  });
+};
