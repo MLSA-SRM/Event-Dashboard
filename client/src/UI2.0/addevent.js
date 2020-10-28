@@ -3,6 +3,15 @@ import axios from "axios";
 import NewNav from "./newnav";
 import "./addevent.css";
 import ScriptTag from "react-script-tag";
+import { ToastContainer, toast } from "react-toastify";
+import {FaArrowLeft} from 'react-icons/fa';
+import { Link, useHistory } from "react-router-dom";
+
+const notify = () => {
+  toast.info("The event has been added. Go to your profile to view it!", {
+    autoClose: false,
+  });
+};
 
 const AddEvent = () => {
   const [name, setName] = useState("");
@@ -31,12 +40,14 @@ const AddEvent = () => {
       .catch((err) => console.log(err));
     setName("");
     setNum("");
+    notify();
   };
 
   return (
     <div>
       <ScriptTag type='text/javascript' src='script.js' />
-      <div className='form-body'>
+      <div className='form-body'><a href="/user">
+      <p className="backtoprofile"><FaArrowLeft className="icon1"/>  Back to Profile</p></a>
         <h1 className='header-form'>Let's get your event setup</h1>
         <p className='form-subtext'>Fill in the details to get started!</p>
         <div className='form-container'>
@@ -96,6 +107,7 @@ const AddEvent = () => {
             <input className='button' type='submit'></input>
           </form>
         </div>
+        <ToastContainer position={"top-center"} />
       </div>
     </div>
   );
