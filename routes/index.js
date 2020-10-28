@@ -433,7 +433,7 @@ router.post("/test/mailer", (req, res, next) => {
 
 router.get("/getpeople", (req, res, next) => {
   let data = {
-    eventName: "yolo",
+    eventName: "yaya",
     people: [
       {
         reg: "ra828822",
