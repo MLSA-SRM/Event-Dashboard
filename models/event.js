@@ -13,6 +13,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  link: {
+    type: String,
+    required: true,
+  },
   startDate: {
     type: Date,
     required: true,

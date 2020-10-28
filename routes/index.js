@@ -133,6 +133,7 @@ router.post("/user", async (req, res, next) => {
   let event = [];
   data.events.forEach((item) => {
     event.push({
+      id: item._id,
       name: item.name,
       venue: item.venue,
       startDate: item.startDate,
@@ -434,7 +435,7 @@ router.post("/test/mailer", (req, res, next) => {
 
 router.get("/getpeople", (req, res, next) => {
   let data = {
-    eventName: "yaya",
+    eventName: "pro",
     people: [
       {
         reg: "ra828822",

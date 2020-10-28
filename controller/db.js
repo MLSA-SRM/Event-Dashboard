@@ -26,6 +26,23 @@ const events = (username) => {
     });
 };
 
+const allEvent = () => {
+  return event
+    .find({})
+    .populate("public.name")
+    .then((res) => {
+      // console.log(res);
+      let link = [];
+      res.forEach((item) => {
+        link.push(item.link);
+      });
+      return link;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 const saveEvent = (id, name, attendence, venue, startDate, endDate) => {
   let newEvent = new event({
     user: id,
@@ -72,6 +89,27 @@ const savePeople = (body, eventId) => {
     }
   );
 };
+
+const singleFormData = (data) => {
+  let newPeople = new people(data.res);
+  newPeople.save().catch((err) => console.log(err));
+  var yoman = {
+    name: newPeople._id,
+  };
+  event.findOneAndUpdate(
+    { name: data.eventName },
+    {
+      $push: {
+        public: yoman,
+      },
+    },
+    (err, res) => {
+      if (err) console.log(err);
+      // else console.log(res);
+    }
+  );
+};
+
 const formData = (data) => {
   data.people.forEach((item) => {
     let newPeople = new people(item);
@@ -196,12 +234,14 @@ const userData = (id) => {
 };
 
 module.exports = {
+  allEvent,
   events,
   savePeople,
   homeData,
   saveEvent,
   userData,
   formData,
+  singleFormData,
   getEvent,
   editEvent,
   deleteParticipate,

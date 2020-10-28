@@ -12,6 +12,7 @@ const UpcomingEvents = ({ events, name }) => {
       <div className='events-row'>
         {events.map((item) => (
           <EventBox
+            id={item.id}
             name={item.name}
             date={item.date}
             venue={item.venue}

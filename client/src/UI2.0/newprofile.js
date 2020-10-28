@@ -54,6 +54,7 @@ const Profile = () => {
             value = 1; //finished
           }
           data.push({
+            id: item.id,
             name: item.name,
             venue: item.venue,
             date: `${startDate.getDate()}/${
