@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewNav from "./newnav";
+import { ToastContainer, toast } from "react-toastify";
 
 const Settings = () => {
   const [name, setName] = useState("");
@@ -52,6 +53,7 @@ const Settings = () => {
       })
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
+      notify();
   };
   return (
     <div style={{ padding: "4vh" }}>
@@ -112,9 +114,16 @@ const Settings = () => {
             <button className="button">Save</button>
           </form>
         </div>
+        <ToastContainer position={"top-center"} />
       </div>
     </div>
   );
 };
 
 export default Settings;
+
+const notify = () => {
+  toast.info("The event details have been updated.", {
+    autoClose: false,
+  });
+};
