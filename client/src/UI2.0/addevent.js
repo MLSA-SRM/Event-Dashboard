@@ -10,6 +10,12 @@ const AddEvent = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  let currentDate = new Date().toISOString();
+  let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
+
+  let newStartDate = new Date(startDate).toISOString();
+  let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
+
   const submit = (e) => {
     let data = JSON.parse(localStorage.getItem("data"));
     e.preventDefault();
@@ -39,6 +45,7 @@ const AddEvent = () => {
             <div className='input-div'>
               <h5 className='label'>Event Name</h5>
               <input
+                required
                 className='input'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -48,6 +55,7 @@ const AddEvent = () => {
             <div className='input-div'>
               <h5 className='label'>Maximum Attendance</h5>
               <input
+                required
                 className='input'
                 value={num}
                 onChange={(e) => setNum(e.target.value)}
@@ -55,8 +63,14 @@ const AddEvent = () => {
               ></input>
             </div>
             <div className='input-div'>
+              <h5 className='label'>Venue</h5>
+              <input required className='input' type='type'></input>
+            </div>
+            <div className='input-div'>
               <h5 className='label'>Event Start Date</h5>
               <input
+                required
+                min={currentDateFormat}
                 className='input'
                 onChange={(e) => setStartDate(e.target.value)}
                 type='datetime-local'
@@ -65,6 +79,8 @@ const AddEvent = () => {
             <div className='input-div'>
               <h5 className='label'>Event End Date</h5>
               <input
+                required
+                min={newStartDateFormat}
                 className='input'
                 onChange={(e) => setEndDate(e.target.value)}
                 type='datetime-local'

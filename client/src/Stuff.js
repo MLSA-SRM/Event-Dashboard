@@ -12,18 +12,18 @@ class Stuff extends Component {
           
         </div>
         <div className="row">
-          <h1 className="title">We help you reach people</h1>
+          <h1 className="title">Some salient features of Event Dashboard</h1>
           <br/>
           <span className="thumbnail col-md-4">
           <img src={logo1} height="100vh" width="300vh" alt="logo1" className="image"/>
           <div className="overlay">
-          <div className="text">We show you real time stats, so you don't have to.</div>
+          <div className="text">We show you real time statistics to keep you up to date with real time numbers.</div>
           </div>
           </span>
           <span className="thumbnail col-md-4">
           <img src={logo2} height="100vh" width="300vh" alt="logo2"/>
           <div className="overlay-middle">
-          <div className="text">Our easy to use UI will surely keep you wanting more and thats a good thing. Trust us</div>
+          <div className="text">Our easy to use UI helps managing events efficiently and accurately.</div>
           </div>
           </span>
           <span className="thumbnail col-md-4">

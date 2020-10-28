@@ -25,9 +25,9 @@ class Home extends Component {
         </ul>
         <div className='white-box'>
           <div className='box'>
-            <h1>Introducing the latest in fast and accurate ways to organize events.</h1>
+            <h1>Introducing a fast and efficient way to organize events.</h1>
             <p>
-              Join thousands of people in easily organising and managing events for your organisation. We will take care of all the grunt work no one wants to do.
+              Join many other people in easily organising and managing events for your organisation - all that without breaking a sweat.
             </p>
           </div>
           <div className='image-logo'>
