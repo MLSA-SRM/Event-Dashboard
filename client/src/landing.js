@@ -30,16 +30,16 @@ class Home extends Component {
               Join many other people in easily organising and managing events for your organisation - all that without breaking a sweat.
             </p>
           </div>
-          {/* <div className='image-logo'>
+          <div className='image-logo'>
             <img src={logo} height='500vh' width='700vh' alt='logo' />
-          </div> */}
-          <div className="container5">
+          </div>
+          {/* <div className="container5">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             <div className="img-box"></div>
-          </div>
+          </div> */}
         </div>
         <div className='black-box'>
           <Stuff />
