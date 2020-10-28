@@ -28,7 +28,7 @@ export default function Modal({ open, children, onClose }) {
     <>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES} className="ms">
-      <button onClick={onClose} className="close">X</button>
+      <button onClick={onClose} className="close"><i class="fas fa-times"></i></button>
         <Login/>
       </div>
     </>,

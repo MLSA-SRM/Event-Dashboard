@@ -59,13 +59,11 @@ body {
   .box h1{
     font-weight: bold;
     font-size: 6vh;
-    letter-spacing: 6px;
     font-family: 'poppins', sans-serif;
     font-weight: 500;
   }
   .box p{
     font-weight: bold;
-    letter-spacing: 2px;
     margin-top: 6vh;
     font-family: 'poppins', sans-serif;
     font-weight: 500;
@@ -102,7 +100,8 @@ body {
   }
   .title{
     text-align: center;
-    font-family: 'Segoe UI Light',sans-serif;
+    font-family: 'poppins', sans-serif;
+    font-weight: 500;
   }
   .title h1{
     font-weight: bolder;
@@ -176,18 +175,22 @@ body {
   }
   .close{
     z-index: 1001;
-    height: 3vh;
+    height: 5vh;
     width: 5vh;
-    background-color: #ec3f3f;
     padding: 2px;
     margin: 2px;
-    color: #fff ;
+    background-color: #fff;
     border-radius: 20%;
     position: absolute;
     top: 0;
     right: 0;
     border: none;
+    outline: none;
   }
+
+  /* .close:hover{
+    
+  } */
 
   .thumbnail:hover{
     opacity: 50%;
@@ -276,6 +279,8 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    font-family: 'poppins', sans-serif;
+    font-weight: 500;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -284,7 +289,7 @@ body {
   }
   .ms{
     background-color: rgba(255,255,255);
-    padding: 28vh 20vh;
+    padding: 29vh 21vh;
     border-radius: 10px;
     -webkit-box-shadow: -2px 2px 38px -10px rgba(0,0,0,0.95);
     -moz-box-shadow: -2px 2px 38px -10px rgba(0,0,0,0.95);
