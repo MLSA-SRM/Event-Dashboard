@@ -221,3 +221,9 @@ a {
 .deleteIcon:hover{
   color: black;
   opacity: 1;}
+
+.NewEvent{
+  color: #3454ee;
+  opacity: 1;
+  font-weight: 600;
+}
