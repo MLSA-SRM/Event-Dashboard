@@ -7,7 +7,14 @@ import {
   Redirect,
 } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
+import {toast, ToastContainer} from 'react-toastify';
 import Axios from "axios";
+
+const notify = () => {
+  toast.info("The event has been deleted succesfully.", {
+    autoClose: false,
+  });
+};
 
 const EventBox = (item) => {
   console.log(item);
@@ -36,6 +43,7 @@ const EventBox = (item) => {
     })
       .then()
       .catch((err) => console.log(err));
+      notify();
   };
   return (
     <div
@@ -64,6 +72,7 @@ const EventBox = (item) => {
       <h6>{time}</h6>
       <h6>{item.date}</h6>
       <h6>{item.venue}</h6>
+      <ToastContainer position={"top-center"} />
     </div>
   );
 };
