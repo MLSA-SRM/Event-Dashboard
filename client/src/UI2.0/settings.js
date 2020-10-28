@@ -3,6 +3,7 @@ import axios from "axios";
 import NewNav from "./newnav";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import {Link} from 'react-router-dom';
 
 const Settings = () => {
   const [name, setName] = useState("");
