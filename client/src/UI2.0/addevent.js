@@ -10,6 +10,12 @@ const AddEvent = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  let currentDate = new Date().toISOString();
+  let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
+
+  let newStartDate = new Date(startDate).toISOString();
+  let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
+
   const submit = (e) => {
     let data = JSON.parse(localStorage.getItem("data"));
     e.preventDefault();
@@ -64,6 +70,7 @@ const AddEvent = () => {
               <h5 className="label">Event Start Date</h5>
               <input
                 required
+                min={currentDateFormat}
                 className="input"
                 onChange={(e) => setStartDate(e.target.value)}
                 type="datetime-local"
@@ -73,6 +80,7 @@ const AddEvent = () => {
               <h5 className="label">Event End Date</h5>
               <input
                 required
+                min={newStartDateFormat}
                 className="input"
                 onChange={(e) => setEndDate(e.target.value)}
                 type="datetime-local"
