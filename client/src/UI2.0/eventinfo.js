@@ -3,9 +3,11 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import "tippy.js/themes/light.css";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const EventInfo = ({ name, date }) => {
   const [data, setData] = useState({});
+
   useEffect(() => {
     let data = new Date(date);
     console.log(data);
@@ -89,7 +91,8 @@ const EventInfo = ({ name, date }) => {
           5 Days To Go!
         </p>
         <br />
-        <button
+        <Link
+          to="/settings"
           style={{
             margin: "0",
             marginBottom: "3vh",
@@ -101,13 +104,13 @@ const EventInfo = ({ name, date }) => {
             outline: "none",
             color: "white",
             fontFamily: "Poppins",
-            fontWeight: '500',
-            borderRadius: '35px'
+            fontWeight: "500",
+            borderRadius: "35px",
           }}
           className="edit"
         >
           Edit Details
-        </button>
+        </Link>
       </div>
     </Tippy>
   );
