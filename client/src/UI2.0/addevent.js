@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import NewNav from "./newnav";
 import "./addevent.css";
 import ScriptTag from "react-script-tag";
 
 const AddEvent = () => {
   const [name, setName] = useState("");
   const [num, setNum] = useState("");
+  const [venue, setVenue] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
-  let currentDate = new Date().toISOString();
+  let currentDate = new Date().toUTCString();
   let currentDateFormat = currentDate.replace(/:[^:]*$/, "");
 
-  let newStartDate = new Date(startDate).toISOString();
+  let newStartDate = new Date(startDate).toUTCString();
   let newStartDateFormat = newStartDate.replace(/:[^:]*$/, "");
 
   const submit = (e) => {
@@ -24,6 +24,7 @@ const AddEvent = () => {
         id: data.id,
         name,
         num,
+        venue,
         startDate,
         endDate,
       })
@@ -31,11 +32,11 @@ const AddEvent = () => {
       .catch((err) => console.log(err));
     setName("");
     setNum("");
+    setVenue("");
   };
 
   return (
     <div>
-      {/* <NewNav /> */}
       <ScriptTag type='text/javascript' src='script.js' />
       <div className='form-body'>
         <h1 className='header-form'>Let's get your event setup</h1>
@@ -64,7 +65,13 @@ const AddEvent = () => {
             </div>
             <div className='input-div'>
               <h5 className='label'>Venue</h5>
-              <input required className='input' type='type'></input>
+              <input
+                required
+                className='input'
+                value={venue}
+                onChange={(e) => setVenue(e.target.value)}
+                type='text'
+              ></input>
             </div>
             <div className='input-div'>
               <h5 className='label'>Event Start Date</h5>

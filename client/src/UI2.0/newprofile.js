@@ -32,6 +32,7 @@ const Profile = () => {
         userData: data.username,
       })
       .then((res) => {
+        // console.log(res.data);
         let data = [];
         let startDate;
         let endDate;
@@ -54,6 +55,7 @@ const Profile = () => {
           }
           data.push({
             name: item.name,
+            venue: item.venue,
             date: `${startDate.getDate()}/${
               startDate.getMonth() + 1
             }/${startDate.getFullYear()}`,
@@ -61,7 +63,7 @@ const Profile = () => {
             status: value,
           });
         });
-        console.log(data);
+        // console.log(data);
         setData(data);
         setFilterData(data);
       });
