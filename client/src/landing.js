@@ -14,11 +14,11 @@ class Home extends Component {
         <div  className="margin">
         <ul className='headera'>
           <li>
-            <h1 className="ax">Event Dashboard</h1>
+            <h1 className="bx">Event Dashboard</h1>
           </li>
           <div className='righty'>
             {/* <div className="pulse"/> */}
-            <li>
+            <li>  
             <Modal/>
             </li>
           </div>
@@ -30,8 +30,15 @@ class Home extends Component {
               Join many other people in easily organising and managing events for your organisation - all that without breaking a sweat.
             </p>
           </div>
-          <div className='image-logo'>
+          {/* <div className='image-logo'>
             <img src={logo} height='500vh' width='700vh' alt='logo' />
+          </div> */}
+          <div className="container5">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div className="img-box"></div>
           </div>
         </div>
         <div className='black-box'>

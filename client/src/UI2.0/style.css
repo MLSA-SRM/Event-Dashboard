@@ -24,6 +24,13 @@
   color: #3454ee;
 }
 
+.bx{
+  color: #3454ee;
+  font-weight: 500;
+  position: absolute;
+  padding-left: 20px;
+}
+
 .authForm .btn{
   background-color: #3454ee;
 }
