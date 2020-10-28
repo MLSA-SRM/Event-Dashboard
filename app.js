@@ -4,6 +4,7 @@ var cors = require("cors");
 // var passport = require("passport");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
+var fetch = require("./controller/fetch-cron");
 // var session = require("cookie-session");
 // var session = require("express-session");
 // require("./config/passportConfig")(passport);
@@ -11,7 +12,7 @@ var indexRouter = require("./routes/index");
 // var User = require("./models/user");
 
 var app = express();
-
+fetch();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

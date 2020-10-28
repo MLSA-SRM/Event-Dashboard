@@ -43,12 +43,13 @@ const allEvent = () => {
     });
 };
 
-const saveEvent = (id, name, attendence, venue, startDate, endDate) => {
+const saveEvent = (id, name, attendence, venue, startDate, endDate, link) => {
   let newEvent = new event({
     user: id,
     name,
     attendence,
     venue,
+    link,
     startDate,
     endDate,
   });
@@ -143,6 +144,7 @@ const getEvent = (name) => {
         id: res._id,
         name: res.name,
         venue: res.venue,
+        link: res.link,
         attendence: res.attendence,
         startDate: res.startDate,
         endDate: res.endDate,
@@ -153,12 +155,13 @@ const getEvent = (name) => {
     .catch((err) => console.log(err));
 };
 const editEvent = (data) => {
-  let { id, name, num, venue, startDate, endDate } = data;
+  let { id, name, num, venue, link, startDate, endDate } = data;
   event
     .findByIdAndUpdate(id, {
       name,
       attendence: num,
       venue,
+      link,
       startDate,
       endDate,
     })
