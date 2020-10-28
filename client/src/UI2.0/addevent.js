@@ -7,7 +7,7 @@ import {FaArrowLeft} from 'react-icons/fa';
 import { Link, useHistory } from "react-router-dom";
 
 const notify = () => {
-  toast.info("The event has been added. Go to your profile to view it!", {
+  toast.info("The event has been added succesfully!", {
     autoClose: false,
   });
 };
@@ -124,7 +124,6 @@ const AddEvent = () => {
             <input className="button" type="submit"></input>
           </form>
         </div>
-        <ToastContainer position={"top-center"} />
       </div>
     </div>
   );
