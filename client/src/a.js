@@ -13,7 +13,7 @@ export default function Apps() {
   return (
     <>
       <div style={BUTTON_WRAPPER_STYLES} onClick={() => console.log('clicked')}>
-        <a onClick={() => setIsOpen(true)} className="mod">Log In</a>
+        <a onClick={() => setIsOpen(true)} className="mod" style={{fontWeight: '500'}}>Log In</a>
 
         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         </Modal>

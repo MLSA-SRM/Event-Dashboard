@@ -3,6 +3,7 @@ import logo from "./images/Calendar_SVG.svg";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
 import Modal from "./a";
+import { TiThLarge } from "react-icons/ti";
 import {
   BrowserRouter as Router,
   NavLink,
@@ -14,7 +15,7 @@ class Home extends Component {
         <div  className="margin">
         <ul className='headera'>
           <li>
-            <h1 className="bx">Event Dashboard</h1>
+            <h1 className="bx"><TiThLarge className="" style={{top: '4.7px',position: 'relative'}}/>  Event Dashboard</h1>
           </li>
           <div className='righty'>
             {/* <div className="pulse"/> */}

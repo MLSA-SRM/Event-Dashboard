@@ -72,6 +72,33 @@ body {
   padding: 0.3vh;
   cursor: pointer;
 }
+.lists-item1{
+  position: relative;
+  overflow: hidden;
+  line-break: loose;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10vh;
+  width: 5.3vh;
+  height: 5.3vh;
+  border-radius: 50px;
+  transition: 0.3s;
+  background: #f0f1f1;
+  align-content: center;
+  padding: 0.3vh;
+  cursor: pointer;
+}
+.icon2:hover{
+  opacity: 1;
+  color: #3454ee;
+}
+.icon2{
+  position: relative;
+  top: 5px;
+  left: 0px;
+  font-size: 3vh;
+  opacity: 0.5;
+}
 .lists-item:hover {
   opacity: 1;
   text-align: left;
