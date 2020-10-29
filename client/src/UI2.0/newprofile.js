@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import "./newprofile.css";
 import UpcomingEvents from "./Profile Components/upcomingevents";
+import { TiThLarge } from "react-icons/ti";
 import { Link, useHistory } from "react-router-dom";
 import { State } from "../Context";
 
@@ -113,6 +114,11 @@ const Profile = () => {
     <div className='profile-body'>
       <div className='nav-div'>
         <ul className='navs-list'>
+        <div className='lists-item1'>
+            <li>
+              <TiThLarge className='icon2' />
+            </li>
+          </div>
           <div className='lists-item' onClick={handleAllEvents}>
             <li>
               <FaAlignLeft className='icon1' />

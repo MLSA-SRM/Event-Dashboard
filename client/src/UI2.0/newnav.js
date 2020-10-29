@@ -11,6 +11,7 @@ import {
 } from "react-icons/go";
 import { MdSettings } from "react-icons/md";
 import { State } from "../Context";
+import { TiThLarge } from "react-icons/ti";
 
 const NewNav = () => {
   const [userName, setUserName] = useState("");
@@ -37,7 +38,7 @@ const NewNav = () => {
         <ul className="main-nav-list">
           <NavLink to={`/user/${id}`} activeClassName="current">
             <li className="main-nav-item">
-              <GoGraph className="icon" /> Dashboard
+              <TiThLarge className="icon" /> Dashboard
             </li>
           </NavLink>
           <NavLink to="/newpeople" activeClassName="current">
