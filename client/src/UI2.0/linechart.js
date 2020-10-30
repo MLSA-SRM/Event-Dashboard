@@ -16,15 +16,15 @@ import "tippy.js/themes/light.css";
 const LineGraph = ({ barData }) => {
   return (
     <Tippy
-      theme="light"
-      animation="scale"
-      content="This tab shows the number of registrations in a weekly format."
+      theme='light'
+      animation='scale'
+      content='This tab shows the number of registrations in a weekly format.'
     >
-      <div className="dash-col1">
-        <h1 className="dash-header" style={{ textAlign: "left" }}>
+      <div className='dash-col1'>
+        <h1 className='dash-header' style={{ textAlign: "left" }}>
           REGISTRATIONS BY WEEK
         </h1>
-        <p style={{ color: "#3454ee", textAlign: "left" }}>This Week: 785</p>
+        {/* <p style={{ color: "#3454ee", textAlign: "left" }}>This Week: 785</p>
         <p
           style={{
             color: "lightgrey",
@@ -33,7 +33,7 @@ const LineGraph = ({ barData }) => {
           }}
         >
           Last Week: 645
-        </p>
+        </p> */}
         <LineChart
           width={500}
           height={300}
@@ -45,12 +45,12 @@ const LineGraph = ({ barData }) => {
             bottom: 20,
           }}
         >
-          <CartesianGrid strokeDasharray="2 2" />
-          <XAxis dataKey="name" />
-          <YAxis dataKey="no" tickCount={10} />
+          <CartesianGrid strokeDasharray='2 2' />
+          <XAxis dataKey='name' />
+          <YAxis dataKey='no' tickCount={10} />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="no" stroke="#3545ee" />
+          <Line type='monotone' dataKey='no' stroke='#3545ee' />
         </LineChart>
       </div>
     </Tippy>

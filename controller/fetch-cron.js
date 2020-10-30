@@ -32,7 +32,9 @@ const fetch = async () => {
             });
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          throw err;
+        });
     });
   });
 };

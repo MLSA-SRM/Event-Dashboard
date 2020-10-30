@@ -1,5 +1,6 @@
 import "date-fns";
 import React, { useContext, useState } from "react";
+import marked from "marked";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -67,7 +68,7 @@ function MailScheduler({
       primary,
       title,
       secondary,
-      body,
+      body: marked(body),
       tertiary,
       hey,
       company,

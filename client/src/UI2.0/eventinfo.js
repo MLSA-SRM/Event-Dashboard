@@ -36,26 +36,26 @@ const EventInfo = ({ name, date }) => {
   }, []);
   return (
     <Tippy
-      theme="light"
-      animation="scale"
-      content="This tab shows the basic event details"
+      theme='light'
+      animation='scale'
+      content='This tab shows the basic event details'
     >
       <div
-        className="dash-col1"
+        className='dash-col1'
         style={{
           display: "flex",
           flexFlow: "column",
           justifyContent: "left",
         }}
       >
-        <h1 className="dash-header" style={{ textAlign: "left" }}>
+        <h1 className='dash-header' style={{ textAlign: "left" }}>
           EVENT INFO
         </h1>
-        <h1 className="event-main-name" style={{ textAlign: "left" }}>
+        <h1 className='event-main-name' style={{ textAlign: "left" }}>
           {name}
         </h1>
         <h1
-          className="event-main-name"
+          className='event-main-name'
           style={{
             fontSize: "5vh",
             textAlign: "left",
@@ -68,7 +68,7 @@ const EventInfo = ({ name, date }) => {
           {/* {new data.getDate() + "th " + ", " + new data.getFullYear()} */}
         </h1>
         <h1
-          className="event-main-name"
+          className='event-main-name'
           style={{
             fontSize: "5vh",
             textAlign: "left",
@@ -88,11 +88,11 @@ const EventInfo = ({ name, date }) => {
             opacity: "0.5",
           }}
         >
-          5 Days To Go!
+          {/* 5 Days To Go! */}
         </p>
         <br />
         <Link
-          to="/settings"
+          to='/settings'
           style={{
             margin: "0",
             marginBottom: "3vh",
@@ -107,7 +107,7 @@ const EventInfo = ({ name, date }) => {
             fontWeight: "500",
             borderRadius: "35px",
           }}
-          className="edit"
+          className='edit'
         >
           Edit Details
         </Link>
